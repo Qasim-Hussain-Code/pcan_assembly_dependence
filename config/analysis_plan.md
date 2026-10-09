@@ -176,3 +176,30 @@ for each confirmatory conclusion whether any alternative changes it.
 - Placement identity: 0.90, 0.95 (primary) and 0.99.
 - Null AT bin width: 2.5, 5 (primary) and 10 percentage points.
 - Heterozygous strains excluded.
+
+## Clarification of the pair rule, 9 October 2026
+
+Added after registration and before any arm 2 data were examined: no arm 2
+assembly had been downloaded, run through PCAn or aligned, and the pair list
+had not been built. The text above is unchanged.
+
+Candidate long-read assemblies are those deposited in INSDC under an assembly
+accession and version that NCBI Datasets returns as current. Two kinds of
+public long-read assembly are therefore not candidates:
+
+- the haplotype-1 assemblies of the ScRAP panel (O'Donnell et al. 2023), which
+  NCBI Datasets does not serve;
+- the assemblies of Loegler et al. 2025, which exist only inside a single
+  16.8 GB archive on Zenodo and were scaffolded against the reference genome
+  with ragout. The archive alone would take half of the disk budget, and
+  reference-guided scaffolding would make the long-read side partly a copy of
+  the reference.
+
+Strains are matched through the standardized names (three-letter codes) that
+Peter et al. 2018 (Supplementary Table S1) and O'Donnell et al. 2023
+(Supplementary Table 1) both use, and the isolate names in the two tables
+must also agree. A ScRAP strain listed under another strain name, such as a
+spore or colony derivative, is not matched. The short-read assembly of a
+Peter et al. 2018 strain is taken from the single archive that the 1002 Yeast
+Genomes project distributes; the archive member for each code is identified
+by listing the archive, not by assuming a file name.
