@@ -34,7 +34,10 @@ Stages, in order:
   figures      scripts/13_figures.py
 
 Arm 0 is a gate. If fewer than 95 per cent of published calls are reproduced
-exactly (config/arm0_reproduction.md), arms 1 to 3 do not start.
+exactly (config/arm0_reproduction.md), arms 1 to 3 do not start until the
+cause has been found and reported. They start then only if
+config/arm0_gate_decision.md records that, with its date, and ends with the
+line "decision: proceed with arms 1 to 3".
 EOF
 }
 
@@ -88,6 +91,24 @@ python_stage() {
     python3 "$PAD_ROOT/scripts/lib/measure.py" --stage "$name" -- python "$@"
 }
 
+# The gate decision from results/arm0/gate.tsv, or, when it says stop, the
+# recorded decision in config/arm0_gate_decision.md, said once in the log.
+gate_noted=""
+gate_ok() {
+    local g="$PAD_ROOT/results/arm0/gate.tsv" rec="$PAD_ROOT/config/arm0_gate_decision.md" d
+    [[ -f "$g" ]] || return 1
+    d=$(awk -F'\t' 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} {print $h["decision"]}' "$g")
+    [[ "$d" == "proceed" ]] && return 0
+    if [[ -f "$rec" ]] && [[ "$(tail -n 1 "$rec")" == "decision: proceed with arms 1 to 3" ]]; then
+        if [[ -z "$gate_noted" ]]; then
+            pad_log "arm 0 missed its gate; continuing as recorded in config/arm0_gate_decision.md"
+            gate_noted=1
+        fi
+        return 0
+    fi
+    return 1
+}
+
 started=0
 [[ -z "$from" ]] && started=1
 for stage in "${STAGES[@]}"; do
@@ -95,6 +116,10 @@ for stage in "${STAGES[@]}"; do
         if [[ "$stage" == "$from" ]]; then started=1; else continue; fi
     fi
     wanted "$stage" || continue
+    case "$stage" in
+        fragment|variants|score|pairs|assemblies2|compare|reads|compare3)
+            gate_ok || pad_die "arm 0 has not passed its gate (results/arm0/gate.tsv) and no decision to proceed is recorded in config/arm0_gate_decision.md; later arms do not start" ;;
+    esac
     pad_log "stage $stage"
     case "$stage" in
         configure)   : ;;
@@ -102,23 +127,16 @@ for stage in "${STAGES[@]}"; do
         tables)      bash "$PAD_ROOT/scripts/02_fetch_tables.sh" ;;
         assemblies)  bash "$PAD_ROOT/scripts/03_fetch_assemblies.sh" --set arm0 ;;
         reproduce)   python_stage reproduce "$PAD_ROOT/scripts/05_reproduce.py" --jobs "$jobs" ;;
-        fragment|variants|score|pairs|compare|compare3|analyse|figures)
-            if [[ ! -f "$PAD_ROOT/results/arm0/gate.tsv" ]] \
-               || [[ "$(awk -F'\t' 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} {print $h["decision"]}' "$PAD_ROOT/results/arm0/gate.tsv")" != "proceed" ]]; then
-                pad_die "arm 0 has not passed its gate (results/arm0/gate.tsv); later arms do not start"
-            fi
-            case "$stage" in
-                fragment) python_stage fragment "$PAD_ROOT/scripts/06_fragment.py" --jobs "$jobs" ;;
-                variants) python_stage variants "$PAD_ROOT/scripts/07_plant_variants.py" --jobs "$jobs" ;;
-                score)    python_stage score "$PAD_ROOT/scripts/08_score_perturbations.py" ;;
-                pairs)    python_stage pairs "$PAD_ROOT/scripts/09_build_pairs.py" ;;
-                compare)  python_stage compare "$PAD_ROOT/scripts/10_compare_pairs.py" --arm 2 --jobs "$jobs" ;;
-                compare3) python_stage compare3 "$PAD_ROOT/scripts/10_compare_pairs.py" --arm 3 --jobs "$jobs" ;;
-                analyse)  python_stage analyse "$PAD_ROOT/scripts/12_analyse.py" ;;
-                figures)  python_stage figures "$PAD_ROOT/scripts/13_figures.py" ;;
-            esac ;;
+        fragment)    python_stage fragment "$PAD_ROOT/scripts/06_fragment.py" --jobs "$jobs" ;;
+        variants)    python_stage variants "$PAD_ROOT/scripts/07_plant_variants.py" --jobs "$jobs" ;;
+        score)       python_stage score "$PAD_ROOT/scripts/08_score_perturbations.py" ;;
+        pairs)       python_stage pairs "$PAD_ROOT/scripts/09_build_pairs.py" ;;
         assemblies2) bash "$PAD_ROOT/scripts/03_fetch_assemblies.sh" --set arm2 ;;
+        compare)     python_stage compare_arm2 "$PAD_ROOT/scripts/10_compare_pairs.py" --arm 2 --jobs "$jobs" ;;
         reads)       bash "$PAD_ROOT/scripts/11_assemble_reads.sh" ;;
+        compare3)    python_stage compare_arm3 "$PAD_ROOT/scripts/10_compare_pairs.py" --arm 3 --jobs "$jobs" ;;
+        analyse)     python_stage analyse "$PAD_ROOT/scripts/12_analyse.py" ;;
+        figures)     python_stage figures "$PAD_ROOT/scripts/13_figures.py" ;;
     esac
 done
 pad_log "run_all finished"
