@@ -66,6 +66,15 @@ pad_measure_self "$stage" "${args[@]}"
 pad_activate tools
 
 : "${SPADES_MEM_GB:=4}" "${HOURS_ARM3:=48}" "${DISK_CEILING_GB:=55}"
+# SPAdes' -m caps its address space, not its resident memory, and each thread
+# reserves address space of its own. With 16 threads a 4 GB cap ran out at 40x
+# (mmap failed while SPAdes held 1.5 GB resident) for the first three strains;
+# with 4 threads the same 40x reads of BAM assembled within the cap, at 1.5 GB
+# resident, into contigs identical to a 16-thread run without any cap. One
+# SPAdes thread per GB of the cap is the rule from the fourth strain on
+# (config/analysis_plan.md, 9 October 2026). MEGAHIT keeps every thread.
+SPADES_THREADS=$(( THREADS < ${SPADES_MEM_GB%.*} ? THREADS : ${SPADES_MEM_GB%.*} ))
+(( SPADES_THREADS >= 1 )) || SPADES_THREADS=1
 RUNS="${runs_arg:-$PAD_ROOT/config/arm3_runs.tsv}"
 [[ -f "$RUNS" ]] || pad_die "$(pad_rel "$RUNS") not found; run scripts/09_build_pairs.py first"
 STRAIN_LOG="${log_arg:-$PAD_ROOT/logs/arm3_strains.tsv}"
@@ -85,7 +94,7 @@ mkdir -p "$ARM3_DIR"
 # Column lookup by header name, so the order of columns in the TSV can change.
 col() { awk -F'\t' -v k="$1" 'NR==1 {for (i=1;i<=NF;i++) if ($i==k) c=i; next} {print $c}' "$RUNS"; }
 mapfile -t codes < <(paste <(col code) <(col arm3_eligible) <(col order_key) | awk -F'\t' '$2=="yes"' | sort -t$'\t' -k3,3 | cut -f1)
-pad_log "arm 3: ${#codes[@]} eligible strains in the registered order"
+pad_log "arm 3: ${#codes[@]} eligible strains in the registered order; SPAdes with $SPADES_THREADS threads and a ${SPADES_MEM_GB} GB cap, MEGAHIT with $THREADS threads"
 
 field() {   # field <code> <column>
     awk -F'\t' -v c="$1" -v k="$2" 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} $h["code"]==c {print $h[k]}' "$RUNS"
@@ -409,7 +418,7 @@ while [[ -n "$fetch_code" ]]; do
     G=$(field "$code" long_read_length)
     mapfile -t specs < <(specs_of "$G" "$(field "$code" base_count)")
     t_asm=$(date +%s)
-    printf 'assembler\ttarget_depth\tseed\tfraction\tread_pairs\tbases_raw\trealised_depth_raw\tbases_trimmed\trealised_depth_trimmed\tnames_checked\tname_mismatches\tstatus\terror\telapsed_s\tpeak_rss_mb\tcontig_n50\tcontig_l50\tn_contigs\ttotal_length\n' > "$sdir/manifest.tsv"
+    printf 'assembler\ttarget_depth\tseed\tfraction\tread_pairs\tbases_raw\trealised_depth_raw\tbases_trimmed\trealised_depth_trimmed\tnames_checked\tname_mismatches\tstatus\terror\telapsed_s\tpeak_rss_mb\tcontig_n50\tcontig_l50\tn_contigs\ttotal_length\tthreads\n' > "$sdir/manifest.tsv"
     n_ok=0 n_fail=0 max_rss=0
     for spec in "${specs[@]}"; do
         IFS=: read -r t s f <<< "$spec"
@@ -417,7 +426,7 @@ while [[ -n "$fetch_code" ]]; do
         r2="$sdir/reads/d${t}_s${s}_R2.fq.gz"
         if [[ "$md5_ok" != "yes" ]]; then
             for a in spades megahit; do
-                printf '%s\t%s\t%s\t%s\t\t\t\t\t\t\t\tfailed\treads not downloaded intact\t\t\t\t\t\t\n' "$a" "$t" "$s" "$f" >> "$sdir/manifest.tsv"
+                printf '%s\t%s\t%s\t%s\t\t\t\t\t\t\t\tfailed\treads not downloaded intact\t\t\t\t\t\t\t\n' "$a" "$t" "$s" "$f" >> "$sdir/manifest.tsv"
                 n_fail=$((n_fail + 1))
             done
             continue
@@ -436,7 +445,7 @@ while [[ -n "$fetch_code" ]]; do
             err=""
             rm -rf "$wd"
             if [[ "$a" == "spades" ]]; then
-                /usr/bin/time -f "%e %M" -o "$tm" spades.py --isolate -1 "$t1" -2 "$t2" -o "$wd" -t "$THREADS" \
+                /usr/bin/time -f "%e %M" -o "$tm" spades.py --isolate -1 "$t1" -2 "$t2" -o "$wd" -t "$SPADES_THREADS" \
                     -m "$SPADES_MEM_GB" --tmp-dir "$sdir/work/tmp_spades" > "$sdir/work/$a.$tag.log" 2>&1 || err="SPAdes exited with an error"
                 contigs="$wd/contigs.fasta"
             else
@@ -454,14 +463,20 @@ while [[ -n "$fetch_code" ]]; do
                 n_ok=$((n_ok + 1))
             else
                 [[ -n "$err" ]] || err="no contigs written"
-                err="$err: $(grep -iE 'error|memory|killed' "$sdir/work/$a.$tag.log" | tail -1 | pad_scrub | tr '\t' ' ' | cut -c1-200)"
+                # SPAdes ends with a generic line; the first ERROR line it
+                # logged says what went wrong
+                why=$(grep -m1 ' ERROR ' "$sdir/work/$a.$tag.log" | sed 's/.*) *//')
+                [[ -n "$why" ]] || why=$(grep -iE 'error|memory|killed' "$sdir/work/$a.$tag.log" | tail -1)
+                err="$err: $(printf '%s' "$why" | pad_scrub | tr '\t' ' ' | cut -c1-200)"
                 n50="" l50="" nc="" tot="" st="failed"
                 n_fail=$((n_fail + 1))
             fi
-            printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$a" "$t" "$s" "$f" \
+            threads_used=$THREADS
+            [[ "$a" == "spades" ]] && threads_used=$SPADES_THREADS
+            printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$a" "$t" "$s" "$f" \
                 "$pairs" "$raw" "$(awk -v x="$raw" -v g="$G" 'BEGIN {printf "%.2f", x / g}')" "$trimmed" \
                 "$(awk -v x="$trimmed" -v g="$G" 'BEGIN {printf "%.2f", x / g}')" "$pairs" "$mism" "$st" "$err" \
-                "$el" "$rss_mb" "$n50" "$l50" "$nc" "$tot" >> "$sdir/manifest.tsv"
+                "$el" "$rss_mb" "$n50" "$l50" "$nc" "$tot" "$threads_used" >> "$sdir/manifest.tsv"
             rm -rf "$wd" "$sdir/work/tmp_spades"
             pad_log "$code: $a $tag $st (${el}s, ${rss_mb} MB)"
         done

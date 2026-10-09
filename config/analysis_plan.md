@@ -376,3 +376,22 @@ fourteen assemblies built both ways have identical contig N50s. A strain
 whose reads still cannot be downloaded intact is logged and left for a later
 run instead of being counted as processed. CCN is processed again from the
 start, first in the order as before.
+
+## Change recorded on 9 October 2026, after the third arm 3 strain
+
+The first three strains, CCN, AEG and BAM, were assembled with SPAdes on 16
+threads under the 4 GB cap from `project.conf`. SPAdes failed at 40x and at
+full depth for all three, and at 20x for CCN, with "mmap(2) failed: Cannot
+allocate memory" while it held about 1.5 GB resident. SPAdes' `-m` limits its
+address space, not its resident memory, and each thread reserves address
+space of its own; on this machine, whose Linux side has 6 GB, the cap could
+not be raised far. On BAM's 40x reads, SPAdes on 4 threads under the same 4
+GB cap finished at 1.5 GB resident, and its contigs were identical, sequence
+for sequence, to those of a 16-thread run with no cap.
+
+From the fourth strain on, SPAdes runs with one thread per GB of its cap,
+here 4. The cap itself, the assembler version, its mode and every other
+setting are unchanged, and MEGAHIT keeps all 16 threads. As registered above,
+the failed runs of the first three strains are recorded with their errors and
+not repeated; those cells stay missing. The thread count of every assembler
+run is recorded in each strain's manifest from the fourth strain on.

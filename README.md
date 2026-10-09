@@ -357,7 +357,13 @@ from its first byte; the change and its date are at the end of
 `config/analysis_plan.md`. While one strain assembles, the next strain's
 reads download, because the link and the processors would otherwise sit idle
 in turn; assemblies never overlap. Reads and working directories are deleted
-when a strain is done, or by the cleanup trap if it is interrupted.
+when a strain is done, or by the cleanup trap if it is interrupted. SPAdes
+runs under the 4 GB cap from `project.conf`, which limits its address space
+rather than its resident memory. On 16 threads it ran out of address space
+at 40x and above for the first three strains while holding about 1.5 GB;
+from the fourth strain on it runs on one thread per GB of the cap, 4 here,
+which on BAM's 40x reads gave contigs identical to a 16-thread run without a
+cap. The failed runs of the first three strains stay failed, as registered.
 `python scripts/10_compare_pairs.py --arm 3` then compares every assembly
 with the strain's long-read assembly by the arm 2 method.
 
