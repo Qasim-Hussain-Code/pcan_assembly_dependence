@@ -8,7 +8,7 @@ because creating files on the Windows drive mounted in WSL was about 300
 times slower in a test of 500 small files (6.05 s against 0.02 s).
 
 | Path | Written by | Contents |
-|---|---|---|
+| --- | --- | --- |
 | `env/pcan/` | `01_install.sh` | PCAn's conda environment, pinned by its `pcan_specs.yml` (Python 3.8.17, MEME 4.11.2, BLAST 2.16.0) |
 | `env/tools/` | `01_install.sh` | minimap2, seqkit, seqtk, fastp, SPAdes, MEGAHIT, NCBI datasets, shellcheck, pigz, and the Python packages for the analysis |
 | `pcan/point-centromere-detection/` | `01_install.sh` | PCAn at commit a5fa46f with `patches/` applied |
@@ -19,6 +19,12 @@ times slower in a test of 500 small files (6.05 s against 0.02 s).
 | `arm0/determinism/` | `05_reproduce.py` | the five repeated S288C runs |
 | `arm1/calls/`, `arm1/cuts/`, `arm1/records/` | `06_fragment.py` | per fragmented replicate: call table, candidate table, cut positions, contiguity record. The fragmented FASTA is deleted after PCAn has run; the seed regenerates it exactly |
 | `arm1/variant_calls/` | `07_plant_variants.py` | per edited genome: call table and candidate table; the edited FASTA is deleted |
+| `diagnostics/` | `05_reproduce.py` | assembly versions run only to find the cause of an arm 0 discrepancy (`config/arm0_diagnostics.tsv`) |
+| `tables/peter2018/` | `09_build_pairs.py` | the Peter et al. 2018 assembly archive (one tar.gz, md5-checked) and its member listing |
+| `assemblies/peter2018/` | `09_build_pairs.py` | the short-read assembly of each arm 2 strain, extracted from that archive, gzip |
+| `pairs/<code>/` | `10_compare_pairs.py` | per strain, shared by arms 2 and 3: PCAn on the long-read assembly, the centromere and null-window sets for every flank length and AT bin, the 500 bp window table |
+| `arm2/<code>/` | `10_compare_pairs.py` | PCAn on the short-read assembly, the status of every element under every variant, the self-comparison control, breakpoints, and the primary flank sequences |
+| `arm3/<code>/` | `11_assemble_reads.sh`, `10_compare_pairs.py` | the contigs of every assembly (gzip), fastp reports, the manifest of depths, seeds and assembler runs, and per assembly the calls, statuses, breakpoints and flank sequences. Reads are deleted before the next strain starts |
 | `state/` | every stage | one marker per finished stage, which is what makes a re-run skip |
 | `work/` | every stage | temporary working directories, removed when a stage ends or is interrupted |
 | `logs/` | every stage | raw tool output; only scrubbed summaries go to the tracked `logs/` |
