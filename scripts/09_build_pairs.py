@@ -211,10 +211,10 @@ def main():
             if not rep:
                 options.append((acc, a["assembly"], a["assembly.type"], None, "not served by NCBI Datasets"))
                 continue
-            ai, st = rep.get("assembly_info", {}), rep.get("assembly_stats", {})
-            tech = ai.get("sequencing_tech", "")
-            if ai.get("assembly_status") != "current":
-                why = "NCBI status %s" % ai.get("assembly_status")
+            info, st = rep.get("assembly_info", {}), rep.get("assembly_stats", {})
+            tech = info.get("sequencing_tech", "")
+            if info.get("assembly_status") != "current":
+                why = "NCBI status %s" % info.get("assembly_status")
             elif not re.search(r"nanopore|pacbio|\bONT\b", tech, re.I):
                 why = "technology not long-read: %s" % tech
             else:

@@ -87,8 +87,8 @@ if not rep:
     print("not_found", "-", "-")
 else:
     r = rep[0]
-    ai = r.get("assembly_info", {})
-    print(ai.get("assembly_status", "unknown"), r.get("current_accession", "-"), ai.get("assembly_level", "-").replace(" ", "_"))
+    info = r.get("assembly_info", {})
+    print(info.get("assembly_status", "unknown"), r.get("current_accession", "-"), info.get("assembly_level", "-").replace(" ", "_"))
 EOF
 )
     if [[ "$status" != "current" ]]; then

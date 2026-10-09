@@ -10,7 +10,7 @@ Usage: bash scripts/01_install.sh [--force]
 
 Needs only a conda base installation (CONDA_BASE in project.conf) and git.
 
-  data/pcan/       PCAn at commit a5fa46f (tag v1.0), with patches/*.patch applied
+  data/pcan/       PCAn at commit a5fa46f (the v1.0 release on Zenodo), with patches/*.patch applied
   data/env/pcan    PCAn's own environment, pinned by its pcan_specs.yml
   data/env/tools   minimap2, seqkit, seqtk, fastp, SPAdes, MEGAHIT, NCBI datasets,
                    shellcheck, pigz and the Python packages for the analysis
@@ -38,10 +38,11 @@ pad_skip_if_done install "$force"
 pad_measure_self install "$@"
 
 PCAN_URL="https://github.com/JHelsen/point-centromere-detection.git"
-# The Zenodo record for PCAn v1.0 (10.5281/zenodo.17293587), which the paper's
-# code availability statement cites, archives exactly this commit. The v1.0
-# tag on GitHub points one commit later (86184e5), and HEAD on 9 October 2026
-# (1894bcc) later still; both differ from a5fa46f only in README files.
+# The Zenodo record for PCAn v1.0 (10.5281/zenodo.17293587), which the paper
+# cites beside the record for all versions (10.5281/zenodo.17293586), archives
+# exactly this commit. The v1.0 tag on GitHub points one commit later
+# (86184e5), and HEAD on 9 October 2026 (1894bcc) later still; both differ
+# from a5fa46f only in README files.
 PCAN_COMMIT="a5fa46f0cb971e7d499fd52b38b0c29166b33ef8"
 
 # Tools environment. Versions are pinned to what bioconda and conda-forge served
