@@ -426,65 +426,122 @@ def fig_arm2_zygosity(counts, lift, nulls):
 # ----------------------------------------------------------------------------
 # Question 5, arm 3
 
+DEPTH_ORDER = ["5", "10", "20", "40", "full"]
+ASSEMBLERS = {"spades": (BLUE, "SPAdes"), "megahit": (ORANGE, "MEGAHIT")}
+
+
+def depth_axis(ax):
+    """Realised depth on a log axis, ticked at the target depths and the 80x cap."""
+    ax.set_xscale("log")
+    ax.xaxis.set_major_locator(matplotlib.ticker.FixedLocator([5, 10, 20, 40, 80]))
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: "%g" % v))
+    ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
+    ax.set_xlim(3.5, 115)
+    ax.set_xlabel("realised depth (x), median over strains")
+
+
+def by_depth(conf, outcome, assembler, measure=None):
+    d = conf[(conf["outcome"] == outcome) & (conf["assembler"] == assembler)
+             & (conf["seed"].astype(str) == "11")].copy()
+    if measure:
+        d = d[d["measure"].str.startswith(measure)]
+    d["target_depth"] = d["target_depth"].astype(str)
+    return d.set_index("target_depth").reindex([o for o in DEPTH_ORDER if o in set(d["target_depth"])])
+
+
 def fig_arm3():
     conf = read("arm3/confirmatory.tsv")
     asm = read("arm3/assemblies.tsv")
     if conf is None or asm is None or conf.empty:
         return
-    order = ["5", "10", "20", "40", "full"]
-    depth = asm[(asm["status"] == "ok") & (asm["seed"] == 11)].groupby(["assembler", "target_depth"])[
-        "realised_depth_raw"].median()
-    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.2))
-    colors = {"spades": BLUE, "megahit": ORANGE}
-    for ax, outcome, ylab, letter in ((axes[0, 0], "D1", "recall relative to the long-read calls", "a"),
-                                      (axes[0, 1], "D2", "identical CDEII length among intact calls", "b")):
-        for a, col in colors.items():
-            d = conf[(conf["outcome"] == outcome) & (conf["assembler"] == a) & (conf["seed"] == 11)].copy()
-            d["target_depth"] = d["target_depth"].astype(str)
-            d = d.set_index("target_depth").reindex([o for o in order if o in set(d["target_depth"])])
+    asm["target_depth"] = asm["target_depth"].astype(str)
+    ok = asm[asm["status"] == "ok"]
+    depth = ok[ok["seed"].astype(str) == "11"].groupby(["assembler", "target_depth"])["realised_depth_raw"].median()
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 6.0))
+    for ax, outcome, ylab, letter, title in (
+            (axes[0, 0], "D1", "fraction of long-read calls intact and called", "a", "Recall relative to the long-read calls"),
+            (axes[0, 1], "D2", "fraction with the long-read CDEII length", "b", "CDEII agreement among intact calls")):
+        n = 0
+        for i, (a, (col, lab)) in enumerate(ASSEMBLERS.items()):
+            d = by_depth(conf, outcome, a)
+            if d.empty:
+                continue
+            n = max(n, int(d["n_strains"].max()))
             x = [depth.get((a, t), np.nan) for t in d.index]
             ax.errorbar(x, d["estimate"], yerr=[d["estimate"] - d["ci_low"], d["ci_high"] - d["estimate"]],
-                        color=col, marker="o", markersize=3.5, capsize=0, elinewidth=1, label=a)
-            if len(x):
-                end_label(ax, x[-1], d["estimate"].iloc[-1], "SPAdes" if a == "spades" else "MEGAHIT")
+                        color=col, marker="o", markersize=3.5, capsize=0, elinewidth=1)
+            # the two assemblers can end at the same value; their labels are
+            # set apart vertically so that both stay readable
+            end_label(ax, x[-1], d["estimate"].iloc[-1], lab, dy=7 if i == 0 else -7)
             ten = conf[(conf["outcome"] == outcome) & (conf["assembler"] == a)
                        & (conf["target_depth"].astype(str) == "10")]
             if len(ten) > 1:
-                ax.plot([depth.get((a, "10"), np.nan)] * len(ten), ten["estimate"], "_", color=col, markersize=8)
-        ax.set_xscale("log")
+                ax.plot([depth.get((a, "10"), np.nan)] * len(ten), ten["estimate"], "_", color=col, markersize=9,
+                        markeredgewidth=1.5)
+        depth_axis(ax)
         ax.set_ylim(0, 1.05)
-        ax.set_xlabel("realised depth (x)")
         ax.set_ylabel(ylab)
-        n = int(conf[conf["outcome"] == outcome]["n_strains"].max())
-        ax.set_title("%s  %s\nn = %d strains; interval over strains; dashes at 10x: three seeds"
-                     % (letter, "Recall" if outcome == "D1" else "CDEII agreement", n), loc="left")
+        ax.set_title("%s  %s\nn = %d strains; mean with bootstrap interval\nover strains; dashes at 10x: three seeds"
+                     % (letter, title, n), loc="left")
     ax = axes[1, 0]
-    ok = asm[asm["status"] == "ok"]
-    for a, col in colors.items():
+    for a, (col, lab) in ASSEMBLERS.items():
         d = ok[ok["assembler"] == a]
-        ax.scatter(d["realised_depth_raw"], d["contig_n50"], s=8, color=col, edgecolor="white", linewidth=0.4,
-                   label="SPAdes" if a == "spades" else "MEGAHIT")
-    ax.set_xscale("log")
-    ax.set_yscale("log")
+        ax.scatter(d["realised_depth_raw"], d["contig_n50"], s=9, color=col, edgecolor="white", linewidth=0.4,
+                   label=lab, zorder=3)
+    depth_axis(ax)
     ax.set_xlabel("realised depth (x)")
+    ax.set_yscale("log")
     ax.set_ylabel("contig N50 (bp)")
-    ax.legend(frameon=False)
+    ax.legend(frameon=False, loc="lower right")
     ax.set_title("c  Contiguity, on the axis of arm 1\nn = %d assemblies; unit: assembly" % len(ok), loc="left")
     ax = axes[1, 1]
-    for a, col in colors.items():
-        d = conf[(conf["outcome"] == "D4") & (conf["assembler"] == a) & conf["measure"].str.startswith("break-rate")].copy()
-        d["target_depth"] = d["target_depth"].astype(str)
-        d = d.set_index("target_depth").reindex([o for o in order if o in set(d["target_depth"])])
+    for i, (a, (col, lab)) in enumerate(ASSEMBLERS.items()):
+        d = by_depth(conf, "D4", a, "break-rate")
+        if d.empty:
+            continue
         x = [depth.get((a, t), np.nan) for t in d.index]
         ax.errorbar(x, d["estimate"], yerr=[d["estimate"] - d["ci_low"], d["ci_high"] - d["estimate"]], color=col,
                     marker="o", markersize=3.5, capsize=0, elinewidth=1)
+        end_label(ax, x[-1], d["estimate"].iloc[-1], lab, dy=7 if i == 0 else -7)
     ax.axhline(1, color=GREY, linewidth=0.8)
-    ax.set_xscale("log")
-    ax.set_xlabel("realised depth (x)")
+    ax.annotate("no difference", (4, 1), xytext=(0, 3), textcoords="offset points", fontsize=7, color=INK2)
+    depth_axis(ax)
     ax.set_ylabel("break-rate ratio, centromere over null")
-    ax.set_title("d  Breaks at centromeres against AT-matched windows\ninterval over strains", loc="left")
+    ax.set_title("d  Breaks at centromeres against AT-matched\nwindows, seed 11; bootstrap interval over strains",
+                 loc="left")
     fig.tight_layout()
     save(fig, "fig5_read_depth")
+    fig_arm3_per_strain(asm)
+
+
+def fig_arm3_per_strain(asm):
+    """Supplementary: recall per strain against realised depth, seed 11."""
+    cen = read("arm3/centromere_status.tsv")
+    if cen is None or cen.empty:
+        return
+    cen = cen[(cen["status"] != "not_liftable") & (cen["seed"].astype(str) == "11")].copy()
+    cen["target_depth"] = cen["target_depth"].astype(str)
+    rec = cen.groupby(["assembler", "strain", "target_depth"])["status"].apply(
+        lambda s: (s == "intact_called").mean()).rename("recall").reset_index()
+    rd = asm[asm["seed"].astype(str) == "11"][["assembler", "strain", "target_depth", "realised_depth_raw"]]
+    rec = rec.merge(rd, on=["assembler", "strain", "target_depth"], how="left")
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.0), sharey=True)
+    for ax, (a, (col, lab)) in zip(axes, ASSEMBLERS.items()):
+        d = rec[rec["assembler"] == a]
+        for _, g in d.groupby("strain"):
+            g = g.sort_values("realised_depth_raw")
+            ax.plot(g["realised_depth_raw"], g["recall"], color=LIGHT, linewidth=0.8, zorder=1)
+        m = d.groupby("target_depth").agg(x=("realised_depth_raw", "median"), y=("recall", "mean")).reindex(
+            [o for o in DEPTH_ORDER if o in set(d["target_depth"])])
+        ax.plot(m["x"], m["y"], color=col, marker="o", markersize=3.5, zorder=3)
+        depth_axis(ax)
+        ax.set_xlabel("realised depth (x)")
+        ax.set_ylim(0, 1.05)
+        ax.set_title("%s  %s\nn = %d strains; grey: each strain; colour: mean"
+                     % ("ab"[list(ASSEMBLERS).index(a)], lab, d["strain"].nunique()), loc="left")
+    axes[0].set_ylabel("fraction of long-read calls\nintact and called")
+    fig.tight_layout()
+    save(fig, "figS3_read_depth_per_strain", supp=True)
 
 
 # ----------------------------------------------------------------------------
