@@ -95,3 +95,17 @@ pad_skip_if_done() {
 pad_utc() {
     date -u +%Y-%m-%dT%H:%M:%SZ
 }
+
+# Re-run the calling stage under scripts/lib/measure.py unless it is already
+# being measured, so that every stage appends its elapsed time, peak memory and
+# peak disk to logs/resources.tsv whether run_all.sh started it or a person did.
+pad_measure_self() {
+    local stage="$1"
+    shift
+    if [[ -z "${PAD_MEASURED:-}" ]]; then
+        local py
+        py="$(command -v python3 || true)"
+        [[ -n "$py" ]] || py="$CONDA_BASE/bin/python"
+        exec "$py" "$PAD_ROOT/scripts/lib/measure.py" --stage "$stage" -- bash "$0" "$@"
+    fi
+}

@@ -1,0 +1,31 @@
+Point the Arxiozyma entry of PCAn v1.0 at the CDEIII motif file that ships with it.
+
+Why this is needed. At commit a5fa46f (PCAn v1.0, Zenodo 10.5281/zenodo.17293587)
+the Arxiozyma entry of MotifsAndThresholds names CDEIII/CDEIII_Ktel_MEME.txt.
+That file is not in the repository, not in PCAn.zip and not in the Zenodo
+archive. FIMO cannot open it, writes no fimo.txt, and PCAn stops with a
+FileNotFoundError, so no Arxiozyma assembly can be run as released.
+
+Why this file. CDEIII/CDEIII_Arxiozyma_MEME.txt ships with PCAn, is used by no
+entry, and contains a motif named CDEIII_Arxiozyma (26 bp, 88 sites). The
+authors' own per-species table, ExpectedFalsePosFalseNegs.txt, lists
+"Arxiozyma" as the CDEIII motif for all seven Arxiozyma species, with the same
+thresholds as the code (1e-6 for CDEIII, 1e-3 for CDEI).
+
+Nothing else changes. Every other entry, threshold and filter is as released.
+scripts/01_install.sh applies this patch with git apply after checking out the
+pinned commit, and records that it did so.
+
+diff --git a/PCAn/AutomatedCENretrieval.py b/PCAn/AutomatedCENretrieval.py
+index 771da85..09639e1 100644
+--- a/PCAn/AutomatedCENretrieval.py
++++ b/PCAn/AutomatedCENretrieval.py
+@@ -85,7 +85,7 @@ MotifsAndThresholds = {'Saccharomyces':["CDEIII/CDEIII_Saccharomyces_MEME.txt","
+                        'Nakaseomyces':["CDEIII/CDEIII_Nakaseomyces_MEME.txt","CDEI/CDEI_ZT_MEME.txt",6,2],
+                        'Oligophagozyma':["CDEIII/CDEIII_ScSuCgVp_MEME.txt","CDEI/CDEI_ZT_MEME.txt",5,2],
+                        'Cylindricascospora':["CDEIII/CDEIII_ScSuCgVp_MEME.txt","CDEI/CDEI_ZT_MEME.txt",6,2],
+-                       'Arxiozyma':["CDEIII/CDEIII_Ktel_MEME.txt","CDEI/CDEI_Arxiozyma_MEME.txt",6,3],
++                       'Arxiozyma':["CDEIII/CDEIII_Arxiozyma_MEME.txt","CDEI/CDEI_Arxiozyma_MEME.txt",6,3],
+                        'Monosporozyma':["CDEIII/CDEIII_Kaq-Ksol_MEME.txt","CDEI/CDEI_ZT_MEME.txt",6,2],
+                        'Grigorovia':["CDEIII/CDEIII_Grig_MEME.txt","CDEI/CDEI_Grig_MEME.txt",5,2],
+                        'Kazachstania taianensis':["CDEIII/CDEIII_Ktai_MEME.txt","CDEI/CDEI_ZT_MEME.txt",7,2],
