@@ -11,6 +11,7 @@ Usage:
 """
 import os
 import sys
+import textwrap
 
 import matplotlib
 
@@ -126,6 +127,7 @@ def fig_arm0():
 def fig_arm1a():
     per = read("arm1/fragmentation_replicates.tsv")
     stats0 = read("arm0/assembly_stats.tsv")
+    stats2 = read("arm2/short_read_assembly_stats.tsv")
     stats3 = read("arm3/assemblies.tsv")
     if per is None:
         return
@@ -160,9 +162,12 @@ def fig_arm1a():
         if stats0 is not None:
             ax.plot(stats0["contig_n50"], np.full(len(stats0), -0.05), "|", color=GREY, markersize=6,
                     transform=ax.get_xaxis_transform(), clip_on=False)
+        if stats2 is not None:
+            ax.plot(stats2["contig_n50"], np.full(len(stats2), -0.10), "|", color=INK2, markersize=6,
+                    transform=ax.get_xaxis_transform(), clip_on=False)
         if stats3 is not None and "contig_n50" in stats3:
             s3 = stats3.dropna(subset=["contig_n50"])
-            ax.plot(s3["contig_n50"], np.full(len(s3), -0.10), "|", color=AQUA, markersize=6,
+            ax.plot(s3["contig_n50"], np.full(len(s3), -0.15), "|", color=AQUA, markersize=6,
                     transform=ax.get_xaxis_transform(), clip_on=False)
         ax.set_xscale("log")
         ax.set_xlim(3000, 2.5e6)
@@ -189,10 +194,14 @@ def fig_arm1a():
         ax.set_ylabel("calls per 100 unfragmented calls")
         ax.set_title("%s  Losses and gains, %s\nn = %d genomes; calls pooled over replicates" % ("cd"[col], title, n_gen),
                      loc="left")
-    note = ("Simulation. Recall is relative to PCAn's call on the unfragmented assembly. Lines: median over all "
-            "replicates; band: interquartile range;\ngrey lines: each genome's median. Ticks under the top axes: "
-            "contig N50 of the %d published arm 0 assemblies%s." % (len(stats0) if stats0 is not None else 0,
-                                                                   " (grey) and the arm 3 assemblies (aqua)" if stats3 is not None else ""))
+    ticks = ["the %d published arm 0 assemblies (light grey)" % (len(stats0) if stats0 is not None else 0)]
+    if stats2 is not None:
+        ticks.append("the %d published short-read assemblies of arm 2 (dark grey)" % len(stats2))
+    if stats3 is not None and "contig_n50" in stats3:
+        ticks.append("the %d arm 3 assemblies (aqua)" % len(stats3.dropna(subset=["contig_n50"])))
+    note = textwrap.fill("Simulation. Recall is relative to PCAn's call on the unfragmented assembly. Lines: median "
+                         "over all replicates; band: interquartile range; grey lines: each genome's median. Ticks "
+                         "under the top axes, contig N50 of: %s." % "; ".join(ticks), 150)
     fig.text(0.01, -0.02, note, fontsize=6.8, color=INK2, ha="left", va="top")
     fig.tight_layout()
     save(fig, "fig2_fragmentation")
@@ -272,6 +281,22 @@ STATUS_LABEL = {"intact_called": "intact, called", "intact_uncalled": "intact, n
                 "n_run": "N run", "absent": "absent"}
 
 
+def holm_p(source, claim_start):
+    """The Holm-adjusted p-value of a registered test, from the reporting
+    summary that scripts/12_analyse.py writes."""
+    rep = read("reporting_summary.tsv")
+    if rep is None or "p_holm" not in rep:
+        return np.nan
+    r = rep[(rep["source"] == source) & rep["claim"].astype(str).str.startswith(claim_start)]
+    return float(r["p_holm"].iloc[0]) if len(r) else np.nan
+
+
+def p_text(p):
+    if p != p:
+        return "see reporting summary"
+    return "< 1e-16" if p < 1e-16 else "%.2g" % p
+
+
 def fig_arm2():
     counts = read("arm2/call_counts.tsv")
     conf = read("arm2/confirmatory.tsv")
@@ -280,15 +305,15 @@ def fig_arm2():
     if counts is None or conf is None or cens is None or nulls is None:
         return
     n_str = counts["strain"].nunique()
-    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.2))
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.6))
 
     ax = axes[0, 0]
     diff = (counts["short_calls"] - counts["long_calls"]).value_counts().sort_index()
     ax.bar(diff.index, diff.values, width=0.6, color=BLUE)
     for x, v in diff.items():
         ax.text(x, v + 0.5, str(v), ha="center", fontsize=7, color=INK2)
-    ax.set_xticks(diff.index)
-    ax.set_xlabel("calls on the short-read assembly minus calls on the long-read assembly")
+    ax.set_xticks(range(int(diff.index.min()), int(diff.index.max()) + 1, 2))
+    ax.set_xlabel("calls on the short-read assembly\nminus calls on the long-read assembly")
     ax.set_ylabel("strains")
     c1 = conf[conf["outcome"] == "C1"].iloc[0]
     ax.set_title("a  Call counts, %d of %d strains equal\n(%.2f, %.2f to %.2f); unit: strain"
@@ -318,10 +343,14 @@ def fig_arm2():
     vc = d.value_counts().sort_index()
     ax.bar(vc.index, vc.values, width=0.7, color=BLUE)
     for x, v in vc.items():
-        if x != 0:
-            ax.text(x, v + 0.5, str(v), ha="center", fontsize=6.5, color=INK2)
-    ax.set_xlabel("CDEII length, short-read call minus long-read call (bp)")
-    ax.set_ylabel("centromeres")
+        ax.text(x, v * 1.15, str(v), ha="center", fontsize=6.5, color=INK2)
+    # Log scale: one bar (no difference) holds nearly all centromeres.
+    ax.set_yscale("log")
+    ax.set_ylim(0.7, vc.max() * 3)
+    lo_x, hi_x = int(vc.index.min()), int(vc.index.max())
+    ax.set_xticks(range(lo_x - lo_x % 2, hi_x + 1, 2))
+    ax.set_xlabel("CDEII length, short-read call\nminus long-read call (bp)")
+    ax.set_ylabel("centromeres (log scale)")
     c3 = conf[conf["outcome"] == "C3"].iloc[0]
     ax.set_title("c  CDEII length, %d of %d identical\nunit: centromere, %d strains" % (c3["k"], c3["n_centromeres"],
                                                                                     c3["n_strains"]), loc="left")
@@ -339,14 +368,59 @@ def fig_arm2():
     c4 = conf[(conf["outcome"] == "C4") & conf["measure"].str.startswith("break-rate")].iloc[0]
     pooled = [c4["k_null"] / c4["n_null"], c4["k"] / c4["n_centromeres"]]
     ax.plot([0, 1], pooled, color=BLUE, marker="o", markersize=5, linewidth=1.5, zorder=4)
+    for x, v in zip([0, 1], pooled):
+        ax.annotate("%.3f" % v, (x, v), xytext=(-8 if x == 0 else 8, 0), textcoords="offset points",
+                    ha="right" if x == 0 else "left", va="center", fontsize=7, color=INK2)
     ax.set_xticks([0, 1])
-    ax.set_xticklabels(["AT-matched null windows", "centromeres"])
-    ax.set_xlim(-0.4, 1.4)
+    ax.set_xticklabels(["AT-matched\nnull windows", "centromeres"])
+    ax.set_xlim(-0.5, 1.5)
     ax.set_ylabel("fraction broken in the short-read assembly")
-    ax.set_title("d  Breaks: ratio %.2f (%.2f to %.2f), permutation p %.2g\nn = %d strains; grey: each strain; blue: pooled"
-                 % (c4["estimate"], c4["ci_low"], c4["ci_high"], c4["p_value"], c4["n_strains"]), loc="left")
+    ax.set_title("d  Breaks: ratio %.2f (%.2f to %.2f), Holm p %s\nn = %d strains; grey: each strain; blue: pooled"
+                 % (c4["estimate"], c4["ci_low"], c4["ci_high"],
+                    p_text(holm_p("results/arm2/confirmatory.tsv", "C4: break-rate ratio")), c4["n_strains"]),
+                 loc="left")
     fig.tight_layout()
     save(fig, "fig4_published_pairs")
+    fig_arm2_zygosity(counts, lift, nulls)
+
+
+def fig_arm2_zygosity(counts, lift, nulls):
+    """Exploratory: the arm 2 measures split by Peter et al.'s zygosity call.
+    Excluding heterozygous strains is the registered sensitivity analysis;
+    this figure shows why it matters."""
+    z = counts.set_index("strain")["zygosity"].str.lower()
+    groups = [("homozygous", BLUE), ("heterozygous", ORANGE)]
+    per = pd.DataFrame({"broken": lift.groupby("strain")["broken"].mean(),
+                        "null": nulls.groupby("strain")["broken"].mean(),
+                        "diff": (counts.set_index("strain")["short_calls"] - counts.set_index("strain")["long_calls"])})
+    per["zygosity"] = z.reindex(per.index)
+    rng = np.random.default_rng(20261009)
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.0))
+    for ax, key, ylab, letter, title in (
+            (axes[0], "broken", "fraction of centromeres broken", "a", "Centromeres broken per strain"),
+            (axes[1], "diff", "short-read minus long-read calls", "b", "Call count difference per strain")):
+        labels = []
+        for i, (g, col) in enumerate(groups):
+            v = per.loc[per["zygosity"] == g, key].dropna()
+            x = i + rng.uniform(-0.12, 0.12, len(v))
+            ax.scatter(x, v, s=10, color=col, edgecolor="white", linewidth=0.4, zorder=3)
+            ax.plot([i - 0.25, i + 0.25], [v.median()] * 2, color=INK, linewidth=1.5, zorder=4)
+            labels.append("%s\nn = %d strains" % (g, len(v)))
+            if key == "broken":
+                nv = per.loc[per["zygosity"] == g, "null"].median()
+                ax.plot([i - 0.25, i + 0.25], [nv] * 2, color=GREY, linewidth=1.2, linestyle=(0, (2, 2)), zorder=2)
+        ax.set_xticks([0, 1])
+        ax.set_xticklabels(labels)
+        ax.set_xlim(-0.6, 1.6)
+        ax.set_ylabel(ylab)
+        ax.set_title("%s  %s\nunit: strain; black: median%s" % (
+            letter, title, "\ngrey dashes: median for the null windows" if key == "broken" else ""), loc="left")
+    axes[0].set_ylim(-0.08, 1)
+    fig.text(0.01, -0.04, "Exploratory. Zygosity as Peter et al. 2018 (Table S1) report it. Arm 2, the published "
+             "short-read assembly of each strain against its long-read assembly.", fontsize=6.8, color=INK2,
+             ha="left", va="top")
+    fig.tight_layout()
+    save(fig, "figS2_zygosity", supp=True)
 
 
 # ----------------------------------------------------------------------------
@@ -432,27 +506,36 @@ def fig_breakpoints():
             r3 = c3[(c3["outcome"] == "D5") & (c3["assembler"] == a)]
             if len(r3):
                 rows.append(("%s, full depth\n(arm 3)" % ("SPAdes" if a == "spades" else "MEGAHIT"), r3.iloc[0]))
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.8), gridspec_kw={"width_ratios": [1.2, 1]})
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.9), gridspec_kw={"width_ratios": [1, 1.2]})
     ax = axes[0]
-    ax.scatter(bs["genome_at"], bs["mean_at_at_breakpoints"], s=10, color=BLUE, edgecolor="white", linewidth=0.4)
-    lim = [min(bs["genome_at"].min(), bs["mean_at_at_breakpoints"].min()) - 0.01,
-           max(bs["genome_at"].max(), bs["mean_at_at_breakpoints"].max()) + 0.01]
-    ax.plot(lim, lim, color=GREY, linewidth=0.8)
-    ax.set_xlabel("genome AT fraction (500 bp windows)")
-    ax.set_ylabel("mean AT of windows holding a break")
-    ax.set_title("a  Published short-read assemblies (arm 2)\nn = %d strains; grey: no AT preference" % len(bs),
-                 loc="left")
+    d = (bs["mean_at_at_breakpoints"] - bs["genome_at"]).dropna() * 100
+    bins = np.arange(np.floor(d.min() * 4) / 4, np.ceil(d.max() * 4) / 4 + 0.25, 0.25)
+    hc, _, _ = ax.hist(d, bins=bins, color=BLUE, edgecolor="white", linewidth=0.6)
+    ax.set_ylim(0, hc.max() * 1.2)
+    ax.axvline(0, color=GREY, linewidth=0.8)
+    ax.annotate("no AT preference", (0, ax.get_ylim()[1]), xytext=(3, -8), textcoords="offset points", ha="left",
+                fontsize=7, color=INK2)
+    ax.yaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
+    ax.set_xlabel("AT of windows holding a break minus genome AT\n(percentage points, 500 bp windows)")
+    ax.set_ylabel("strains")
+    ax.set_title("a  Published short-read assemblies (arm 2)\nn = %d strains, %d above zero; unit: strain"
+                 % (len(d), int((d > 0).sum())), loc="left")
     ax = axes[1]
     y = np.arange(len(rows))[::-1]
     for yy, (lab, r) in zip(y, rows):
         ax.errorbar([r["estimate"]], [yy], xerr=[[r["estimate"] - r["ci_low"]], [r["ci_high"] - r["estimate"]]],
                     fmt="o", color=BLUE, capsize=0, markersize=4)
-        ax.annotate(r["decision"], (r["ci_high"], yy), xytext=(5, 0), textcoords="offset points", va="center",
+        ax.annotate("%.2f (%.2f to %.2f)\ndecision: %s" % (r["estimate"], r["ci_low"], r["ci_high"], r["decision"]),
+                    (r["estimate"], yy), xytext=(0, -7), textcoords="offset points", ha="center", va="top",
                     fontsize=7, color=INK2)
+    g1 = np.log(10) / 0.30
     ax.axvline(0, color=GREY, linewidth=0.8)
-    ax.axvline(np.log(10) / 0.30, color=ORANGE, linewidth=1)
-    ax.annotate("arm 1 AT-weighted model", (np.log(10) / 0.30, len(rows) - 0.5), xytext=(4, 0),
-                textcoords="offset points", fontsize=7, color=INK2)
+    ax.axvline(g1, color=ORANGE, linewidth=1)
+    ax.annotate("uniform\nmodel", (0, len(rows) - 0.45), xytext=(4, 0), textcoords="offset points", fontsize=7,
+                color=INK2, va="top")
+    ax.annotate("arm 1 AT-\nweighted model", (g1, len(rows) - 0.45), xytext=(-4, 0), textcoords="offset points",
+                fontsize=7, color=INK2, ha="right", va="top")
+    ax.set_xlim(-0.8, max(g1, max(r["ci_high"] for _, r in rows)) + 2.5)
     ax.set_yticks(y)
     ax.set_yticklabels([r[0] for r in rows], fontsize=7)
     ax.set_ylim(-0.7, len(rows) - 0.3)
