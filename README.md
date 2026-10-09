@@ -590,6 +590,12 @@ calls (0.84) the short-read contig extends 10 kb beyond both ends of the call,
 529 of 603 in homozygous strains and 290 of 372 in heterozygous ones
 (`results/arm2/exploratory_centromere_flanks.tsv`, exploratory).
 
+Matching calls by sequence instead of by flanks is stricter, because a
+single base of difference breaks the match. For 874 of the 1,103 long-read
+calls a short-read call has an identical sequence from CDEI to CDEIII: 601 of
+608 in homozygous strains, 273 of 495 in heterozygous ones
+(`results/arm2/call_counts.tsv`, exploratory).
+
 ### Question 5, arm 3: at what depth do calls and CDEII lengths settle?
 
 Arm 3 was running when this was written; its results will be added when the
