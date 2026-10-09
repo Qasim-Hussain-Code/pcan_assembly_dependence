@@ -1,0 +1,143 @@
+code	scrap_strain_name	peter_isolate_name	long_read_options	decision	reason
+AAB	CBS422a	CBS422a	GCA_949124225.1 AAB (haploid/collapsed assemblies) contig N50 802318	paired	
+AAC	CBS2165a	CBS2165a	GCA_949124335.1 AAC_collapsed (haploid/collapsed assemblies) contig N50 944229; GCA_949122535.1 AAC_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123255.1 AAC_HP2 (diploid assemblies) contig N50 814415	paired	
+AAR	CLIB382_1b	CLIB382_1b	GCA_949124305.1 AAR (haploid/collapsed assemblies) contig N50 905389	paired	
+ABA	YJM326_b	YJM326_b	GCA_949124355.1 ABA (haploid/collapsed assemblies) contig N50 934841	paired	
+ABH	YJM454_1b	YJM454_1b	GCA_949124325.1 ABH (haploid/collapsed assemblies) contig N50 901459	paired	
+ACA	EM93_3	EM93_3	GCA_949124315.1 ACA (haploid/collapsed assemblies) contig N50 907964	paired	
+ACH	CLIB483_1b	CLIB483_1b	GCA_949124295.1 ACH (haploid/collapsed assemblies) contig N50 923966	paired	
+ADE	PW5_b	PW5_b	GCA_949124235.1 ADE (haploid/collapsed assemblies) contig N50 909898	paired	
+ADI	YJM981_b	YJM981_b	GCA_949124275.1 ADI (haploid/collapsed assemblies) contig N50 920639	paired	
+ADM	CLIB324_2	CLIB324_2	GCA_949124375.1 ADM_collapsed (haploid/collapsed assemblies) contig N50 861173; GCA_949123905.1 ADM_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949121915.1 ADM_HP2 (diploid assemblies) contig N50 99249	paired	
+ADQ	K12_2	K12_2	GCA_949124215.1 ADQ (haploid/collapsed assemblies) contig N50 805796	paired	
+ADS	T73_1b	T73_1b	GCA_949124145.1 ADS (haploid/collapsed assemblies) contig N50 787665	paired	
+AEG	CBS7962	CBS7962	GCA_949124055.1 AEG (haploid/collapsed assemblies) contig N50 922520	paired	
+AEH	CBS7964	CBS7964	GCA_949124265.1 AEH (haploid/collapsed assemblies) contig N50 922731	paired	
+AEL	CBS1394	CBS1394	GCA_949124135.1 AEL_collapsed (haploid/collapsed assemblies) contig N50 910554; GCA_949123825.1 AEL_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123955.1 AEL_HP2 (diploid assemblies) contig N50 662809	paired	
+AFH	CBS1509	CBS1509	GCA_949124075.1 AFH (haploid/collapsed assemblies) contig N50 908550	paired	
+AFI	CBS2183	CBS2183	GCA_949124405.1 AFI (haploid/collapsed assemblies) contig N50 909263	paired	
+AGA_1a	CBS3012			dropped	standardized name not in Peter et al. 2018 Table S1
+AGK	CBS2361	CBS2361	GCA_949124045.1 AGK (haploid/collapsed assemblies) contig N50 951898	paired	
+AHG	CBS1586	CBS1586	GCA_949124395.1 AHG (haploid/collapsed assemblies) contig N50 919631	paired	
+AHL	CBS3081	CBS3081	GCA_949124345.1 AHL (haploid/collapsed assemblies) contig N50 938365	paired	
+AIC	CBS2807	CBS2807	GCA_949124365.1 AIC (haploid/collapsed assemblies) contig N50 902138	paired	
+AIE	CBS2910	CBS2910	GCA_949124095.1 AIE (haploid/collapsed assemblies) contig N50 926018	paired	
+AIF	CBS457	CBS457	GCA_949124435.1 AIF_collapsed (haploid/collapsed assemblies) contig N50 863079; GCA_949123985.1 AIF_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949121775.1 AIF_HP2 (diploid assemblies) contig N50 711557	paired	
+AIG	CBS1463	CBS1463	GCA_949124105.1 AIG (haploid/collapsed assemblies) contig N50 911048	paired	
+AIS	MC9			dropped	standardized name not in Peter et al. 2018 Table S1
+AKH_1a	NPA02-1			dropped	standardized name not in Peter et al. 2018 Table S1
+AKR	CLQCA_05-006	CLQCA_05-006	GCA_949124165.1 AKR_collapsed (haploid/collapsed assemblies) contig N50 895238; GCA_949121945.1 AKR_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949122005.1 AKR_HP2 (diploid assemblies) contig N50 278141	paired	
+ALH_1b	CLQCA_19-011(1b)			dropped	standardized name not in Peter et al. 2018 Table S1
+ALH_1c	CLQCA_19-011(1c)			dropped	standardized name not in Peter et al. 2018 Table S1
+ALI	CLQCA_20-060	CLQCA_20-060	GCA_949124195.1 ALI_collapsed (haploid/collapsed assemblies) contig N50 814895; GCA_949122675.1 ALI_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949121605.1 ALI_HP2 (diploid assemblies) contig N50 533303	paired	
+ALS_1a	21-4-116			dropped	standardized name not in Peter et al. 2018 Table S1
+AMH_1a	EN14S01			dropped	standardized name not in Peter et al. 2018 Table S1
+AMM_1a	SJ5L12			dropped	standardized name not in Peter et al. 2018 Table S1
+AMP_1a	SJ5L14			dropped	standardized name not in Peter et al. 2018 Table S1
+ANE	YPS134	YPS134	GCA_949124185.1 ANE (haploid/collapsed assemblies) contig N50 666278	paired	
+ANL	A-6	A-6	GCA_949124415.1 ANL_collapsed (haploid/collapsed assemblies) contig N50 913901; GCA_949122235.1 ANL_HP (tetraploid assemblies) contig N50 307004	paired	
+ANM	A-18	A-18	GCA_949124205.1 ANM_collapsed (haploid/collapsed assemblies) contig N50 920589; GCA_949123435.1 ANM_HP (tetraploid assemblies) contig N50 200554	paired	
+APG	VF8_(6)	VF8_(6)	GCA_949124575.1 APG (haploid/collapsed assemblies) contig N50 926076	paired	
+AQG_2a	CBS7539			dropped	standardized name not in Peter et al. 2018 Table S1
+ASB	CBS4255	CBS4255	GCA_949124545.1 ASB_collapsed (haploid/collapsed assemblies) contig N50 812201; GCA_949121555.1 ASB_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949122135.1 ASB_HP2 (diploid assemblies) contig N50 816540	paired	
+ASG	CBS1489	CBS1489	GCA_949124595.1 ASG (haploid/collapsed assemblies) contig N50 915584	paired	
+ASN	CLIB630	CLIB630	GCA_949124585.1 ASN_collapsed (haploid/collapsed assemblies) contig N50 635811; GCA_949123005.1 ASN_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949121655.1 ASN_HP2 (diploid assemblies) contig N50 293152	paired	
+ATM_1a	UC10			dropped	standardized name not in Peter et al. 2018 Table S1
+ATV	CECT1462	CECT1462	GCA_949124625.1 ATV_collapsed (haploid/collapsed assemblies) contig N50 913090; GCA_949123835.1 ATV_HP (tetraploid assemblies) contig N50 144232	paired	
+AVB	CECT10266	CECT10266	GCA_949124775.1 AVB (haploid/collapsed assemblies) contig N50 839458	paired	
+AVI_1a	YPS163			dropped	standardized name not in Peter et al. 2018 Table S1
+AVN	CH02	CH02	GCA_949124485.1 AVN_collapsed (haploid/collapsed assemblies) contig N50 916454; GCA_949122215.1 AVN_HP (tetraploid assemblies) contig N50 196444	paired	
+BAD	DJ71	DJ71	GCA_949125245.1 BAD_collapsed (haploid/collapsed assemblies) contig N50 928998; GCA_949123715.1 BAD_HP (triploid assemblies) contig N50 132265	paired	
+BAF	DJ74	DJ74	GCA_949124855.1 BAF_collapsed (haploid/collapsed assemblies) contig N50 944666; GCA_949123695.1 BAF_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123945.1 BAF_HP2 (diploid assemblies) contig N50 930302	paired	
+BAG_1a	SX1			dropped	standardized name not in Peter et al. 2018 Table S1
+BAH	SX3	SX3	GCA_949124635.1 BAH (haploid/collapsed assemblies) contig N50 766727	paired	
+BAI_1a	BJ6			dropped	standardized name not in Peter et al. 2018 Table S1
+BAK_1a	BJ20			dropped	standardized name not in Peter et al. 2018 Table S1
+BAL_1a	HN6			dropped	standardized name not in Peter et al. 2018 Table S1
+BAM	HN10	HN10	GCA_949124505.1 BAM (haploid/collapsed assemblies) contig N50 437892	paired	
+BAP_1a	HN16			dropped	standardized name not in Peter et al. 2018 Table S1
+BAQ_1a	HN19			dropped	standardized name not in Peter et al. 2018 Table S1
+BBF	CCY_21-4-102	CCY_21-4-102	GCA_949124735.1 BBF_collapsed (haploid/collapsed assemblies) contig N50 928157; GCA_949123515.1 BBF_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123975.1 BBF_HP2 (diploid assemblies) contig N50 747496	paired	
+BBL	IMB-53	IMB-53	GCA_949124645.1 BBL (haploid/collapsed assemblies) contig N50 798707	paired	
+BBM_1a	908			dropped	standardized name not in Peter et al. 2018 Table S1
+BBT	2281	2281	GCA_949124495.1 BBT_collapsed (haploid/collapsed assemblies) contig N50 925663; GCA_949122205.1 BBT_HP (triploid assemblies) contig N50 590880	paired	
+BCE_3a	HE006			dropped	standardized name not in Peter et al. 2018 Table S1
+BCN	HE015	HE015	GCA_949124525.1 BCN (haploid/collapsed assemblies) contig N50 872480	paired	
+BDC_1c	36			dropped	standardized name not in Peter et al. 2018 Table S1
+BDF_1d	57			dropped	standardized name not in Peter et al. 2018 Table S1
+BDH_1b	59			dropped	standardized name not in Peter et al. 2018 Table S1
+BDM_1a	MAJ_A			dropped	standardized name not in Peter et al. 2018 Table S1
+BDN_1c	MAJ_G			dropped	standardized name not in Peter et al. 2018 Table S1
+BEM	CLIB653	CLIB653	GCA_949124795.1 BEM_collapsed (haploid/collapsed assemblies) contig N50 799201; GCA_949123935.1 BEM_HP (tetraploid assemblies) contig N50 221851	paired	
+BFH	EXF-5871	EXF-5871	GCA_949124705.1 BFH_collapsed (haploid/collapsed assemblies) contig N50 919213; GCA_949123585.1 BFH_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949122065.1 BFH_HP2 (diploid assemblies) contig N50 818701	paired	
+BFP_1a	EXF-7197			dropped	standardized name not in Peter et al. 2018 Table S1
+BGN_3a	CLIB561			dropped	standardized name not in Peter et al. 2018 Table S1
+BGP_1a	CLIB562			dropped	standardized name not in Peter et al. 2018 Table S1
+BHH	CLIB1071	CLIB1071	GCA_949124695.1 BHH (haploid/collapsed assemblies) contig N50 802025	paired	
+BJ4	BJ4			dropped	standardized name not in Peter et al. 2018 Table S1
+BLD_1a	DBVPG1608			dropped	standardized name not in Peter et al. 2018 Table S1
+BMB	UWOPS03-433.3	UWOPS03-433.3	GCA_949124605.1 BMB (haploid/collapsed assemblies) contig N50 815141	paired	
+BMC_2a	UWOPS03-459.1			dropped	standardized name not in Peter et al. 2018 Table S1
+BPG	DBVPG1841	DBVPG1841	GCA_949124845.1 BPG (haploid/collapsed assemblies) contig N50 927280	paired	
+BPK	DBVPG1861	DBVPG1861	GCA_949124965.1 BPK_collapsed (haploid/collapsed assemblies) contig N50 936954; GCA_949123385.1 BPK_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123965.1 BPK_HP2 (diploid assemblies) contig N50 682000	paired	
+BTE	YS8(E)	YS8(E)	GCA_949124925.1 BTE_collapsed (haploid/collapsed assemblies) contig N50 919548; GCA_949122555.1 BTE_HP (tetraploid assemblies) contig N50 454642	paired	
+BY4742	BY4742			dropped	standardized name not in Peter et al. 2018 Table S1
+CAS_1a	B-17			dropped	standardized name not in Peter et al. 2018 Table S1
+CBK	1	1	GCA_949125905.1 CBK (haploid/collapsed assemblies) contig N50 933754	paired	
+CBM	3	3	GCA_949125735.1 CBM_collapsed (haploid/collapsed assemblies) contig N50 501916; GCA_949122525.1 CBM_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949121635.1 CBM_HP2 (diploid assemblies) contig N50 61288	paired	
+CCC_1a	CLQCA_20-156			dropped	standardized name not in Peter et al. 2018 Table S1
+CCN	VKM_Y-504:S	VKM_Y-504:S	GCA_949125475.1 CCN (haploid/collapsed assemblies) contig N50 914730	paired	
+CCQ_1a	Ksc2-2B			dropped	standardized name not in Peter et al. 2018 Table S1
+CCT_1a	S11F3-6B			dropped	standardized name not in Peter et al. 2018 Table S1
+CDA	S8BM-32-4D(a)	S8BM-32-4D(a)	GCA_949125565.1 CDA (haploid/collapsed assemblies) contig N50 927493	paired	
+CDG_1a	N3.00-7A			dropped	standardized name not in Peter et al. 2018 Table S1
+CDN_1a	UCD_61-190-6A			dropped	standardized name not in Peter et al. 2018 Table S1
+CEI_1a	GE14S01-7B			dropped	standardized name not in Peter et al. 2018 Table S1
+CEL_1a	JCM_3529-7B			dropped	standardized name not in Peter et al. 2018 Table S1
+CENPK1137D	CEN.PK113-7D			dropped	standardized name not in Peter et al. 2018 Table S1
+CEQ_1a	MUCL_30909-2C			dropped	standardized name not in Peter et al. 2018 Table S1
+CFA	Dji2-2A(a)	Dji2-2A(a)	GCA_949124865.1 CFA (haploid/collapsed assemblies) contig N50 916282	paired	
+CFC	4.5_WLP530	4.5_WLP530	GCA_949125035.1 CFC_collapsed (haploid/collapsed assemblies) contig N50 801940; GCA_949122505.1 CFC_HP (tetraploid assemblies) contig N50 90624	paired	
+CFF	6.2_WLP570	6.2_WLP570	GCA_949125025.1 CFF_collapsed (haploid/collapsed assemblies) contig N50 618103; GCA_949123105.1 CFF_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123195.1 CFF_HP2 (diploid assemblies) contig N50 114664	paired	
+CFS	UCD_40-255	UCD_40-255	GCA_949125725.1 CFS (haploid/collapsed assemblies) contig N50 914684	paired	
+CGH_1	VNL3			dropped	standardized name not in Peter et al. 2018 Table S1
+CGH_3	VNL3			dropped	standardized name not in Peter et al. 2018 Table S1
+CHS_3a	SC_32_F._Dromer_IP			dropped	standardized name not in Peter et al. 2018 Table S1
+CIC	Ponton_11	Ponton 11	GCA_949124945.1 CIC_collapsed (haploid/collapsed assemblies) contig N50 589802; GCA_949124035.1 CIC_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123295.1 CIC_HP2 (diploid assemblies) contig N50 82453	paired	
+CIH	PB12	PB12	GCA_949125675.1 CIH_collapsed (haploid/collapsed assemblies) contig N50 793139; GCA_949123645.1 CIH_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123155.1 CIH_HP2 (diploid assemblies) contig N50 186583	paired	
+CKB	malade_98_1655/125391	malade 98 1655/125391	GCA_949125415.1 CKB_collapsed (haploid/collapsed assemblies) contig N50 909873; GCA_949121765.1 CKB_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949122425.1 CKB_HP2 (diploid assemblies) contig N50 500825	paired	
+CLL	K10	K10	GCA_949125335.1 CLL_collapsed (haploid/collapsed assemblies) contig N50 913377; GCA_949123655.1 CLL_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949121745.1 CLL_HP2 (diploid assemblies) contig N50 173155	paired	
+CLN	K14	K14	GCA_949124915.1 CLN (haploid/collapsed assemblies) contig N50 902452	paired	
+CMF	RIB6001	RIB6001	GCA_949125345.1 CMF_collapsed (haploid/collapsed assemblies) contig N50 904835; GCA_949121785.1 CMF_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949122415.1 CMF_HP2 (diploid assemblies) contig N50 586011	paired	
+CNB_1a	SM.8.2.C13			dropped	standardized name not in Peter et al. 2018 Table S1
+CNT	RP11.4.11	RP11.4.11	GCA_949126085.1 CNT_collapsed (haploid/collapsed assemblies) contig N50 803916; GCA_949123065.1 CNT_HP1 (diploid assemblies) [not served by NCBI Datasets]; GCA_949123545.1 CNT_HP2 (diploid assemblies) contig N50 364516	paired	
+CPA_1a	906			dropped	standardized name not in Peter et al. 2018 Table S1
+CPG_1a	1560			dropped	standardized name not in Peter et al. 2018 Table S1
+CPI_1c	LCBG-3D6			dropped	standardized name not in Peter et al. 2018 Table S1
+CPS	FTPW4	FTPW4	GCA_949125785.1 CPS_collapsed (haploid/collapsed assemblies) contig N50 930076; GCA_949123795.1 CPS_HP (triploid assemblies) contig N50 345565	paired	
+CQI_4a	MTF2552			dropped	standardized name not in Peter et al. 2018 Table S1
+CQS_1a	CEY647			dropped	standardized name not in Peter et al. 2018 Table S1
+CRB_1a	SC2-37			dropped	standardized name not in Peter et al. 2018 Table S1
+CRE	CLQCA_17-111	CLQCA_17-111	GCA_949125295.1 CRE_collapsed (haploid/collapsed assemblies) contig N50 880872; GCA_949123125.1 CRE_HP (triploid assemblies) contig N50 407266	paired	
+CRL	C-6	C-6	GCA_949125125.1 CRL (haploid/collapsed assemblies) contig N50 908177	paired	
+DBVPG6044	DBVPG6044			dropped	standardized name not in Peter et al. 2018 Table S1
+DBVPG6765	DBVPG6765			dropped	standardized name not in Peter et al. 2018 Table S1
+EM14S013B	EM14S01-3B			dropped	standardized name not in Peter et al. 2018 Table S1
+HLJ1	HLJ1			dropped	standardized name not in Peter et al. 2018 Table S1
+HN1	HN1			dropped	standardized name not in Peter et al. 2018 Table S1
+JXXY161	JXXY16.1			dropped	standardized name not in Peter et al. 2018 Table S1
+L1374	L-1374			dropped	standardized name not in Peter et al. 2018 Table S1
+RM11	RM11-1a			dropped	standardized name not in Peter et al. 2018 Table S1
+S288C	S288C			dropped	standardized name not in Peter et al. 2018 Table S1
+SGDref	S288C			dropped	standardized name not in Peter et al. 2018 Table S1
+SK1	SK1			dropped	standardized name not in Peter et al. 2018 Table S1
+SX2	SX2			dropped	standardized name not in Peter et al. 2018 Table S1
+UWOPS034614	UWOPS03-461.4			dropped	standardized name not in Peter et al. 2018 Table S1
+UWOPS052272	UWOPS05-227.2			dropped	standardized name not in Peter et al. 2018 Table S1
+UWOPS837873	UWOPS83-787.3			dropped	standardized name not in Peter et al. 2018 Table S1
+W303	W303			dropped	standardized name not in Peter et al. 2018 Table S1
+XXYS14	XXYS1.4			dropped	standardized name not in Peter et al. 2018 Table S1
+Y12	Y12			dropped	standardized name not in Peter et al. 2018 Table S1
+Y55	Y55			dropped	standardized name not in Peter et al. 2018 Table S1
+YPS128	YPS128			dropped	standardized name not in Peter et al. 2018 Table S1
+YPS606	YPS606			dropped	standardized name not in Peter et al. 2018 Table S1
