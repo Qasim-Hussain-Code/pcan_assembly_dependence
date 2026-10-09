@@ -1,0 +1,11 @@
+outcome	measure	n_strains	k	estimate	ci_low	ci_high	interval	n_centromeres	n_null	k_null	p_value	permutations_used	test	n_breakpoints	loglik_uniform	loglik_arm1_at_weighted	loglik_ml	decision
+C1	strains with equal call counts	69	44.0	0.6376811594202898	0.5197977087380359	0.7410427563983122	Wilson over strains											
+C2	fraction intact_called	69	975.0	0.8839528558476881	0.833634719710669	0.9283121597096189	percentile bootstrap over strains	1103.0										
+C2	fraction intact_uncalled	69	2.0	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	1103.0										
+C2	fraction split	69	62.0	0.056210335448776065	0.03170289855072464	0.08522212148685404	percentile bootstrap over strains	1103.0										
+C2	fraction n_run	69	27.0	0.024478694469628286	0.010899182561307902	0.039927404718693285	percentile bootstrap over strains	1103.0										
+C2	fraction absent	69	37.0	0.033544877606527655	0.020795660036166366	0.047328696419127146	percentile bootstrap over strains	1103.0										
+C3	identical CDEII length among intact_called	69	909.0	0.9323076923076923	0.9039664420513033	0.9563322102276506	percentile bootstrap over strains	975.0										
+C4	break-rate ratio, centromere over AT-matched null	69	126.0	0.5115712545676006	0.35487333717620134	0.6583943744474773	percentile bootstrap over strains	1103.0	22060.0	4926.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+C4	break proportion, centromere minus null	69	126.0	-0.10906618313689936	-0.1349368205504539	-0.08123285770213468	percentile bootstrap over strains	1103.0	22060.0	4926.0								
+C5	maximum-likelihood gamma of breakpoint placement	69		5.0354020074924	4.4700063406673785	5.563995477669663	percentile bootstrap over strains, 10000 resamples				0.0		likelihood ratio, gamma = 0 against free gamma, chi-squared 1 df	36791.0	-371096.10367641604	-370536.9745001723	-370335.3149448359	AT-weighted

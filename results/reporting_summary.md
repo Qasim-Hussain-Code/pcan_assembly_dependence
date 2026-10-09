@@ -1,0 +1,33 @@
+# Reporting summary
+
+Every claim the README makes from a registered or pre-specified analysis, with its source. Confirmatory claims are those registered in `config/analysis_plan.md`; arm 0 and arm 1 measures were pre-specified in `config/arm0_reproduction.md` and `config/arm1_design.md`. P-values are Holm-adjusted across the 14 registered tests. Only 2 of them have been run so far; until the rest are, they enter the adjustment as p = 1, which can only make the adjusted values shown larger. Intervals are 95 per cent; their method is given in the source file.
+
+| Arm | Status | Claim | n | Unit | Test | Estimate | 95% interval | p (Holm) | Source |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | pre-specified (config/arm0_reproduction.md) | fraction of published calls PCAn v1.0 reproduces exactly, against a 0.95 gate | 1465 calls in 129 species | species | none (gate on the point estimate) | 0.926 | 0.897 to 0.949 |  | `results/arm0/gate.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 5 kb | 10 genomes, 100 replicates | genome | none | 0.786 | 0.696 to 0.861 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 10 kb | 10 genomes, 100 replicates | genome | none | 0.865 | 0.797 to 0.924 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 20 kb | 10 genomes, 100 replicates | genome | none | 0.938 | 0.91 to 0.963 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 50 kb | 10 genomes, 100 replicates | genome | none | 0.973 | 0.952 to 0.989 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, uniform model, target contig N50 5 kb | 10 genomes, 100 replicates | genome | none | 0.926 | 0.901 to 0.946 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, uniform model, target contig N50 10 kb | 10 genomes, 100 replicates | genome | none | 0.967 | 0.952 to 0.98 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, uniform model, target contig N50 20 kb | 10 genomes, 100 replicates | genome | none | 0.979 | 0.972 to 0.985 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, uniform model, target contig N50 50 kb | 10 genomes, 100 replicates | genome | none | 0.996 | 0.992 to 0.999 |  | `results/arm1/recall_pooled.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of -10 bp called at the planted length | 35 edits in 3 genomes | genome | none | 1 | 1 to 1 |  | `results/arm1/detection_envelope.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of -5 bp called at the planted length | 35 edits in 3 genomes | genome | none | 1 | 1 to 1 |  | `results/arm1/detection_envelope.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of +5 bp called at the planted length | 35 edits in 3 genomes | genome | none | 1 | 1 to 1 |  | `results/arm1/detection_envelope.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of +10 bp called at the planted length | 35 edits in 3 genomes | genome | none | 0.971 | 0.938 to 1 |  | `results/arm1/detection_envelope.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of +15 bp called at the planted length | 35 edits in 3 genomes | genome | none | 0.943 | 0.917 to 1 |  | `results/arm1/detection_envelope.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of +20 bp called at the planted length | 35 edits in 3 genomes | genome | none | 1 | 1 to 1 |  | `results/arm1/detection_envelope.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of +30 bp called at the planted length | 35 edits in 3 genomes | genome | none | 0.371 | 0.286 to 0.438 |  | `results/arm1/detection_envelope.tsv` |
+| 1 (simulation) | pre-specified (config/arm1_design.md) | planted CDEII variants of +40 bp called at the planted length | 35 edits in 3 genomes | genome | none | 0 | 0 to 0 |  | `results/arm1/detection_envelope.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C1: strains with equal call counts | 69 strains | strain | none | 0.638 | 0.52 to 0.741 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C2: fraction intact_called | 69 strains | strain | none | 0.884 | 0.834 to 0.928 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C2: fraction intact_uncalled | 69 strains | strain | none | 0.00181 | 0 to 0.00454 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C2: fraction split | 69 strains | strain | none | 0.0562 | 0.0317 to 0.0852 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C2: fraction n_run | 69 strains | strain | none | 0.0245 | 0.0109 to 0.0399 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C2: fraction absent | 69 strains | strain | none | 0.0335 | 0.0208 to 0.0473 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C3: identical CDEII length among intact_called | 69 strains | strain | none | 0.932 | 0.904 to 0.956 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C4: break-rate ratio, centromere over AT-matched null | 69 strains | strain | stratified permutation of log ratio, 10000 permutations | 0.512 | 0.355 to 0.658 | 0.0013 | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C4: break proportion, centromere minus null | 69 strains | strain | none | -0.109 | -0.135 to -0.0812 |  | `results/arm2/confirmatory.tsv` |
+| 2 | confirmatory (config/analysis_plan.md) | C5: maximum-likelihood gamma of breakpoint placement; decision: AT-weighted | 69 strains | strain | likelihood ratio, gamma = 0 against free gamma, chi-squared 1 df | 5.04 | 4.47 to 5.56 | < 1e-16 | `results/arm2/confirmatory.tsv` |

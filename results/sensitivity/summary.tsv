@@ -1,0 +1,75 @@
+analysis	outcome	primary	alternative	changes_conclusion
+arm 0 gate threshold 0.95	arm 0 gate	decision at 0.95	stop	no
+arm 0 gate threshold 0.90	arm 0 gate	decision at 0.95	proceed	yes
+arm 0 gate threshold 0.99	arm 0 gate	decision at 0.95	stop	no
+arm 2 primary	C2 fraction intact_called	0.884	0.884	no
+arm 2 primary	C2 fraction intact_uncalled	0.00181	0.00181	no
+arm 2 primary	C2 fraction split	0.0562	0.0562	no
+arm 2 primary	C2 fraction n_run	0.0245	0.0245	no
+arm 2 primary	C2 fraction absent	0.0335	0.0335	no
+arm 2 primary	C3 identical CDEII length among intact_called	0.932	0.932	no
+arm 2 primary	C4 break-rate ratio, centromere over AT-matched null	0.512	0.512	no
+arm 2 primary	C4 break proportion, centromere minus null	-0.109	-0.109	no
+arm 2 flank_1kb	C2 fraction intact_called	0.884	0.879	no
+arm 2 flank_1kb	C2 fraction intact_uncalled	0.00181	0.00181	no
+arm 2 flank_1kb	C2 fraction split	0.0562	0.0671	no
+arm 2 flank_1kb	C2 fraction n_run	0.0245	0.0181	no
+arm 2 flank_1kb	C2 fraction absent	0.0335	0.0335	no
+arm 2 flank_1kb	C3 identical CDEII length among intact_called	0.932	0.933	no
+arm 2 flank_1kb	C4 break-rate ratio, centromere over AT-matched null	0.512	0.664	no
+arm 2 flank_1kb	C4 break proportion, centromere minus null	-0.109	-0.0602	yes
+arm 2 flank_5kb	C2 fraction intact_called	0.884	0.793	yes
+arm 2 flank_5kb	C2 fraction intact_uncalled	0.00181	0.00181	no
+arm 2 flank_5kb	C2 fraction split	0.0562	0.157	yes
+arm 2 flank_5kb	C2 fraction n_run	0.0245	0.0236	no
+arm 2 flank_5kb	C2 fraction absent	0.0335	0.0245	no
+arm 2 flank_5kb	C3 identical CDEII length among intact_called	0.932	0.938	no
+arm 2 flank_5kb	C4 break-rate ratio, centromere over AT-matched null	0.512	0.706	no
+arm 2 flank_5kb	C4 break proportion, centromere minus null	-0.109	-0.0854	no
+arm 2 at_bin_2.5	C2 fraction intact_called	0.884	0.884	no
+arm 2 at_bin_2.5	C2 fraction intact_uncalled	0.00181	0.00181	no
+arm 2 at_bin_2.5	C2 fraction split	0.0562	0.0562	no
+arm 2 at_bin_2.5	C2 fraction n_run	0.0245	0.0245	no
+arm 2 at_bin_2.5	C2 fraction absent	0.0335	0.0335	no
+arm 2 at_bin_2.5	C3 identical CDEII length among intact_called	0.932	0.932	no
+arm 2 at_bin_2.5	C4 break-rate ratio, centromere over AT-matched null	0.512	0.497	no
+arm 2 at_bin_2.5	C4 break proportion, centromere minus null	-0.109	-0.115	no
+arm 2 at_bin_10	C2 fraction intact_called	0.884	0.884	no
+arm 2 at_bin_10	C2 fraction intact_uncalled	0.00181	0.00181	no
+arm 2 at_bin_10	C2 fraction split	0.0562	0.0562	no
+arm 2 at_bin_10	C2 fraction n_run	0.0245	0.0245	no
+arm 2 at_bin_10	C2 fraction absent	0.0335	0.0335	no
+arm 2 at_bin_10	C3 identical CDEII length among intact_called	0.932	0.932	no
+arm 2 at_bin_10	C4 break-rate ratio, centromere over AT-matched null	0.512	0.571	no
+arm 2 at_bin_10	C4 break proportion, centromere minus null	-0.109	-0.0858	no
+arm 2 identity_0.90	C2 fraction intact_called	0.884	0.884	no
+arm 2 identity_0.90	C2 fraction intact_uncalled	0.00181	0.00181	no
+arm 2 identity_0.90	C2 fraction split	0.0562	0.0571	no
+arm 2 identity_0.90	C2 fraction n_run	0.0245	0.0245	no
+arm 2 identity_0.90	C2 fraction absent	0.0335	0.0326	no
+arm 2 identity_0.90	C3 identical CDEII length among intact_called	0.932	0.932	no
+arm 2 identity_0.90	C4 break-rate ratio, centromere over AT-matched null	0.512	0.517	no
+arm 2 identity_0.90	C4 break proportion, centromere minus null	-0.109	-0.107	no
+arm 2 identity_0.99	C2 fraction intact_called	0.884	0.834	no
+arm 2 identity_0.99	C2 fraction intact_uncalled	0.00181	0.00181	no
+arm 2 identity_0.99	C2 fraction split	0.0562	0.102	yes
+arm 2 identity_0.99	C2 fraction n_run	0.0245	0.0199	no
+arm 2 identity_0.99	C2 fraction absent	0.0335	0.0417	no
+arm 2 identity_0.99	C3 identical CDEII length among intact_called	0.932	0.933	no
+arm 2 identity_0.99	C4 break-rate ratio, centromere over AT-matched null	0.512	0.646	no
+arm 2 identity_0.99	C4 break proportion, centromere minus null	-0.109	-0.0899	no
+arm 2 heterozygous_excluded	C1 strains with equal call counts	0.638	0.868	yes
+arm 2 heterozygous_excluded	C2 fraction intact_called	0.884	0.992	yes
+arm 2 heterozygous_excluded	C2 fraction intact_uncalled	0.00181	0.00329	no
+arm 2 heterozygous_excluded	C2 fraction split	0.0562	0.00493	yes
+arm 2 heterozygous_excluded	C2 fraction n_run	0.0245	0	yes
+arm 2 heterozygous_excluded	C2 fraction absent	0.0335	0	yes
+arm 2 heterozygous_excluded	C3 identical CDEII length among intact_called	0.932	0.993	yes
+arm 2 heterozygous_excluded	C4 break-rate ratio, centromere over AT-matched null	0.512	0.0431	no
+arm 2 heterozygous_excluded	C4 break proportion, centromere minus null	-0.109	-0.11	no
+arm 1 AT weighting gamma ln(20)/0.30	mean recall at 10 kb	0.865	0.839	no
+arm 1 AT weighting gamma ln(20)/0.30	mean recall at 20 kb	0.938	0.897	yes
+arm 1 AT weighting gamma ln(20)/0.30	mean recall at 50 kb	0.973	0.976	no
+arm 1 AT weighting gamma ln(5)/0.30	mean recall at 10 kb	0.865	0.93	yes
+arm 1 AT weighting gamma ln(5)/0.30	mean recall at 20 kb	0.938	0.96	no
+arm 1 AT weighting gamma ln(5)/0.30	mean recall at 50 kb	0.973	0.985	no

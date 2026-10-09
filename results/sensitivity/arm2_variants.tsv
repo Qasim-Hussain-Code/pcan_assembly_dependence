@@ -1,0 +1,66 @@
+outcome	measure	n_strains	n_centromeres	k	estimate	ci_low	ci_high	interval	variant	n_null	k_null	p_value	permutations_used	test
+C2	fraction intact_called	69	1103.0	975	0.8839528558476881	0.833634719710669	0.9283121597096189	percentile bootstrap over strains	primary					
+C2	fraction intact_uncalled	69	1103.0	2	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	primary					
+C2	fraction split	69	1103.0	62	0.056210335448776065	0.03170289855072464	0.08522212148685404	percentile bootstrap over strains	primary					
+C2	fraction n_run	69	1103.0	27	0.024478694469628286	0.010899182561307902	0.039927404718693285	percentile bootstrap over strains	primary					
+C2	fraction absent	69	1103.0	37	0.033544877606527655	0.020795660036166366	0.047328696419127146	percentile bootstrap over strains	primary					
+C3	identical CDEII length among intact_called	69	975.0	909	0.9323076923076923	0.9039664420513033	0.9563322102276506	percentile bootstrap over strains	primary					
+C4	break-rate ratio, centromere over AT-matched null	69	1103.0	126	0.5115712545676006	0.35487333717620134	0.6583943744474773	percentile bootstrap over strains	primary	22060.0	4926.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	69	1103.0	126	-0.10906618313689936	-0.1349368205504539	-0.08123285770213468	percentile bootstrap over strains	primary	22060.0	4926.0			
+C2	fraction intact_called	69	1103.0	970	0.8794197642792384	0.8303085299455535	0.9229374433363554	percentile bootstrap over strains	flank_1kb					
+C2	fraction intact_uncalled	69	1103.0	2	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	flank_1kb					
+C2	fraction split	69	1103.0	74	0.06708975521305531	0.041666666666666664	0.0969224865978162	percentile bootstrap over strains	flank_1kb					
+C2	fraction n_run	69	1103.0	20	0.01813236627379873	0.006363636363636364	0.031790004954173876	percentile bootstrap over strains	flank_1kb					
+C2	fraction absent	69	1103.0	37	0.033544877606527655	0.019945602901178604	0.04891304347826087	percentile bootstrap over strains	flank_1kb					
+C3	identical CDEII length among intact_called	69	970.0	905	0.9329896907216495	0.904554092614488	0.9569482145487448	percentile bootstrap over strains	flank_1kb					
+C4	break-rate ratio, centromere over AT-matched null	69	1103.0	131	0.6637952875601724	0.49533273876505374	0.821573921727159	percentile bootstrap over strains	flank_1kb	22060.0	3947.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	69	1103.0	131	-0.06015412511332728	-0.0847827074201319	-0.034284064089045684	percentile bootstrap over strains	flank_1kb	22060.0	3947.0			
+C2	fraction intact_called	69	1103.0	875	0.7932910244786945	0.743427017225748	0.8386219401631912	percentile bootstrap over strains	flank_5kb					
+C2	fraction intact_uncalled	69	1103.0	2	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	flank_5kb					
+C2	fraction split	69	1103.0	173	0.15684496826835903	0.12727272727272726	0.19	percentile bootstrap over strains	flank_5kb					
+C2	fraction n_run	69	1103.0	26	0.02357207615593835	0.010869565217391304	0.03894927536231884	percentile bootstrap over strains	flank_5kb					
+C2	fraction absent	69	1103.0	27	0.024478694469628286	0.01449242573283494	0.03548680618744313	percentile bootstrap over strains	flank_5kb					
+C3	identical CDEII length among intact_called	69	875.0	821	0.9382857142857143	0.9117296449984615	0.9606741573033708	percentile bootstrap over strains	flank_5kb					
+C4	break-rate ratio, centromere over AT-matched null	69	1103.0	226	0.7058088694565896	0.6011479863736289	0.8060533063806689	percentile bootstrap over strains	flank_5kb	22060.0	6404.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	69	1103.0	226	-0.08540344514959203	-0.1122754800397635	-0.058619360990402374	percentile bootstrap over strains	flank_5kb	22060.0	6404.0			
+C2	fraction intact_called	69	1103.0	975	0.8839528558476881	0.833634719710669	0.9283121597096189	percentile bootstrap over strains	at_bin_2.5					
+C2	fraction intact_uncalled	69	1103.0	2	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	at_bin_2.5					
+C2	fraction split	69	1103.0	62	0.056210335448776065	0.03170289855072464	0.08522212148685404	percentile bootstrap over strains	at_bin_2.5					
+C2	fraction n_run	69	1103.0	27	0.024478694469628286	0.010899182561307902	0.039927404718693285	percentile bootstrap over strains	at_bin_2.5					
+C2	fraction absent	69	1103.0	37	0.033544877606527655	0.020795660036166366	0.047328696419127146	percentile bootstrap over strains	at_bin_2.5					
+C3	identical CDEII length among intact_called	69	975.0	909	0.9323076923076923	0.9039664420513033	0.9563322102276506	percentile bootstrap over strains	at_bin_2.5					
+C4	break-rate ratio, centromere over AT-matched null	69	1103.0	126	0.4974338728780103	0.3446082213509414	0.6426494409774834	percentile bootstrap over strains	at_bin_2.5	22060.0	5066.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	69	1103.0	126	-0.11541251133272892	-0.1420914468804088	-0.08693255265383228	percentile bootstrap over strains	at_bin_2.5	22060.0	5066.0			
+C2	fraction intact_called	69	1103.0	975	0.8839528558476881	0.833634719710669	0.9283121597096189	percentile bootstrap over strains	at_bin_10					
+C2	fraction intact_uncalled	69	1103.0	2	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	at_bin_10					
+C2	fraction split	69	1103.0	62	0.056210335448776065	0.03170289855072464	0.08522212148685404	percentile bootstrap over strains	at_bin_10					
+C2	fraction n_run	69	1103.0	27	0.024478694469628286	0.010899182561307902	0.039927404718693285	percentile bootstrap over strains	at_bin_10					
+C2	fraction absent	69	1103.0	37	0.033544877606527655	0.020795660036166366	0.047328696419127146	percentile bootstrap over strains	at_bin_10					
+C3	identical CDEII length among intact_called	69	975.0	909	0.9323076923076923	0.9039664420513033	0.9563322102276506	percentile bootstrap over strains	at_bin_10					
+C4	break-rate ratio, centromere over AT-matched null	69	1103.0	126	0.57116953762466	0.3977418075039232	0.7301379224520601	percentile bootstrap over strains	at_bin_10	22060.0	4412.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	69	1103.0	126	-0.085766092475068	-0.11002744680885977	-0.058681424269922476	percentile bootstrap over strains	at_bin_10	22060.0	4412.0			
+C2	fraction intact_called	69	1103.0	975	0.8839528558476881	0.833634719710669	0.9283121597096189	percentile bootstrap over strains	identity_0.90					
+C2	fraction intact_uncalled	69	1103.0	2	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	identity_0.90					
+C2	fraction split	69	1103.0	63	0.057116953762466005	0.03260869565217391	0.08620689655172414	percentile bootstrap over strains	identity_0.90					
+C2	fraction n_run	69	1103.0	27	0.024478694469628286	0.010899182561307902	0.039927404718693285	percentile bootstrap over strains	identity_0.90					
+C2	fraction absent	69	1103.0	36	0.032638259292837715	0.019927536231884056	0.04646229211751084	percentile bootstrap over strains	identity_0.90					
+C3	identical CDEII length among intact_called	69	975.0	909	0.9323076923076923	0.9039664420513033	0.9563322102276506	percentile bootstrap over strains	identity_0.90					
+C4	break-rate ratio, centromere over AT-matched null	69	1103.0	126	0.5166051660516605	0.3584394697981255	0.6658971714031312	percentile bootstrap over strains	identity_0.90	22060.0	4878.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	69	1103.0	126	-0.10689029918404352	-0.1328804347826087	-0.07905693337380981	percentile bootstrap over strains	identity_0.90	22060.0	4878.0			
+C2	fraction intact_called	69	1103.0	920	0.8340888485947416	0.7783782511766163	0.8832579185520362	percentile bootstrap over strains	identity_0.99					
+C2	fraction intact_uncalled	69	1103.0	2	0.001813236627379873	0.0	0.004537205081669692	percentile bootstrap over strains	identity_0.99					
+C2	fraction split	69	1103.0	113	0.10244786944696282	0.07252946509519492	0.13689936536718042	percentile bootstrap over strains	identity_0.99					
+C2	fraction n_run	69	1103.0	22	0.019945602901178604	0.009945525841635753	0.03178928247048138	percentile bootstrap over strains	identity_0.99					
+C2	fraction absent	69	1103.0	46	0.04170444242973708	0.025385312783318223	0.05893019038984588	percentile bootstrap over strains	identity_0.99					
+C3	identical CDEII length among intact_called	69	920.0	858	0.9326086956521739	0.9040348964013086	0.9567901234567902	percentile bootstrap over strains	identity_0.99					
+C4	break-rate ratio, centromere over AT-matched null	69	1103.0	181	0.6460824558272354	0.509214738959849	0.7751752547009059	percentile bootstrap over strains	identity_0.99	22060.0	5603.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	69	1103.0	181	-0.08989120580235718	-0.11700022665457843	-0.061242067089755214	percentile bootstrap over strains	identity_0.99	22060.0	5603.0			
+C1	strains with equal call counts	38		33	0.868421052631579	0.7191361541162467	0.9558625599420856	Clopper-Pearson over strains	heterozygous_excluded					
+C2	fraction intact_called	38	608.0	603	0.9917763157894737	0.9835526315789473	0.9983552631578947	percentile bootstrap over strains	heterozygous_excluded					
+C2	fraction intact_uncalled	38	608.0	2	0.003289473684210526	0.0	0.008223684210526315	percentile bootstrap over strains	heterozygous_excluded					
+C2	fraction split	38	608.0	3	0.004934210526315789	0.0	0.011513157894736841	percentile bootstrap over strains	heterozygous_excluded					
+C2	fraction n_run	38	608.0	0	0.0	0.0	0.0	percentile bootstrap over strains	heterozygous_excluded					
+C2	fraction absent	38	608.0	0	0.0	0.0	0.0	percentile bootstrap over strains	heterozygous_excluded					
+C3	identical CDEII length among intact_called	38	603.0	599	0.9933665008291874	0.9867109634551495	0.9983498349834984	percentile bootstrap over strains	heterozygous_excluded					
+C4	break-rate ratio, centromere over AT-matched null	38	608.0	3	0.04307250538406317	0.0	0.09375052327528466	percentile bootstrap over strains	heterozygous_excluded	12160.0	1393.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations
+C4	break proportion, centromere minus null	38	608.0	3	-0.1096217105263158	-0.12417763157894736	-0.0962171052631579	percentile bootstrap over strains	heterozygous_excluded	12160.0	1393.0			
