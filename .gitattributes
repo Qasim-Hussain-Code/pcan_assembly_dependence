@@ -1,0 +1,7 @@
+# Every script here runs under bash or Python on Linux. A checkout on Windows
+# with core.autocrlf=true would otherwise write CRLF line endings, and bash
+# fails on a carriage return at the end of a line.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.gz binary
