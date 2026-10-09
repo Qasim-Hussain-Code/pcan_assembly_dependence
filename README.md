@@ -281,7 +281,7 @@ Where the code differs from the paper's description, the code was followed:
   CDEIII motif file ships with PCAn, and the authors' per-species table names
   it, but no entry uses it. The protocol registered for arm 0 runs every
   species with the code's own entry, so the *Yueomyces* species were run with
-  the *Saccharomyces* motif.
+  the *Saccharomyces* motif, and a diagnostic compares the two (Results).
 
 `python scripts/05_reproduce.py --jobs 8` runs arm 0 and compares every
 published call with the reproduction by the protocol committed before any run
@@ -414,8 +414,14 @@ in the reproduction set that overlap no published call
 (`results/arm0/species_counts.tsv`; every extra call is listed in
 `results/arm0/extra_calls.tsv`). For the four CDEIII-only species, 8 of 55
 published CDEIII loci carry a PCAn call with the same CDEIII
-(`results/arm0/species_counts.tsv`); three of the four were run with a CDEIII
-motif other than the one the authors' table names (see Pipeline).
+(`results/arm0/species_counts.tsv`). Three of the four are *Yueomyces*,
+which PCAn's entry searches with the *Saccharomyces* CDEIII motif. Run as
+PCAn's first pass runs it, FIMO hits 16 of their 40 published CDEIII loci with
+that motif and 38 with the *Yueomyces* motif that the authors' table names
+and PCAn ships without using (`results/arm0/diagnostic_cdeiii_motif.tsv`).
+The published *Yueomyces* loci came from the motif PCAn's entry does not
+use. For *G. jiainica* neither the entry's threshold nor the table's finds
+most of its 15 published loci (4 and 1).
 
 On S288C, PCAn called all 16 SGD centromeres and nothing else. Each call
 covers SGD's centromere feature to within 1 bp at either end, and the boundary
@@ -597,6 +603,17 @@ tenfold. The closest arm 1 model is the sensitivity run at gamma = ln(5) /
 0.30, about 5.4, under which mean recall in the simulation was 0.930 at a
 contig N50 of 10 kb and 0.960 at 20 kb
 (`results/sensitivity/arm1_at_weight_gamma.tsv`).
+
+### A note for users of PCAn
+
+The rule that keeps one call per contig is behind every call gained in the
+simulation and both intact regions left uncalled in arm 2. On a fragmented
+assembly it lets a second-best candidate through on a contig of its own; on a
+contig that joins two centromeric regions it keeps one and drops the other. A
+call on a short contig, or a contig that carries a second strong candidate,
+deserves a second look. For *Yueomyces*, the CDEIII motif file that ships
+with PCAn but is missing from its motif table is the one that finds the
+published loci.
 
 ## Controls and sensitivity
 

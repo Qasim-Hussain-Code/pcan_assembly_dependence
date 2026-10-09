@@ -1,0 +1,9 @@
+species	accession	setting	cdeiii_motif	threshold	published_loci	published_loci_located	located_loci_with_a_hit	fimo_hits
+Yueomyces sinensis	GCA_030581855.1	PCAn entry	CDEIII_Saccharomyces_MEME.txt	1e-6	14	14	1	14
+Yueomyces sinensis	GCA_030581855.1	authors' table	CDEIII_Yueomyces_MEME.txt	1e-6	14	14	13	39
+Yueomyces sp. yHKB289	GCA_030580315.1	PCAn entry	CDEIII_Saccharomyces_MEME.txt	1e-6	13	13	7	24
+Yueomyces sp. yHKB289	GCA_030580315.1	authors' table	CDEIII_Yueomyces_MEME.txt	1e-6	13	13	12	33
+Yueomyces silvicola	GCA_030179955.1	PCAn entry	CDEIII_Saccharomyces_MEME.txt	1e-6	13	13	8	21
+Yueomyces silvicola	GCA_030179955.1	authors' table	CDEIII_Yueomyces_MEME.txt	1e-6	13	13	13	25
+Grigorovia jiainica	GCA_030571715.1	PCAn entry	CDEIII_Grig_MEME.txt	1e-5	15	15	4	486
+Grigorovia jiainica	GCA_030571715.1	authors' table	CDEIII_Grig_MEME.txt	1e-6	15	15	1	42

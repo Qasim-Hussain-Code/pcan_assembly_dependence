@@ -49,6 +49,10 @@ Per species of the reproduction set: published calls, reproduced calls and each 
 
 PCAn on an assembly version that Supplementary Data 5 does not list, run only to find the cause of a discrepancy, outside the reproduction fraction (`config/arm0_diagnostics.tsv` says which and why). `exact` counts published calls reproduced exactly on that version.
 
+### `diagnostic_cdeiii_motif.tsv`
+
+For the four species published with CDEIII loci only, FIMO 4.11.2 run as PCAn's first pass runs it, once with the CDEIII motif and threshold of PCAn's own entry (`setting` = `PCAn entry`) and once with those the authors' per-species table names (`authors' table`). Per setting: the motif file, the threshold, the published loci and how many could be located, how many located loci a FIMO hit overlaps, and the number of FIMO hits in the assembly. A diagnostic outside the reproduction fraction.
+
 ### `species_counts.tsv`
 
 One row per Saccharomycetaceae species in Supplementary Data 5: its arm 0 role and reason, the PCAn genus used, published and reproduced call counts, PCAn's run status, and the count of each per-centromere status and of extra calls.
@@ -253,11 +257,11 @@ The reads, subsamples and assemblies are made by `11_assemble_reads.sh`, which l
 
 One row per assembly attempted: strain, `assembler` (`spades` or `megahit`), `target_depth` (5, 10, 20, 40 or `full`, the whole run capped at 80x), `seed`, the subsampling `fraction`, read pairs, bases before and after fastp and the realised depths (bases over the long-read assembly's length), the check that mate names agree (`names_checked`, `name_mismatches`), `status` and `error`, the assembler's run time and peak memory, contig N50, L50, count and total length, the long-read call count (`long_calls`) and PCAn's call count on the assembly (`calls`).
 
-### `centromere_status.tsv`
+### `centromere_status.tsv` (arm 3)
 
 As in arm 2, one row per long-read centromere per assembly, for the primary analysis, with `assembler`, `target_depth`, `seed` and `variant` added.
 
-### `confirmatory.tsv`
+### `confirmatory.tsv` (arm 3)
 
 The registered outcomes D1, D2, D4 and D5 per assembler, target depth and seed, with the columns of the arm 2 table; D1 and D2 rows add the median and interquartile range over strains. D3, the settling depth, is computed from D1 and D2 in `results/reporting_summary.tsv`.
 

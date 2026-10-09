@@ -11,6 +11,7 @@ through scripts/04_run_pcan.sh.
 """
 import argparse
 import json
+import math
 import os
 import sys
 import time
@@ -370,6 +371,47 @@ def diagnostics(sd2):
 # ----------------------------------------------------------------------------
 # S288C against SGD
 
+def cdeiii_motif_diagnostic(per, species):
+    """The species published with CDEIII loci only. For the three Yueomyces
+    species PCAn's own entry uses the Saccharomyces CDEIII motif, while the
+    authors' table names a Yueomyces motif that ships with PCAn but no entry
+    uses; for Grigorovia jiainica the entry's threshold is 1e-5 and the
+    table's 1e-6. Each setting is run as PCAn's first pass runs FIMO (fimo
+    --thresh 1.0E-<n> --oc on the whole assembly), and the published loci
+    that a hit overlaps are counted. A diagnostic, outside the reproduction
+    fraction: no call in any arm depends on it."""
+    import gzip
+    import shutil
+    import subprocess
+    fimo = P.data_dir("env", "pcan", "bin", "fimo")
+    rows = []
+    for s in species[species["arm0_role"] == "cdeiii_only"].to_dict("records"):
+        acc = s["accession"]
+        pub = per[(per["accession"] == acc)].dropna(subset=["start"])
+        work = P.data_dir("work", "cdeiii_motif_" + acc)
+        os.makedirs(work, exist_ok=True)
+        try:
+            genome = os.path.join(work, "genome.fna")
+            with gzip.open(P.data_dir("assemblies", acc + ".fna.gz"), "rb") as src, open(genome, "wb") as dst:
+                shutil.copyfileobj(src, dst)
+            for setting, motif, thresh in (("PCAn entry", s["pcan_cdeiii_motif"], s["pcan_cdeiii_thresh"]),
+                                           ("authors' table", s["authors_cdeiii_motif"], s["authors_cdeiii_thresh"])):
+                motif_file = os.path.join(P.pcan_dir(), "CDEIII", "CDEIII_%s_MEME.txt" % motif)
+                oc = os.path.join(work, "fimo")
+                subprocess.run([fimo, "--thresh", "1.0E-%d" % round(-math.log10(float(thresh))), "--oc", oc,
+                                motif_file, genome], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                hits = pd.read_csv(os.path.join(oc, "fimo.txt"), sep="\t")
+                hit_loci = sum(bool(((hits["sequence name"] == r.contig) & (hits["start"] <= r.end)
+                                     & (hits["stop"] >= r.start)).any()) for r in pub.itertuples())
+                rows.append({"species": s["species"], "accession": acc, "setting": setting,
+                             "cdeiii_motif": os.path.basename(motif_file), "threshold": thresh,
+                             "published_loci": len(per[per["accession"] == acc]), "published_loci_located": len(pub),
+                             "located_loci_with_a_hit": hit_loci, "fimo_hits": len(hits)})
+        finally:
+            shutil.rmtree(work, ignore_errors=True)
+    return pd.DataFrame(rows)
+
+
 def sgd_centromeres():
     rows = []
     with open(P.data_dir("tables", "sgd_R64-5-1.gff")) as fh:
@@ -653,6 +695,7 @@ def main():
     P.atomic_write_tsv(expected, os.path.join(OUT, "authors_expected_vs_observed.tsv"))
     diag = diagnostics(sd2)
     P.atomic_write_tsv(diag, os.path.join(OUT, "diagnostic_replaced_versions.tsv"))
+    P.atomic_write_tsv(cdeiii_motif_diagnostic(per, species), os.path.join(OUT, "diagnostic_cdeiii_motif.tsv"))
     # Software version: would the AT formula of the published table have
     # changed which calls PCAn makes? Run in PCAn's environment, see the script.
     import subprocess
