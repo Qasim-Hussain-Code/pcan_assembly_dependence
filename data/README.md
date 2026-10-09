@@ -24,7 +24,7 @@ times slower in a test of 500 small files (6.05 s against 0.02 s).
 | `assemblies/peter2018/` | `09_build_pairs.py` | the short-read assembly of each arm 2 strain, extracted from that archive, gzip |
 | `pairs/<code>/` | `10_compare_pairs.py` | per strain, shared by arms 2 and 3: PCAn on the long-read assembly, the centromere and null-window sets for every flank length and AT bin, the 500 bp window table |
 | `arm2/<code>/` | `10_compare_pairs.py` | PCAn on the short-read assembly, the status of every element under every variant, the self-comparison control, breakpoints, and the primary flank sequences |
-| `arm3/<code>/` | `11_assemble_reads.sh`, `10_compare_pairs.py` | the contigs of every assembly (gzip), fastp reports, the manifest of depths, seeds and assembler runs, and per assembly the calls, statuses, breakpoints and flank sequences. Reads are deleted before the next strain starts |
+| `arm3/<code>/` | `11_assemble_reads.sh`, `10_compare_pairs.py` | the contigs of every assembly (gzip), fastp reports, the manifest of depths, seeds and assembler runs, and per assembly the calls, statuses, breakpoints and flank sequences. The downloaded read files are deleted once subsampled, and the subsamples once assembled |
 | `state/` | every stage | one marker per finished stage, which is what makes a re-run skip |
 | `work/` | every stage | temporary working directories, removed when a stage ends or is interrupted |
 | `logs/` | every stage | raw tool output; only scrubbed summaries go to the tracked `logs/` |
