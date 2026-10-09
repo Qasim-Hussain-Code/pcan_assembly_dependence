@@ -1,0 +1,28 @@
+tool	version	environment
+PCAn commit	a5fa46f0cb971e7d499fd52b38b0c29166b33ef8	data/pcan
+PCAn patches	0001_arxiozyma_cdeiii_motif.patch	data/pcan
+fimo (MEME suite)	4.11.2	pcan
+blastp	2.16.0+	pcan
+python	3.8.17	pcan
+biopython	1.83	pcan
+pandas	2.0.3	pcan
+matplotlib	3.3.2	pcan
+tqdm	4.67.1	pcan
+orffinder	1.8	pcan
+numpy	1.24.4	pcan
+python	3.12.15	tools
+pandas	2.3.3	tools
+numpy	2.5.3	tools
+scipy	1.18.1	tools
+matplotlib	3.11.2	tools
+openpyxl	3.1.5	tools
+minimap2	2.31-r1302	tools
+seqkit	v2.14.0	tools
+seqtk	1.5	tools
+fastp	1.4.0	tools
+spades	v4.3.0	tools
+megahit	v1.2.9	tools
+ncbi datasets	18.38.0	tools
+shellcheck	0.11.0	tools
+pigz	2.8	tools
+conda	26.7.2	base

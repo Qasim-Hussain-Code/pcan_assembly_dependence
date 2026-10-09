@@ -1,0 +1,2 @@
+stage	start_utc	end_utc	elapsed_s	peak_rss_mb	start_footprint_gb	peak_footprint_gb	min_free_drive_gb	threads	jobs	exit_status	note
+install	2026-10-09T04:03:56Z	2026-10-09T04:14:18Z	622	443	0.00	3.32	47.4	16	1	0	
