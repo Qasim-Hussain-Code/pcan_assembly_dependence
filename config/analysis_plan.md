@@ -203,3 +203,128 @@ spore or colony derivative, is not matched. The short-read assembly of a
 Peter et al. 2018 strain is taken from the single archive that the 1002 Yeast
 Genomes project distributes; the archive member for each code is identified
 by listing the archive, not by assuming a file name.
+
+## Arm 3 (added 9 October 2026, before any arm 3 data were examined)
+
+No read run had been listed, downloaded or subsampled, and no assembly built
+from reads, when this section was committed.
+
+### Question
+
+When the same reads are assembled at known depths with two assemblers, at
+what depth do PCAn's calls and CDEII lengths settle, and do the real breaks
+resemble either breakpoint model of arm 1?
+
+### Strains and reads
+
+A strain qualifies for arm 3 when all of these hold:
+
+1. it is in the arm 2 pair set, so its long-read assembly is fixed;
+2. that long-read assembly is a haploid or collapsed ScRAP assembly;
+3. Peter et al. 2018 (Table S1) list it as homozygous and euploid, because in a
+   heterozygous strain the assembly from short reads and the long-read
+   assembly could differ at a centromere for reasons that have nothing to do
+   with depth;
+4. it has at least one paired-end Illumina run in ENA study PRJEB13017, linked
+   to its code through the reads-file name in Peter et al. 2018 Table S17.
+
+If a strain has more than one qualifying run, the run with the largest base
+count is used. Every run accession is verified in ENA and recorded with its
+base count, read count, file checksums and the evidence that links it to the
+strain.
+
+Strains are processed one at a time in an order fixed now: ascending by the
+SHA-256 of `arm3|<code>`. The time budget (48 hours by default) decides how
+many are processed; strains are cut from the end of that order, never depths,
+seeds or controls. After the first strain, its measured time and disk are
+used to project the rest, and the run refuses to start a strain that will not
+fit.
+
+### Depths and subsampling
+
+Target depths: 5x, 10x, 20x, 40x, and the full run capped at 80x. The genome
+size G is the total length of the strain's long-read assembly. The fraction
+for a target depth d is d × G / B, where B is the run's base count (both
+mates) from the ENA file report; a fraction of 1 or more means the whole run
+is used. Seed 11 is used at every depth, and seeds 22 and 33 are added at 10x
+to measure the variance between subsamples. Because seqtk keeps a read when
+its seeded random number falls below the fraction, the seed-11 subsamples are
+nested, each lower depth inside the next.
+
+Reads are streamed from ENA and subsampled during download with seqtk 1.5
+(`seqtk sample -s <seed> - <fraction>`), the same seed for both mates, all
+subsamples of one strain drawn in a single pass over each mate's file. After
+subsampling, the read names of mate 1 and mate 2 must agree read for read.
+Taking the first N reads is not used, because read order follows flow cell
+position. The realised depth (bases in the subsample divided by G, before and
+after trimming) is reported beside every target. A subsample that misses its
+target by more than 10 per cent is reported as it is, never redrawn.
+
+### Trimming and assembly
+
+fastp 1.4.0 with `--detect_adapter_for_pe` and otherwise default settings; its
+JSON report is kept.
+
+Every subsample is assembled twice, so that the assembler is a measured
+factor: SPAdes 4.3.0 in `--isolate` mode, with the memory cap from
+`project.conf` and its temporary directory inside the data directory, and
+MEGAHIT 1.2.9 with default k-mers. Contigs are the assembly (`contigs.fasta`,
+`final.contigs.fa`). Scaffolds are not used: they insert runs of N whose
+lengths are estimated, not observed. No contig is filtered by length. An
+assembler run that fails, for example by exceeding the memory cap, is recorded
+with its error and not repeated with other settings; that cell is missing,
+not imputed.
+
+### Calls and comparison
+
+PCAn with the frozen arm 0 settings, exactly as in arm 2. Each assembly is
+compared with the strain's long-read assembly by the arm 2 method: the same 2
+kb flanks, placement thresholds, five statuses and null windows. The null
+windows of a strain are the same windows as in arm 2, because they are drawn
+from the same long-read assembly with the same seeds. The `n_run` status
+cannot occur, because contigs carry no N.
+
+### Confirmatory outcomes
+
+D1. Recall relative to the long-read calls: the fraction of a strain's
+long-read centromeres that are `intact_called`, per assembler and depth.
+Reported against realised depth as the median and interquartile range over
+strains, and as the mean over strains with a percentile bootstrap interval
+over strains (10,000 resamples, seed 20261009).
+
+D2. CDEII agreement: among `intact_called` centromeres, the fraction whose
+CDEII length equals the long-read call's, per assembler and depth, with the
+same summaries.
+
+D3. Settling depth, per assembler, for D1 and for D2: the lowest target depth
+at which the mean over strains is within 0.05 of its value at full depth and
+stays within 0.05 at every higher target depth. The value 0.05 is arbitrary.
+This is a summary of D1 and D2 and carries no test.
+
+D4. Break-rate ratio against the AT-matched null at each target depth (seed
+11) and for each assembler, as in arm 2 C4: effect size with a bootstrap
+interval over strains, and a stratified permutation test.
+
+D5. Which arm 1 breakpoint model the real breaks resemble, as in arm 2 C5,
+for each assembler at full depth. The same analysis at the lower depths is
+exploratory.
+
+Descriptive, reported for every assembly: contig N50, L50 and contig count, so
+that arm 3 can be placed on the arm 1 axis; and, at 10x, the range of D1 and D2
+across the three seeds for each strain and assembler.
+
+The Holm family of confirmatory tests becomes: arm 2 C4 and C5, arm 3 D4 (five
+depths for each of two assemblers) and arm 3 D5 (two assemblers), fourteen
+tests in all.
+
+### Controls
+
+Positive control for the liftover: in arms 2 and 3, each long-read assembly is
+compared with itself; every centromere must come out `intact_called`.
+Negative control: the null windows. Technical replicates: the three 10x seeds.
+
+### Sensitivity
+
+The arm 2 alternatives apply to arm 3: flank length 1, 2 and 5 kb, placement
+identity 0.90, 0.95 and 0.99, null AT bin width 2.5, 5 and 10 percentage
+points.
