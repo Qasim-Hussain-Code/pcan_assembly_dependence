@@ -461,18 +461,26 @@ def fig_arm3():
     for ax, outcome, ylab, letter, title in (
             (axes[0, 0], "D1", "fraction of long-read calls intact and called", "a", "Recall relative to the long-read calls"),
             (axes[0, 1], "D2", "fraction with the long-read CDEII length", "b", "CDEII agreement among intact calls")):
-        n = 0
+        ns = []
         for i, (a, (col, lab)) in enumerate(ASSEMBLERS.items()):
             d = by_depth(conf, outcome, a)
             if d.empty:
                 continue
-            n = max(n, int(d["n_strains"].max()))
+            ns += [int(v) for v in d["n_strains"].dropna()]
             x = [depth.get((a, t), np.nan) for t in d.index]
             ax.errorbar(x, d["estimate"], yerr=[d["estimate"] - d["ci_low"], d["ci_high"] - d["estimate"]],
                         color=col, marker="o", markersize=3.5, capsize=0, elinewidth=1)
             # the two assemblers can end at the same value; their labels are
             # set apart vertically so that both stay readable
             end_label(ax, x[-1], d["estimate"].iloc[-1], lab, dy=7 if i == 0 else -7)
+            if outcome == "D1" and "exploratory_long_calls_matched_by_sequence" in ok:
+                # exploratory: calls identical in sequence, which needs no
+                # flank and so still counts a call on a contig shorter than
+                # the flanks; mean over strains, as for the registered line
+                s = ok[(ok["assembler"] == a) & (ok["seed"].astype(str) == "11")].copy()
+                s["frac"] = s["exploratory_long_calls_matched_by_sequence"] / s["long_calls"]
+                m = s.groupby("target_depth")["frac"].mean().reindex(list(d.index))
+                ax.plot(x, m.values, color=col, linewidth=1, linestyle=(0, (3, 2)), zorder=2)
             ten = conf[(conf["outcome"] == outcome) & (conf["assembler"] == a)
                        & (conf["target_depth"].astype(str) == "10")]
             if len(ten) > 1:
@@ -481,8 +489,10 @@ def fig_arm3():
         depth_axis(ax)
         ax.set_ylim(0, 1.05)
         ax.set_ylabel(ylab)
-        ax.set_title("%s  %s\nn = %d strains; mean with bootstrap interval\nover strains; dashes at 10x: three seeds"
-                     % (letter, title, n), loc="left")
+        extra = "\ndashed line: identical sequence (exploratory)" if outcome == "D1" else ""
+        n_text = ("%d" % max(ns)) if ns and min(ns) == max(ns) else ("%d to %d" % (min(ns), max(ns)) if ns else "0")
+        ax.set_title("%s  %s\nn = %s strains per point; mean with bootstrap\ninterval over strains; dashes at 10x: three seeds%s"
+                     % (letter, title, n_text, extra), loc="left")
     ax = axes[1, 0]
     for a, (col, lab) in ASSEMBLERS.items():
         d = ok[ok["assembler"] == a]

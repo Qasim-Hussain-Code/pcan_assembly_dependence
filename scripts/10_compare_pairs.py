@@ -139,6 +139,19 @@ def compare(code, acc, query_fa, query_calls, workdir, control=False, keep_dir=N
     return out, bps, unlocated
 
 
+def sequence_recovered(long_calls, query_calls):
+    """Exploratory, outside the analysis plan: long-read calls whose sequence,
+    from the start of CDEI to the end of CDEIII, is identical to the sequence
+    of a call on the other assembly, on either strand and in any case. It
+    needs no flank, so it still counts a call on a contig too short to hold
+    the 2 kb flanks, where the registered status says split or absent."""
+    def canon(s):
+        s = str(s).upper()
+        return min(s, P.revcomp(s))
+    q = {canon(s) for s in query_calls["sequence"]}
+    return int(sum(canon(s) in q for s in long_calls["sequence"]))
+
+
 def contiguity(records):
     """Contig N50, L50 and count, with sequences split at every run of N (the
     rule of scripts/lib/assembly_stats.py, so that every arm sits on one
@@ -363,7 +376,8 @@ def aggregate_arm2(pairs):
                          "fimo_pass1_hits": m.get("fimo_pass1_hits")})
         counts.append({"strain": code, "isolate_name": pr["isolate_name"], "long_read_accession": acc,
                        "long_calls": len(lc), "short_calls": len(sc), "zygosity": pr["peter_zygosity"],
-                       "ploidy": pr["peter_ploidy"]})
+                       "ploidy": pr["peter_ploidy"],
+                       "exploratory_long_calls_matched_by_sequence": sequence_recovered(lc, sc)})
         for v in VARIANTS:
             st = read_elements(os.path.join(d, "status_%s.tsv" % v["name"]))
             st.insert(0, "strain", code)
@@ -535,6 +549,7 @@ def aggregate_arm3(runs3):
             if os.path.exists(os.path.join(res_dir, "status_primary.tsv")):
                 calls = pd.read_csv(os.path.join(res_dir, "calls.tsv"), sep="\t")
                 r["calls"] = len(calls)
+                r["exploratory_long_calls_matched_by_sequence"] = sequence_recovered(lc, calls)
                 for v in VARIANTS:
                     st = read_elements(os.path.join(res_dir, "status_%s.tsv" % v["name"]))
                     st.insert(0, "strain", code)

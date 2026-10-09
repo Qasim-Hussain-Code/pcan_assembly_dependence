@@ -196,7 +196,7 @@ One row per PCAn run, two per strain (`assembly`: `long` or `short`): call count
 
 ### `call_counts.tsv`
 
-Per strain: Peter et al.'s isolate name, the long-read accession, PCAn's call count on each assembly, and the zygosity and ploidy that Peter et al. 2018 (Table S1) give. Outcome C1.
+Per strain: Peter et al.'s isolate name, the long-read accession, PCAn's call count on each assembly, and the zygosity and ploidy that Peter et al. 2018 (Table S1) give. Outcome C1. The column `exploratory_long_calls_matched_by_sequence`, outside the analysis plan, counts the long-read calls whose sequence from the start of CDEI to the end of CDEIII is identical, on either strand and in any case, to that of a short-read call; it needs no flank.
 
 ### `centromere_status.tsv`
 
@@ -256,7 +256,7 @@ The reads, subsamples and assemblies are made by `11_assemble_reads.sh`, which l
 
 ### `assemblies.tsv`
 
-One row per assembly attempted: strain, `assembler` (`spades` or `megahit`), `target_depth` (5, 10, 20, 40 or `full`, the whole run capped at 80x), `seed`, the subsampling `fraction`, read pairs, bases before and after fastp and the realised depths (bases over the long-read assembly's length), the check that mate names agree (`names_checked`, `name_mismatches`), `status` and `error`, the assembler's run time and peak memory, contig N50, L50, count and total length, the long-read call count (`long_calls`) and PCAn's call count on the assembly (`calls`).
+One row per assembly attempted: strain, `assembler` (`spades` or `megahit`), `target_depth` (5, 10, 20, 40 or `full`, the whole run capped at 80x), `seed`, the subsampling `fraction`, read pairs, bases before and after fastp and the realised depths (bases over the long-read assembly's length), the check that mate names agree (`names_checked`, `name_mismatches`), `status` and `error`, the assembler's run time and peak memory, contig N50, L50, count and total length, the threads the assembler ran on (from the fourth strain on), the long-read call count (`long_calls`), PCAn's call count on the assembly (`calls`), and, outside the analysis plan, `exploratory_long_calls_matched_by_sequence`: the long-read calls whose sequence is identical to that of a call on this assembly, as in `results/arm2/call_counts.tsv`. Unlike the registered status, it still counts a call on a contig too short to hold the 2 kb flanks.
 
 ### `centromere_status.tsv` (arm 3)
 
