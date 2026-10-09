@@ -1,0 +1,14 @@
+# Format of project.conf, which scripts/00_configure.sh writes at the
+# repository root. The values below are placeholders. project.conf itself is
+# machine-specific and never tracked.
+THREADS=8
+JOBS=1
+RAM_GB=16.0
+SPADES_MEM_GB=12
+DISK_BUDGET_GB=50
+DISK_CEILING_GB=55
+FREE_DISK_GB_AT_CONFIGURE=64.8
+HOURS_ARM1=24
+HOURS_ARM3=48
+DATA_DIR=/path/to/pcan_assembly_dependence/data
+CONDA_BASE=/path/to/miniforge3
