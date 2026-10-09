@@ -16,6 +16,7 @@ numpy	2.5.3	tools
 scipy	1.18.1	tools
 matplotlib	3.11.2	tools
 openpyxl	3.1.5	tools
+xlrd	2.0.1	tools
 minimap2	2.31-r1302	tools
 seqkit	v2.14.0	tools
 seqtk	1.5	tools

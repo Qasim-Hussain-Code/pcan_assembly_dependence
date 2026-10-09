@@ -46,10 +46,13 @@ PCAN_COMMIT="a5fa46f0cb971e7d499fd52b38b0c29166b33ef8"
 
 # Tools environment. Versions are pinned to what bioconda and conda-forge served
 # on 9 October 2026; the explicit lock files in env/ pin every dependency.
+# xlrd reads the .xls supplementary tables of Peter et al. 2018 (arm 2); it was
+# added on 9 October 2026, after the first install, with --freeze-installed so
+# that nothing else in the environment changed.
 TOOLS_SPEC=(
     "python=3.12" "minimap2=2.31" "seqkit=2.14.0" "seqtk=1.5" "fastp=1.4.0"
     "spades=4.3.0" "megahit=1.2.9" "ncbi-datasets-cli=18.38.0"
-    "pandas>=2.2,<3" "numpy>=2" "scipy" "matplotlib" "openpyxl" "shellcheck" "pigz"
+    "pandas>=2.2,<3" "numpy>=2" "scipy" "matplotlib" "openpyxl" "xlrd=2.0.1" "shellcheck" "pigz"
 )
 
 building=""
@@ -150,7 +153,7 @@ pyver() { "$1" -c "import importlib.metadata as m; print(m.version('$2'))"; }
         printf '%s\t%s\tpcan\n' "$m" "$(pyver "$P/python" "$m")"
     done
     printf 'python\t%s\ttools\n' "$("$T/python" -c 'import platform; print(platform.python_version())')"
-    for m in pandas numpy scipy matplotlib openpyxl; do
+    for m in pandas numpy scipy matplotlib openpyxl xlrd; do
         printf '%s\t%s\ttools\n' "$m" "$(pyver "$T/python" "$m")"
     done
     printf 'minimap2\t%s\ttools\n' "$("$T/minimap2" --version 2>&1)"

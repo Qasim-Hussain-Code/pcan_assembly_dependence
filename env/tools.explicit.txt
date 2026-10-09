@@ -126,6 +126,7 @@ https://conda.anaconda.org/conda-forge/linux-64/tornado-6.5.10-py312h5cc1888_0.c
 https://conda.anaconda.org/conda-forge/linux-64/unicodedata2-18.0.0-py312h5cc1888_0.conda#070e15c0fbb80b2f2fe405419b763f68
 https://conda.anaconda.org/conda-forge/linux-64/xcb-util-image-0.4.0-hb711507_2.conda#a0901183f08b6c7107aab109733a3c91
 https://conda.anaconda.org/conda-forge/linux-64/xkeyboard-config-2.48-h280c20c_0.conda#b233b41be0bf210989d57160ed39b394
+https://conda.anaconda.org/conda-forge/noarch/xlrd-2.0.1-pyhd8ed1ab_3.tar.bz2#97dfcd5ff030d829b55f67e82f928093
 https://conda.anaconda.org/conda-forge/linux-64/xorg-libxext-1.3.7-h7cc23a3_1.conda#e5b6b28536b81b3f4cb20db4668a4642
 https://conda.anaconda.org/conda-forge/linux-64/xorg-libxfixes-6.0.2-h7cc23a3_1.conda#09132e874fe0e1f5e4492b0b6b904b6e
 https://conda.anaconda.org/conda-forge/linux-64/xorg-libxrender-0.9.12-hb03c661_1.conda#e470d224a7a5be1b1d021bded7abb536
