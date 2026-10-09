@@ -1,0 +1,477 @@
+"""Figures, one or more per question, from the tables in results/.
+
+Colours are the first three slots of a palette checked for colour-blind
+separation (blue, orange, aqua; worst all-pairs CVD distance 9.2); per-genome
+or per-strain curves are thin grey lines behind the pooled one. Every panel
+states its n and unit of replication. One y-axis per panel. Each figure is
+written as PDF and PNG with no creation date in its metadata.
+
+Usage:
+    python scripts/13_figures.py
+"""
+import os
+import sys
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+import numpy as np  # noqa: E402
+import pandas as pd  # noqa: E402
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
+import padlib as P  # noqa: E402
+
+BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
+GREY, LIGHT, INK, INK2, GRID = "#a3a29d", "#d9d8d3", "#0b0b0b", "#52514e", "#e6e5e1"
+FIG = P.repo("figures")
+SUPP = P.repo("figures", "supplementary")
+
+plt.rcParams.update({
+    "font.family": "DejaVu Sans", "font.size": 8, "axes.titlesize": 8.5, "axes.labelsize": 8,
+    "xtick.labelsize": 7.5, "ytick.labelsize": 7.5, "legend.fontsize": 7.5, "axes.edgecolor": INK2,
+    "axes.labelcolor": INK, "xtick.color": INK2, "ytick.color": INK2, "text.color": INK,
+    "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True, "axes.grid.axis": "y",
+    "grid.color": GRID, "grid.linewidth": 0.6, "grid.linestyle": "-", "axes.axisbelow": True, "lines.linewidth": 1.5,
+    "lines.solid_capstyle": "round", "pdf.fonttype": 42, "svg.hashsalt": "pcan", "figure.dpi": 100,
+})
+
+
+def read(path):
+    p = P.repo("results", path)
+    return pd.read_csv(p, sep="\t") if os.path.exists(p) else None
+
+
+def save(fig, name, supp=False):
+    d = SUPP if supp else FIG
+    os.makedirs(d, exist_ok=True)
+    for ext, meta in (("pdf", {"CreationDate": None, "ModDate": None, "Producer": None, "Creator": None}),
+                      ("png", {"Software": None})):
+        fig.savefig(os.path.join(d, "%s.%s" % (name, ext)), dpi=300, bbox_inches="tight", metadata=meta)
+    plt.close(fig)
+    P.log("wrote %s" % P.rel(os.path.join(d, name + ".pdf")))
+
+
+def end_label(ax, x, y, text, color=INK2, dy=0):
+    ax.annotate(text, (x, y), xytext=(4, dy), textcoords="offset points", va="center", fontsize=7, color=color)
+
+
+# ----------------------------------------------------------------------------
+# Question 1, arm 0
+
+def fig_arm0():
+    causes = read("arm0/non_exact_cause_counts.tsv")
+    expected = read("arm0/authors_expected_vs_observed.tsv")
+    gate = read("arm0/gate.tsv")
+    if causes is None or expected is None or gate is None:
+        return
+    fig = plt.figure(figsize=(7.2, 5.6), layout="constrained")
+    top, bottom = fig.subfigures(2, 1, height_ratios=[1.1, 1], hspace=0.06)
+
+    ax = top.add_subplot(1, 1, 1)
+    c = causes.groupby("cause")["published_calls"].sum().sort_values()
+    ax.barh(range(len(c)), c.values, height=0.6, color=BLUE)
+    ax.set_yticks(range(len(c)))
+    ax.set_yticklabels([s[0].upper() + s[1:].replace("_", " ") for s in c.index], fontsize=7)
+    ax.grid(axis="y", visible=False)
+    ax.grid(axis="x", visible=True)
+    for i, v in enumerate(c.values):
+        ax.text(v + 0.4, i, str(v), va="center", fontsize=7, color=INK2)
+    ax.set_xlabel("published calls")
+    n_sp = int((expected["published_calls"] > expected["exact"]).sum())
+    ax.set_title("a  Why %d of %d published calls are not reproduced exactly (n = %d species with at least one; "
+                 "unit: call)" % (c.sum(), int(gate.iloc[0]["n_calls"]), n_sp), loc="left")
+
+    ax_b, ax_c = bottom.subplots(1, 2, width_ratios=[1.3, 1])
+    ax = ax_b
+    e = expected.dropna(subset=["authors_false_neg"]).copy()
+    e["excess"] = (e["missing"] - e["authors_false_neg"]).astype(int)
+    counts = e["excess"].value_counts().sort_index()
+    ax.bar(counts.index, counts.values, width=0.6, color=BLUE)
+    for x, v in counts.items():
+        ax.text(x, v + 1.5, str(v), ha="center", fontsize=7, color=INK2)
+    for _, r in e[e["excess"] >= 5].iterrows():
+        ax.annotate(r["species"], (r["excess"], counts[r["excess"]]), xytext=(0, 14), textcoords="offset points",
+                    ha="right", fontsize=6.5, color=INK2, style="italic")
+    ticks = sorted(set([int(counts.index.min())] + list(range(0, int(counts.index.max()) + 1, 2))))
+    ax.set_xticks(ticks)
+    ax.set_ylim(0, counts.max() * 1.15)
+    ax.set_xlabel("missing calls minus the false negatives\nthe authors' table predicts")
+    ax.set_ylabel("species")
+    ax.set_title("b  Misses against the authors' prediction\nn = %d species; unit: species" % len(e), loc="left")
+
+    ax = ax_c
+    g = gate.iloc[0]
+    ax.errorbar([g["estimate"]], [0], xerr=[[g["estimate"] - g["ci_low"]], [g["ci_high"] - g["estimate"]]], fmt="o",
+                color=BLUE, ecolor=BLUE, elinewidth=1.5, capsize=0, markersize=5)
+    ax.axvline(0.95, color=ORANGE, linewidth=1)
+    ax.annotate("pre-registered gate, 0.95", (0.95, 0.55), xytext=(4, 0), textcoords="offset points", fontsize=7,
+                color=INK2)
+    ax.annotate("%.3f\n(%.3f to %.3f)" % (g["estimate"], g["ci_low"], g["ci_high"]), (0.852, -0.45),
+                ha="left", fontsize=7, color=INK2)
+    ax.set_ylim(-1, 1)
+    ax.set_yticks([])
+    ax.set_xlim(0.85, 1.0)
+    ax.grid(axis="y", visible=False)
+    ax.grid(axis="x", visible=True)
+    ax.set_xlabel("fraction of published calls\nreproduced exactly")
+    ax.set_title("c  The gate\nn = %d calls, %d species;\ninterval: bootstrap over species"
+                 % (g["n_calls"], g["n_species"]), loc="left")
+    save(fig, "fig1_reproduction")
+
+
+# ----------------------------------------------------------------------------
+# Question 2, arm 1a (simulation)
+
+def fig_arm1a():
+    per = read("arm1/fragmentation_replicates.tsv")
+    stats0 = read("arm0/assembly_stats.tsv")
+    stats3 = read("arm3/assemblies.tsv")
+    if per is None:
+        return
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 6.0), sharex=True)
+    for col, model in enumerate(["uniform", "at_weighted"]):
+        d = per[per["model"] == model]
+        n_gen = d["accession"].nunique()
+        n_rep = d.groupby(["accession", "target_n50"]).size().max()
+        title = "uniform breakpoints" if model == "uniform" else "AT-weighted breakpoints"
+        ax = axes[0, col]
+        for acc, g in d.groupby("accession"):
+            m = g.groupby("target_n50").agg(x=("realised_n50", "median"), y=("recall", "median")).sort_values("x")
+            ax.plot(m["x"], m["y"], color=LIGHT, linewidth=0.8, zorder=1)
+        lv = d.groupby("target_n50").agg(x=("realised_n50", "median"), med=("recall", "median"),
+                                          q25=("recall", lambda s: s.quantile(0.25)),
+                                          q75=("recall", lambda s: s.quantile(0.75)),
+                                          geo=("geometric_expectation", "median"),
+                                          syn=("synteny_checkable_fraction", "median")).sort_values("x")
+        ax.fill_between(lv["x"], lv["q25"], lv["q75"], color=BLUE, alpha=0.12, linewidth=0, zorder=2)
+        # The expectation is drawn wide and pale under the recall line: where
+        # the two coincide, which is everywhere, only its edges show.
+        ax.plot(lv["x"], lv["geo"], color=ORANGE, linewidth=5, alpha=0.45, solid_capstyle="round", zorder=3)
+        ax.plot(lv["x"], lv["med"], color=BLUE, marker="o", markersize=3.5, zorder=4)
+        ax.plot(lv["x"], lv["syn"], color=AQUA, marker="o", markersize=3.5, zorder=3)
+        x_end = lv["x"].iloc[-1]
+        end_label(ax, x_end, lv["med"].iloc[-1], "recall", dy=7)
+        end_label(ax, x_end, lv["med"].iloc[-1], "geometric\nexpectation", dy=-12)
+        ax.annotate("synteny-checkable", (lv["x"].iloc[3], lv["syn"].iloc[3]), xytext=(6, -2),
+                    textcoords="offset points", fontsize=7, color=INK2)
+        ax.annotate("%.2f" % lv["med"].iloc[0], (lv["x"].iloc[0], lv["med"].iloc[0]), xytext=(0, -12),
+                    textcoords="offset points", ha="center", fontsize=7, color=INK2)
+        if stats0 is not None:
+            ax.plot(stats0["contig_n50"], np.full(len(stats0), -0.05), "|", color=GREY, markersize=6,
+                    transform=ax.get_xaxis_transform(), clip_on=False)
+        if stats3 is not None and "contig_n50" in stats3:
+            s3 = stats3.dropna(subset=["contig_n50"])
+            ax.plot(s3["contig_n50"], np.full(len(s3), -0.10), "|", color=AQUA, markersize=6,
+                    transform=ax.get_xaxis_transform(), clip_on=False)
+        ax.set_xscale("log")
+        ax.set_xlim(3000, 2.5e6)
+        ax.set_ylim(0, 1.05)
+        ax.set_ylabel("fraction of unfragmented calls")
+        ax.set_title("%s  %s\nn = %d genomes x %d replicates per level" % ("ab"[col], title, n_gen, n_rep),
+                     loc="left")
+
+        ax = axes[1, col]
+        dec = d.groupby("target_n50").agg(x=("realised_n50", "median"), truth=("n_truth", "sum"),
+                                           geo=("lost_geometric", "sum"), pipe=("lost_pipeline", "sum"),
+                                           gained=("gained", "sum")).sort_values("x")
+        # Labelled at the 5 kb end, where the three lines are apart; at the
+        # other end all three meet at zero.
+        for key, color, lab, dy in (("geo", ORANGE, "lost, window cut", 0), ("pipe", BLUE, "lost, window intact", 8),
+                                    ("gained", AQUA, "gained", 8)):
+            y = dec[key] / dec["truth"] * 100
+            ax.plot(dec["x"], y, color=color, marker="o", markersize=3.5)
+            ax.annotate(lab, (dec["x"].iloc[0], y.iloc[0]), xytext=(6, dy), textcoords="offset points",
+                        fontsize=7, color=INK2, va="center")
+        ax.set_xscale("log")
+        ax.set_xlim(3000, 2.5e6)
+        ax.set_xlabel("realised contig N50 (bp)")
+        ax.set_ylabel("calls per 100 unfragmented calls")
+        ax.set_title("%s  Losses and gains, %s\nn = %d genomes; calls pooled over replicates" % ("cd"[col], title, n_gen),
+                     loc="left")
+    note = ("Simulation. Recall is relative to PCAn's call on the unfragmented assembly. Lines: median over all "
+            "replicates; band: interquartile range;\ngrey lines: each genome's median. Ticks under the top axes: "
+            "contig N50 of the %d published arm 0 assemblies%s." % (len(stats0) if stats0 is not None else 0,
+                                                                   " (grey) and the arm 3 assemblies (aqua)" if stats3 is not None else ""))
+    fig.text(0.01, -0.02, note, fontsize=6.8, color=INK2, ha="left", va="top")
+    fig.tight_layout()
+    save(fig, "fig2_fragmentation")
+
+    # Supplementary: one panel per genome.
+    gens = sorted(per["accession"].unique())
+    fig, axes = plt.subplots(2, (len(gens) + 1) // 2, figsize=(7.2, 3.4), sharex=True, sharey=True)
+    for ax, acc in zip(axes.flat, gens):
+        for model, color in (("uniform", BLUE), ("at_weighted", ORANGE)):
+            g = per[(per["accession"] == acc) & (per["model"] == model)]
+            m = g.groupby("target_n50").agg(x=("realised_n50", "median"), y=("recall", "median")).sort_values("x")
+            ax.plot(m["x"], m["y"], color=color, marker="o", markersize=2.5, linewidth=1)
+        ax.set_xscale("log")
+        ax.set_title(acc, fontsize=7)
+        ax.set_ylim(0, 1.05)
+    axes.flat[0].legend(["uniform", "AT-weighted"], frameon=False, fontsize=6.5)
+    fig.supxlabel("realised contig N50 (bp)", fontsize=8)
+    fig.supylabel("recall relative to the unfragmented call", fontsize=8)
+    fig.suptitle("Simulation: recall per genome, median of 10 replicates per level; unit: genome", fontsize=8.5)
+    fig.tight_layout()
+    save(fig, "figS1_fragmentation_per_genome", supp=True)
+
+
+# ----------------------------------------------------------------------------
+# Question 3, arm 1b (simulation)
+
+def fig_arm1b():
+    env = read("arm1/detection_envelope.tsv")
+    prog = read("arm1/planted_progressive.tsv")
+    if env is None or prog is None:
+        return
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.2))
+    ax = axes[0]
+    pooled = env[env["accession"] == "pooled"].sort_values("size")
+    genomes = env[env["accession"] != "pooled"]
+    for acc, g in genomes.groupby("accession"):
+        g = g.sort_values("size")
+        ax.plot(g["size"], g["correct_length_fraction"], color=LIGHT, linewidth=0.8)
+    for key, lo, hi, color, lab in (("called_fraction", "called_ci_low", "called_ci_high", BLUE, "called"),
+                                    ("correct_length_fraction", "correct_length_ci_low", "correct_length_ci_high",
+                                     ORANGE, "called at the planted length")):
+        ax.errorbar(pooled["size"], pooled[key], yerr=[pooled[key] - pooled[lo], pooled[hi] - pooled[key]],
+                    color=color, marker="o", markersize=3.5, capsize=0, elinewidth=1, label=lab)
+    ax.axvline(0, color=GRID, linewidth=0.8)
+    ax.set_xticks(sorted(pooled["size"].unique()))
+    ax.set_ylim(0, 1.05)
+    ax.set_xlabel("planted CDEII change (bp)")
+    ax.set_ylabel("fraction of edited centromeres")
+    ax.legend(frameon=False, loc="lower left")
+    ax.set_title("a  Simulation: detection envelope\nn = %d edits in %d genomes;\ninterval: bootstrap over genomes; "
+                 "grey: each genome" % (pooled["edits"].sum(), genomes["accession"].nunique()), loc="left")
+
+    ax = axes[1]
+    ok = prog[prog["status"] == "ok"]
+    for key, color, lab, dx in (("total_calls", BLUE, "calls in the genome", -0.25),
+                                ("edited_called", ORANGE, "edited centromeres called", 0),
+                                ("edited_correct_length", AQUA, "called at +10 bp", 0.25)):
+        ax.scatter(ok["k"] + dx, ok[key], s=10, color=color, edgecolor="white", linewidth=0.5, zorder=3, label=lab)
+        med = ok.groupby("k")[key].median()
+        ax.plot(med.index + dx, med.values, color=color, linewidth=1)
+    ax.plot([0, 16], [0, 16], color=LIGHT, linewidth=0.8, zorder=1)
+    ax.set_xticks(sorted(ok["k"].unique()))
+    ax.set_ylim(0, 17.5)
+    ax.set_xlabel("centromeres carrying a +10 bp insertion (S288C)")
+    ax.set_ylabel("count")
+    ax.legend(frameon=False, loc="lower right")
+    ax.set_title("b  Simulation: a transition part of the way\nn = %d replicates per level; unit: replicate"
+                 % ok.groupby("k").size().max(), loc="left")
+    fig.tight_layout()
+    save(fig, "fig3_planted_variants")
+
+
+# ----------------------------------------------------------------------------
+# Question 4, arm 2
+
+STATUS_LABEL = {"intact_called": "intact, called", "intact_uncalled": "intact, not called", "split": "split",
+                "n_run": "N run", "absent": "absent"}
+
+
+def fig_arm2():
+    counts = read("arm2/call_counts.tsv")
+    conf = read("arm2/confirmatory.tsv")
+    cens = read("arm2/centromere_status.tsv")
+    nulls = read("arm2/null_status.tsv")
+    if counts is None or conf is None or cens is None or nulls is None:
+        return
+    n_str = counts["strain"].nunique()
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.2))
+
+    ax = axes[0, 0]
+    diff = (counts["short_calls"] - counts["long_calls"]).value_counts().sort_index()
+    ax.bar(diff.index, diff.values, width=0.6, color=BLUE)
+    for x, v in diff.items():
+        ax.text(x, v + 0.5, str(v), ha="center", fontsize=7, color=INK2)
+    ax.set_xticks(diff.index)
+    ax.set_xlabel("calls on the short-read assembly minus calls on the long-read assembly")
+    ax.set_ylabel("strains")
+    c1 = conf[conf["outcome"] == "C1"].iloc[0]
+    ax.set_title("a  Call counts, %d of %d strains equal\n(%.2f, %.2f to %.2f); unit: strain"
+                 % (c1["k"], c1["n_strains"], c1["estimate"], c1["ci_low"], c1["ci_high"]), loc="left")
+
+    ax = axes[0, 1]
+    c2 = conf[conf["outcome"] == "C2"].copy()
+    c2["status"] = c2["measure"].str.replace("fraction ", "", regex=False)
+    c2 = c2.set_index("status").reindex(list(STATUS_LABEL))
+    y = np.arange(len(c2))[::-1]
+    ax.errorbar(c2["estimate"], y, xerr=[c2["estimate"] - c2["ci_low"], c2["ci_high"] - c2["estimate"]], fmt="o",
+                color=BLUE, ecolor=BLUE, capsize=0, markersize=4)
+    for yy, (st, r) in zip(y, c2.iterrows()):
+        ax.annotate("%d" % r["k"], (r["ci_high"], yy), xytext=(5, 0), textcoords="offset points", va="center",
+                    fontsize=7, color=INK2)
+    ax.set_yticks(y)
+    ax.set_yticklabels([STATUS_LABEL[s] for s in c2.index])
+    ax.set_xlim(0, 1)
+    ax.grid(axis="y", visible=False)
+    ax.grid(axis="x", visible=True)
+    ax.set_xlabel("fraction of long-read centromeres")
+    ax.set_title("b  Where each long-read centromere is\nn = %d centromeres in %d strains; interval over strains"
+                 % (int(c2["n_centromeres"].iloc[0]), n_str), loc="left")
+
+    ax = axes[1, 0]
+    d = cens.loc[cens["status"] == "intact_called", "cdeii_difference"].dropna().astype(int)
+    vc = d.value_counts().sort_index()
+    ax.bar(vc.index, vc.values, width=0.7, color=BLUE)
+    for x, v in vc.items():
+        if x != 0:
+            ax.text(x, v + 0.5, str(v), ha="center", fontsize=6.5, color=INK2)
+    ax.set_xlabel("CDEII length, short-read call minus long-read call (bp)")
+    ax.set_ylabel("centromeres")
+    c3 = conf[conf["outcome"] == "C3"].iloc[0]
+    ax.set_title("c  CDEII length, %d of %d identical\nunit: centromere, %d strains" % (c3["k"], c3["n_centromeres"],
+                                                                                    c3["n_strains"]), loc="left")
+
+    ax = axes[1, 1]
+    lift = cens[cens["status"] != "not_liftable"].copy()
+    lift["broken"] = lift["status"].isin(["split", "n_run", "absent"])
+    nulls = nulls.copy()
+    nulls["broken"] = nulls["status"].isin(["split", "n_run", "absent"])
+    per = pd.DataFrame({"cen": lift.groupby("strain")["broken"].mean(), "null": nulls.groupby("strain")["broken"].mean()})
+    for _, r in per.iterrows():
+        ax.plot([0, 1], [r["null"], r["cen"]], color=LIGHT, linewidth=0.7)
+    ax.scatter(np.zeros(len(per)), per["null"], s=8, color=GREY, zorder=3)
+    ax.scatter(np.ones(len(per)), per["cen"], s=8, color=GREY, zorder=3)
+    c4 = conf[(conf["outcome"] == "C4") & conf["measure"].str.startswith("break-rate")].iloc[0]
+    pooled = [c4["k_null"] / c4["n_null"], c4["k"] / c4["n_centromeres"]]
+    ax.plot([0, 1], pooled, color=BLUE, marker="o", markersize=5, linewidth=1.5, zorder=4)
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(["AT-matched null windows", "centromeres"])
+    ax.set_xlim(-0.4, 1.4)
+    ax.set_ylabel("fraction broken in the short-read assembly")
+    ax.set_title("d  Breaks: ratio %.2f (%.2f to %.2f), permutation p %.2g\nn = %d strains; grey: each strain; blue: pooled"
+                 % (c4["estimate"], c4["ci_low"], c4["ci_high"], c4["p_value"], c4["n_strains"]), loc="left")
+    fig.tight_layout()
+    save(fig, "fig4_published_pairs")
+
+
+# ----------------------------------------------------------------------------
+# Question 5, arm 3
+
+def fig_arm3():
+    conf = read("arm3/confirmatory.tsv")
+    asm = read("arm3/assemblies.tsv")
+    if conf is None or asm is None or conf.empty:
+        return
+    order = ["5", "10", "20", "40", "full"]
+    depth = asm[(asm["status"] == "ok") & (asm["seed"] == 11)].groupby(["assembler", "target_depth"])[
+        "realised_depth_raw"].median()
+    fig, axes = plt.subplots(2, 2, figsize=(7.2, 5.2))
+    colors = {"spades": BLUE, "megahit": ORANGE}
+    for ax, outcome, ylab, letter in ((axes[0, 0], "D1", "recall relative to the long-read calls", "a"),
+                                      (axes[0, 1], "D2", "identical CDEII length among intact calls", "b")):
+        for a, col in colors.items():
+            d = conf[(conf["outcome"] == outcome) & (conf["assembler"] == a) & (conf["seed"] == 11)].copy()
+            d["target_depth"] = d["target_depth"].astype(str)
+            d = d.set_index("target_depth").reindex([o for o in order if o in set(d["target_depth"])])
+            x = [depth.get((a, t), np.nan) for t in d.index]
+            ax.errorbar(x, d["estimate"], yerr=[d["estimate"] - d["ci_low"], d["ci_high"] - d["estimate"]],
+                        color=col, marker="o", markersize=3.5, capsize=0, elinewidth=1, label=a)
+            if len(x):
+                end_label(ax, x[-1], d["estimate"].iloc[-1], "SPAdes" if a == "spades" else "MEGAHIT")
+            ten = conf[(conf["outcome"] == outcome) & (conf["assembler"] == a)
+                       & (conf["target_depth"].astype(str) == "10")]
+            if len(ten) > 1:
+                ax.plot([depth.get((a, "10"), np.nan)] * len(ten), ten["estimate"], "_", color=col, markersize=8)
+        ax.set_xscale("log")
+        ax.set_ylim(0, 1.05)
+        ax.set_xlabel("realised depth (x)")
+        ax.set_ylabel(ylab)
+        n = int(conf[conf["outcome"] == outcome]["n_strains"].max())
+        ax.set_title("%s  %s\nn = %d strains; interval over strains; dashes at 10x: three seeds"
+                     % (letter, "Recall" if outcome == "D1" else "CDEII agreement", n), loc="left")
+    ax = axes[1, 0]
+    ok = asm[asm["status"] == "ok"]
+    for a, col in colors.items():
+        d = ok[ok["assembler"] == a]
+        ax.scatter(d["realised_depth_raw"], d["contig_n50"], s=8, color=col, edgecolor="white", linewidth=0.4,
+                   label="SPAdes" if a == "spades" else "MEGAHIT")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+    ax.set_xlabel("realised depth (x)")
+    ax.set_ylabel("contig N50 (bp)")
+    ax.legend(frameon=False)
+    ax.set_title("c  Contiguity, on the axis of arm 1\nn = %d assemblies; unit: assembly" % len(ok), loc="left")
+    ax = axes[1, 1]
+    for a, col in colors.items():
+        d = conf[(conf["outcome"] == "D4") & (conf["assembler"] == a) & conf["measure"].str.startswith("break-rate")].copy()
+        d["target_depth"] = d["target_depth"].astype(str)
+        d = d.set_index("target_depth").reindex([o for o in order if o in set(d["target_depth"])])
+        x = [depth.get((a, t), np.nan) for t in d.index]
+        ax.errorbar(x, d["estimate"], yerr=[d["estimate"] - d["ci_low"], d["ci_high"] - d["estimate"]], color=col,
+                    marker="o", markersize=3.5, capsize=0, elinewidth=1)
+    ax.axhline(1, color=GREY, linewidth=0.8)
+    ax.set_xscale("log")
+    ax.set_xlabel("realised depth (x)")
+    ax.set_ylabel("break-rate ratio, centromere over null")
+    ax.set_title("d  Breaks at centromeres against AT-matched windows\ninterval over strains", loc="left")
+    fig.tight_layout()
+    save(fig, "fig5_read_depth")
+
+
+# ----------------------------------------------------------------------------
+# Across arms: where real assemblies break
+
+def fig_breakpoints():
+    c2 = read("arm2/confirmatory.tsv")
+    c3 = read("arm3/confirmatory.tsv")
+    bs = read("arm2/breakpoint_summary.tsv")
+    if c2 is None or bs is None:
+        return
+    rows = []
+    r = c2[c2["outcome"] == "C5"]
+    if len(r):
+        r = r.iloc[0]
+        rows.append(("published short-read\nassemblies (arm 2)", r))
+    if c3 is not None:
+        for a in ("spades", "megahit"):
+            r3 = c3[(c3["outcome"] == "D5") & (c3["assembler"] == a)]
+            if len(r3):
+                rows.append(("%s, full depth\n(arm 3)" % ("SPAdes" if a == "spades" else "MEGAHIT"), r3.iloc[0]))
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.8), gridspec_kw={"width_ratios": [1.2, 1]})
+    ax = axes[0]
+    ax.scatter(bs["genome_at"], bs["mean_at_at_breakpoints"], s=10, color=BLUE, edgecolor="white", linewidth=0.4)
+    lim = [min(bs["genome_at"].min(), bs["mean_at_at_breakpoints"].min()) - 0.01,
+           max(bs["genome_at"].max(), bs["mean_at_at_breakpoints"].max()) + 0.01]
+    ax.plot(lim, lim, color=GREY, linewidth=0.8)
+    ax.set_xlabel("genome AT fraction (500 bp windows)")
+    ax.set_ylabel("mean AT of windows holding a break")
+    ax.set_title("a  Published short-read assemblies (arm 2)\nn = %d strains; grey: no AT preference" % len(bs),
+                 loc="left")
+    ax = axes[1]
+    y = np.arange(len(rows))[::-1]
+    for yy, (lab, r) in zip(y, rows):
+        ax.errorbar([r["estimate"]], [yy], xerr=[[r["estimate"] - r["ci_low"]], [r["ci_high"] - r["estimate"]]],
+                    fmt="o", color=BLUE, capsize=0, markersize=4)
+        ax.annotate(r["decision"], (r["ci_high"], yy), xytext=(5, 0), textcoords="offset points", va="center",
+                    fontsize=7, color=INK2)
+    ax.axvline(0, color=GREY, linewidth=0.8)
+    ax.axvline(np.log(10) / 0.30, color=ORANGE, linewidth=1)
+    ax.annotate("arm 1 AT-weighted model", (np.log(10) / 0.30, len(rows) - 0.5), xytext=(4, 0),
+                textcoords="offset points", fontsize=7, color=INK2)
+    ax.set_yticks(y)
+    ax.set_yticklabels([r[0] for r in rows], fontsize=7)
+    ax.set_ylim(-0.7, len(rows) - 0.3)
+    ax.grid(axis="y", visible=False)
+    ax.grid(axis="x", visible=True)
+    ax.set_xlabel("maximum-likelihood gamma")
+    ax.set_title("b  Which breakpoint model fits\ninterval: bootstrap over strains", loc="left")
+    fig.tight_layout()
+    save(fig, "fig6_breakpoint_model")
+
+
+def main():
+    fig_arm0()
+    fig_arm1a()
+    fig_arm1b()
+    fig_arm2()
+    fig_arm3()
+    fig_breakpoints()
+
+
+if __name__ == "__main__":
+    main()
