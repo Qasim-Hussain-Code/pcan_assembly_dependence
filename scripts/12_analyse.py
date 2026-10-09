@@ -23,6 +23,9 @@ import padlib as P  # noqa: E402
 
 R = P.repo("results")
 DEPTH_ORDER = ["5", "10", "20", "40", "full"]
+# The Holm family registered in config/analysis_plan.md: arm 2 C4 and C5, arm 3
+# D4 at five depths for each of two assemblers, and D5 for each assembler.
+FAMILY_SIZE = 14
 
 
 def read(path):
@@ -30,19 +33,30 @@ def read(path):
     return pd.read_csv(p, sep="\t") if os.path.exists(p) else None
 
 
-def holm(p):
-    """Holm step-down adjustment; NaN p-values are left out and stay NaN."""
+def holm(p, m=None):
+    """Holm step-down adjustment over a family of m tests. The p-values given
+    are the tests available; any of the m not given (not run yet) and any
+    given as NaN (not computable) enter as p = 1, which can only make the
+    others' adjusted values larger than with every test present. NaN stays
+    NaN in the output."""
     p = np.asarray(p, dtype=float)
+    m = len(p) if m is None else m
     out = np.full(len(p), np.nan)
-    ok = ~np.isnan(p)
-    idx = np.where(ok)[0]
-    order = idx[np.argsort(p[idx])]
-    m = len(order)
+    idx = np.where(~np.isnan(p))[0]
+    order = idx[np.argsort(p[idx], kind="stable")]
     running = 0.0
     for rank, i in enumerate(order):
         running = max(running, min(1.0, (m - rank) * p[i]))
         out[i] = running
     return out
+
+
+def holm_with(p_family, i, p_alt, m):
+    """The Holm-adjusted p-value of test i when its p-value is replaced by an
+    alternative analysis's, the rest of the family unchanged."""
+    p = np.asarray(p_family, dtype=float).copy()
+    p[i] = p_alt
+    return holm(p, m)[i]
 
 
 def fmt(x, nd=3):
@@ -51,6 +65,24 @@ def fmt(x, nd=3):
     if isinstance(x, (int, np.integer)):
         return "%d" % x
     return ("%." + str(nd) + "g") % x
+
+
+def fmt_p(x):
+    if x is None or (isinstance(x, float) and np.isnan(x)):
+        return ""
+    if x < 1e-16:
+        return "< 1e-16"
+    return "%.2g" % x if x < 0.001 else "%.3g" % x
+
+
+def in_family(r):
+    """Whether a reporting row is one of the registered tests."""
+    claim = str(r["claim"])
+    if r["arm"] == "2":
+        return claim.startswith("C4: break-rate ratio") or claim.startswith("C5:")
+    if r["arm"] == "3":
+        return (claim.startswith("D4: break-rate ratio") and claim.endswith("seed 11")) or claim.startswith("D5:")
+    return False
 
 
 def settling(d1, assembler):
@@ -100,26 +132,32 @@ def main():
                          "ci_high": r["correct_length_ci_high"], "p_raw": np.nan,
                          "source": "results/arm1/detection_envelope.tsv"})
 
+    def decided(r):
+        d = r.get("decision", "")
+        return "; decision: %s" % d if isinstance(d, str) and d else ""
+
     c2 = read("arm2/confirmatory.tsv")
     if c2 is not None:
         for _, r in c2.iterrows():
             rows.append({"arm": "2", "status": "confirmatory (config/analysis_plan.md)",
-                         "claim": "%s: %s" % (r["outcome"], r["measure"]), "n": "%s strains" % fmt(r.get("n_strains")),
+                         "claim": "%s: %s%s" % (r["outcome"], r["measure"], decided(r)),
+                         "n": "%s strains" % fmt(r.get("n_strains")),
                          "unit": "strain", "test": r.get("test", "") if isinstance(r.get("test", ""), str) else "",
                          "estimate": r.get("estimate"), "ci_low": r.get("ci_low"), "ci_high": r.get("ci_high"),
                          "p_raw": r.get("p_value", np.nan), "source": "results/arm2/confirmatory.tsv",
-                         "decision": r.get("decision", "")})
+                         "key": ("2", r["outcome"], r["measure"], "", "")})
     c3 = read("arm3/confirmatory.tsv")
     if c3 is not None:
         for _, r in c3.iterrows():
             rows.append({"arm": "3", "status": "confirmatory (config/analysis_plan.md)",
-                         "claim": "%s: %s, %s, target depth %s, seed %s" % (r["outcome"], r["measure"], r["assembler"],
-                                                                           r["target_depth"], r["seed"]),
+                         "claim": "%s: %s%s, %s, target depth %s, seed %s" % (r["outcome"], r["measure"], decided(r),
+                                                                             r["assembler"], r["target_depth"], r["seed"]),
                          "n": "%s strains" % fmt(r.get("n_strains")), "unit": "strain",
                          "test": r.get("test", "") if isinstance(r.get("test", ""), str) else "",
                          "estimate": r.get("estimate"), "ci_low": r.get("ci_low"), "ci_high": r.get("ci_high"),
                          "p_raw": r.get("p_value", np.nan), "source": "results/arm3/confirmatory.tsv",
-                         "decision": r.get("decision", "")})
+                         "key": ("3", r["outcome"], r["measure"], r["assembler"], str(r["target_depth"]))
+                         if str(r["seed"]) == "11" else None})
         d1 = c3[c3["outcome"] == "D1"]
         d2 = c3[c3["outcome"] == "D2"]
         for asm in sorted(c3["assembler"].dropna().unique()):
@@ -131,13 +169,38 @@ def main():
                              "source": "results/arm3/confirmatory.tsv"})
 
     rep = pd.DataFrame(rows)
-    # The Holm family is every registered test: arm 2 C4 (ratio) and C5, arm 3
-    # D4 and D5. Rows without a p-value are estimates, not tests.
-    fam = rep["p_raw"].notna() & rep["arm"].isin(["2", "3"])
+    if "key" not in rep:
+        rep["key"] = None
+    # The Holm family is every registered test; rows outside it are estimates
+    # or pre-specified measures without a test.
+    fam = rep.apply(in_family, axis=1) if len(rep) else pd.Series([], dtype=bool)
+    if int(fam.sum()) > FAMILY_SIZE:
+        raise RuntimeError("%d registered tests found, the plan registers %d" % (int(fam.sum()), FAMILY_SIZE))
+    fam_idx = list(rep.index[fam])
+    p_family = rep.loc[fam_idx, "p_raw"].astype(float).values
     rep["p_holm"] = np.nan
-    rep.loc[fam, "p_holm"] = holm(rep.loc[fam, "p_raw"].values)
-    rep["holm_family_size"] = int(fam.sum())
-    P.atomic_write_tsv(rep, os.path.join(R, "reporting_summary.tsv"))
+    rep.loc[fam_idx, "p_holm"] = holm(p_family, FAMILY_SIZE)
+    rep["holm_family_size"] = FAMILY_SIZE
+    rep["holm_tests_available"] = int(np.sum(~np.isnan(p_family)))
+    key_of = {k: i for i, k in rep["key"].items() if isinstance(k, tuple)}
+    P.atomic_write_tsv(rep.drop(columns=["key"]), os.path.join(R, "reporting_summary.tsv"))
+
+    def changed(arm, r, base_estimate, base_ci, outcome, measure, assembler="", depth=""):
+        """The registered rule: for a test, whether Holm-adjusted significance
+        at 0.05 or the direction of the effect differs from the primary; for
+        an estimate without a test, whether it lies outside the primary 95 per
+        cent interval."""
+        i = key_of.get((arm, outcome, measure, assembler, depth))
+        if i is not None and i in fam_idx and not pd.isna(r.get("p_value", np.nan)):
+            j = fam_idx.index(i)
+            p_primary = rep.loc[i, "p_holm"]
+            p_alt = holm_with(p_family, j, r["p_value"], FAMILY_SIZE)
+            same = (p_alt < 0.05) == (p_primary < 0.05)
+            if measure.startswith("break-rate") and r["estimate"] > 0 and base_estimate > 0:
+                same = same and np.sign(np.log(r["estimate"])) == np.sign(np.log(base_estimate))
+            return "no" if same else "yes"
+        lo, hi = base_ci
+        return "no" if lo <= r["estimate"] <= hi else "yes"
 
     # Sensitivity: does any alternative change a conclusion?
     sens_rows = []
@@ -154,14 +217,10 @@ def main():
             if base.empty or pd.isna(r.get("estimate")):
                 continue
             b = base.iloc[0]
-            if not pd.isna(b.get("p_value", np.nan)) and not pd.isna(r.get("p_value", np.nan)):
-                same = (r["p_value"] < 0.05) == (b["p_value"] < 0.05) and np.sign(np.log(r["estimate"])) == np.sign(np.log(b["estimate"])) \
-                    if r["measure"].startswith("break-rate") else (r["p_value"] < 0.05) == (b["p_value"] < 0.05)
-            else:
-                same = b["ci_low"] <= r["estimate"] <= b["ci_high"]
             sens_rows.append({"analysis": "arm 2 %s" % r["variant"], "outcome": "%s %s" % (r["outcome"], r["measure"]),
                               "primary": fmt(b["estimate"]), "alternative": fmt(r["estimate"]),
-                              "changes_conclusion": "no" if same else "yes"})
+                              "changes_conclusion": changed("2", r, b["estimate"], (b["ci_low"], b["ci_high"]),
+                                                            r["outcome"], r["measure"])})
     s3 = read("sensitivity/arm3_variants.tsv")
     if s3 is not None and c3 is not None:
         for _, r in s3.iterrows():
@@ -172,14 +231,12 @@ def main():
             if base.empty or pd.isna(r.get("estimate")):
                 continue
             b = base.iloc[0]
-            if not pd.isna(b.get("p_value", np.nan)) and not pd.isna(r.get("p_value", np.nan)):
-                same = (r["p_value"] < 0.05) == (b["p_value"] < 0.05)
-            else:
-                same = b["ci_low"] <= r["estimate"] <= b["ci_high"]
             sens_rows.append({"analysis": "arm 3 %s" % r["variant"],
                               "outcome": "%s %s %s" % (r["outcome"], r["assembler"], r["target_depth"]),
                               "primary": fmt(b["estimate"]), "alternative": fmt(r["estimate"]),
-                              "changes_conclusion": "no" if same else "yes"})
+                              "changes_conclusion": changed("3", r, b["estimate"], (b["ci_low"], b["ci_high"]),
+                                                            r["outcome"], b["measure"], r["assembler"],
+                                                            str(r["target_depth"]))})
     gam = read("sensitivity/arm1_at_weight_gamma.tsv")
     if gam is not None:
         for _, r in gam.iterrows():
@@ -203,12 +260,16 @@ def main():
 
 
 def write_markdown(rep):
+    avail = int(rep["holm_tests_available"].iloc[0]) if len(rep) else 0
+    pending = "" if avail == FAMILY_SIZE else (
+        " Only %d of them have been run so far; until the rest are, they enter the adjustment as p = 1, which "
+        "can only make the adjusted values shown larger." % avail)
     lines = ["# Reporting summary", "",
              "Every claim the README makes from a registered or pre-specified analysis, with its source. "
              "Confirmatory claims are those registered in `config/analysis_plan.md`; arm 0 and arm 1 measures were "
              "pre-specified in `config/arm0_reproduction.md` and `config/arm1_design.md`. P-values are "
-             "Holm-adjusted across the %d registered tests. Intervals are 95 per cent; their method is given in "
-             "the source file." % int(rep["holm_family_size"].iloc[0]) if len(rep) else "", "",
+             "Holm-adjusted across the %d registered tests.%s Intervals are 95 per cent; their method is given in "
+             "the source file." % (FAMILY_SIZE, pending) if len(rep) else "", "",
              "| Arm | Status | Claim | n | Unit | Test | Estimate | 95% interval | p (Holm) | Source |",
              "|---|---|---|---|---|---|---|---|---|---|"]
     for _, r in rep.iterrows():
@@ -216,7 +277,7 @@ def write_markdown(rep):
         est = r["estimate"] if isinstance(r["estimate"], str) else fmt(r["estimate"])
         lines.append("| %s | %s | %s | %s | %s | %s | %s | %s | %s | `%s` |" % (
             r["arm"], r["status"], r["claim"], r["n"], r["unit"], r["test"] or "none", est, ci,
-            fmt(r["p_holm"]), r["source"]))
+            fmt_p(r["p_holm"]), r["source"]))
     P.atomic_write_text(os.path.join(R, "reporting_summary.md"), "\n".join(lines) + "\n")
 
 
