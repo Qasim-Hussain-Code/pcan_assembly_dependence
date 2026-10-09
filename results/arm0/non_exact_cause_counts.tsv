@@ -1,0 +1,16 @@
+cause	status	published_calls
+CDEIII motif below the released threshold	missing	28
+published CDEI not found at the released CDEI threshold	missing	21
+length anchor set by false candidates	missing	13
+candidate formed, removed by duplicate_cdeiii_hit	different_cdeii_length	10
+published CDEI not found at the released CDEI threshold	different_cdeii_length	9
+calls published on a replaced assembly version	unlocated	8
+candidate formed, removed by not_best_on_contig	missing	5
+candidate formed, removed by not_in_top50	missing	3
+candidate formed, removed by not_best_on_contig	different_cdeii_length	3
+candidate formed, removed by duplicate_sequence	missing	2
+published sequence differs from the assembly	unlocated	2
+published sequence repeated	unlocated	2
+CDEIII motif offset from the published one	different_cdeii_length	1
+CDEIII motif below the released threshold	different_cdeii_length	1
+contig name in Supplementary Data 2 differs from the assembly	unlocated	1

@@ -1,0 +1,2 @@
+measure	unit_of_replication	n_species	n_calls	n_exact	estimate	ci_low	ci_high	interval	threshold	decision	species_all_exact	species_all_exact_fraction	species_all_exact_wilson_low	species_all_exact_wilson_high
+fraction of published calls reproduced exactly	species	129	1465	1356	0.9256	0.8966	0.9488	percentile bootstrap over species, 10000 resamples, seed 20261009	0.95	stop	76	0.5891	0.5029	0.6703

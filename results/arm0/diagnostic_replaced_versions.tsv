@@ -1,0 +1,2 @@
+species	accession_listed	accession_run	published_calls	reproduced_calls	exact	extra	reason
+Kluyveromyces aestuarii	GCA_003707555.2	GCA_003707555.1	8	8	8	0	Added after the arm 0 gate result, while looking for its cause. Supplementary Data 2 names contigs PPJO01..., which belong to the replaced version GCA_003707555.1 (WGS PPJO01); Supplementary Data 5 lists GCA_003707555.2 (WGS PPJO02). The replaced version is run as a diagnostic only, outside the reproduction fraction.

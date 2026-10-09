@@ -1,0 +1,135 @@
+accession	species	fimo_pass1_hits	fimo_pass2_hits	fimo_max_stored_scores_warning	max_stored_scores
+GCA_000002515.1	Kluyveromyces lactis	52	14	no	100000
+GCA_000002545.2	Nakaseomyces glabratus	28	80	no	100000
+GCA_000026365.1	Zygosaccharomyces rouxii	27	12	no	100000
+GCA_000091025.4	Eremothecium gossypii	20	46	no	100000
+GCA_000142805.1	Lachancea thermotolerans	164	430	no	100000
+GCA_000146045.2	Saccharomyces cerevisiae	47	94	no	100000
+GCA_000149225.2	Lachancea kluyveri	345	884	no	100000
+GCA_000150035.1	Vanderwaltozyma polyspora	644	1105	no	100000
+GCA_000167115.1	Lachancea waltii	198	551	no	100000
+GCA_000235365.1	Eremothecium cymbalariae	33	107	no	100000
+GCA_000236905.1	Tetrapisispora phaffii	966	2483	no	100000
+GCA_000243375.1	Torulaspora delbrueckii	143	335	no	100000
+GCA_000292725.1	Saccharomyces arboricola	47	100	no	100000
+GCA_000304475.1	Kazachstania africana	34	70	no	100000
+GCA_000315915.1	Henningerozyma blattae	58	108	no	100000
+GCA_000348985.1	Huiozyma naganishii	353	913	no	100000
+GCA_000412225.2	Ashbya aceri	18	59	no	100000
+GCA_000710315.1	Eremothecium coryli	25	52	no	100000
+GCA_000938715.1	Lachancea lanzarotensis	226	583	no	100000
+GCA_001039675.1	Nakaseomyces delphensis	30	80	no	100000
+GCA_001298625.1	Saccharomyces eubayanus	54	120	no	100000
+GCA_001417885.1	Kluyveromyces marxianus	57	19	no	100000
+GCA_001548555.1	Eremothecium sinecaudum	35	67	no	100000
+GCA_001984395.2	Zygosaccharomyces parabailii	67	24	no	100000
+GCA_002079055.1	Saccharomyces paradoxus	46	89	no	100000
+GCA_002900925.1	Lachancea quebecensis	190	574	no	100000
+GCA_003670155.1	Kluyveromyces nonfermentans	91	28	no	100000
+GCA_003671575.3	Zygotorulaspora florentina	314	790	no	100000
+GCA_003705175.3	Torulaspora franciscae	173	385	no	100000
+GCA_003705805.3	Kluyveromyces dobzhanskii	63	24	no	100000
+GCA_003705955.2	Zygosaccharomyces kombuchaensis	25	11	no	100000
+GCA_003705975.2	Tetrapisispora iriomotensis	863	2056	no	100000
+GCA_003705985.2	Tetrapisispora namnaoensis	1134	2798	no	100000
+GCA_003707555.2	Kluyveromyces aestuarii	71	23	no	100000
+GCA_003707595.2	Zygosaccharomyces bisporus	31	16	no	100000
+GCA_003707605.2	Tetrapisispora fleetii	961	2419	no	100000
+GCA_003708055.3	Torulaspora maleeae	118	296	no	100000
+GCA_003708425.3	Jamesozyma rosinii	26	63	no	100000
+GCA_003708445.3	Grigorovia transvaalensis	429	913	no	100000
+GCA_003708465.2	Kazachstania kunashirensis	21	44	no	100000
+GCA_003708525.3	Monosporozyma unispora	526	1028	no	100000
+GCA_003708535.3	Kazachstania bromeliacearum	27	57	no	100000
+GCA_003708825.3	Jamesozyma spencerorum	26	63	no	100000
+GCA_003708845.3	Sungouiozyma intestinalis	18	39	no	100000
+GCA_003708865.2	Kazachstania taianensis	17	42	no	100000
+GCA_003708905.3	Monosporozyma siamensis	533	1018	no	100000
+GCA_003708925.3	Kazachstania martiniae	23	58	no	100000
+GCA_003709265.2	Grigorovia yakushimaensis	470	952	no	100000
+GCA_005406105.1	Zygosaccharomyces mellis	30	13	no	100000
+GCA_008973615.1	Kluyveromyces starmeri	26	13	no	100000
+GCA_012851205.1	Torulaspora pretoriensis	170	395	no	100000
+GCA_013402915.1	Zygotorulaspora mrakii	288	746	no	100000
+GCA_013423405.1	Zygosaccharomyces siamensis	41	15	no	100000
+GCA_014133895.1	Torulaspora globosa	167	388	no	100000
+GCA_016584175.1	Maudiozyma exigua	32	75	no	100000
+GCA_017309295.1	Nakaseomyces nivariensis	30	68	no	100000
+GCA_017347545.2	Arxiozyma slooffiae	2927	511	no	100000
+GCA_017427045.1	Kluyveromyces sp. PCH397	73	28	no	100000
+GCA_020313495.2	Maudiozyma humilis	29	99	no	100000
+GCA_023629195.1	Arxiozyma sp. Y4206	1242	266	no	100000
+GCA_028408395.1	Monosporozyma servazzii	467	965	no	100000
+GCA_028408415.1	Monosporozyma aerobia	293	585	no	100000
+GCA_030179955.1	Yueomyces silvicola	21	53	no	100000
+GCA_030462825.1	Kluyveromyces sp. yHMH660	26	11	no	100000
+GCA_030462875.1	Grigorovia humatica	408	899	no	100000
+GCA_030462905.1	Jamesozyma gamospora	22	52	no	100000
+GCA_030555675.1	Vanderwaltozyma tropicalis	454	815	no	100000
+GCA_030556345.1	Oligophagozyma castellii	270	698	no	100000
+GCA_030556385.1	Nakaseomyces kungkrabaensis	29	62	no	100000
+GCA_030557565.1	Tetrapisispora arboricola	1344	3350	no	100000
+GCA_030558655.1	Monosporozyma yasuniensis	667	1300	no	100000
+GCA_030562185.1	Lachancea sp. yHQL494	233	603	no	100000
+GCA_030564085.1	Nakaseomyces uthaithaninus	22	60	no	100000
+GCA_030564205.1	Kluyveromyces wickerhamii	49	10	no	100000
+GCA_030565105.1	Vanderwaltozyma verrucispora	614	1068	no	100000
+GCA_030565665.1	Zygotorulaspora chibaensis	268	718	no	100000
+GCA_030568035.1	Tetrapisispora nanseiensis	1468	3362	no	100000
+GCA_030568135.1	Vanderwaltozyma yarrowii	644	1226	no	100000
+GCA_030568175.1	Zygosaccharomyces lentus	28	14	no	100000
+GCA_030569875.1	Nakaseomyces bracarensis	28	81	no	100000
+GCA_030569995.1	Lachancea cidri	232	607	no	100000
+GCA_030571275.1	Zygotorulaspora sp. yHDO592	374	897	no	100000
+GCA_030571355.1	Maudiozyma serrabonitensis	20	55	no	100000
+GCA_030571395.1	Nakaseomyces sp. yHDO568	35	88	no	100000
+GCA_030571515.1	Monosporozyma aquatica	587	1184	no	100000
+GCA_030571535.1	Monosporozyma solicola	305	645	no	100000
+GCA_030571545.1	Zygosaccharomyces gambellarensis	39	15	no	100000
+GCA_030571575.1	Kazachstania viticola	25	50	no	100000
+GCA_030571615.1	Jamesozyma hellenica	27	69	no	100000
+GCA_030571655.1	Jamesozyma lodderae	27	62	no	100000
+GCA_030571675.1	Arxiozyma telluris	1273	313	no	100000
+GCA_030571715.1	Grigorovia jiainica	486	1086	no	100000
+GCA_030572675.1	Zygosaccharomyces pseudorouxii	33	12	no	100000
+GCA_030572895.1	Jamesozyma jinghongensis	32	89	no	100000
+GCA_030572985.1	Zygotorulaspora danielsina	314	801	no	100000
+GCA_030573655.1	Cylindricascospora bacillispora	54	119	no	100000
+GCA_030573835.1	Tetrapisispora taiwanensis	1913	4150	no	100000
+GCA_030573885.1	Tetrapisispora pingtungensis	1654	3820	no	100000
+GCA_030579215.1	Maudiozyma pseudohumilis	14	45	no	100000
+GCA_030579255.1	Kazachstania psychrophila	24	53	no	100000
+GCA_030579315.1	Kluyveromyces siamensis	75	20	no	100000
+GCA_030580195.1	Torulaspora sp. yHMJ407	115	271	no	100000
+GCA_030580315.1	Yueomyces sp. yHKB289	24	51	no	100000
+GCA_030580495.1	Sungouiozyma ichnusensis	17	44	no	100000
+GCA_030580575.1	Arxiozyma bovina	1231	243	no	100000
+GCA_030581855.1	Yueomyces sinensis	14	27	no	100000
+GCA_030583465.1	Maudiozyma turicensis	33	77	no	100000
+GCA_030674245.1	Jamesozyma piceae	19	40	no	100000
+GCA_030674295.1	Arxiozyma heterogenica	1256	258	no	100000
+GCA_030705145.1	Hagleromyces aurorensis	48	125	no	100000
+GCA_030705205.1	Huiozyma sinensis	326	862	no	100000
+GCA_040114465.1	Torulaspora sp. 2017 38-3	145	330	no	100000
+GCA_040114505.1	Torulaspora sp. 2017 36-1	164	388	no	100000
+GCA_041380205.1	Vanderwaltozyma yanomamii	653	1117	no	100000
+GCA_041430495.1	Arxiozyma sp. VP_05	1244	276	no	100000
+GCA_900074715.1	Lachancea meyersii	196	538	no	100000
+GCA_900074725.1	Lachancea dasiensis	207	550	no	100000
+GCA_900074735.1	Lachancea fantastica	234	620	no	100000
+GCA_900074745.1	Lachancea mirantina	233	646	no	100000
+GCA_900074755.1	Lachancea nothofagi	239	645	no	100000
+GCA_900074765.1	Lachancea fermentati	269	708	no	100000
+GCA_900162805.1	Zygosaccharomyces bailii	35	11	no	100000
+GCA_900180425.1	Maudiozyma saulgeensis	25	61	no	100000
+GCA_900186055.1	Torulaspora microellipsoides	280	619	no	100000
+GCA_900290405.1	Saccharomyces jurei	54	115	no	100000
+GCA_900465325.1	Zygosaccharomyces sapae	74	36	no	100000
+GCA_903064755.1	Maudiozyma barnettii	29	64	no	100000
+GCA_931305995.1	Torulaspora indica	129	289	no	100000
+GCA_946403475.1	Torulaspora quercuum	224	481	no	100000
+GCA_947241705.1	Saccharomyces mikatae	49	112	no	100000
+GCA_947243775.1	Saccharomyces kudriavzevii	44	100	no	100000
+GCA_947243795.1	Saccharomyces uvarum	51	129	no	100000
+GCA_949129085.1	Zygosaccharomyces pseudobailii	71	37	no	100000
+GCA_950065675.1	Arxiozyma pintolopesii	1249	259	no	100000
