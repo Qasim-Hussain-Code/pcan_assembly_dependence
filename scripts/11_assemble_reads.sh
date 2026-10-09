@@ -4,7 +4,8 @@
 # For each strain: stream both read files from ENA once, subsample during the
 # download (all depths and seeds in the same pass), check that mates still
 # pair, trim with fastp, assemble every subsample with SPAdes and MEGAHIT, keep
-# the contigs and reports, delete the reads.
+# the contigs and reports, delete the reads. The next strain's download runs
+# while the current strain assembles; assemblies never overlap.
 set -euo pipefail
 
 usage() {
@@ -14,14 +15,19 @@ Usage: bash scripts/11_assemble_reads.sh [--max-strains N] [--force]
 Strains come from config/arm3_runs.tsv (arm3_eligible = yes), in ascending
 order_key, the order fixed in the analysis plan. Per strain, kept in
 data/arm3/<code>/: assemblies/*.fna.gz (contigs, gzip), fastp/*.json,
-manifest.tsv. Reads and assembler working directories are deleted before the
-next strain starts, and by the cleanup trap if a strain is interrupted.
+manifest.tsv. Reads and assembler working directories are deleted when the
+strain is done, and by the cleanup trap if the run is interrupted.
 
-Before each strain the time and disk it will need are projected from the
-strains already done (from priors of 3 h and 12 GB before the first) and the
-strain is refused, with the shortfall, if it would exceed HOURS_ARM3 or the
-disk ceiling in project.conf. Strains are cut from the end of the order;
-depths, seeds and controls never are.
+Strains are assembled one at a time. While one strain assembles, the reads of
+the next one download, so that the link and the processors are both in use.
+
+Before a strain's download starts, the arm's wall time is projected to the end
+of that strain from the longest download and the longest assembly seen so far
+(priors of 1.5 h each before the first strain), and its disk from the largest
+strain so far (prior 12 GB). A strain that would end past HOURS_ARM3, or take
+the data directory past the disk ceiling in project.conf, is refused with the
+shortfall. Strains are cut from the end of the order; depths, seeds and
+controls never are.
 
   --max-strains N   stop after N strains (default: as many as the budget allows)
   --force           redo strains that are already complete
@@ -61,13 +67,17 @@ RUNS="${runs_arg:-$PAD_ROOT/config/arm3_runs.tsv}"
 [[ -f "$RUNS" ]] || pad_die "$(pad_rel "$RUNS") not found; run scripts/09_build_pairs.py first"
 STRAIN_LOG="${log_arg:-$PAD_ROOT/logs/arm3_strains.tsv}"
 ARM3_DIR="${outdir_arg:-$DATA_DIR/arm3}"
-[[ -f "$STRAIN_LOG" ]] || printf 'strain\trun\tstart_utc\tend_utc\telapsed_s\tpeak_strain_disk_gb\tmin_free_drive_gb\tdownload_bytes\tmd5_ok\tassemblies_ok\tassemblies_failed\tmax_assembler_rss_mb\tstatus\n' > "$STRAIN_LOG"
-PRIOR_HOURS=3
+LOG_HEADER=$'strain\trun\tstart_utc\tend_utc\telapsed_s\tdownload_s\tassembly_s\tpeak_strain_disk_gb\tmin_free_drive_gb\tdownload_bytes\tmd5_ok\tassemblies_ok\tassemblies_failed\tmax_assembler_rss_mb\tstatus'
+[[ -f "$STRAIN_LOG" ]] || printf '%s\n' "$LOG_HEADER" > "$STRAIN_LOG"
+[[ "$(head -1 "$STRAIN_LOG")" == "$LOG_HEADER" ]] || pad_die "$(pad_rel "$STRAIN_LOG") has other columns than this script writes"
+PRIOR_DOWNLOAD_S=5400
+PRIOR_ASSEMBLY_S=5400
 PRIOR_DISK_GB=12
 SEED_MAIN=11
 SEEDS_10X=(22 33)
 DEPTHS=(5 10 20 40 full)
 FULL_CAP=80
+mkdir -p "$ARM3_DIR"
 
 # Column lookup by header name, so the order of columns in the TSV can change.
 col() { awk -F'\t' -v k="$1" 'NR==1 {for (i=1;i<=NF;i++) if ($i==k) c=i; next} {print $c}' "$RUNS"; }
@@ -77,21 +87,6 @@ pad_log "arm 3: ${#codes[@]} eligible strains in the registered order"
 field() {   # field <code> <column>
     awk -F'\t' -v c="$1" -v k="$2" 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} $h["code"]==c {print $h[k]}' "$RUNS"
 }
-
-current_dir=""
-sampler_pid=""
-cleanup() {
-    local status=$?
-    [[ -n "$sampler_pid" ]] && kill "$sampler_pid" 2>/dev/null || true
-    if [[ -n "$current_dir" ]]; then
-        rm -rf "$current_dir/reads" "$current_dir/work"
-        if [[ $status -ne 0 ]]; then
-            pad_log "interrupted; removed the reads and working directories of $(pad_rel "$current_dir")"
-        fi
-    fi
-}
-trap cleanup EXIT
-trap 'exit 130' INT TERM
 
 # du exits non-zero when a file vanishes while it walks the tree, which other
 # stages writing to the data directory make likely; the total is still right
@@ -127,131 +122,242 @@ names_match() {   # prints "<pairs> <mismatches>" for two FASTQ files
         awk -F'\t' '$1 != $2 {bad++} END {printf "%d %d\n", NR, bad + 0}'
 }
 
-done_strains=0
-for code in "${codes[@]}"; do
-    if [[ -n "$max_strains" && "$done_strains" -ge "$max_strains" ]]; then
-        pad_log "stopping after $max_strains strains as asked"
-        break
-    fi
-    sdir="$ARM3_DIR/$code"
-    if [[ -f "$sdir/done" && "$force" != "1" ]]; then
-        pad_log "$code: already assembled, skipping"
-        done_strains=$((done_strains + 1))
-        continue
-    fi
-
-    # Budget: time from the strains logged so far, disk from their peaks.
-    read -r spent per_strain peak_disk < <(awk -F'\t' -v ph="$PRIOR_HOURS" -v pd="$PRIOR_DISK_GB" '
-        NR > 1 && $13 == "complete" {s += $5; if ($5 > m) m = $5; if ($6 > d) d = $6; n++}
-        END {printf "%.0f %.0f %.2f\n", s, (n ? m : ph * 3600), (n ? d : pd)}' "$STRAIN_LOG")
-    budget=$(awk -v h="$HOURS_ARM3" 'BEGIN {printf "%.0f", h * 3600}')
-    if (( spent + per_strain > budget )); then
-        short=$(awk -v s="$spent" -v p="$per_strain" -v b="$budget" 'BEGIN {printf "%.1f", (s + p - b) / 3600}')
-        pad_log "refusing to start $code: it would take arm 3 $short h past its ${HOURS_ARM3} h budget; strains from here on are cut"
-        break
-    fi
-    fp=$(footprint_gb)
-    if awk -v f="$fp" -v p="$peak_disk" -v c="$DISK_CEILING_GB" 'BEGIN {exit !(f + p > c)}'; then
-        short=$(awk -v f="$fp" -v p="$peak_disk" -v c="$DISK_CEILING_GB" 'BEGIN {printf "%.1f", f + p - c}')
-        pad_log "refusing to start $code: projected footprint is $short GB over the ${DISK_CEILING_GB} GB ceiling"
-        break
-    fi
-
-    run=$(field "$code" run_accession)
-    G=$(field "$code" long_read_length)
-    B=$(field "$code" base_count)
-    url1="https://$(field "$code" fastq_1)"
-    url2="https://$(field "$code" fastq_2)"
-    md5_1=$(field "$code" md5_1)
-    md5_2=$(field "$code" md5_2)
-    pad_log "$code: run $run, $B bases, genome $G bp ($(awk -v b="$B" -v g="$G" 'BEGIN {printf "%.0f", b / g}')x available)"
-
-    rm -rf "$sdir"
-    mkdir -p "$sdir/reads" "$sdir/work" "$sdir/assemblies" "$sdir/fastp"
-    current_dir="$sdir"
-    start_utc=$(pad_utc)
-    t0=$(date +%s)
-    # Disk sampler for this strain's peak, every 10 s.
-    ( peak=0; while true; do
-          b=$({ du -sb "$sdir" 2>/dev/null || true; } | awk '{print $1}'); [[ -n "$b" && "$b" -gt "$peak" ]] && peak=$b
-          echo "$peak" > "$sdir/peak_bytes"; sleep 10
-      done ) &
-    sampler_pid=$!
-
-    # Subsample specifications: target, seed, fraction of the run.
-    specs=()
+specs_of() {   # specs_of <G> <B>: one "target:seed:fraction" line per subsample
+    local d f s
     for d in "${DEPTHS[@]}"; do
         if [[ "$d" == "full" ]]; then
-            f=$(awk -v g="$G" -v b="$B" -v c="$FULL_CAP" 'BEGIN {x = c * g / b; if (x > 1) x = 1; printf "%.6f", x}')
+            f=$(awk -v g="$1" -v b="$2" -v c="$FULL_CAP" 'BEGIN {x = c * g / b; if (x > 1) x = 1; printf "%.6f", x}')
         else
-            f=$(awk -v g="$G" -v b="$B" -v d="$d" 'BEGIN {x = d * g / b; if (x > 1) x = 1; printf "%.6f", x}')
+            f=$(awk -v g="$1" -v b="$2" -v d="$d" 'BEGIN {x = d * g / b; if (x > 1) x = 1; printf "%.6f", x}')
         fi
-        specs+=("$d:$SEED_MAIN:$f")
+        echo "$d:$SEED_MAIN:$f"
         if [[ "$d" == "10" ]]; then
-            for s in "${SEEDS_10X[@]}"; do specs+=("$d:$s:$f"); done
+            for s in "${SEEDS_10X[@]}"; do echo "$d:$s:$f"; done
         fi
     done
+}
 
-    # One download per mate, fanned out to every subsampler through named
-    # pipes. curl does not retry inside a stream (a retried transfer would
-    # repeat data), so a failed download is repeated whole, up to three times.
-    # The two mates stream at the same time: on the link these results came
-    # from, two streams together moved about 30 per cent more than one.
-    stream_mate() {
-        local m="$1" url="$2" want="$3" attempt spec t s f fifo out ok got
-        local -a pids fifos
-        for attempt in 1 2 3; do
-            rm -f "$sdir"/reads/fifo_*_"$m" "$sdir"/reads/*_R"$m".fq.gz
-            pids=()
-            fifos=()
-            for spec in "${specs[@]}"; do
-                IFS=: read -r t s f <<< "$spec"
-                fifo="$sdir/reads/fifo_${t}_${s}_$m"
-                mkfifo "$fifo"
-                fifos+=("$fifo")
-                out="$sdir/reads/d${t}_s${s}_R$m.fq.gz"
-                if awk -v f="$f" 'BEGIN {exit !(f >= 1)}'; then
-                    # seqtk reads a value of 1 or more as a read count, not a
-                    # fraction, so the whole run is copied as it comes
-                    cat "$fifo" > "$out" &
-                else
-                    ( seqtk sample -s "$s" "$fifo" "$f" | pigz -p 2 > "$out" ) &
-                fi
-                pids+=($!)
-            done
-            mkfifo "$sdir/reads/fifo_md5_$m"
-            ( md5sum < "$sdir/reads/fifo_md5_$m" | awk '{print $1}' > "$sdir/reads/md5_$m" ) &
-            pids+=($!)
-            mkfifo "$sdir/reads/fifo_count_$m"
-            ( wc -c < "$sdir/reads/fifo_count_$m" > "$sdir/reads/bytes_$m" ) &
-            pids+=($!)
-            ok=1
-            curl -fsSL "$url" | tee "${fifos[@]}" "$sdir/reads/fifo_md5_$m" > "$sdir/reads/fifo_count_$m" || ok=0
-            for p in "${pids[@]}"; do wait "$p" || ok=0; done
-            got=$(cat "$sdir/reads/md5_$m" 2>/dev/null || echo none)
-            if [[ "$ok" == "1" && "$got" == "$want" ]]; then
-                echo "ok $(cat "$sdir/reads/bytes_$m")" > "$sdir/reads/result_$m"
-                return 0
+# One download per mate, fanned out to every subsampler through named pipes.
+# curl does not retry inside a stream (a retried transfer would repeat data),
+# so a failed download is repeated whole, up to three times. The two mates
+# stream at the same time: on the link these results came from, two streams
+# together moved about 30 per cent more than one. Called by fetch, whose
+# code, sdir and specs it uses.
+stream_mate() {
+    local m="$1" url="$2" want="$3" attempt spec t s f fifo out ok got
+    local -a pids fifos
+    for attempt in 1 2 3; do
+        rm -f "$sdir"/reads/fifo_*_"$m" "$sdir"/reads/*_R"$m".fq.gz
+        pids=()
+        fifos=()
+        for spec in "${specs[@]}"; do
+            IFS=: read -r t s f <<< "$spec"
+            fifo="$sdir/reads/fifo_${t}_${s}_$m"
+            mkfifo "$fifo"
+            fifos+=("$fifo")
+            out="$sdir/reads/d${t}_s${s}_R$m.fq.gz"
+            if awk -v f="$f" 'BEGIN {exit !(f >= 1)}'; then
+                # seqtk reads a value of 1 or more as a read count, not a
+                # fraction, so the whole run is copied as it comes
+                cat "$fifo" > "$out" &
+            else
+                ( seqtk sample -s "$s" "$fifo" "$f" | pigz -p 2 > "$out" ) &
             fi
-            pad_log "$code: mate $m attempt $attempt failed (md5 $got, expected $want)"
+            pids+=($!)
         done
-        echo "failed 0" > "$sdir/reads/result_$m"
-    }
-    stream_mate 1 "$url1" "$md5_1" &
+        mkfifo "$sdir/reads/fifo_md5_$m"
+        ( md5sum < "$sdir/reads/fifo_md5_$m" | awk '{print $1}' > "$sdir/reads/md5_$m" ) &
+        pids+=($!)
+        mkfifo "$sdir/reads/fifo_count_$m"
+        ( wc -c < "$sdir/reads/fifo_count_$m" > "$sdir/reads/bytes_$m" ) &
+        pids+=($!)
+        ok=1
+        curl -fsSL "$url" | tee "${fifos[@]}" "$sdir/reads/fifo_md5_$m" > "$sdir/reads/fifo_count_$m" || ok=0
+        for p in "${pids[@]}"; do wait "$p" || ok=0; done
+        got=$(cat "$sdir/reads/md5_$m" 2>/dev/null || echo none)
+        if [[ "$ok" == "1" && "$got" == "$want" ]]; then
+            echo "ok $(cat "$sdir/reads/bytes_$m")" > "$sdir/reads/result_$m"
+            return 0
+        fi
+        pad_log "$code: mate $m attempt $attempt failed (md5 $got, expected $want)"
+    done
+    echo "failed 0" > "$sdir/reads/result_$m"
+}
+
+# fetch <code>: both mates of one strain, subsampled on the way into its reads
+# directory. Ends by writing reads/fetched: "<md5 ok: yes or no> <bytes> <seconds>".
+fetch() {
+    local code="$1" sdir="$ARM3_DIR/$1" t0 m res nbytes md5_ok="yes" dl_bytes=0 pid1 pid2
+    local -a specs
+    mapfile -t specs < <(specs_of "$(field "$code" long_read_length)" "$(field "$code" base_count)")
+    t0=$(date +%s)
+    stream_mate 1 "https://$(field "$code" fastq_1)" "$(field "$code" md5_1)" &
     pid1=$!
-    stream_mate 2 "$url2" "$md5_2" &
+    stream_mate 2 "https://$(field "$code" fastq_2)" "$(field "$code" md5_2)" &
     pid2=$!
     wait "$pid1" || true
     wait "$pid2" || true
-    md5_ok="yes"
-    dl_bytes=0
     for m in 1 2; do
         read -r res nbytes < "$sdir/reads/result_$m" || { res="failed"; nbytes=0; }
         [[ "$res" == "ok" ]] || md5_ok="no"
         dl_bytes=$((dl_bytes + nbytes))
     done
     rm -f "$sdir"/reads/fifo_* "$sdir"/reads/result_*
+    printf '%s %s %s\n' "$md5_ok" "$dl_bytes" "$(( $(date +%s) - t0 ))" > "$sdir/reads/fetched"
+}
 
+fetch_pid="" fetch_code="" assembling_dir="" sampler_pid=""
+
+# start_strain <code>: fresh directories, then the download in the background.
+start_strain() {
+    local sdir="$ARM3_DIR/$1"
+    rm -rf "$sdir"
+    mkdir -p "$sdir/reads" "$sdir/work" "$sdir/assemblies" "$sdir/fastp"
+    pad_utc > "$sdir/work/start_utc"
+    pad_log "$1: download started, run $(field "$1" run_accession), $(field "$1" base_count) bases, genome $(field "$1" long_read_length) bp"
+    fetch "$1" &
+    fetch_pid=$!
+    fetch_code="$1"
+}
+
+# A process and everything it started. Each process is stopped before its
+# children are listed, so none can start another in between.
+kill_tree() {
+    local c
+    kill -STOP "$1" 2>/dev/null || return 0
+    for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done
+    kill -TERM "$1" 2>/dev/null || true
+    kill -CONT "$1" 2>/dev/null || true
+}
+
+cleanup() {
+    local status=$? d
+    [[ -n "$sampler_pid" ]] && kill "$sampler_pid" 2>/dev/null || true
+    [[ -n "$fetch_pid" ]] && kill_tree "$fetch_pid"
+    for d in "$assembling_dir" "${fetch_code:+$ARM3_DIR/$fetch_code}"; do
+        [[ -n "$d" ]] || continue
+        rm -rf "$d/reads" "$d/work"
+        if [[ $status -ne 0 ]]; then
+            pad_log "interrupted; removed the reads and working directories of $(pad_rel "$d")"
+        fi
+    done
+}
+trap cleanup EXIT
+trap 'exit 130' INT TERM
+
+# The wall time arm 3 has used: the union of the logged strains' intervals and
+# of this run so far, so that overlapping strains are not counted twice and
+# earlier runs of this script are.
+wall_spent() {
+    {
+        awk -F'\t' 'NR == 1 {for (i = 1; i <= NF; i++) h[$i] = i; next} {print $h["start_utc"], $h["end_utc"]}' "$STRAIN_LOG" |
+            while read -r a b; do echo "$(date -d "$a" +%s) $(date -d "$b" +%s)"; done
+        echo "$run_start $(date +%s)"
+    } | sort -n -k1,1 | awk 'NR == 1 {s = $1; e = $2; next}
+        $1 > e {t += e - s; s = $1; e = $2; next}
+        $2 > e {e = $2}
+        END {printf "%d\n", t + e - s}'
+}
+
+# The longest download and assembly, and the largest strain on disk, among the
+# strains complete so far, or the priors before the first.
+estimates() {
+    awk -F'\t' -v pf="$PRIOR_DOWNLOAD_S" -v pa="$PRIOR_ASSEMBLY_S" -v pd="$PRIOR_DISK_GB" '
+        NR == 1 {for (i = 1; i <= NF; i++) h[$i] = i; next}
+        $h["status"] == "complete" {
+            n++
+            if ($h["download_s"] + 0 > f) f = $h["download_s"] + 0
+            if ($h["assembly_s"] + 0 > a) a = $h["assembly_s"] + 0
+            if ($h["peak_strain_disk_gb"] + 0 > d) d = $h["peak_strain_disk_gb"] + 0
+        }
+        END {printf "%d %d %.2f\n", (n ? f : pf), (n ? a : pa), (n ? d : pd)}' "$STRAIN_LOG"
+}
+
+# fits <code> <overlapped: 0 or 1>: whether the strain's download may start
+# now. Overlapped means another strain is about to assemble while it
+# downloads: that strain finishes after max(download, assembly) and this one
+# an assembly later, and both need their disk at once.
+fits() {
+    local code="$1" overlapped="$2" f a pk spent need fp short
+    read -r f a pk < <(estimates)
+    spent=$(wall_spent)
+    if [[ "$overlapped" == "1" ]]; then
+        need=$(( (f > a ? f : a) + a ))
+    else
+        need=$(( f + a ))
+    fi
+    if (( spent + need > budget )); then
+        short=$(awk -v s="$spent" -v n="$need" -v b="$budget" 'BEGIN {printf "%.1f", (s + n - b) / 3600}')
+        pad_log "refusing to start $code: it would take arm 3 $short h past its ${HOURS_ARM3} h budget; strains from here on are cut"
+        return 1
+    fi
+    fp=$(footprint_gb)
+    if awk -v f="$fp" -v p="$pk" -v n="$overlapped" -v c="$DISK_CEILING_GB" 'BEGIN {exit !(f + (n + 1) * p > c)}'; then
+        short=$(awk -v f="$fp" -v p="$pk" -v n="$overlapped" -v c="$DISK_CEILING_GB" 'BEGIN {printf "%.1f", f + (n + 1) * p - c}')
+        pad_log "refusing to start $code: projected footprint is $short GB over the ${DISK_CEILING_GB} GB ceiling; strains from here on are cut"
+        return 1
+    fi
+}
+
+done_strains=0
+todo=()
+for code in "${codes[@]}"; do
+    if [[ -f "$ARM3_DIR/$code/done" && "$force" != "1" ]]; then
+        pad_log "$code: already assembled, skipping"
+        done_strains=$((done_strains + 1))
+    else
+        todo+=("$code")
+    fi
+done
+if [[ -n "$max_strains" ]]; then
+    allowed=$(( max_strains > done_strains ? max_strains - done_strains : 0 ))
+    (( allowed >= ${#todo[@]} )) || pad_log "stopping after $max_strains strains as asked"
+    todo=("${todo[@]:0:allowed}")
+fi
+budget=$(awk -v h="$HOURS_ARM3" 'BEGIN {printf "%.0f", h * 3600}')
+run_start=$(date +%s)
+
+# Disk sampler: every 10 s, each strain that has a working directory gets the
+# size of its whole directory, and its peak is kept in work/.peak_bytes.
+( while true; do
+      for s in "$ARM3_DIR"/*/; do
+          [[ -d "$s/work" ]] || continue
+          b=$({ du -sb "$s" 2>/dev/null || true; } | awk '{print $1}')
+          p=$(cat "$s/work/.peak_bytes" 2>/dev/null || echo 0)
+          if [[ -n "$b" && "$b" -gt "${p:-0}" ]]; then
+              { echo "$b" > "$s/work/.peak_bytes"; } 2>/dev/null || true
+          fi
+      done
+      sleep 10
+  done ) &
+sampler_pid=$!
+
+next=0
+if (( ${#todo[@]} > 0 )) && fits "${todo[0]}" 0; then
+    start_strain "${todo[0]}"
+    next=1
+fi
+done_this_run=0
+while [[ -n "$fetch_code" ]]; do
+    code="$fetch_code"
+    sdir="$ARM3_DIR/$code"
+    assembling_dir="$sdir"
+    wait "$fetch_pid" || true
+    fetch_pid="" fetch_code=""
+    read -r md5_ok dl_bytes dl_s < "$sdir/reads/fetched" || { md5_ok="no"; dl_bytes=0; dl_s=0; }
+    start_utc=$(cat "$sdir/work/start_utc")
+    pad_log "$code: download finished in ${dl_s} s, md5 ${md5_ok}"
+    if (( next < ${#todo[@]} )) && fits "${todo[next]}" 1; then
+        start_strain "${todo[next]}"
+        next=$((next + 1))
+    else
+        next=${#todo[@]}
+    fi
+
+    run=$(field "$code" run_accession)
+    G=$(field "$code" long_read_length)
+    mapfile -t specs < <(specs_of "$G" "$(field "$code" base_count)")
+    t_asm=$(date +%s)
     printf 'assembler\ttarget_depth\tseed\tfraction\tread_pairs\tbases_raw\trealised_depth_raw\tbases_trimmed\trealised_depth_trimmed\tnames_checked\tname_mismatches\tstatus\terror\telapsed_s\tpeak_rss_mb\tcontig_n50\tcontig_l50\tn_contigs\ttotal_length\n' > "$sdir/manifest.tsv"
     n_ok=0 n_fail=0 max_rss=0
     for spec in "${specs[@]}"; do
@@ -311,24 +417,28 @@ for code in "${codes[@]}"; do
         rm -f "$t1" "$t2" "$r1" "$r2"
     done
 
-    kill "$sampler_pid" 2>/dev/null || true
-    wait "$sampler_pid" 2>/dev/null || true
-    sampler_pid=""
-    peak_gb=$(awk '{printf "%.2f", $1 / 1e9}' "$sdir/peak_bytes" 2>/dev/null || echo "")
-    rm -rf "$sdir/reads" "$sdir/work" "$sdir/peak_bytes"
-    current_dir=""
+    asm_s=$(( $(date +%s) - t_asm ))
+    peak_gb=$(awk '{printf "%.2f", $1 / 1e9}' "$sdir/work/.peak_bytes" 2>/dev/null || echo "")
+    rm -rf "$sdir/reads" "$sdir/work"
+    assembling_dir=""
     status="complete"
     [[ "$md5_ok" == "yes" ]] || status="download failed"
-    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$code" "$run" "$start_utc" "$(pad_utc)" \
-        "$(( $(date +%s) - t0 ))" "$peak_gb" "$(drive_free_gb)" "$dl_bytes" "$md5_ok" "$n_ok" "$n_fail" "$max_rss" "$status" >> "$STRAIN_LOG"
-    date -u +%Y-%m-%dT%H:%M:%SZ > "$sdir/done"
+    end_utc=$(pad_utc)
+    printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$code" "$run" "$start_utc" "$end_utc" \
+        "$(( $(date -d "$end_utc" +%s) - $(date -d "$start_utc" +%s) ))" "$dl_s" "$asm_s" "$peak_gb" "$(drive_free_gb)" \
+        "$dl_bytes" "$md5_ok" "$n_ok" "$n_fail" "$max_rss" "$status" >> "$STRAIN_LOG"
+    pad_utc > "$sdir/done"
     done_strains=$((done_strains + 1))
-    pad_log "$code: $n_ok assemblies, $n_fail failed, $(( $(date +%s) - t0 )) s, peak ${peak_gb} GB"
-    if [[ "$done_strains" == "1" ]]; then
-        el=$(( $(date +%s) - t0 ))
-        fit=$(awk -v b="$budget" -v e="$el" 'BEGIN {printf "%d", b / e}')
-        pad_log "first strain took ${el} s; at that pace the ${HOURS_ARM3} h budget fits about $fit of ${#codes[@]} strains"
+    done_this_run=$((done_this_run + 1))
+    pad_log "$code: $n_ok assemblies, $n_fail failed; download ${dl_s} s, assembly ${asm_s} s, peak ${peak_gb} GB"
+    if [[ "$done_this_run" == "1" ]]; then
+        fit=$(awk -v b="$budget" -v f="$dl_s" -v a="$asm_s" -v n="${#codes[@]}" 'BEGIN {
+            m = (f > a ? f : a); k = (f + a > b) ? 0 : 1 + int((b - f - a) / (m > 0 ? m : 1)); if (k > n) k = n; printf "%d", k}')
+        pad_log "at the pace of the first strain, with downloads overlapping assembly, the ${HOURS_ARM3} h budget fits about $fit of ${#codes[@]} strains"
     fi
 done
+kill "$sampler_pid" 2>/dev/null || true
+wait "$sampler_pid" 2>/dev/null || true
+sampler_pid=""
 pad_log "arm 3 assembly finished: $done_strains strains"
 if [[ -z "$runs_arg" ]] && (( done_strains == ${#codes[@]} )); then pad_mark_done assemble_reads; fi
