@@ -1,0 +1,1104 @@
+strain	zygosity	element_id	status	left_flank	right_flank	element_reason	short_read_synteny_checkable
+AAB	homozygous	cen|CASBKP010000007.1|224398	intact_called	placed	placed	both flanks placed, element between them	no
+AAB	homozygous	cen|CASBKP010000010.1|430736	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000011.1|456690	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000012.1|139975	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000008.1|506556	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000014.1|633481	intact_called	placed	placed	both flanks placed, element between them	no
+AAB	homozygous	cen|CASBKP010000005.1|363696	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000016.1|528144	intact_called	placed	placed	both flanks placed, element between them	no
+AAB	homozygous	cen|CASBKP010000006.1|162589	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000009.1|100103	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000003.1|121022	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000001.1|196347	intact_called	placed	placed	both flanks placed, element between them	no
+AAB	homozygous	cen|CASBKP010000004.1|441073	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000002.1|225106	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000015.1|319949	intact_called	placed	placed	both flanks placed, element between them	yes
+AAB	homozygous	cen|CASBKP010000013.1|257336	intact_called	placed	placed	both flanks placed, element between them	no
+AAC	heterozygous	cen|CASBKW010000010.1|448099	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000012.1|151326	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000008.1|507761	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000005.1|351430	intact_called	placed	placed	both flanks placed, element between them	no
+AAC	heterozygous	cen|CASBKW010000011.1|446651	split	two or more full-length matches	placed	a flank matches two or more places	
+AAC	heterozygous	cen|CASBKW010000009.1|99703	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000014.1|615703	intact_called	placed	placed	both flanks placed, element between them	no
+AAC	heterozygous	cen|CASBKW010000016.1|557518	intact_called	placed	placed	both flanks placed, element between them	no
+AAC	heterozygous	cen|CASBKW010000002.1|220678	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000006.1|147505	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000007.1|128993	intact_called	placed	placed	both flanks placed, element between them	no
+AAC	heterozygous	cen|CASBKW010000003.1|95518	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000015.1|315692	split	placed	two or more full-length matches	a flank matches two or more places	
+AAC	heterozygous	cen|CASBKW010000001.1|143441	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000004.1|451560	intact_called	placed	placed	both flanks placed, element between them	yes
+AAC	heterozygous	cen|CASBKW010000013.1|261971	intact_called	placed	placed	both flanks placed, element between them	no
+AAR	homozygous	cen|CASBKI010000014.1|623532	intact_called	placed	placed	both flanks placed, element between them	no
+AAR	homozygous	cen|CASBKI010000011.1|452062	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000012.1|145095	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000005.1|334015	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000002.1|226362	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000004.1|469757	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000010.1|440956	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000016.1|531374	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000006.1|150617	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000007.1|138117	intact_called	placed	placed	both flanks placed, element between them	no
+AAR	homozygous	cen|CASBKI010000008.1|512929	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000015.1|296776	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000003.1|120649	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000001.1|135751	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000009.1|94800	intact_called	placed	placed	both flanks placed, element between them	yes
+AAR	homozygous	cen|CASBKI010000013.1|251046	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000007.1|129677	intact_called	placed	placed	both flanks placed, element between them	no
+ABA	homozygous	cen|CASBKX010000010.1|448465	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000011.1|439734	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000012.1|140328	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000008.1|503796	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000014.1|636038	intact_called	placed	placed	both flanks placed, element between them	no
+ABA	homozygous	cen|CASBKX010000016.1|544101	intact_called	placed	placed	both flanks placed, element between them	no
+ABA	homozygous	cen|CASBKX010000002.1|226128	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000006.1|152083	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000001.1|157196	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000003.1|106435	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000005.1|375293	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000015.1|320636	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000009.1|94781	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000004.1|460815	intact_called	placed	placed	both flanks placed, element between them	yes
+ABA	homozygous	cen|CASBKX010000013.1|262540	intact_called	placed	placed	both flanks placed, element between them	no
+ABH	homozygous	cen|CASBKK010000006.1|160188	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000010.1|441605	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000011.1|457541	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000012.1|144740	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000014.1|315670	intact_called	placed	placed	both flanks placed, element between them	no
+ABH	homozygous	cen|CASBKK010000007.1|507896	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000016.1|535817	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000002.1|232092	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000009.1|151787	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000003.1|108435	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000004.1|455680	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000005.1|365418	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000015.1|327572	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000001.1|142403	intact_called	placed	placed	both flanks placed, element between them	no
+ABH	homozygous	cen|CASBKK010000008.1|94588	intact_called	placed	placed	both flanks placed, element between them	yes
+ABH	homozygous	cen|CASBKK010000013.1|250056	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000007.1|132766	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000005.1|355285	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000010.1|441576	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000011.1|446730	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000012.1|150958	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000008.1|494191	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000016.1|543933	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000009.1|105712	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000002.1|226415	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000001.1|141646	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000003.1|114566	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000006.1|146272	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000014.1|622126	intact_called	placed	placed	both flanks placed, element between them	no
+ACA	homozygous	cen|CASBKZ010000004.1|462511	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000015.1|326899	intact_called	placed	placed	both flanks placed, element between them	yes
+ACA	homozygous	cen|CASBKZ010000013.1|250779	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000010.1|441616	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000011.1|452332	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000012.1|141830	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000005.1|352167	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000014.1|651121	intact_called	placed	placed	both flanks placed, element between them	no
+ACH	homozygous	cen|CASBKV010000016.1|549860	intact_called	placed	placed	both flanks placed, element between them	no
+ACH	homozygous	cen|CASBKV010000009.1|95638	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000006.1|158085	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000008.1|493870	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000007.1|129866	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000003.1|121187	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000002.1|242217	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000015.1|331106	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000004.1|459692	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000001.1|152711	intact_called	placed	placed	both flanks placed, element between them	yes
+ACH	homozygous	cen|CASBKV010000013.1|251564	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000012.1|144686	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000002.1|227087	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000005.1|345696	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000010.1|425773	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000004.1|449541	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000014.1|605764	intact_called	placed	placed	both flanks placed, element between them	no
+ADE	homozygous	cen|CASBKC010000008.1|489390	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000016.1|538974	intact_called	placed	placed	both flanks placed, element between them	no
+ADE	homozygous	cen|CASBKC010000011.1|441453	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000007.1|161328	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000006.1|146154	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000003.1|106097	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000015.1|309711	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000009.1|95615	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000001.1|144782	intact_called	placed	placed	both flanks placed, element between them	yes
+ADE	homozygous	cen|CASBKC010000013.1|251246	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000011.1|446067	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000012.1|263404	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000010.1|457481	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000014.1|611863	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000005.1|396431	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000016.1|206295	intact_called	placed	placed	both flanks placed, element between them	no
+ADI	homozygous	cen|CASBLI010000006.1|190171	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000009.1|464871	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000007.1|154635	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000003.1|114992	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000002.1|220758	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000008.1|521434	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000015.1|351300	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000004.1|506481	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000001.1|166814	intact_called	placed	placed	both flanks placed, element between them	yes
+ADI	homozygous	cen|CASBLI010000013.1|302756	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000008.1|498661	n_run	placed	placed	both flanks placed, element between them	
+ADM	heterozygous	cen|CASBLG010000010.1|418021	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000007.1|124905	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ADM	heterozygous	cen|CASBLG010000012.1|140520	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000011.1|474469	n_run	placed	placed	both flanks placed, element between them	
+ADM	heterozygous	cen|CASBLG010000005.1|363293	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000002.1|221425	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000006.1|157760	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000001.1|136915	intact_called	placed	placed	both flanks placed, element between them	no
+ADM	heterozygous	cen|CASBLG010000016.1|529693	intact_called	placed	placed	both flanks placed, element between them	no
+ADM	heterozygous	cen|CASBLG010000014.1|619880	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000003.1|100838	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000015.1|328108	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ADM	heterozygous	cen|CASBLG010000009.1|101677	split	placed	two or more full-length matches	a flank matches two or more places	
+ADM	heterozygous	cen|CASBLG010000004.1|459992	intact_called	placed	placed	both flanks placed, element between them	yes
+ADM	heterozygous	cen|CASBLG010000013.1|250652	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000007.1|137833	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000010.1|412237	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000006.1|145231	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000012.1|140048	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000005.1|352645	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000002.1|236543	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000008.1|504060	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000011.1|432669	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000001.1|143582	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000016.1|535824	intact_called	placed	placed	both flanks placed, element between them	no
+ADQ	homozygous	cen|CASBKD010000014.1|615994	intact_called	placed	placed	both flanks placed, element between them	no
+ADQ	homozygous	cen|CASBKD010000003.1|105894	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000015.1|317365	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000009.1|94573	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000004.1|447927	intact_called	placed	placed	both flanks placed, element between them	yes
+ADQ	homozygous	cen|CASBKD010000013.1|250262	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000005.1|333575	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000010.1|430666	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000011.1|440019	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000012.1|136041	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000014.1|608912	intact_called	placed	placed	both flanks placed, element between them	no
+ADS	homozygous	cen|CASBKA010000016.1|549509	intact_called	placed	placed	both flanks placed, element between them	no
+ADS	homozygous	cen|CASBKA010000008.1|495335	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000009.1|94477	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000003.1|113844	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000002.1|219559	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000006.1|151395	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000007.1|119919	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000015.1|311207	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000004.1|449191	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000001.1|135239	intact_called	placed	placed	both flanks placed, element between them	yes
+ADS	homozygous	cen|CASBKA010000013.1|256626	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000010.1|435410	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000011.1|439944	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000012.1|144524	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000008.1|494836	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000014.1|617527	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000005.1|366128	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000016.1|550998	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000003.1|107851	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000007.1|129608	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000006.1|168217	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000002.1|254686	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000001.1|135261	intact_called	placed	placed	both flanks placed, element between them	no
+AEG	homozygous	cen|CASBKU010000015.1|311409	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000004.1|460768	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000009.1|100098	intact_called	placed	placed	both flanks placed, element between them	yes
+AEG	homozygous	cen|CASBKU010000013.1|250853	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000012.1|144397	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000010.1|434861	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000011.1|463757	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000008.1|495798	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000014.1|638409	intact_called	placed	placed	both flanks placed, element between them	no
+AEH	homozygous	cen|CASBKS010000005.1|351404	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000015.1|332738	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000016.1|547318	intact_called	placed	placed	both flanks placed, element between them	no
+AEH	homozygous	cen|CASBKS010000002.1|229792	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000007.1|181777	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000006.1|146171	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000003.1|114246	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000004.1|470198	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000001.1|137824	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000009.1|94892	intact_called	placed	placed	both flanks placed, element between them	yes
+AEH	homozygous	cen|CASBKS010000013.1|257245	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000007.1|133077	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+AEL	heterozygous	cen|CASBLE010000011.1|456462	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000012.1|498983	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000013.1|162523	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000015.1|628606	intact_called	placed	placed	both flanks placed, element between them	no
+AEL	heterozygous	cen|CASBLE010000005.1|354534	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000006.1|157693	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000003.1|101905	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000008.1|519625	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+AEL	heterozygous	cen|CASBLE010000017.1|546660	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000016.1|317810	split	placed	two or more full-length matches	a flank matches two or more places	
+AEL	heterozygous	cen|CASBLE010000002.1|231616	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000004.1|454885	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000010.1|104009	intact_called	placed	placed	both flanks placed, element between them	no
+AEL	heterozygous	cen|CASBLE010000001.1|144414	intact_called	placed	placed	both flanks placed, element between them	yes
+AEL	heterozygous	cen|CASBLE010000014.1|256957	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000007.1|114938	intact_called	placed	placed	both flanks placed, element between them	no
+AFH	homozygous	cen|CASBKR010000010.1|444076	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000011.1|451457	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000012.1|140368	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000005.1|362927	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000002.1|267028	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000006.1|158271	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000009.1|521254	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000014.1|621924	intact_called	placed	placed	both flanks placed, element between them	no
+AFH	homozygous	cen|CASBKR010000001.1|147245	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000016.1|548916	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000015.1|315563	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000003.1|108541	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000008.1|95742	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000004.1|461129	intact_called	placed	placed	both flanks placed, element between them	yes
+AFH	homozygous	cen|CASBKR010000013.1|256872	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000010.1|442566	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000008.1|495019	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000011.1|444434	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000014.1|606494	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000016.1|191591	intact_called	placed	placed	both flanks placed, element between them	no
+AFI	homozygous	cen|CASBKT010000006.1|142700	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000012.1|146749	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000009.1|510608	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000003.1|112604	intact_called	placed	placed	both flanks placed, element between them	no
+AFI	homozygous	cen|CASBKT010000002.1|220205	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000005.1|349361	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000007.1|130866	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000015.1|300170	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000004.1|450602	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000001.1|137927	intact_called	placed	placed	both flanks placed, element between them	yes
+AFI	homozygous	cen|CASBKT010000013.1|250881	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000005.1|343192	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000014.1|606365	intact_called	placed	placed	both flanks placed, element between them	no
+AGK	homozygous	cen|CASBLA010000010.1|431561	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000011.1|446854	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000012.1|152142	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000008.1|500113	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000016.1|557766	intact_called	placed	placed	both flanks placed, element between them	no
+AGK	homozygous	cen|CASBLA010000009.1|101867	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000002.1|232062	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000006.1|151406	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000007.1|131058	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000001.1|144397	intact_called	placed	placed	both flanks placed, element between them	no
+AGK	homozygous	cen|CASBLA010000003.1|119760	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000004.1|454153	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000015.1|323978	intact_called	placed	placed	both flanks placed, element between them	yes
+AGK	homozygous	cen|CASBLA010000013.1|270115	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000005.1|354683	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000010.1|446824	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000011.1|460904	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000012.1|142137	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000008.1|494360	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000014.1|610988	intact_called	placed	placed	both flanks placed, element between them	no
+AHG	homozygous	cen|CASBKF010000009.1|100771	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000003.1|108461	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000016.1|541979	intact_called	placed	placed	both flanks placed, element between them	no
+AHG	homozygous	cen|CASBKF010000002.1|220230	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000006.1|151862	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000015.1|317548	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000007.1|124500	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000004.1|449849	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000001.1|155686	intact_called	placed	placed	both flanks placed, element between them	yes
+AHG	homozygous	cen|CASBKF010000013.1|257193	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000010.1|458774	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000011.1|486415	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000008.1|492499	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000014.1|610989	intact_called	placed	placed	both flanks placed, element between them	no
+AHL	homozygous	cen|CASBKQ010000005.1|368326	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000016.1|581984	intact_called	placed	placed	both flanks placed, element between them	no
+AHL	homozygous	cen|CASBKQ010000012.1|140591	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000007.1|123910	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000003.1|114518	intact_called	placed	placed	both flanks placed, element between them	no
+AHL	homozygous	cen|CASBKQ010000002.1|220390	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000006.1|155349	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000015.1|322869	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000004.1|463186	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000001.1|161089	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000013.1|250994	intact_called	placed	placed	both flanks placed, element between them	yes
+AHL	homozygous	cen|CASBKQ010000009.1|95545	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000010.1|443900	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000008.1|501845	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000011.1|439968	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000014.1|611728	intact_called	placed	placed	both flanks placed, element between them	no
+AIC	homozygous	cen|CASBKG010000016.1|535892	intact_called	placed	placed	both flanks placed, element between them	no
+AIC	homozygous	cen|CASBKG010000006.1|137270	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000012.1|141640	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000009.1|99092	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000003.1|131688	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000002.1|226889	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000005.1|343506	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000007.1|128696	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000015.1|297734	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000004.1|446549	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000001.1|138374	intact_called	placed	placed	both flanks placed, element between them	yes
+AIC	homozygous	cen|CASBKG010000013.1|251036	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000008.1|493118	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000010.1|440811	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000014.1|642993	intact_called	placed	placed	both flanks placed, element between them	no
+AIE	homozygous	cen|CASBKB010000005.1|360237	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000016.1|549937	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000012.1|146009	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000011.1|449741	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000007.1|130111	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000002.1|220368	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000006.1|161374	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000015.1|315307	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000004.1|468777	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000003.1|114309	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000001.1|142889	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000013.1|251477	intact_called	placed	placed	both flanks placed, element between them	yes
+AIE	homozygous	cen|CASBKB010000009.1|95089	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000011.1|452690	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000012.1|142547	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000010.1|440840	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000008.1|500241	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000014.1|622402	intact_called	placed	placed	both flanks placed, element between them	no
+AIF	heterozygous	cen|CASBLH010000005.1|354267	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000003.1|108303	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000009.1|101627	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000017.1|918046	intact_called	placed	placed	both flanks placed, element between them	no
+AIF	heterozygous	cen|CASBLH010000002.1|226678	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000006.1|157993	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000007.1|124301	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000015.1|318030	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000004.1|462847	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000001.1|169268	intact_called	placed	placed	both flanks placed, element between them	yes
+AIF	heterozygous	cen|CASBLH010000013.1|249698	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000007.1|138727	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000011.1|445202	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000012.1|140238	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000010.1|435695	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000014.1|632194	intact_called	placed	placed	both flanks placed, element between them	no
+AIG	homozygous	cen|CASBKM010000005.1|362530	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000004.1|545919	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000008.1|526406	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000009.1|95169	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000016.1|555162	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000003.1|118443	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000006.1|153836	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000001.1|135877	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000002.1|226598	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000015.1|303142	intact_called	placed	placed	both flanks placed, element between them	yes
+AIG	homozygous	cen|CASBKM010000013.1|251726	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000007.1|145242	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000010.1|440846	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000012.1|139941	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000005.1|344871	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000002.1|255256	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000006.1|151122	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000011.1|439714	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000008.1|498274	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000014.1|619045	intact_called	placed	placed	both flanks placed, element between them	no
+AKR	heterozygous	cen|CASBKY010000001.1|138754	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000016.1|536362	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000003.1|167736	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000015.1|314282	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000009.1|98944	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000004.1|448334	intact_called	placed	placed	both flanks placed, element between them	yes
+AKR	heterozygous	cen|CASBKY010000013.1|250750	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000002.1|239472	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000013.1|172439	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000015.1|623603	intact_called	placed	placed	both flanks placed, element between them	no
+ALI	heterozygous	cen|CASBLC010000008.1|102236	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000011.1|240869	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000017.1|537983	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ALI	heterozygous	cen|CASBLC010000006.1|383408	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000012.1|464475	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000009.1|404215	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000007.1|495315	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000010.1|154427	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000005.1|500960	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000001.1|160624	intact_called	placed	placed	both flanks placed, element between them	no
+ALI	heterozygous	cen|CASBLC010000004.1|153017	intact_called	placed	placed	both flanks placed, element between them	yes
+ALI	heterozygous	cen|CASBLC010000016.1|340995	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ALI	heterozygous	cen|CASBLC010000014.1|257690	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000012.1|144701	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000011.1|439973	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000010.1|427056	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000008.1|490213	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000006.1|151888	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000002.1|243246	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000014.1|617577	intact_called	placed	placed	both flanks placed, element between them	no
+ANE	homozygous	cen|CASBJY010000015.1|332995	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000009.1|99871	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000003.1|121794	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000004.1|450027	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000016.1|539293	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000005.1|341696	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000001.1|141742	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000007.1|160917	intact_called	placed	placed	both flanks placed, element between them	yes
+ANE	homozygous	cen|CASBJY010000013.1|250170	intact_called	placed	placed	both flanks placed, element between them	yes
+ANL	heterozygous	cen|CASBLB010000010.1|442972	intact_called	placed	placed	both flanks placed, element between them	yes
+ANL	heterozygous	cen|CASBLB010000004.1|441029	split	placed	no full-length match	a flank matches nowhere	
+ANL	heterozygous	cen|CASBLB010000011.1|444632	split	placed	no full-length match	a flank matches nowhere	
+ANL	heterozygous	cen|CASBLB010000012.1|143030	n_run	placed	placed	both flanks placed, element between them	
+ANL	heterozygous	cen|CASBLB010000016.1|542012	split	placed	placed	both flanks placed, inconsistent with one intact element	
+ANL	heterozygous	cen|CASBLB010000003.1|110208	split	placed	no full-length match	a flank matches nowhere	
+ANL	heterozygous	cen|CASBLB010000006.1|150657	split	placed	placed	both flanks placed, inconsistent with one intact element	
+ANL	heterozygous	cen|CASBLB010000008.1|493986	absent	no full-length match	no full-length match	a flank matches nowhere	
+ANL	heterozygous	cen|CASBLB010000014.1|607054	intact_called	placed	placed	both flanks placed, element between them	no
+ANL	heterozygous	cen|CASBLB010000005.1|331493	n_run	placed	placed	both flanks placed, element between them	
+ANL	heterozygous	cen|CASBLB010000015.1|312738	intact_called	placed	placed	both flanks placed, element between them	yes
+ANL	heterozygous	cen|CASBLB010000007.1|130419	n_run	placed	placed	both flanks placed, element between them	
+ANL	heterozygous	cen|CASBLB010000002.1|225177	intact_called	placed	placed	both flanks placed, element between them	yes
+ANL	heterozygous	cen|CASBLB010000009.1|94355	split	placed	no full-length match	a flank matches nowhere	
+ANL	heterozygous	cen|CASBLB010000001.1|143253	split	placed	no full-length match	a flank matches nowhere	
+ANL	heterozygous	cen|CASBLB010000013.1|256002	split	placed	placed	both flanks placed, inconsistent with one intact element	
+ANM	heterozygous	cen|CASBLF010000010.1|414531	split	placed	placed	both flanks placed, inconsistent with one intact element	
+ANM	heterozygous	cen|CASBLF010000011.1|494245	n_run	placed	placed	both flanks placed, element between them	
+ANM	heterozygous	cen|CASBLF010000004.1|443834	intact_called	placed	placed	both flanks placed, element between them	no
+ANM	heterozygous	cen|CASBLF010000012.1|144980	intact_called	placed	placed	both flanks placed, element between them	yes
+ANM	heterozygous	cen|CASBLF010000016.1|542151	intact_called	placed	placed	both flanks placed, element between them	no
+ANM	heterozygous	cen|CASBLF010000014.1|617639	intact_called	placed	placed	both flanks placed, element between them	no
+ANM	heterozygous	cen|CASBLF010000005.1|331988	n_run	placed	placed	both flanks placed, element between them	
+ANM	heterozygous	cen|CASBLF010000006.1|150655	split	placed	no full-length match	a flank matches nowhere	
+ANM	heterozygous	cen|CASBLF010000015.1|322759	intact_called	placed	placed	both flanks placed, element between them	yes
+ANM	heterozygous	cen|CASBLF010000008.1|494356	intact_called	placed	placed	both flanks placed, element between them	yes
+ANM	heterozygous	cen|CASBLF010000003.1|110156	split	placed	no full-length match	a flank matches nowhere	
+ANM	heterozygous	cen|CASBLF010000002.1|225339	intact_called	placed	placed	both flanks placed, element between them	yes
+ANM	heterozygous	cen|CASBLF010000007.1|130804	n_run	placed	placed	both flanks placed, element between them	
+ANM	heterozygous	cen|CASBLF010000009.1|94619	split	no full-length match	placed	a flank matches nowhere	
+ANM	heterozygous	cen|CASBLF010000001.1|142992	intact_called	placed	placed	both flanks placed, element between them	yes
+ANM	heterozygous	cen|CASBLF010000013.1|256269	n_run	placed	placed	both flanks placed, element between them	
+APG	homozygous	cen|CASBNF010000010.1|453248	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000011.1|452050	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000012.1|139988	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000008.1|500577	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000014.1|627099	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000005.1|345866	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000016.1|551720	intact_called	placed	placed	both flanks placed, element between them	no
+APG	homozygous	cen|CASBNF010000003.1|114371	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000002.1|226407	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000015.1|317946	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000007.1|149024	intact_called	placed	placed	both flanks placed, element between them	no
+APG	homozygous	cen|CASBNF010000006.1|158962	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000004.1|475247	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000001.1|143535	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000009.1|106268	intact_called	placed	placed	both flanks placed, element between them	yes
+APG	homozygous	cen|CASBNF010000013.1|251485	intact_called	placed	placed	both flanks placed, element between them	yes
+ASB	heterozygous	cen|CASBJP010000010.1|433354	intact_called	placed	placed	both flanks placed, element between them	yes
+ASB	heterozygous	cen|CASBJP010000011.1|533492	intact_called	placed	placed	both flanks placed, element between them	yes
+ASB	heterozygous	cen|CASBJP010000012.1|145140	intact_called	placed	placed	both flanks placed, element between them	yes
+ASB	heterozygous	cen|CASBJP010000008.1|487563	intact_called	placed	placed	both flanks placed, element between them	yes
+ASB	heterozygous	cen|CASBJP010000014.1|520942	intact_called	placed	placed	both flanks placed, element between them	no
+ASB	heterozygous	cen|CASBJP010000005.1|342068	intact_called	placed	placed	both flanks placed, element between them	yes
+ASB	heterozygous	cen|CASBJP010000016.1|543212	intact_called	placed	placed	both flanks placed, element between them	no
+ASB	heterozygous	cen|CASBJP010000009.1|94995	intact_called	placed	placed	both flanks placed, element between them	no
+ASB	heterozygous	cen|CASBJP010000007.1|143591	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ASB	heterozygous	cen|CASBJP010000006.1|160407	intact_called	placed	placed	both flanks placed, element between them	yes
+ASB	heterozygous	cen|CASBJP010000004.1|460452	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ASB	heterozygous	cen|CASBJP010000015.1|295192	split	placed	two or more full-length matches	a flank matches two or more places	
+ASB	heterozygous	cen|CASBJP010000002.1|227024	split	placed	placed	both flanks placed, inconsistent with one intact element	
+ASB	heterozygous	cen|CASBJP010000003.1|115044	intact_called	placed	placed	both flanks placed, element between them	no
+ASB	heterozygous	cen|CASBJP010000001.1|154351	intact_called	placed	placed	both flanks placed, element between them	no
+ASB	heterozygous	cen|CASBJP010000013.1|267530	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000010.1|447089	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000011.1|440009	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000012.1|140067	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000008.1|514202	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000014.1|603926	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000005.1|345353	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000016.1|541211	intact_called	placed	placed	both flanks placed, element between them	no
+ASG	homozygous	cen|CASBNB010000009.1|100928	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000003.1|108375	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000002.1|219951	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000006.1|140048	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000007.1|124378	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000015.1|333624	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000004.1|448763	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000001.1|149165	intact_called	placed	placed	both flanks placed, element between them	yes
+ASG	homozygous	cen|CASBNB010000013.1|257091	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000010.1|434001	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000012.1|141008	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000014.1|649533	intact_called	placed	placed	both flanks placed, element between them	no
+ASN	heterozygous	cen|CASBNI010000011.1|436914	intact_called	placed	placed	both flanks placed, element between them	no
+ASN	heterozygous	cen|CASBNI010000016.1|567646	intact_called	placed	placed	both flanks placed, element between them	no
+ASN	heterozygous	cen|CASBNI010000005.1|348736	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000006.1|98885	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000004.1|451391	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ASN	heterozygous	cen|CASBNI010000002.1|289463	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000009.1|94068	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000008.1|388399	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000007.1|135351	intact_called	placed	placed	both flanks placed, element between them	no
+ASN	heterozygous	cen|CASBNI010000015.1|312061	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000003.1|101396	split	two or more full-length matches	placed	a flank matches two or more places	
+ASN	heterozygous	cen|CASBNI010000013.1|256815	intact_called	placed	placed	both flanks placed, element between them	yes
+ASN	heterozygous	cen|CASBNI010000001.1|126368	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000010.1|450176	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000011.1|464178	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000012.1|151283	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000008.1|517656	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000005.1|385844	n_run	placed	placed	both flanks placed, element between them	
+ATV	heterozygous	cen|CASBMT010000014.1|613623	intact_called	placed	placed	both flanks placed, element between them	no
+ATV	heterozygous	cen|CASBMT010000006.1|156752	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000004.1|453312	intact_called	placed	placed	both flanks placed, element between them	no
+ATV	heterozygous	cen|CASBMT010000009.1|95897	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000007.1|128700	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+ATV	heterozygous	cen|CASBMT010000016.1|545960	intact_called	placed	placed	both flanks placed, element between them	no
+ATV	heterozygous	cen|CASBMT010000002.1|225358	intact_called	placed	placed	both flanks placed, element between them	yes
+ATV	heterozygous	cen|CASBMT010000015.1|322246	split	no full-length match	placed	a flank matches nowhere	
+ATV	heterozygous	cen|CASBMT010000003.1|108643	split	no full-length match	placed	a flank matches nowhere	
+ATV	heterozygous	cen|CASBMT010000001.1|143155	split	placed	no full-length match	a flank matches nowhere	
+ATV	heterozygous	cen|CASBMT010000013.1|256424	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000010.1|448345	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000011.1|451598	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000009.1|671714	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000014.1|603547	intact_called	placed	placed	both flanks placed, element between them	no
+AVB	homozygous	cen|CASBMG010000005.1|355164	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000016.1|571106	intact_called	placed	placed	both flanks placed, element between them	no
+AVB	homozygous	cen|CASBMG010000013.1|140522	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000007.1|123494	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000003.1|113717	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000002.1|219806	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000006.1|160217	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000004.1|444662	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000015.1|328323	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000001.1|137505	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000012.1|256441	intact_called	placed	placed	both flanks placed, element between them	yes
+AVB	homozygous	cen|CASBMG010000008.1|99751	intact_called	placed	placed	both flanks placed, element between them	yes
+AVN	heterozygous	cen|CASBMP010000010.1|433428	split	placed	no full-length match	a flank matches nowhere	
+AVN	heterozygous	cen|CASBMP010000011.1|444416	split	placed	placed	both flanks placed, inconsistent with one intact element	
+AVN	heterozygous	cen|CASBMP010000004.1|461418	split	placed	placed	both flanks placed, inconsistent with one intact element	
+AVN	heterozygous	cen|CASBMP010000012.1|142738	intact_called	placed	placed	both flanks placed, element between them	yes
+AVN	heterozygous	cen|CASBMP010000008.1|494079	intact_called	placed	placed	both flanks placed, element between them	yes
+AVN	heterozygous	cen|CASBMP010000016.1|541892	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+AVN	heterozygous	cen|CASBMP010000006.1|150476	split	placed	placed	both flanks placed, inconsistent with one intact element	
+AVN	heterozygous	cen|CASBMP010000014.1|625913	intact_called	placed	placed	both flanks placed, element between them	no
+AVN	heterozygous	cen|CASBMP010000005.1|366402	split	placed	no full-length match	a flank matches nowhere	
+AVN	heterozygous	cen|CASBMP010000003.1|110249	split	placed	no full-length match	a flank matches nowhere	
+AVN	heterozygous	cen|CASBMP010000015.1|293793	intact_called	placed	placed	both flanks placed, element between them	yes
+AVN	heterozygous	cen|CASBMP010000002.1|225064	intact_called	placed	placed	both flanks placed, element between them	yes
+AVN	heterozygous	cen|CASBMP010000007.1|130710	absent	two or more full-length matches	no full-length match	a flank matches two or more places	
+AVN	heterozygous	cen|CASBMP010000009.1|94431	absent	no full-length match	no full-length match	a flank matches nowhere	
+AVN	heterozygous	cen|CASBMP010000001.1|143115	split	placed	placed	both flanks placed, inconsistent with one intact element	
+AVN	heterozygous	cen|CASBMP010000013.1|256190	n_run	placed	placed	both flanks placed, element between them	
+BAD	heterozygous	cen|CASBOY010000007.1|140693	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000011.1|453124	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000012.1|157796	split	placed	placed	both flanks placed, inconsistent with one intact element	
+BAD	heterozygous	cen|CASBOY010000002.1|234272	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000010.1|444176	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000008.1|497856	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000016.1|550113	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000006.1|156019	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+BAD	heterozygous	cen|CASBOY010000005.1|352238	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000003.1|114578	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000014.1|619466	intact_called	placed	placed	both flanks placed, element between them	no
+BAD	heterozygous	cen|CASBOY010000015.1|324730	n_run	placed	placed	both flanks placed, element between them	
+BAD	heterozygous	cen|CASBOY010000004.1|454449	n_run	placed	placed	both flanks placed, element between them	
+BAD	heterozygous	cen|CASBOY010000009.1|95724	split	placed	two or more full-length matches	a flank matches two or more places	
+BAD	heterozygous	cen|CASBOY010000001.1|144394	intact_called	placed	placed	both flanks placed, element between them	yes
+BAD	heterozygous	cen|CASBOY010000013.1|257261	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+BAF	heterozygous	cen|CASBNO010000008.1|164197	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000012.1|447599	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000013.1|146458	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000011.1|440066	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000009.1|505615	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000017.1|539518	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000003.1|115306	intact_called	placed	placed	both flanks placed, element between them	no
+BAF	heterozygous	cen|CASBNO010000015.1|16069	intact_called	placed	placed	both flanks placed, element between them	no
+BAF	heterozygous	cen|CASBNO010000006.1|332283	intact_called	placed	placed	both flanks placed, element between them	no
+BAF	heterozygous	cen|CASBNO010000005.1|60810	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000016.1|324970	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000004.1|474729	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000007.1|156049	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000002.1|234944	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000001.1|145903	intact_called	placed	placed	both flanks placed, element between them	yes
+BAF	heterozygous	cen|CASBNO010000010.1|94958	split	placed	two or more full-length matches	a flank matches two or more places	
+BAF	heterozygous	cen|CASBNO010000014.1|258714	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000011.1|144161	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000010.1|447187	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000004.1|448472	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000002.1|227564	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000015.1|542873	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000007.1|146402	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000008.1|521374	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000013.1|610828	intact_called	placed	placed	both flanks placed, element between them	no
+BAH	homozygous	cen|CASBMK010000003.1|106121	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000016.1|137192	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000014.1|322038	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000006.1|161057	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000009.1|101040	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000001.1|142317	intact_called	placed	placed	both flanks placed, element between them	no
+BAH	homozygous	cen|CASBMK010000005.1|360237	intact_called	placed	placed	both flanks placed, element between them	yes
+BAH	homozygous	cen|CASBMK010000012.1|251830	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000011.1|457737	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000009.1|524109	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000014.1|628945	intact_called	placed	placed	both flanks placed, element between them	no
+BAM	homozygous	cen|CASBMJ010000010.1|449014	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000002.1|248731	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000012.1|145266	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000016.1|548341	intact_called	placed	placed	both flanks placed, element between them	no
+BAM	homozygous	cen|CASBMJ010000007.1|166848	intact_called	placed	placed	both flanks placed, element between them	no
+BAM	homozygous	cen|CASBMJ010000006.1|152015	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000003.1|114495	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000004.1|428142	intact_called	placed	placed	both flanks placed, element between them	no
+BAM	homozygous	cen|CASBMJ010000005.1|353720	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000015.1|322430	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000001.1|145531	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000008.1|94582	intact_called	placed	placed	both flanks placed, element between them	yes
+BAM	homozygous	cen|CASBMJ010000013.1|279897	intact_called	placed	placed	both flanks placed, element between them	no
+BBF	heterozygous	cen|CASBNQ010000005.1|342406	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000016.1|553077	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000010.1|435866	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000007.1|137556	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000011.1|452316	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000012.1|151016	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000015.1|340918	absent	no full-length match	two or more full-length matches	a flank matches two or more places	
+BBF	heterozygous	cen|CASBNQ010000008.1|502228	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000006.1|165302	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000014.1|605137	intact_called	placed	placed	both flanks placed, element between them	no
+BBF	heterozygous	cen|CASBNQ010000002.1|225215	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000009.1|124413	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000003.1|106457	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000004.1|454539	intact_called	placed	placed	both flanks placed, element between them	yes
+BBF	heterozygous	cen|CASBNQ010000001.1|143405	intact_called	placed	placed	both flanks placed, element between them	no
+BBF	heterozygous	cen|CASBNQ010000013.1|251401	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+BBL	homozygous	cen|CASBMW010000010.1|443924	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000011.1|447289	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000008.1|496267	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000016.1|553487	intact_called	placed	placed	both flanks placed, element between them	no
+BBL	homozygous	cen|CASBMW010000007.1|160282	intact_called	placed	placed	both flanks placed, element between them	no
+BBL	homozygous	cen|CASBMW010000012.1|144554	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000014.1|617103	intact_called	placed	placed	both flanks placed, element between them	no
+BBL	homozygous	cen|CASBMW010000005.1|359315	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000015.1|316898	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000009.1|94978	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000002.1|226852	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000006.1|162373	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000004.1|458743	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000003.1|111656	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000001.1|146693	intact_called	placed	placed	both flanks placed, element between them	yes
+BBL	homozygous	cen|CASBMW010000013.1|262256	intact_called	placed	placed	both flanks placed, element between them	yes
+BBT	heterozygous	cen|CASBNG010000007.1|134404	absent	two or more full-length matches	no full-length match	a flank matches two or more places	
+BBT	heterozygous	cen|CASBNG010000010.1|432231	intact_called	placed	placed	both flanks placed, element between them	no
+BBT	heterozygous	cen|CASBNG010000011.1|468451	split	placed	placed	both flanks placed, inconsistent with one intact element	
+BBT	heterozygous	cen|CASBNG010000012.1|144886	split	placed	two or more full-length matches	a flank matches two or more places	
+BBT	heterozygous	cen|CASBNG010000008.1|509784	split	no full-length match	placed	a flank matches nowhere	
+BBT	heterozygous	cen|CASBNG010000014.1|700221	intact_called	placed	placed	both flanks placed, element between them	no
+BBT	heterozygous	cen|CASBNG010000016.1|553255	intact_called	placed	placed	both flanks placed, element between them	yes
+BBT	heterozygous	cen|CASBNG010000002.1|249336	intact_called	placed	placed	both flanks placed, element between them	no
+BBT	heterozygous	cen|CASBNG010000005.1|347954	absent	two or more full-length matches	no full-length match	a flank matches two or more places	
+BBT	heterozygous	cen|CASBNG010000004.1|449880	intact_called	placed	placed	both flanks placed, element between them	yes
+BBT	heterozygous	cen|CASBNG010000009.1|105887	split	placed	no full-length match	a flank matches nowhere	
+BBT	heterozygous	cen|CASBNG010000015.1|321628	split	placed	two or more full-length matches	a flank matches two or more places	
+BBT	heterozygous	cen|CASBNG010000003.1|120330	intact_called	placed	placed	both flanks placed, element between them	no
+BBT	heterozygous	cen|CASBNG010000001.1|143974	split	no full-length match	placed	a flank matches nowhere	
+BBT	heterozygous	cen|CASBNG010000013.1|251344	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000002.1|277093	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000012.1|146776	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000006.1|146609	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000010.1|423044	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000009.1|390588	intact_called	placed	placed	both flanks placed, element between them	no
+BCN	homozygous	cen|CASBMH010000011.1|459823	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000008.1|98756	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000007.1|501289	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000016.1|536969	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000005.1|340195	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000015.1|310328	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000014.1|617459	intact_called	placed	placed	both flanks placed, element between them	no
+BCN	homozygous	cen|CASBMH010000004.1|456549	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000003.1|112444	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000001.1|137554	intact_called	placed	placed	both flanks placed, element between them	yes
+BCN	homozygous	cen|CASBMH010000013.1|251139	split	no full-length match	placed	a flank matches nowhere	
+BEM	heterozygous	cen|CASBNR010000010.1|461663	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000004.1|445666	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000011.1|440285	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000012.1|142899	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000016.1|541483	intact_called	placed	placed	both flanks placed, element between them	no
+BEM	heterozygous	cen|CASBNR010000014.1|614505	n_run	placed	placed	both flanks placed, element between them	
+BEM	heterozygous	cen|CASBNR010000002.1|224975	n_run	placed	placed	both flanks placed, element between them	
+BEM	heterozygous	cen|CASBNR010000005.1|331881	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000006.1|150431	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000003.1|105336	split	placed	placed	both flanks placed, inconsistent with one intact element	
+BEM	heterozygous	cen|CASBNR010000008.1|497730	n_run	placed	placed	both flanks placed, element between them	
+BEM	heterozygous	cen|CASBNR010000015.1|299758	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000007.1|130156	intact_called	placed	placed	both flanks placed, element between them	no
+BEM	heterozygous	cen|CASBNR010000009.1|94285	intact_called	placed	placed	both flanks placed, element between them	yes
+BEM	heterozygous	cen|CASBNR010000001.1|142970	n_run	placed	placed	both flanks placed, element between them	
+BEM	heterozygous	cen|CASBNR010000013.1|255922	absent	no full-length match	no full-length match	a flank matches nowhere	
+BFH	heterozygous	cen|CASBNK010000008.1|500621	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000011.1|460177	intact_called	placed	placed	both flanks placed, element between them	no
+BFH	heterozygous	cen|CASBNK010000012.1|148875	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000010.1|454183	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000016.1|545622	intact_called	placed	placed	both flanks placed, element between them	no
+BFH	heterozygous	cen|CASBNK010000006.1|155664	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000005.1|355452	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000002.1|231286	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000009.1|99721	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000015.1|327562	n_run	placed	placed	both flanks placed, element between them	
+BFH	heterozygous	cen|CASBNK010000004.1|450496	absent	two or more full-length matches	no full-length match	a flank matches two or more places	
+BFH	heterozygous	cen|CASBNK010000007.1|136614	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000014.1|630895	intact_called	placed	placed	both flanks placed, element between them	no
+BFH	heterozygous	cen|CASBNK010000001.1|143226	intact_called	placed	placed	both flanks placed, element between them	yes
+BFH	heterozygous	cen|CASBNK010000003.1|101344	intact_called	placed	placed	both flanks placed, element between them	no
+BFH	heterozygous	cen|CASBNK010000013.1|256633	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000010.1|446921	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000012.1|149257	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000014.1|629047	intact_called	placed	placed	both flanks placed, element between them	no
+BHH	homozygous	cen|CASBMZ010000008.1|500453	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000005.1|354295	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000016.1|544502	intact_called	placed	placed	both flanks placed, element between them	no
+BHH	homozygous	cen|CASBMZ010000002.1|232312	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000011.1|473422	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000006.1|155417	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000007.1|123939	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000001.1|139687	intact_called	placed	placed	both flanks placed, element between them	no
+BHH	homozygous	cen|CASBMZ010000015.1|323102	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000003.1|105801	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000004.1|449314	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000009.1|94552	intact_called	placed	placed	both flanks placed, element between them	yes
+BHH	homozygous	cen|CASBMZ010000013.1|256795	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000013.1|453658	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000007.1|156974	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000016.1|802433	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000002.1|250031	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000009.1|375957	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000006.1|152477	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000010.1|144176	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000005.1|345148	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000012.1|604971	intact_called	placed	placed	both flanks placed, element between them	no
+BMB	homozygous	cen|CASBMY010000014.1|317610	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000015.1|542202	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000008.1|101772	intact_called	placed	placed	both flanks placed, element between them	no
+BMB	homozygous	cen|CASBMY010000003.1|105473	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000004.1|448597	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000001.1|143222	intact_called	placed	placed	both flanks placed, element between them	yes
+BMB	homozygous	cen|CASBMY010000011.1|251171	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000010.1|463969	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000011.1|469312	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000012.1|144459	split	no full-length match	placed	a flank matches nowhere	
+BPG	homozygous	cen|CASBNP010000008.1|495699	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000014.1|638329	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000005.1|351292	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000016.1|547119	intact_called	placed	placed	both flanks placed, element between them	no
+BPG	homozygous	cen|CASBNP010000009.1|94796	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000003.1|114145	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000002.1|229775	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000006.1|146118	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000007.1|157097	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000015.1|332413	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000004.1|481850	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000001.1|137833	intact_called	placed	placed	both flanks placed, element between them	yes
+BPG	homozygous	cen|CASBNP010000013.1|257305	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000010.1|439682	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000011.1|141506	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000008.1|500761	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000013.1|604425	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000005.1|340439	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000015.1|536502	intact_called	placed	placed	both flanks placed, element between them	no
+BPK	heterozygous	cen|CASBOC010000016.1|706868	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000009.1|94810	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000003.1|113196	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000002.1|226277	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000006.1|147795	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000007.1|123868	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000014.1|311946	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000004.1|450201	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000001.1|149036	intact_called	placed	placed	both flanks placed, element between them	yes
+BPK	heterozygous	cen|CASBOC010000012.1|257271	intact_called	placed	placed	both flanks placed, element between them	yes
+BTE	heterozygous	cen|CASBOT010000007.1|137656	split	placed	no full-length match	a flank matches nowhere	
+BTE	heterozygous	cen|CASBOT010000010.1|426170	split	placed	no full-length match	a flank matches nowhere	
+BTE	heterozygous	cen|CASBOT010000011.1|475940	n_run	placed	placed	both flanks placed, element between them	
+BTE	heterozygous	cen|CASBOT010000012.1|165313	absent	no full-length match	two or more full-length matches	a flank matches two or more places	
+BTE	heterozygous	cen|CASBOT010000008.1|505865	n_run	placed	placed	both flanks placed, element between them	
+BTE	heterozygous	cen|CASBOT010000014.1|625997	n_run	placed	placed	both flanks placed, element between them	
+BTE	heterozygous	cen|CASBOT010000005.1|341194	n_run	placed	placed	both flanks placed, element between them	
+BTE	heterozygous	cen|CASBOT010000016.1|565354	intact_called	placed	placed	both flanks placed, element between them	no
+BTE	heterozygous	cen|CASBOT010000009.1|93285	split	no full-length match	placed	a flank matches nowhere	
+BTE	heterozygous	cen|CASBOT010000002.1|239227	split	placed	placed	both flanks placed, inconsistent with one intact element	
+BTE	heterozygous	cen|CASBOT010000006.1|175872	absent	no full-length match	no full-length match	a flank matches nowhere	
+BTE	heterozygous	cen|CASBOT010000015.1|307175	split	placed	two or more full-length matches	a flank matches two or more places	
+BTE	heterozygous	cen|CASBOT010000004.1|455006	absent	no full-length match	two or more full-length matches	a flank matches two or more places	
+BTE	heterozygous	cen|CASBOT010000003.1|111446	absent	no full-length match	no full-length match	a flank matches nowhere	
+BTE	heterozygous	cen|CASBOT010000001.1|151241	intact_called	placed	placed	both flanks placed, element between them	no
+BTE	heterozygous	cen|CASBOT010000013.1|257715	intact_called	placed	placed	both flanks placed, element between them	no
+CBK	homozygous	cen|CASBOX010000012.1|145767	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000011.1|451332	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000010.1|442453	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000014.1|629511	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000008.1|495120	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000005.1|351162	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000016.1|556451	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000002.1|233407	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000001.1|144407	intact_called	placed	placed	both flanks placed, element between them	no
+CBK	homozygous	cen|CASBOX010000003.1|114371	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000006.1|152984	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000007.1|170902	intact_called	placed	placed	both flanks placed, element between them	no
+CBK	homozygous	cen|CASBOX010000015.1|329494	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000004.1|448836	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000009.1|94895	intact_called	placed	placed	both flanks placed, element between them	yes
+CBK	homozygous	cen|CASBOX010000013.1|268848	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000005.1|346652	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000011.1|461944	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000007.1|188017	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+CBM	heterozygous	cen|CASBPF010000012.1|141312	split	no full-length match	placed	a flank matches nowhere	
+CBM	heterozygous	cen|CASBPF010000014.1|614895	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000006.1|140773	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000010.1|442710	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000002.1|122465	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000016.1|548960	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+CBM	heterozygous	cen|CASBPF010000003.1|702430	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000008.1|496900	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000015.1|293406	intact_called	placed	placed	both flanks placed, element between them	yes
+CBM	heterozygous	cen|CASBPF010000004.1|450232	intact_called	placed	placed	both flanks placed, element between them	no
+CBM	heterozygous	cen|CASBPF010000001.1|137972	intact_called	placed	placed	both flanks placed, element between them	no
+CBM	heterozygous	cen|CASBPF010000009.1|98279	split	placed	two or more full-length matches	a flank matches two or more places	
+CBM	heterozygous	cen|CASBPF010000013.1|255235	intact_called	placed	placed	both flanks placed, element between them	no
+CCN	homozygous	cen|CASBNV010000011.1|441824	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000012.1|144986	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000002.1|227313	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000006.1|152045	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000005.1|347346	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000008.1|504217	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000016.1|545233	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000003.1|113903	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000010.1|431201	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000004.1|450426	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000001.1|147506	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000014.1|602869	intact_called	placed	placed	both flanks placed, element between them	no
+CCN	homozygous	cen|CASBNV010000007.1|160436	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000009.1|94507	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000015.1|330224	intact_called	placed	placed	both flanks placed, element between them	yes
+CCN	homozygous	cen|CASBNV010000013.1|257881	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000007.1|149660	intact_called	placed	placed	both flanks placed, element between them	no
+CDA	homozygous	cen|CASBOG010000012.1|162406	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000002.1|230406	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000014.1|642709	intact_called	placed	placed	both flanks placed, element between them	no
+CDA	homozygous	cen|CASBOG010000010.1|447781	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000011.1|451124	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000006.1|159517	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000008.1|510977	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000016.1|544809	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000015.1|321954	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000005.1|357552	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000004.1|455323	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000003.1|105480	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000009.1|101437	intact_uncalled	placed	placed	both flanks placed, element between them	
+CDA	homozygous	cen|CASBOG010000001.1|153933	intact_called	placed	placed	both flanks placed, element between them	yes
+CDA	homozygous	cen|CASBOG010000013.1|256884	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000007.1|155449	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000010.1|419035	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000012.1|152828	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000008.1|501788	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000016.1|541176	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000002.1|235157	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000003.1|108666	intact_uncalled	placed	placed	both flanks placed, element between them	
+CFA	homozygous	cen|CASBNX010000014.1|604395	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000005.1|353192	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000015.1|323734	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000004.1|454130	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000006.1|149406	split	no full-length match	placed	a flank matches nowhere	
+CFA	homozygous	cen|CASBNX010000001.1|133406	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000009.1|94264	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000011.1|447064	intact_called	placed	placed	both flanks placed, element between them	yes
+CFA	homozygous	cen|CASBNX010000013.1|269918	intact_called	placed	placed	both flanks placed, element between them	no
+CFC	heterozygous	cen|CASBOS010000005.1|349691	intact_called	placed	placed	both flanks placed, element between them	yes
+CFC	heterozygous	cen|CASBOS010000011.1|462302	intact_called	placed	placed	both flanks placed, element between them	no
+CFC	heterozygous	cen|CASBOS010000010.1|443538	n_run	placed	placed	both flanks placed, element between them	
+CFC	heterozygous	cen|CASBOS010000012.1|151673	intact_called	placed	placed	both flanks placed, element between them	yes
+CFC	heterozygous	cen|CASBOS010000008.1|498416	n_run	placed	placed	both flanks placed, element between them	
+CFC	heterozygous	cen|CASBOS010000014.1|622368	absent	one full-length match, not placed	two or more full-length matches	a flank matches two or more places	
+CFC	heterozygous	cen|CASBOS010000016.1|556485	split	placed	placed	both flanks placed, inconsistent with one intact element	
+CFC	heterozygous	cen|CASBOS010000002.1|220180	split	two or more full-length matches	placed	a flank matches two or more places	
+CFC	heterozygous	cen|CASBOS010000006.1|151873	split	placed	no full-length match	a flank matches nowhere	
+CFC	heterozygous	cen|CASBOS010000007.1|130630	absent	two or more full-length matches	no full-length match	a flank matches two or more places	
+CFC	heterozygous	cen|CASBOS010000015.1|317161	split	placed	two or more full-length matches	a flank matches two or more places	
+CFC	heterozygous	cen|CASBOS010000004.1|449915	intact_called	placed	placed	both flanks placed, element between them	yes
+CFC	heterozygous	cen|CASBOS010000003.1|108876	split	no full-length match	placed	a flank matches nowhere	
+CFC	heterozygous	cen|CASBOS010000009.1|100099	split	placed	no full-length match	a flank matches nowhere	
+CFC	heterozygous	cen|CASBOS010000001.1|147711	split	no full-length match	placed	a flank matches nowhere	
+CFC	heterozygous	cen|CASBOS010000013.1|255574	absent	no full-length match	no full-length match	a flank matches nowhere	
+CFF	heterozygous	cen|CASBPC010000016.1|543259	intact_called	placed	placed	both flanks placed, element between them	no
+CFF	heterozygous	cen|CASBPC010000010.1|434434	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000011.1|480904	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000012.1|146097	intact_called	placed	placed	both flanks placed, element between them	no
+CFF	heterozygous	cen|CASBPC010000014.1|626700	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+CFF	heterozygous	cen|CASBPC010000005.1|339273	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000004.1|445832	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000008.1|511117	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000009.1|94253	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000007.1|148265	intact_called	placed	placed	both flanks placed, element between them	no
+CFF	heterozygous	cen|CASBPC010000002.1|233159	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000006.1|158794	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000015.1|316865	intact_called	placed	placed	both flanks placed, element between them	yes
+CFF	heterozygous	cen|CASBPC010000003.1|135345	absent	no full-length match	no full-length match	a flank matches nowhere	
+CFF	heterozygous	cen|CASBPC010000001.1|144842	intact_called	placed	placed	both flanks placed, element between them	no
+CFF	heterozygous	cen|CASBPC010000013.1|256121	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000005.1|350758	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000016.1|544678	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000010.1|435057	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000011.1|440155	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000012.1|144846	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000008.1|506290	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000014.1|609978	intact_called	placed	placed	both flanks placed, element between them	no
+CFS	homozygous	cen|CASBOL010000009.1|89704	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000007.1|123990	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000002.1|220346	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000006.1|152854	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000003.1|116960	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000015.1|311609	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000004.1|448141	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000001.1|135954	intact_called	placed	placed	both flanks placed, element between them	yes
+CFS	homozygous	cen|CASBOL010000013.1|251190	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000010.1|433674	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000007.1|143230	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+CIC	heterozygous	cen|CASBPB010000011.1|451233	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000012.1|135203	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000006.1|152071	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000005.1|383181	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000009.1|109607	intact_called	placed	placed	both flanks placed, element between them	no
+CIC	heterozygous	cen|CASBPB010000015.1|323948	split	placed	two or more full-length matches	a flank matches two or more places	
+CIC	heterozygous	cen|CASBPB010000002.1|220563	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000001.1|129804	intact_called	placed	placed	both flanks placed, element between them	no
+CIC	heterozygous	cen|CASBPB010000016.1|536408	intact_called	placed	placed	both flanks placed, element between them	no
+CIC	heterozygous	cen|CASBPB010000014.1|654332	intact_called	placed	placed	both flanks placed, element between them	no
+CIC	heterozygous	cen|CASBPB010000003.1|110418	intact_called	placed	placed	both flanks placed, element between them	no
+CIC	heterozygous	cen|CASBPB010000004.1|447453	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000008.1|504564	intact_called	placed	placed	both flanks placed, element between them	yes
+CIC	heterozygous	cen|CASBPB010000013.1|253237	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000011.1|445840	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000001.1|158959	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000014.1|707271	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000010.1|426236	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000005.1|335149	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000017.1|528839	intact_called	placed	placed	both flanks placed, element between them	no
+CIH	heterozygous	cen|CASBOR010000015.1|632187	intact_called	placed	placed	both flanks placed, element between them	no
+CIH	heterozygous	cen|CASBOR010000007.1|128737	intact_called	placed	placed	both flanks placed, element between them	no
+CIH	heterozygous	cen|CASBOR010000002.1|235393	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000006.1|140557	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000008.1|496282	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000003.1|114643	intact_called	placed	placed	both flanks placed, element between them	no
+CIH	heterozygous	cen|CASBOR010000016.1|302201	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+CIH	heterozygous	cen|CASBOR010000004.1|449068	intact_called	placed	placed	both flanks placed, element between them	yes
+CIH	heterozygous	cen|CASBOR010000009.1|100796	split	placed	two or more full-length matches	a flank matches two or more places	
+CIH	heterozygous	cen|CASBOR010000013.1|261717	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000005.1|333035	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000012.1|136823	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000008.1|506979	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000010.1|441358	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000014.1|617042	intact_called	placed	placed	both flanks placed, element between them	no
+CKB	heterozygous	cen|CASBOD010000016.1|549180	intact_called	placed	placed	both flanks placed, element between them	no
+CKB	heterozygous	cen|CASBOD010000011.1|440278	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000009.1|89484	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000007.1|124039	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000003.1|114323	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000002.1|224150	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000006.1|148254	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000015.1|295216	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000004.1|460573	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000001.1|138545	intact_called	placed	placed	both flanks placed, element between them	yes
+CKB	heterozygous	cen|CASBOD010000013.1|251168	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000007.1|169609	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000011.1|446332	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000006.1|170334	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000012.1|157518	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000005.1|362807	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000009.1|497920	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000010.1|423985	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000001.1|151747	intact_called	placed	placed	both flanks placed, element between them	no
+CLL	heterozygous	cen|CASBOO010000014.1|619067	intact_called	placed	placed	both flanks placed, element between them	no
+CLL	heterozygous	cen|CASBOO010000016.1|543204	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000003.1|113780	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000015.1|320344	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000008.1|101095	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000004.1|441398	intact_called	placed	placed	both flanks placed, element between them	yes
+CLL	heterozygous	cen|CASBOO010000013.1|272210	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000007.1|138187	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000010.1|416646	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000011.1|452608	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000006.1|151779	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000002.1|242304	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000012.1|140580	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000008.1|518435	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000001.1|145582	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000016.1|537036	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000014.1|616489	intact_called	placed	placed	both flanks placed, element between them	no
+CLN	homozygous	cen|CASBOK010000005.1|365935	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000003.1|114602	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000015.1|318748	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000009.1|94772	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000004.1|443121	intact_called	placed	placed	both flanks placed, element between them	yes
+CLN	homozygous	cen|CASBOK010000013.1|251028	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000007.1|145057	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000010.1|415754	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000012.1|157571	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000008.1|524497	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000005.1|354735	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000002.1|224411	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000006.1|146321	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000011.1|457574	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000001.1|161817	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000016.1|538550	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000014.1|423436	intact_called	placed	placed	both flanks placed, element between them	no
+CMF	heterozygous	cen|CASBOU010000003.1|108591	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000015.1|324230	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000009.1|95086	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000004.1|646959	intact_called	placed	placed	both flanks placed, element between them	yes
+CMF	heterozygous	cen|CASBOU010000013.1|251156	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000012.1|447897	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000013.1|154676	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000011.1|38104	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000015.1|637857	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000005.1|43150	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000016.1|575455	intact_called	placed	placed	both flanks placed, element between them	no
+CNT	heterozygous	cen|CASBPE010000008.1|503458	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000017.1|338300	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000002.1|229210	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000007.1|221995	intact_called	placed	placed	both flanks placed, element between them	no
+CNT	heterozygous	cen|CASBPE010000004.1|473488	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000006.1|158568	intact_called	placed	placed	both flanks placed, element between them	no
+CNT	heterozygous	cen|CASBPE010000001.1|149768	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000003.1|113153	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000009.1|101370	intact_called	placed	placed	both flanks placed, element between them	yes
+CNT	heterozygous	cen|CASBPE010000014.1|257388	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000010.1|455373	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000008.1|534957	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000015.1|511364	split	placed	placed	both flanks placed, inconsistent with one intact element	
+CPS	heterozygous	cen|CASBPD010000012.1|153006	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000002.1|231898	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+CPS	heterozygous	cen|CASBPD010000006.1|159085	n_run	placed	placed	both flanks placed, element between them	
+CPS	heterozygous	cen|CASBPD010000007.1|33620	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000014.1|622483	intact_called	placed	placed	both flanks placed, element between them	no
+CPS	heterozygous	cen|CASBPD010000003.1|106447	intact_called	placed	placed	both flanks placed, element between them	no
+CPS	heterozygous	cen|CASBPD010000005.1|350017	n_run	placed	placed	both flanks placed, element between them	
+CPS	heterozygous	cen|CASBPD010000016.1|313805	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000017.1|557126	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000001.1|145753	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000004.1|460397	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000009.1|97792	intact_called	placed	placed	both flanks placed, element between them	yes
+CPS	heterozygous	cen|CASBPD010000013.1|256892	intact_called	placed	placed	both flanks placed, element between them	no
+CRE	heterozygous	cen|CASBPA010000008.1|501669	intact_called	placed	placed	both flanks placed, element between them	yes
+CRE	heterozygous	cen|CASBPA010000017.1|432355	intact_called	placed	placed	both flanks placed, element between them	yes
+CRE	heterozygous	cen|CASBPA010000011.1|446312	n_run	placed	placed	both flanks placed, element between them	
+CRE	heterozygous	cen|CASBPA010000012.1|150355	intact_called	placed	placed	both flanks placed, element between them	yes
+CRE	heterozygous	cen|CASBPA010000014.1|652975	split	placed	placed	both flanks placed, inconsistent with one intact element	
+CRE	heterozygous	cen|CASBPA010000005.1|362900	absent	two or more full-length matches	two or more full-length matches	a flank matches two or more places	
+CRE	heterozygous	cen|CASBPA010000016.1|537142	intact_called	placed	placed	both flanks placed, element between them	no
+CRE	heterozygous	cen|CASBPA010000006.1|10049	intact_called	placed	placed	both flanks placed, element between them	yes
+CRE	heterozygous	cen|CASBPA010000007.1|130512	intact_called	placed	placed	both flanks placed, element between them	no
+CRE	heterozygous	cen|CASBPA010000002.1|225502	intact_called	placed	placed	both flanks placed, element between them	yes
+CRE	heterozygous	cen|CASBPA010000015.1|321354	intact_called	placed	placed	both flanks placed, element between them	yes
+CRE	heterozygous	cen|CASBPA010000004.1|449862	intact_called	placed	placed	both flanks placed, element between them	yes
+CRE	heterozygous	cen|CASBPA010000001.1|144574	split	placed	no full-length match	a flank matches nowhere	
+CRE	heterozygous	cen|CASBPA010000003.1|114922	intact_called	placed	placed	both flanks placed, element between them	no
+CRE	heterozygous	cen|CASBPA010000009.1|94825	split	no full-length match	placed	a flank matches nowhere	
+CRE	heterozygous	cen|CASBPA010000013.1|256608	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000011.1|457111	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000012.1|140280	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000008.1|502653	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000010.1|453910	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000014.1|630562	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000005.1|347512	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000016.1|191743	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000006.1|152712	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000009.1|451457	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000007.1|124093	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000003.1|109075	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000002.1|232582	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000015.1|294907	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000004.1|449907	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000001.1|136062	intact_called	placed	placed	both flanks placed, element between them	yes
+CRL	homozygous	cen|CASBOI010000013.1|258121	intact_called	placed	placed	both flanks placed, element between them	yes

@@ -1,0 +1,28 @@
+zygosity	kind	status	element_reason	elements	of_elements	fraction
+heterozygous	centromere	absent	a flank matches nowhere	7	495	0.014141414141414142
+heterozygous	centromere	absent	a flank matches two or more places	30	495	0.06060606060606061
+heterozygous	centromere	intact_called	both flanks placed, element between them	372	495	0.7515151515151515
+heterozygous	centromere	n_run	both flanks placed, element between them	27	495	0.05454545454545454
+heterozygous	centromere	split	a flank matches nowhere	27	495	0.05454545454545454
+heterozygous	centromere	split	a flank matches two or more places	16	495	0.03232323232323232
+heterozygous	centromere	split	both flanks placed, inconsistent with one intact element	16	495	0.03232323232323232
+heterozygous	null	absent	a flank matches nowhere	196	9900	0.019797979797979797
+heterozygous	null	absent	a flank matches two or more places	617	9900	0.06232323232323232
+heterozygous	null	intact_called	both flanks placed, element between them	6	9900	0.0006060606060606061
+heterozygous	null	intact_uncalled	both flanks placed, element between them	6361	9900	0.6425252525252525
+heterozygous	null	n_run	both flanks placed, element between them	892	9900	0.0901010101010101
+heterozygous	null	split	a flank matches nowhere	1244	9900	0.12565656565656566
+heterozygous	null	split	a flank matches two or more places	363	9900	0.03666666666666667
+heterozygous	null	split	a flank with one full-length match, not placed	4	9900	0.00040404040404040404
+heterozygous	null	split	both flanks placed, inconsistent with one intact element	217	9900	0.021919191919191918
+homozygous	centromere	intact_called	both flanks placed, element between them	603	608	0.9917763157894737
+homozygous	centromere	intact_uncalled	both flanks placed, element between them	2	608	0.003289473684210526
+homozygous	centromere	split	a flank matches nowhere	3	608	0.004934210526315789
+homozygous	null	absent	a flank matches nowhere	107	12160	0.008799342105263157
+homozygous	null	absent	a flank matches two or more places	23	12160	0.0018914473684210527
+homozygous	null	intact_called	both flanks placed, element between them	3	12160	0.0002467105263157895
+homozygous	null	intact_uncalled	both flanks placed, element between them	10764	12160	0.8851973684210527
+homozygous	null	n_run	both flanks placed, element between them	112	12160	0.009210526315789473
+homozygous	null	split	a flank matches nowhere	906	12160	0.07450657894736842
+homozygous	null	split	a flank matches two or more places	40	12160	0.003289473684210526
+homozygous	null	split	both flanks placed, inconsistent with one intact element	205	12160	0.016858552631578948

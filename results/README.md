@@ -225,6 +225,16 @@ Per strain: the short-read calls, and how many of them are not the `intact_calle
 
 Per strain: the short-read contig ends located on the long-read assembly (`breakpoints`), from the short-read contigs' alignments to it (minimap2 `-x asm5`, primary, mapping quality at least 20, at least 1 kb; an end is located when its outermost alignment reaches within 100 bp of it, and ends within 1 kb of a long-read contig end are dropped); the ends that could not be located; the mean AT fraction of the 500 bp long-read windows holding a breakpoint; and the genome's length-weighted mean window AT. The input to outcome C5.
 
+### `exploratory_centromere_flanks.tsv`, `exploratory_flank_summary.tsv` (exploratory, not in the analysis plan)
+
+Why a broken element is broken. The flanks of the primary analysis are aligned again exactly as in the comparison, and every alignment that passes the identity and coverage thresholds is counted, secondary ones included. A flank whose sequence occurs twice in the short-read assembly, as both haplotypes of a heterozygous strain can, has a low mapping quality and is left unplaced by the registered rule, so its element counts as broken although nothing is broken there.
+
+- `left_flank`, `right_flank`: `placed`, `no full-length match`, `two or more full-length matches`, or `one full-length match, not placed` (mapping quality below 20, or only a secondary alignment).
+- `element_reason`: one reason per element, a second copy taking precedence over a missing flank.
+- `short_read_synteny_checkable` (centromeres `intact_called` only): the short-read contig extends 10 kb beyond both ends of the call, the arm 1 definition.
+
+The summary counts elements, centromeres and null windows, by zygosity, kind, status and reason, with the fraction of that zygosity's elements of that kind.
+
 ### `confirmatory.tsv`
 
 The registered outcomes, one row per measure.
