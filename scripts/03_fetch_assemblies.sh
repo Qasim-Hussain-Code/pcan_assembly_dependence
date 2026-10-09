@@ -27,6 +27,9 @@ EOF
 
 # shellcheck source=lib/common.sh
 source "$(dirname "${BASH_SOURCE[0]}")/lib/common.sh"
+# The arguments as given, kept for the measured re-run: the parsing loop below
+# consumes them with shift.
+args=("$@")
 set_name="arm0"
 force=0
 while [[ $# -gt 0 ]]; do
@@ -40,7 +43,7 @@ done
 case "$set_name" in arm0|arm2) ;; *) pad_die "--set must be arm0 or arm2" ;; esac
 pad_load_conf
 pad_skip_if_done "fetch_assemblies_$set_name" "$force"
-pad_measure_self "fetch_assemblies_$set_name" "$@"
+pad_measure_self "fetch_assemblies_$set_name" "${args[@]}"
 pad_activate tools
 
 asm="$DATA_DIR/assemblies"
