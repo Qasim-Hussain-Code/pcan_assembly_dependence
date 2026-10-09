@@ -195,13 +195,13 @@ for code in "${codes[@]}"; do
     # One download per mate, fanned out to every subsampler through named
     # pipes. curl does not retry inside a stream (a retried transfer would
     # repeat data), so a failed download is repeated whole, up to three times.
-    md5_ok="yes"
-    dl_bytes=0
-    for m in 1 2; do
-        url=$([[ $m == 1 ]] && echo "$url1" || echo "$url2")
-        want=$([[ $m == 1 ]] && echo "$md5_1" || echo "$md5_2")
+    # The two mates stream at the same time: on the link these results came
+    # from, two streams together moved about 30 per cent more than one.
+    stream_mate() {
+        local m="$1" url="$2" want="$3" attempt spec t s f fifo out ok got
+        local -a pids fifos
         for attempt in 1 2 3; do
-            rm -f "$sdir"/reads/fifo_* "$sdir"/reads/*_R"$m".fq.gz
+            rm -f "$sdir"/reads/fifo_*_"$m" "$sdir"/reads/*_R"$m".fq.gz
             pids=()
             fifos=()
             for spec in "${specs[@]}"; do
@@ -230,14 +230,27 @@ for code in "${codes[@]}"; do
             for p in "${pids[@]}"; do wait "$p" || ok=0; done
             got=$(cat "$sdir/reads/md5_$m" 2>/dev/null || echo none)
             if [[ "$ok" == "1" && "$got" == "$want" ]]; then
-                dl_bytes=$((dl_bytes + $(cat "$sdir/reads/bytes_$m")))
-                break
+                echo "ok $(cat "$sdir/reads/bytes_$m")" > "$sdir/reads/result_$m"
+                return 0
             fi
             pad_log "$code: mate $m attempt $attempt failed (md5 $got, expected $want)"
-            [[ "$attempt" == "3" ]] && md5_ok="no"
         done
+        echo "failed 0" > "$sdir/reads/result_$m"
+    }
+    stream_mate 1 "$url1" "$md5_1" &
+    pid1=$!
+    stream_mate 2 "$url2" "$md5_2" &
+    pid2=$!
+    wait "$pid1" || true
+    wait "$pid2" || true
+    md5_ok="yes"
+    dl_bytes=0
+    for m in 1 2; do
+        read -r res nbytes < "$sdir/reads/result_$m" || { res="failed"; nbytes=0; }
+        [[ "$res" == "ok" ]] || md5_ok="no"
+        dl_bytes=$((dl_bytes + nbytes))
     done
-    rm -f "$sdir"/reads/fifo_*
+    rm -f "$sdir"/reads/fifo_* "$sdir"/reads/result_*
 
     printf 'assembler\ttarget_depth\tseed\tfraction\tread_pairs\tbases_raw\trealised_depth_raw\tbases_trimmed\trealised_depth_trimmed\tnames_checked\tname_mismatches\tstatus\terror\telapsed_s\tpeak_rss_mb\tcontig_n50\tcontig_l50\tn_contigs\ttotal_length\n' > "$sdir/manifest.tsv"
     n_ok=0 n_fail=0 max_rss=0
