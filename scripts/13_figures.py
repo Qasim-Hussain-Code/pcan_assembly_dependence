@@ -173,7 +173,7 @@ def fig_arm1a():
         ax.set_xlim(3000, 2.5e6)
         ax.set_ylim(0, 1.05)
         ax.set_ylabel("fraction of unfragmented calls")
-        ax.set_title("%s  %s\nn = %d genomes x %d replicates per level" % ("ab"[col], title, n_gen, n_rep),
+        ax.set_title("%s  Simulation, %s\nn = %d genomes x %d replicates per level" % ("ab"[col], title, n_gen, n_rep),
                      loc="left")
 
         ax = axes[1, col]
@@ -192,8 +192,8 @@ def fig_arm1a():
         ax.set_xlim(3000, 2.5e6)
         ax.set_xlabel("realised contig N50 (bp)")
         ax.set_ylabel("calls per 100 unfragmented calls")
-        ax.set_title("%s  Losses and gains, %s\nn = %d genomes; calls pooled over replicates" % ("cd"[col], title, n_gen),
-                     loc="left")
+        ax.set_title("%s  Simulation, losses and gains, %s\nn = %d genomes; calls pooled over replicates"
+                     % ("cd"[col], title, n_gen), loc="left")
     ticks = ["the %d published arm 0 assemblies (light grey)" % (len(stats0) if stats0 is not None else 0)]
     if stats2 is not None:
         ticks.append("the %d published short-read assemblies of arm 2 (dark grey)" % len(stats2))
