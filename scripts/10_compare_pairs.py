@@ -540,26 +540,34 @@ def aggregate_arm3(runs3):
     prim = cens[cens["variant"] == "primary"]
     P.atomic_write_tsv(prim, os.path.join(out, "centromere_status.tsv"))
 
+    def per_strain(df, hit):
+        """Each strain's fraction, strains in sorted order: a bootstrap over
+        these draws exactly the strains one over per-strain tables would."""
+        return pd.DataFrame({"strain": df["strain"].values, "hit": np.asarray(hit, dtype=float)}) \
+            .groupby("strain")["hit"].mean().tolist()
+
+    def mean_of(us):
+        return float(np.mean(us))
+
     conf, sens = [], []
     for (assembler, depth, seed), c in prim.groupby(["assembler", "target_depth", "seed"]):
         lift = c[c["status"] != "not_liftable"]
-        units = [g for _, g in lift.groupby("strain")]
-        est, lo, hi = P.cluster_bootstrap(units, lambda us: float(np.mean([(u["status"] == "intact_called").mean() for u in us])),
-                                          n_boot=PS.N_BOOT, seed=PS.SEED)
-        per_strain = [(u["status"] == "intact_called").mean() for u in units]
+        units = per_strain(lift, lift["status"] == "intact_called")
+        est, lo, hi = P.cluster_bootstrap(units, mean_of, n_boot=PS.N_BOOT, seed=PS.SEED)
         conf.append({"outcome": "D1", "assembler": assembler, "target_depth": depth, "seed": seed,
                      "measure": "recall relative to the long-read calls", "n_strains": len(units),
-                     "estimate": est, "ci_low": lo, "ci_high": hi, "median": float(np.median(per_strain)),
-                     "q25": float(np.percentile(per_strain, 25)), "q75": float(np.percentile(per_strain, 75)),
+                     "estimate": est, "ci_low": lo, "ci_high": hi, "median": float(np.median(units)),
+                     "q25": float(np.percentile(units, 25)), "q75": float(np.percentile(units, 75)),
                      "interval": "percentile bootstrap over strains"})
         called = c[c["status"] == "intact_called"]
-        cu = [g for _, g in called.groupby("strain")]
+        cu = per_strain(called, called["cdeii_difference"] == 0)
         if cu:
-            e2, l2, h2 = P.cluster_bootstrap(cu, lambda us: float(np.mean([(u["cdeii_difference"] == 0).mean() for u in us])),
-                                             n_boot=PS.N_BOOT, seed=PS.SEED)
+            e2, l2, h2 = P.cluster_bootstrap(cu, mean_of, n_boot=PS.N_BOOT, seed=PS.SEED)
             conf.append({"outcome": "D2", "assembler": assembler, "target_depth": depth, "seed": seed,
                          "measure": "identical CDEII length among intact_called", "n_strains": len(cu),
-                         "estimate": e2, "ci_low": l2, "ci_high": h2, "interval": "percentile bootstrap over strains"})
+                         "estimate": e2, "ci_low": l2, "ci_high": h2, "median": float(np.median(cu)),
+                         "q25": float(np.percentile(cu, 25)), "q75": float(np.percentile(cu, 75)),
+                         "interval": "percentile bootstrap over strains"})
         if int(seed) == 11:
             n = nulls[(nulls["variant"] == "primary") & (nulls["assembler"] == assembler)
                       & (nulls["target_depth"].astype(str) == str(depth)) & (nulls["seed"] == seed)]
@@ -574,11 +582,11 @@ def aggregate_arm3(runs3):
         n = nulls[(nulls["variant"] == variant) & (nulls["assembler"] == assembler)
                   & (nulls["target_depth"].astype(str) == str(depth)) & (nulls["seed"] == seed)]
         lift = c[c["status"] != "not_liftable"]
-        units = [g for _, g in lift.groupby("strain")]
-        est, lo, hi = P.cluster_bootstrap(units, lambda us: float(np.mean([(u["status"] == "intact_called").mean() for u in us])),
-                                          n_boot=PS.N_BOOT, seed=PS.SEED)
+        units = per_strain(lift, lift["status"] == "intact_called")
+        est, lo, hi = P.cluster_bootstrap(units, mean_of, n_boot=PS.N_BOOT, seed=PS.SEED)
         sens.append({"variant": variant, "outcome": "D1", "assembler": assembler, "target_depth": depth,
-                     "estimate": est, "ci_low": lo, "ci_high": hi})
+                     "measure": "recall relative to the long-read calls", "estimate": est, "ci_low": lo,
+                     "ci_high": hi})
         for r in PS.c4_breaks(c, n, label="D4"):
             sens.append(dict(r, variant=variant, assembler=assembler, target_depth=depth))
     P.atomic_write_tsv(pd.DataFrame(sens), P.repo("results", "sensitivity", "arm3_variants.tsv"))
