@@ -1,0 +1,62 @@
+# The data directory holds cached assemblies, reads in transit, conda
+# environments and the PCAn checkout. Only its README is tracked.
+data/*
+!data/README.md
+
+# Machine-specific settings written by scripts/00_configure.sh
+project.conf
+
+# Sequence files, compressed or not. Assemblies and reads are fetched by
+# accession and never committed.
+*.fa
+*.fa.gz
+*.fasta
+*.fasta.gz
+*.fna
+*.fna.gz
+*.fas
+*.fas.gz
+*.fsa
+*.fsa.gz
+*.ffn
+*.faa
+*.fq
+*.fq.gz
+*.fastq
+*.fastq.gz
+*.fastq.bz2
+*.sra
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+
+# FIMO output directories
+FIMOresults/
+fimo_out*/
+CDEIII_search/
+
+# Assembler working directories
+spades_*/
+megahit_*/
+*.spades/
+*.megahit/
+
+# Conda environment directories
+.conda/
+conda_env*/
+envs/
+
+# Python and notebook caches
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Credentials and editor state
+.env
+.netrc
+*.pem
+*.key
+.vscode/
+.idea/
