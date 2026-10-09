@@ -121,6 +121,34 @@ def fragment_lengths_split_at_gaps(fragments):
     return out
 
 
+def gap_free_intervals(seq):
+    """0-based half-open intervals of the gap-free stretches of one sequence."""
+    import re
+    return [(m.start(), m.end()) for m in re.finditer("[^Nn]+", seq)]
+
+
+def contig_lengths_after_cuts(intervals, cuts):
+    """Contig lengths after cutting, from the gap-free intervals of the
+    unfragmented sequence and the cut positions alone, without building any
+    fragment. A cut at p falls between 0-based bases p - 1 and p; one inside a
+    gap splits nothing that the gap had not split already. Gives the same
+    lengths as fragment_lengths_split_at_gaps(apply_cuts(...)) (tested)."""
+    cuts = np.asarray(cuts, dtype=np.int64)
+    out = []
+    for a, b in intervals:
+        lo, hi = np.searchsorted(cuts, [a + 1, b], side="left")
+        inner = cuts[lo:hi]
+        out.extend(np.diff(np.concatenate(([a], inner, [b]))).tolist())
+    return out
+
+
+def genome_contig_lengths(interval_map, cuts):
+    out = []
+    for name, ivs in interval_map.items():
+        out.extend(contig_lengths_after_cuts(ivs, cuts.get(name, [])))
+    return out
+
+
 def calibrate_rate(records, target_n50, model, seed, genome_at=None, gamma=GAMMA_DEFAULT,
                    weights=None, draws=12, tol=0.02, max_iter=40):
     """Rate whose realised contig N50, averaged over `draws` calibration
@@ -130,7 +158,8 @@ def calibrate_rate(records, target_n50, model, seed, genome_at=None, gamma=GAMMA
     Returns (rate, mean realised N50 at that rate). A rate of 0 means the
     unfragmented assembly is already at or below the target."""
     from padlib import nx
-    base = fragment_lengths_split_at_gaps(apply_cuts(records, {}))
+    intervals = {name: gap_free_intervals(seq) for name, seq in records}
+    base = genome_contig_lengths(intervals, {})
     if nx(base) <= target_n50:
         return 0.0, float(nx(base))
     if weights is None and model == "at_weighted":
@@ -141,7 +170,7 @@ def calibrate_rate(records, target_n50, model, seed, genome_at=None, gamma=GAMMA
         vals = []
         for _ in range(draws):
             c = draw_cuts(records, rate, model, rng, genome_at, gamma, weights)
-            vals.append(nx(fragment_lengths_split_at_gaps(apply_cuts(records, c))))
+            vals.append(nx(genome_contig_lengths(intervals, c)))
         return float(np.mean(vals))
 
     # For exponential fragment lengths with mean m, N50 is about 1.68 m, so

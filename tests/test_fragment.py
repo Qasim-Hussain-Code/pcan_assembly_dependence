@@ -78,6 +78,21 @@ class TestCuts(unittest.TestCase):
              for _ in range(200)]
         self.assertAlmostEqual(np.mean(n) / 100, 1.0, delta=0.02)
 
+    def test_fast_contig_lengths_equal_slow_ones(self):
+        # random sequence with N runs, including at both ends and back to back
+        rng = np.random.default_rng(13)
+        parts = []
+        for _ in range(40):
+            parts.append("".join(rng.choice(list("ACGT"), size=int(rng.integers(1, 3000)))))
+            parts.append("N" * int(rng.integers(1, 50)))
+        seq = "NN" + "".join(parts) + "ACGT"
+        recs = [("s", seq)]
+        for rate in (1 / 200, 1 / 2000, 1 / 20000):
+            cuts = F.draw_cuts(recs, rate, "uniform", np.random.default_rng(int(1 / rate)))
+            slow = sorted(F.fragment_lengths_split_at_gaps(F.apply_cuts(recs, cuts)))
+            fast = sorted(F.genome_contig_lengths({"s": F.gap_free_intervals(seq)}, cuts))
+            self.assertEqual(slow, fast)
+
     def test_calibration_reaches_target(self):
         rng = np.random.default_rng(11)
         recs = [("c%d" % i, "".join(rng.choice(list("ACGT"), size=400000))) for i in range(4)]
