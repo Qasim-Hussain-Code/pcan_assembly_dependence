@@ -328,3 +328,33 @@ Negative control: the null windows. Technical replicates: the three 10x seeds.
 The arm 2 alternatives apply to arm 3: flank length 1, 2 and 5 kb, placement
 identity 0.90, 0.95 and 0.99, null AT bin width 2.5, 5 and 10 percentage
 points.
+
+## Changes recorded on 9 October 2026, after the arm 2 results and before any arm 3 data
+
+Written after the arm 2 confirmatory results had been read and before any arm
+3 reads were downloaded. The text above is unchanged.
+
+Arm 3 downloads overlap assembly. Strains are still assembled one at a time,
+in the order fixed above, but while one strain assembles, the next strain's
+reads download. Done in turn, the download leaves the processors idle and the
+assembly leaves the link idle, and the time budget then covers fewer
+strains. The depths, seeds, assemblers, controls and the rule that cuts
+strains from the end of the order are unchanged. The projection before each
+strain now uses the longest download and the longest assembly seen so far,
+because a strain's elapsed time no longer adds up from the two.
+
+Two exploratory additions to arm 2, outside the confirmatory outcomes and
+labelled exploratory wherever they appear. First, the kept flanks are aligned
+again and every full-length match is counted, secondary ones included, to
+tell a flank that matches two places (as both haplotypes of a heterozygous
+strain can in a short-read assembly) from one that matches nowhere; the
+registered placement rule leaves both unplaced. Second, for each centromere
+that is intact and called, whether the short-read contig extends 10 kb beyond
+both ends of the call, the arm 1 definition of synteny-checkable.
+
+Two points of implementation, which change no arm 2 result. In the
+permutation test of C4 and D4, a permutation in which one group has no break
+now counts as at least as extreme as the observed split, where it was
+skipped before; no arm 2 permutation had that property. The Holm adjustment
+always uses the fourteen registered tests, and a test not yet run enters as
+p = 1.
