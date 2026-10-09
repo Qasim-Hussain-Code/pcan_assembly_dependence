@@ -1,0 +1,34 @@
+accession	species	genus	kazachstania_species	assembly_level	contig_n50	total_length	genome_at	nuclear_chromosome_sequences	calls	eligible	reason	chosen
+GCA_000412225.2	Ashbya aceri	Ashbya		Complete Genome	1493473	8894523	0.4881	7	7	yes		yes
+GCA_000091025.4	Eremothecium gossypii	Eremothecium		Complete Genome	1519140	9119312	0.483	7	7	yes		yes
+GCA_000235365.1	Eremothecium cymbalariae	Eremothecium		Chromosome	1193613	9669424	0.5968	8	8	yes		no
+GCA_001548555.1	Eremothecium sinecaudum	Eremothecium		Complete Genome	1398029	8948761	0.5985	7	7	yes		no
+GCA_000315915.1	Henningerozyma blattae	Henningerozyma		Chromosome	221597	14048593	0.6826	10	8	no	8 calls for 10 nuclear chromosome sequences	no
+GCA_000348985.1	Huiozyma naganishii	Huiozyma		Chromosome	196811	10845821	0.5411	13	13	yes		yes
+GCA_000304475.1	Kazachstania africana	Kazachstania	africana	Chromosome	925516	11130140	0.6371	12	12	yes		yes
+GCA_000002515.1	Kluyveromyces lactis	Kluyveromyces		Complete Genome	1753957	10689156	0.6124	6	6	yes		yes
+GCA_001417885.1	Kluyveromyces marxianus	Kluyveromyces		Complete Genome	1421472	10966467	0.5988	8	8	yes		no
+GCA_000142805.1	Lachancea thermotolerans	Lachancea		Chromosome	1513537	10392862	0.527	8	8	yes		yes
+GCA_000149225.2	Lachancea kluyveri	Lachancea		Chromosome	1211747	11538858	0.5841	8	8	yes		no
+GCA_900074715.1	Lachancea meyersii	Lachancea		Chromosome	666543	11261819	0.5467	8	8	yes		no
+GCA_900074725.1	Lachancea dasiensis	Lachancea		Chromosome	988707	10701617	0.5484	8	8	yes		no
+GCA_900074735.1	Lachancea fantastica	Lachancea		Chromosome	730885	11336659	0.5551	7	7	yes		no
+GCA_900074745.1	Lachancea mirantina	Lachancea		Chromosome	1032804	10117267	0.549	8	8	yes		no
+GCA_900074755.1	Lachancea nothofagi	Lachancea		Chromosome	994480	11313798	0.5628	8	8	yes		no
+GCA_900074765.1	Lachancea fermentati	Lachancea		Chromosome	821294	10264457	0.5743	8	8	yes		no
+GCA_000002545.2	Nakaseomyces glabratus	Nakaseomyces		Chromosome	1100349	12318245	0.6135	13	13	yes		yes
+GCA_000146045.2	Saccharomyces cerevisiae	Saccharomyces		Complete Genome	924431	12071326	0.617	16	16	yes		yes
+GCA_000292725.1	Saccharomyces arboricola	Saccharomyces		Chromosome	117287	11619520	0.6132	16	16	yes		no
+GCA_001298625.1	Saccharomyces eubayanus	Saccharomyces		Chromosome	195199	11734173	0.6014	16	16	yes		no
+GCA_002079055.1	Saccharomyces paradoxus	Saccharomyces		Chromosome	835812	12092810	0.6146	16	16	yes		no
+GCA_900290405.1	Saccharomyces jurei	Saccharomyces		Complete Genome	738741	11938758	0.621	17	16	no	16 calls for 17 nuclear chromosome sequences	no
+GCA_947241705.1	Saccharomyces mikatae	Saccharomyces		Complete Genome	811203	12104871	0.6205	16	16	yes		no
+GCA_947243775.1	Saccharomyces kudriavzevii	Saccharomyces		Complete Genome	901691	11913776	0.6018	16	16	yes		no
+GCA_947243795.1	Saccharomyces uvarum	Saccharomyces		Complete Genome	920918	11715280	0.6004	16	16	yes		no
+GCA_000236905.1	Tetrapisispora phaffii	Tetrapisispora		Chromosome	219190	12115070	0.6644	16	15	no	15 calls for 16 nuclear chromosome sequences	no
+GCA_000243375.1	Torulaspora delbrueckii	Torulaspora		Chromosome	312204	9220678	0.5798	8	8	yes		yes
+GCA_014133895.1	Torulaspora globosa	Torulaspora		Complete Genome	1122226	9281121	0.5399	8	6	no	6 calls for 8 nuclear chromosome sequences	no
+GCA_946403475.1	Torulaspora quercuum	Torulaspora		Complete Genome	1208319	10364244	0.5862	8	8	no	calls not one per nuclear chromosome sequence	no
+GCA_000026365.1	Zygosaccharomyces rouxii	Zygosaccharomyces		Chromosome	1496342	9764635	0.6087	7	7	yes		yes
+GCA_001984395.2	Zygosaccharomyces parabailii	Zygosaccharomyces		Complete Genome	1283838	20864403	0.5752	16	14	no	14 calls for 16 nuclear chromosome sequences	no
+GCA_013402915.1	Zygotorulaspora mrakii	Zygotorulaspora		Complete Genome	1312970	10450160	0.6004	8	9	no	9 calls for 8 nuclear chromosome sequences; calls not one per nuclear chromosome sequence	no

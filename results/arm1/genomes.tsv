@@ -1,0 +1,11 @@
+accession	species	genus	kazachstania_species	assembly_level	contig_n50	total_length	genome_at	nuclear_chromosome_sequences	calls	eligible	reason
+GCA_000412225.2	Ashbya aceri	Ashbya		Complete Genome	1493473	8894523	0.4881	7	7	yes	
+GCA_000091025.4	Eremothecium gossypii	Eremothecium		Complete Genome	1519140	9119312	0.483	7	7	yes	
+GCA_000348985.1	Huiozyma naganishii	Huiozyma		Chromosome	196811	10845821	0.5411	13	13	yes	
+GCA_000304475.1	Kazachstania africana	Kazachstania	africana	Chromosome	925516	11130140	0.6371	12	12	yes	
+GCA_000002515.1	Kluyveromyces lactis	Kluyveromyces		Complete Genome	1753957	10689156	0.6124	6	6	yes	
+GCA_000142805.1	Lachancea thermotolerans	Lachancea		Chromosome	1513537	10392862	0.527	8	8	yes	
+GCA_000002545.2	Nakaseomyces glabratus	Nakaseomyces		Chromosome	1100349	12318245	0.6135	13	13	yes	
+GCA_000146045.2	Saccharomyces cerevisiae	Saccharomyces		Complete Genome	924431	12071326	0.617	16	16	yes	
+GCA_000243375.1	Torulaspora delbrueckii	Torulaspora		Chromosome	312204	9220678	0.5798	8	8	yes	
+GCA_000026365.1	Zygosaccharomyces rouxii	Zygosaccharomyces		Chromosome	1496342	9764635	0.6087	7	7	yes	

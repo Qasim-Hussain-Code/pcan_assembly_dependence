@@ -1,0 +1,4 @@
+role	accession	species	genus	kazachstania_species	calls	median_cdeii_len
+reference	GCA_000146045.2	Saccharomyces cerevisiae	Saccharomyces		16	85.0
+shortest median CDEII	GCA_000304475.1	Kazachstania africana	Kazachstania	africana	12	49.0
+longest median CDEII	GCA_000091025.4	Eremothecium gossypii	Eremothecium		7	167.0
