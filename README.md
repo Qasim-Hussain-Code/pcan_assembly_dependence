@@ -347,15 +347,19 @@ before any confirmatory result was written; the aggregation alone takes
 about 160 s (`logs/resources.tsv`).
 
 `bash scripts/11_assemble_reads.sh` processes the 33 arm 3 strains one at a
-time in the registered order. Each mate is streamed from ENA once and fanned
-out through named pipes to seqtk, which draws every depth and seed in the same
-pass; the stream is MD5-checked against ENA's value. While one strain
-assembles, the next strain's reads download, because the link and the
-processors would otherwise sit idle in turn; assemblies never overlap. Reads
-and working directories are deleted when a strain is done, or by the cleanup
-trap if it is interrupted. `python scripts/10_compare_pairs.py --arm 3` then
-compares every assembly with the strain's long-read assembly by the arm 2
-method.
+time in the registered order. Each read file is downloaded from ENA,
+resuming any transfer that breaks, checked against ENA's MD5, and fanned out
+in one pass through named pipes to seqtk, which draws every depth and seed;
+then it is deleted. The registered design streamed the reads instead, but on
+this link the first strain's streams broke repeatedly, once with a TLS
+record that failed its integrity check, and a broken stream must start again
+from its first byte; the change and its date are at the end of
+`config/analysis_plan.md`. While one strain assembles, the next strain's
+reads download, because the link and the processors would otherwise sit idle
+in turn; assemblies never overlap. Reads and working directories are deleted
+when a strain is done, or by the cleanup trap if it is interrupted.
+`python scripts/10_compare_pairs.py --arm 3` then compares every assembly
+with the strain's long-read assembly by the arm 2 method.
 
 `python scripts/12_analyse.py` writes the reporting summary, with Holm's
 correction across the fourteen registered tests, and decides for every
@@ -365,8 +369,9 @@ figures.
 
 Changes made after the analysis plan was registered are recorded, dated, at
 the end of `config/analysis_plan.md`: the overlap of download and assembly in
-arm 3, two exploratory additions to arm 2, and two points of implementation
-that change no arm 2 result.
+arm 3, the download of reads to a file in place of a stream, two exploratory
+additions to arm 2, and two points of implementation that change no arm 2
+result.
 
 ## Results
 
@@ -694,9 +699,10 @@ pcan_assembly_dependence/
 The data directory peaked at 8.97 GB before arm 3 (`logs/resources.tsv`):
 3.3 GB of conda environments, the 4.0 GB Peter et al. archive kept once with
 its checksum, 0.78 GB of NCBI assemblies, and the rest PCAn outputs. Arm 3
-adds the reads of at most two strains at a time and one strain's assembler
-working directories; its per-strain peaks are logged in
-`logs/arm3_strains.tsv`. Commands, in order, with the times measured here:
+adds, at any time, the downloaded read files of one strain (3 to 7 GB) and
+the subsamples and assembler working directories of another; its per-strain
+peaks are logged in `logs/arm3_strains.tsv`. Commands, in order, with the
+times measured here:
 
 ```bash
 bash scripts/00_configure.sh --disk 35 --yes        # writes project.conf; add --data-dir to move data/

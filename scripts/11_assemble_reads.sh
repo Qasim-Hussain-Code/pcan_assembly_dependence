@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Arm 3: assemble real Illumina reads at known depths with two assemblers, one
 # strain at a time, by the design registered in config/analysis_plan.md.
-# For each strain: stream both read files from ENA once, subsample during the
-# download (all depths and seeds in the same pass), check that mates still
-# pair, trim with fastp, assemble every subsample with SPAdes and MEGAHIT, keep
-# the contigs and reports, delete the reads. The next strain's download runs
+# For each strain: download both read files from ENA, resuming any transfer
+# that breaks, check them against ENA's MD5, draw every depth and seed in one
+# pass over each file, delete the files, check that mates still pair, trim
+# with fastp, assemble every subsample with SPAdes and MEGAHIT, keep the
+# contigs and reports, delete the reads. The next strain's download runs
 # while the current strain assembles; assemblies never overlap.
 set -euo pipefail
 
@@ -20,6 +21,8 @@ strain is done, and by the cleanup trap if the run is interrupted.
 
 Strains are assembled one at a time. While one strain assembles, the reads of
 the next one download, so that the link and the processors are both in use.
+A strain whose reads could not be downloaded intact is logged as such and
+left without a done marker, so that a later run tries it again.
 
 Before a strain's download starts, the arm's wall time is projected to the end
 of that strain from the longest download and the longest assembly seen so far
@@ -137,63 +140,103 @@ specs_of() {   # specs_of <G> <B>: one "target:seed:fraction" line per subsample
     done
 }
 
-# One download per mate, fanned out to every subsampler through named pipes.
-# curl does not retry inside a stream (a retried transfer would repeat data),
-# so a failed download is repeated whole, up to three times. The two mates
-# stream at the same time: on the link these results came from, two streams
-# together moved about 30 per cent more than one. Called by fetch, whose
-# code, sdir and specs it uses.
-stream_mate() {
-    local m="$1" url="$2" want="$3" attempt spec t s f fifo out ok got
-    local -a pids fifos
-    for attempt in 1 2 3; do
-        rm -f "$sdir"/reads/fifo_*_"$m" "$sdir"/reads/*_R"$m".fq.gz
-        pids=()
-        fifos=()
-        for spec in "${specs[@]}"; do
-            IFS=: read -r t s f <<< "$spec"
-            fifo="$sdir/reads/fifo_${t}_${s}_$m"
-            mkfifo "$fifo"
-            fifos+=("$fifo")
-            out="$sdir/reads/d${t}_s${s}_R$m.fq.gz"
-            if awk -v f="$f" 'BEGIN {exit !(f >= 1)}'; then
-                # seqtk reads a value of 1 or more as a read count, not a
-                # fraction, so the whole run is copied as it comes
-                cat "$fifo" > "$out" &
-            else
-                ( seqtk sample -s "$s" "$fifo" "$f" | pigz -p 2 > "$out" ) &
+# download_mate <m> <url> <md5> <bytes>: one read file into the strain's reads
+# directory, checked against ENA's MD5. On the link these results came from,
+# transfers of a few GB broke after 7 to 40 minutes, once with a TLS record
+# that failed its integrity check ("bad record mac"), so a stream that had to
+# start again from its first byte never finished. A file can be resumed from
+# its last good byte, which TLS has verified; curl -C - does that, as often as
+# needed while each try still adds bytes. The MD5 then checks the whole file,
+# and a mismatch starts the file again, at most twice. Called by fetch, whose
+# code and sdir it uses; writes reads/result_<m>: "ok <bytes>" or "failed 0".
+download_mate() {
+    local m="$1" url="$2" want="$3" size="$4" f="$sdir/reads/R$1.fastq.gz" whole tries have before got
+    if ! [[ "$size" =~ ^[0-9]+$ ]]; then
+        # no size in the runs table: ask the server for it
+        size=$(curl -fsSIL "$url" | tr -d '\r' | awk 'tolower($1) == "content-length:" {n = $2} END {print n + 0}')
+    fi
+    for whole in 1 2 3; do
+        rm -f "$f"
+        tries=0
+        have=0
+        while (( have < size && tries < 200 )); do
+            tries=$((tries + 1))
+            before=$have
+            curl -fsSL -C - -o "$f" "$url" 2>> "$sdir/reads/curl_$m.log" || true
+            have=$(stat -c %s "$f" 2>/dev/null || echo 0)
+            if (( have < size )); then
+                pad_log "$code: mate $m stopped at $have of $size bytes; resuming"
+                # a try that added nothing is counted ten times over, so that
+                # a link that has gone for good gives up within 20 tries
+                (( have > before )) || tries=$((tries + 9))
+                sleep 10
             fi
-            pids+=($!)
         done
-        mkfifo "$sdir/reads/fifo_md5_$m"
-        ( md5sum < "$sdir/reads/fifo_md5_$m" | awk '{print $1}' > "$sdir/reads/md5_$m" ) &
-        pids+=($!)
-        mkfifo "$sdir/reads/fifo_count_$m"
-        ( wc -c < "$sdir/reads/fifo_count_$m" > "$sdir/reads/bytes_$m" ) &
-        pids+=($!)
-        ok=1
-        curl -fsSL "$url" | tee "${fifos[@]}" "$sdir/reads/fifo_md5_$m" > "$sdir/reads/fifo_count_$m" || ok=0
-        for p in "${pids[@]}"; do wait "$p" || ok=0; done
-        got=$(cat "$sdir/reads/md5_$m" 2>/dev/null || echo none)
-        if [[ "$ok" == "1" && "$got" == "$want" ]]; then
-            echo "ok $(cat "$sdir/reads/bytes_$m")" > "$sdir/reads/result_$m"
+        got=$(md5sum "$f" 2>/dev/null | awk '{print $1}')
+        if [[ "$have" == "$size" && "$got" == "$want" ]]; then
+            echo "ok $have" > "$sdir/reads/result_$m"
             return 0
         fi
-        pad_log "$code: mate $m attempt $attempt failed (md5 $got, expected $want)"
+        pad_log "$code: mate $m, download $whole of 3: $have of $size bytes, MD5 $got, expected $want"
     done
     echo "failed 0" > "$sdir/reads/result_$m"
 }
 
-# fetch <code>: both mates of one strain, subsampled on the way into its reads
-# directory. Ends by writing reads/fetched: "<md5 ok: yes or no> <bytes> <seconds>".
+# subsample_mate <m>: one pass over the downloaded file of mate m, fanned out
+# through named pipes to a seqtk for every depth and seed. The exit status of
+# every process in the fan-out is checked, because a reader that stops early
+# leaves a short subsample without any error message. I suspect that is how
+# the streamed downloads broke here, with seqtk stopping at damaged data; I
+# did not confirm it. A failed pass is run again from the file, which is
+# deleted once a pass has succeeded. Writes reads/subsampled_<m>.
+subsample_mate() {
+    local m="$1" f="$sdir/reads/R$1.fastq.gz" pass spec t s fr fifo out ok
+    local -a pids fifos
+    for pass in 1 2 3; do
+        rm -f "$sdir"/reads/fifo_*_"$m" "$sdir"/reads/d*_R"$m".fq.gz
+        pids=()
+        fifos=()
+        for spec in "${specs[@]}"; do
+            IFS=: read -r t s fr <<< "$spec"
+            fifo="$sdir/reads/fifo_${t}_${s}_$m"
+            mkfifo "$fifo"
+            fifos+=("$fifo")
+            out="$sdir/reads/d${t}_s${s}_R$m.fq.gz"
+            if awk -v f="$fr" 'BEGIN {exit !(f >= 1)}'; then
+                # seqtk reads a value of 1 or more as a read count, not a
+                # fraction, so the whole run is copied as it comes
+                cat "$fifo" > "$out" &
+            else
+                ( set -o pipefail; seqtk sample -s "$s" "$fifo" "$fr" | pigz -p 2 > "$out" ) &
+            fi
+            pids+=($!)
+        done
+        ok=1
+        tee "${fifos[@]}" < "$f" > /dev/null || ok=0
+        for p in "${pids[@]}"; do wait "$p" || ok=0; done
+        if [[ "$ok" == "1" ]]; then
+            rm -f "$f" "$sdir"/reads/fifo_*_"$m"
+            touch "$sdir/reads/subsampled_$m"
+            return 0
+        fi
+        pad_log "$code: subsampling pass $pass over mate $m failed; repeating it from the downloaded file"
+    done
+    return 1
+}
+
+# fetch <code>: both mates of one strain, downloaded at the same time (on this
+# link two transfers together moved about 30 per cent more than one), then
+# each subsampled in one pass. Ends by writing reads/fetched:
+# "<reads intact: yes or no> <bytes> <seconds>".
 fetch() {
     local code="$1" sdir="$ARM3_DIR/$1" t0 m res nbytes md5_ok="yes" dl_bytes=0 pid1 pid2
-    local -a specs
+    local -a specs sizes
     mapfile -t specs < <(specs_of "$(field "$code" long_read_length)" "$(field "$code" base_count)")
+    IFS=';' read -r -a sizes <<< "$(field "$code" fastq_bytes)"
     t0=$(date +%s)
-    stream_mate 1 "https://$(field "$code" fastq_1)" "$(field "$code" md5_1)" &
+    download_mate 1 "https://$(field "$code" fastq_1)" "$(field "$code" md5_1)" "${sizes[0]:-}" &
     pid1=$!
-    stream_mate 2 "https://$(field "$code" fastq_2)" "$(field "$code" md5_2)" &
+    download_mate 2 "https://$(field "$code" fastq_2)" "$(field "$code" md5_2)" "${sizes[1]:-}" &
     pid2=$!
     wait "$pid1" || true
     wait "$pid2" || true
@@ -202,7 +245,12 @@ fetch() {
         [[ "$res" == "ok" ]] || md5_ok="no"
         dl_bytes=$((dl_bytes + nbytes))
     done
-    rm -f "$sdir"/reads/fifo_* "$sdir"/reads/result_*
+    if [[ "$md5_ok" == "yes" ]]; then
+        for m in 1 2; do
+            subsample_mate "$m" || md5_ok="no"
+        done
+    fi
+    rm -f "$sdir"/reads/result_* "$sdir"/reads/R?.fastq.gz
     printf '%s %s %s\n' "$md5_ok" "$dl_bytes" "$(( $(date +%s) - t0 ))" > "$sdir/reads/fetched"
 }
 
@@ -236,6 +284,9 @@ cleanup() {
     [[ -n "$fetch_pid" ]] && kill_tree "$fetch_pid"
     for d in "$assembling_dir" "${fetch_code:+$ARM3_DIR/$fetch_code}"; do
         [[ -n "$d" ]] || continue
+        # the same strain can be both the one assembling and the one being
+        # fetched; it is cleaned, and logged, once
+        [[ -d "$d/reads" || -d "$d/work" ]] || continue
         rm -rf "$d/reads" "$d/work"
         if [[ $status -ne 0 ]]; then
             pad_log "interrupted; removed the reads and working directories of $(pad_rel "$d")"
@@ -366,7 +417,7 @@ while [[ -n "$fetch_code" ]]; do
         r2="$sdir/reads/d${t}_s${s}_R2.fq.gz"
         if [[ "$md5_ok" != "yes" ]]; then
             for a in spades megahit; do
-                printf '%s\t%s\t%s\t%s\t\t\t\t\t\t\t\tfailed\tdownload failed its md5 check\t\t\t\t\t\t\n' "$a" "$t" "$s" "$f" >> "$sdir/manifest.tsv"
+                printf '%s\t%s\t%s\t%s\t\t\t\t\t\t\t\tfailed\treads not downloaded intact\t\t\t\t\t\t\n' "$a" "$t" "$s" "$f" >> "$sdir/manifest.tsv"
                 n_fail=$((n_fail + 1))
             done
             continue
@@ -427,10 +478,16 @@ while [[ -n "$fetch_code" ]]; do
     printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' "$code" "$run" "$start_utc" "$end_utc" \
         "$(( $(date -d "$end_utc" +%s) - $(date -d "$start_utc" +%s) ))" "$dl_s" "$asm_s" "$peak_gb" "$(drive_free_gb)" \
         "$dl_bytes" "$md5_ok" "$n_ok" "$n_fail" "$max_rss" "$status" >> "$STRAIN_LOG"
+    pad_log "$code: $n_ok assemblies, $n_fail failed; download ${dl_s} s, assembly ${asm_s} s, peak ${peak_gb} GB"
+    if [[ "$status" != "complete" ]]; then
+        # no done marker: the reads never arrived intact, which says nothing
+        # about the strain, so a later run tries it again
+        pad_log "$code: reads not downloaded intact; left for a later run"
+        continue
+    fi
     pad_utc > "$sdir/done"
     done_strains=$((done_strains + 1))
     done_this_run=$((done_this_run + 1))
-    pad_log "$code: $n_ok assemblies, $n_fail failed; download ${dl_s} s, assembly ${asm_s} s, peak ${peak_gb} GB"
     if [[ "$done_this_run" == "1" ]]; then
         fit=$(awk -v b="$budget" -v f="$dl_s" -v a="$asm_s" -v n="${#codes[@]}" 'BEGIN {
             m = (f > a ? f : a); k = (f + a > b) ? 0 : 1 + int((b - f - a) / (m > 0 ? m : 1)); if (k > n) k = n; printf "%d", k}')

@@ -358,3 +358,21 @@ now counts as at least as extreme as the observed split, where it was
 skipped before; no arm 2 permutation had that property. The Holm adjustment
 always uses the fourteen registered tests, and a test not yet run enters as
 p = 1.
+
+## Change recorded on 9 October 2026, before any arm 3 read was assembled
+
+The first arm 3 strain, CCN, could not be downloaded as a stream. Each of the
+two read files broke after about 40 minutes, and one file broke twice more
+after 16 and 7 minutes, the last time with a TLS record that failed its
+integrity check; a stream that breaks must start again from its first byte,
+and all three attempts for that file failed. No read reached an assembler.
+
+Reads are therefore downloaded to a temporary file, resuming each broken
+transfer from its last verified byte, and checked against ENA's MD5. Every
+depth and seed is then drawn in one pass over the file, with the same seqtk
+command and seeds as before, and the file is deleted. The subsamples are the
+ones streaming would have drawn: on the test run used for the pipeline, the
+fourteen assemblies built both ways have identical contig N50s. A strain
+whose reads still cannot be downloaded intact is logged and left for a later
+run instead of being counted as processed. CCN is processed again from the
+start, first in the order as before.
