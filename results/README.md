@@ -236,6 +236,7 @@ Why a broken element is broken. The flanks of the primary analysis are aligned a
 - `left_flank`, `right_flank`: `placed`, `no full-length match`, `two or more full-length matches`, or `one full-length match, not placed` (mapping quality below 20, or only a secondary alignment).
 - `element_reason`: one reason per element, a second copy taking precedence over a missing flank.
 - `short_read_synteny_checkable` (centromeres `intact_called` only): the short-read contig extends 10 kb beyond both ends of the call, the arm 1 definition.
+- `uncalled_filter` (centromeres `intact_uncalled` only): the PCAn filter that removed the candidate at that region in the short-read run, from the filter trace, or `no candidate formed`.
 
 The summary counts elements, centromeres and null windows, by zygosity, kind, status and reason, with the fraction of that zygosity's elements of that kind.
 

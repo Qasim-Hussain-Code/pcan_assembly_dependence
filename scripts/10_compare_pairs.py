@@ -423,6 +423,20 @@ def aggregate_arm2(pairs):
     P.log("arm 2 aggregated: %d strains" % len(counts))
 
 
+def uncalled_filter(r):
+    """For a centromere intact in the short-read assembly but not called there:
+    the PCAn filter that removed the candidate at that region, from the filter
+    trace of the short-read run. A candidate with exactly the region's
+    coordinates is preferred, then the best-ranked one overlapping it."""
+    cands = pd.read_csv(P.data_dir("arm2", r.strain, "short_calls.tsv.candidates.tsv.gz"), sep="\t")
+    s, e = int(r.region_start), int(r.region_end)
+    hit = cands[(cands["Contig"] == r.target) & (cands["Start"] <= e) & (cands["End"] >= s)]
+    if hit.empty:
+        return "no candidate formed"
+    exact = hit[(hit["Start"] == s) & (hit["End"] == e)]
+    return str((exact if len(exact) else hit).sort_values("rank").iloc[0]["removed_at"])
+
+
 def explore_arm2(explore, cens, nulls, out):
     """Exploratory tables, outside the analysis plan: why each broken element
     is broken, from flank_reasons, and whether each intact_called centromere
@@ -448,9 +462,13 @@ def explore_arm2(explore, cens, nulls, out):
         else:
             syn.append("")
     el["short_read_synteny_checkable"] = syn
-    c = el[el["kind"] == "centromere"]
+    c = el[el["kind"] == "centromere"].copy()
+    c["uncalled_filter"] = [uncalled_filter(r) if r.status == "intact_uncalled" else ""
+                            for r in c.merge(cens[["strain", "element_id", "region_start", "region_end"]],
+                                             on=["strain", "element_id"], how="left").itertuples()]
     P.atomic_write_tsv(c[["strain", "zygosity", "element_id", "status", "left_flank", "right_flank", "element_reason",
-                          "short_read_synteny_checkable"]], os.path.join(out, "exploratory_centromere_flanks.tsv"))
+                          "short_read_synteny_checkable", "uncalled_filter"]],
+                       os.path.join(out, "exploratory_centromere_flanks.tsv"))
     summ = el.groupby(["zygosity", "kind", "status", "element_reason"]).size().rename("elements").reset_index()
     tot = el.groupby(["zygosity", "kind"]).size().rename("of_elements").reset_index()
     summ = summ.merge(tot, on=["zygosity", "kind"])

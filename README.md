@@ -107,10 +107,11 @@ centromere annotation.
 
 ## Data
 
-Every file was downloaded on 2026-10-09 (UTC). Sizes, SHA-256 checksums,
-source checksums where the source publishes one, and download times are in
-`logs/downloads.tsv`, `logs/assemblies_arm0.tsv` and
-`logs/assemblies_arm2.tsv`.
+Every file except the arm 3 reads was downloaded on 2026-10-09 (UTC); the
+reads of each arm 3 strain were streamed when that strain was processed
+(`logs/arm3_strains.tsv`). Sizes, SHA-256 checksums, source checksums where
+the source publishes one, and download times are in `logs/downloads.tsv`,
+`logs/assemblies_arm0.tsv` and `logs/assemblies_arm2.tsv`.
 
 ### PCAn and the published calls
 
@@ -138,8 +139,8 @@ cell (`results/arm0/source_concordance.tsv`).
 
 ### Arm 0: published assemblies
 
-Supplementary Data 5 has 166 rows. 28 are out of scope: 20 Mucoromycota, 4
-Saccharomycodaceae and 4 outgroups. Of the 138 Saccharomycetaceae species, 3
+Supplementary Data 5 has 166 rows. Of these, 28 are out of scope: 20
+Mucoromycota, 4 Saccharomycodaceae and 4 outgroups. Of the 138 Saccharomycetaceae species, 3
 *Naumovozyma* species are excluded, because their calls came from an adapted
 single-motif version of PCAn that the repository does not provide and PCAn
 v1.0 has no *Naumovozyma* entry. Four species (three *Yueomyces* and
@@ -149,8 +150,8 @@ no published calls and is run and reported. That leaves 130 species. NCBI had
 suppressed the assembly listed for one of them, *Maudiozyma bulderi*
 (GCA_933962305.1, now GCA_933962305.2); nothing was used in its place
 (`results/arm0/excluded_assemblies.tsv`). The gate therefore covers 129
-species and their 1,465 published calls. 134 assemblies were downloaded by
-exact accession and version, 0.51 GB compressed. One more,
+species and their 1,465 published calls. In all, 134 assemblies were
+downloaded by exact accession and version, 0.51 GB compressed. One more,
 GCA_003707555.1, the predecessor of the *Kluyveromyces aestuarii* assembly in
 Supplementary Data 5, was run only to find the cause of a discrepancy
 (`config/arm0_diagnostics.tsv`). Roles and reasons for all 166 rows are in
@@ -304,8 +305,8 @@ for 1,900 replicates (1,600 for the two models and 300 for the gamma
 sensitivity analysis) with 8 parallel runs, in two runs, because the first
 was stopped on request after 358 replicates and the second skipped them. No
 replicate had to be cut to fit the 24 hour budget (`results/arm1/cuts.tsv`).
-140 replicates needed no cut, because the assembly was already at or below
-the target, and were scored without a PCAn run.
+Of the replicates, 140 needed no cut, because the assembly was already at or
+below the target, and were scored without a PCAn run.
 
 `python scripts/07_plant_variants.py --jobs 8` edits CDEII the way the paper's
 microhomology examples suggest: an insertion duplicates an adjacent stretch of
@@ -389,8 +390,8 @@ one-call-per-contig rule (8), the top 50 cut (3) and the duplicate sequence
 filter (2). Eight calls were published on a replaced assembly version. Five
 come from the table itself: a published sequence that differs from the
 assembly (2), one that occurs in it twice (2), and one on a contig whose
-name differs (1). In the last call, PCAn placed the CDEIII motif at an offset
-from the published one.
+name differs (1). In the remaining call, PCAn placed the CDEIII motif at an
+offset from the published one.
 
 The authors anticipated most of this. PCAn ships `ExpectedFalsePosFalseNegs.txt`,
 which gives for each species the number of published calls v1.0 is expected
@@ -408,7 +409,7 @@ assembly, all 8 of its published calls are reproduced exactly
 with arms 1 to 3, with its reasons, is in `config/arm0_gate_decision.md`; the
 protocol allowed it once the cause had been found and reported.
 
-76 of the 129 species had every published call reproduced exactly (0.589,
+Every published call was reproduced exactly in 76 of the 129 species (0.589,
 Wilson interval 0.503 to 0.670; `results/arm0/gate.tsv`). PCAn made 105 calls
 in the reproduction set that overlap no published call
 (`results/arm0/species_counts.tsv`; every extra call is listed in
@@ -428,6 +429,7 @@ covers SGD's centromere feature to within 1 bp at either end, and the boundary
 between CDEII and CDEIII matches SGD's in all 16. PCAn's CDEII is 2 bp longer
 than SGD's in every case; SGD's CDEI features are 10 bp long and PCAn's CDEI
 motif is 8 bp (`results/arm0/s288c_vs_sgd.tsv`).
+
 FIMO never reached its cap of 100,000 stored matches: the largest first pass
 held 2,927 hits (`results/arm0/fimo_cap.tsv`), so no call depends on genome
 size through that cap.
@@ -464,7 +466,7 @@ AT-weighted model costs more calls because CDEII is AT-rich, which puts cuts
 where calls are. The calls gained, 391 in all, are a pipeline effect of
 another kind: each was a candidate that PCAn's one-call-per-contig rule had
 removed from the unfragmented assembly, which became the best candidate on a
-contig of its own once the cuts separated it from the true call
+contig of its own once the cuts separated it from the unfragmented call
 (`results/arm1/gained_calls_by_origin.tsv`). A call that survives may still
 lose the evidence used to confirm it: the median fraction of calls whose
 contig extends 10 kb beyond both ends was 0.50 (uniform) and 0.44
@@ -524,7 +526,8 @@ run (0.024) and 37 absent (0.034). Both calls that were intact but not called
 were removed by the one-call-per-contig rule: in each case the short-read
 contig joins the region with another call that lies on a different contig of
 the long-read assembly, and PCAn kept the other one
-(`results/arm2/centromere_status.tsv`, `data/arm2/<code>/`).
+(`results/arm2/centromere_status.tsv`; the filter, from the trace, in
+`results/arm2/exploratory_centromere_flanks.tsv`).
 
 C3. Among the 975 intact calls, 909 had the same CDEII length in both
 assemblies (0.932, 0.904 to 0.956). The other 66 differed by -8 to +6 bp; 62
@@ -618,8 +621,9 @@ published loci.
 ## Controls and sensitivity
 
 Positive controls. S288C against SGD: 16 of 16 called, as described above.
-The planted variants of arm 1b: every edit is placed, and PCAn's response is
-reported above. The liftover compared each long-read assembly with itself:
+The planted variants of arm 1b, where the right answer for every edit is
+known in advance: PCAn's response is reported above. The liftover compared
+each long-read assembly with itself:
 all 1,103 calls came out intact and called (`results/arm2/liftover_control.tsv`).
 
 Negative controls. Five PCAn runs on S288C gave byte-identical call tables,
@@ -662,7 +666,7 @@ result was read.
 
 ```text
 pcan_assembly_dependence/
-  config/      what was fixed before the data were seen
+  config/      what was fixed in advance, and dated records of later decisions
     analysis_plan.md       arms 2 and 3, registered (commits cbf81a5, a005d21, dd4693d)
     arm0_reproduction.md   how arm 0 is judged, committed before any run
     arm0_gate_decision.md  the record of continuing past the arm 0 gate
@@ -696,12 +700,12 @@ working directories; its per-strain peaks are logged in
 
 ```bash
 bash scripts/00_configure.sh --disk 35 --yes        # writes project.conf; add --data-dir to move data/
-bash run_all.sh --test                              # known-answer tests, under a minute
 bash scripts/01_install.sh                          # 622 s, 3.3 GB after conda clean
+bash run_all.sh --test                              # 64 known-answer tests, 17 s
 bash scripts/02_fetch_tables.sh                     # under a minute
 bash scripts/03_fetch_assemblies.sh --set arm0      # 906 s, 0.51 GB
 python scripts/05_reproduce.py --jobs 8             # 948 s
-python scripts/06_fragment.py --jobs 8              # 3,742 s for 1,900 replicates
+python scripts/06_fragment.py --jobs 8              # 4,520 s for 1,900 replicates, in two runs
 python scripts/07_plant_variants.py --jobs 8        # 840 s for 310 runs
 python scripts/08_score_perturbations.py            # 45 s
 python scripts/09_build_pairs.py                    # 5,043 s, mostly the 4.0 GB archive
@@ -809,7 +813,8 @@ Tools:
   732 (2024). doi:10.1038/s41597-024-03571-y
 - Cock PJA et al. Biopython. Bioinformatics 25, 1422-1423 (2009).
   doi:10.1093/bioinformatics/btp163
-- McKinney W. Data structures for statistical computing in Python. SciPy 2010.
+- McKinney W. Data structures for statistical computing in Python.
+  Proceedings of the 9th Python in Science Conference, 56-61 (2010).
   doi:10.25080/Majora-92bf1922-00a
 - Harris CR et al. Array programming with NumPy. Nature 585, 357-362 (2020).
   doi:10.1038/s41586-020-2649-2
