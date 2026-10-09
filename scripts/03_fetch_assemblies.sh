@@ -9,7 +9,7 @@ Usage: bash scripts/03_fetch_assemblies.sh [--set arm0|arm2] [--force]
 
   --set arm0   every assembly in config/species_arm0.tsv whose arm 0 role is not
                "excluded" (default)
-  --set arm2   every assembly in config/arm2_pairs.tsv
+  --set arm2   every long-read assembly in config/arm2_pairs.tsv
 
 For each accession the NCBI Datasets report is read first. A version NCBI
 marks "previous" (replaced by a newer version) or "suppressed" is not
@@ -52,9 +52,12 @@ mkdir -p "$asm" "$PAD_ROOT/results/$set_name"
 case "$set_name" in
     arm0) list="$PAD_ROOT/config/species_arm0.tsv"
           mapfile -t accs < <(awk -F'\t' 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} $h["arm0_role"] != "excluded" {print $h["accession"]}' "$list") ;;
+    # The short-read side of every pair comes from the Peter et al. 2018
+    # archive, which 09_build_pairs.py fetches and unpacks; only the long-read
+    # assemblies have accessions to fetch here.
     arm2) list="$PAD_ROOT/config/arm2_pairs.tsv"
           [[ -f "$list" ]] || pad_die "config/arm2_pairs.tsv not found; run 09_build_pairs.py first"
-          mapfile -t accs < <(awk -F'\t' 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} {print $h["short_read_accession"]; print $h["long_read_accession"]}' "$list" | sort -u) ;;
+          mapfile -t accs < <(awk -F'\t' 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} {print $h["long_read_accession"]}' "$list" | sort -u) ;;
 esac
 pad_log "$set_name: ${#accs[@]} accessions to check"
 
