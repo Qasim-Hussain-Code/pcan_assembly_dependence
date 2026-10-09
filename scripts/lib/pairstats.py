@@ -29,14 +29,25 @@ def by_strain(df):
     return [g for _, g in df.groupby("strain")]
 
 
+def strain_counts(df, hit):
+    """Per strain, (elements with hit, elements), strains in the sorted order
+    of by_strain. A bootstrap over these tuples draws exactly the strains a
+    bootstrap over the per-strain tables would, at a fraction of the cost."""
+    g = pd.DataFrame({"strain": df["strain"].values, "hit": np.asarray(hit, dtype=int)}).groupby("strain")["hit"]
+    return list(zip(g.sum().tolist(), g.size().tolist()))
+
+
+def pooled(units):
+    return sum(k for k, _ in units) / sum(n for _, n in units)
+
+
 def c2_status(cens):
     """Fraction of liftable long-read centromeres in each status, pooled."""
     lift = cens[cens["status"] != "not_liftable"]
-    units = by_strain(lift)
     out = []
     for st in S.STATUSES:
-        est, lo, hi = P.cluster_bootstrap(units, lambda us: sum((u["status"] == st).sum() for u in us)
-                                          / sum(len(u) for u in us), n_boot=N_BOOT, seed=SEED)
+        units = strain_counts(lift, lift["status"] == st)
+        est, lo, hi = P.cluster_bootstrap(units, pooled, n_boot=N_BOOT, seed=SEED)
         out.append({"outcome": "C2", "measure": "fraction %s" % st, "n_strains": len(units),
                     "n_centromeres": len(lift), "k": int((lift["status"] == st).sum()), "estimate": est,
                     "ci_low": lo, "ci_high": hi, "interval": "percentile bootstrap over strains"})
@@ -45,40 +56,41 @@ def c2_status(cens):
 
 def c3_cdeii(cens):
     called = cens[cens["status"] == "intact_called"]
-    units = by_strain(called)
+    units = strain_counts(called, called["cdeii_difference"] == 0)
     if not units:
         return {"outcome": "C3", "measure": "identical CDEII length among intact_called", "n_strains": 0}
-    est, lo, hi = P.cluster_bootstrap(units, lambda us: sum((u["cdeii_difference"] == 0).sum() for u in us)
-                                      / sum(len(u) for u in us), n_boot=N_BOOT, seed=SEED)
+    est, lo, hi = P.cluster_bootstrap(units, pooled, n_boot=N_BOOT, seed=SEED)
     return {"outcome": "C3", "measure": "identical CDEII length among intact_called", "n_strains": len(units),
             "n_centromeres": len(called), "k": int((called["cdeii_difference"] == 0).sum()), "estimate": est,
             "ci_low": lo, "ci_high": hi, "interval": "percentile bootstrap over strains"}
 
 
+def _sums(units):
+    """units: per strain (broken centromeres, centromeres, broken nulls, nulls)."""
+    return [sum(u[i] for u in units) for i in range(4)]
+
+
 def _ratio(units):
-    kc = nc = k0 = n0 = 0
-    for u in units:
-        c = u[u["kind"] == "centromere"]
-        z = u[u["kind"] == "null"]
-        kc += c["broken"].sum()
-        nc += len(c)
-        k0 += z["broken"].sum()
-        n0 += len(z)
+    kc, nc, k0, n0 = _sums(units)
     if nc == 0 or n0 == 0 or k0 == 0:
         return float("nan")
     return (kc / nc) / (k0 / n0)
 
 
 def _diff(units):
-    kc = nc = k0 = n0 = 0
-    for u in units:
-        c = u[u["kind"] == "centromere"]
-        z = u[u["kind"] == "null"]
-        kc += c["broken"].sum()
-        nc += len(c)
-        k0 += z["broken"].sum()
-        n0 += len(z)
+    kc, nc, k0, n0 = _sums(units)
     return kc / nc - k0 / n0 if nc and n0 else float("nan")
+
+
+def abs_log_ratio(kc, nc, k0, n0):
+    """|log R| for pooled counts. Infinite when one of the two groups has no
+    break, so that such a split counts as at least as extreme as any other;
+    None when neither has one, where R is undefined."""
+    if kc == 0 and k0 == 0:
+        return None
+    if kc == 0 or k0 == 0:
+        return math.inf
+    return abs(math.log((kc / nc) / (k0 / n0)))
 
 
 def c4_breaks(cens, nulls, label="C4"):
@@ -86,39 +98,43 @@ def c4_breaks(cens, nulls, label="C4"):
     with a bootstrap over strains and a permutation test within strains."""
     el = pd.concat([cens[cens["status"] != "not_liftable"][["strain", "kind", "status"]],
                     nulls[["strain", "kind", "status"]]], ignore_index=True)
+    if not set(el["kind"]) <= {"centromere", "null"}:
+        raise ValueError("element kinds other than centromere and null: %s" % sorted(set(el["kind"].astype(str))))
     el["broken"] = el["status"].isin(S.BROKEN).astype(int)
-    units = by_strain(el)
-    est, lo, hi = P.cluster_bootstrap(units, _ratio, n_boot=N_BOOT, seed=SEED)
-    dest, dlo, dhi = P.cluster_bootstrap(units, _diff, n_boot=N_BOOT, seed=SEED)
+    cen = (el["kind"] == "centromere").values
+    b = el["broken"].values
+    g = pd.DataFrame({"strain": el["strain"].values, "kc": b * cen, "nc": cen.astype(int), "k0": b * ~cen,
+                      "n0": (~cen).astype(int)}).groupby("strain").sum()
+    counts = [tuple(int(x) for x in r) for r in g[["kc", "nc", "k0", "n0"]].itertuples(index=False, name=None)]
+    est, lo, hi = P.cluster_bootstrap(counts, _ratio, n_boot=N_BOOT, seed=SEED)
+    dest, dlo, dhi = P.cluster_bootstrap(counts, _diff, n_boot=N_BOOT, seed=SEED)
     # permutation: within each strain, which elements carry the centromere
     # label is shuffled; the number of centromeres per strain is kept
+    units = by_strain(el)
     rng = np.random.default_rng(SEED)
-    obs = math.log(est) if est and est == est and est > 0 else float("nan")
+    kc, nc, k0, n0 = _sums(counts)
+    obs = abs_log_ratio(kc, nc, k0, n0)
     arrays = [(u["broken"].values, int((u["kind"] == "centromere").sum())) for u in units]
     hits = 0
     valid = 0
-    for _ in range(N_PERM):
-        kc = nc = k0 = n0 = 0
-        for b, m in arrays:
-            idx = rng.permutation(len(b))
-            kc += b[idx[:m]].sum()
-            nc += m
-            k0 += b[idx[m:]].sum()
-            n0 += len(b) - m
-        if k0 == 0 or kc == 0:
-            continue
-        valid += 1
-        r = math.log((kc / nc) / (k0 / n0))
-        if abs(r) >= abs(obs) - 1e-12:
-            hits += 1
-    p = (hits + 1) / (valid + 1) if valid and obs == obs else float("nan")
-    kc = int(el[(el["kind"] == "centromere")]["broken"].sum())
-    nc = int((el["kind"] == "centromere").sum())
-    k0 = int(el[(el["kind"] == "null")]["broken"].sum())
-    n0 = int((el["kind"] == "null").sum())
+    if obs is not None:
+        for _ in range(N_PERM):
+            pc = p0 = 0
+            for bb, m in arrays:
+                idx = rng.permutation(len(bb))
+                pc += bb[idx[:m]].sum()
+                p0 += bb[idx[m:]].sum()
+            r = abs_log_ratio(pc, nc, p0, n0)
+            if r is None:
+                continue
+            valid += 1
+            if r >= obs - 1e-12:
+                hits += 1
+    p = (hits + 1) / (valid + 1) if valid else float("nan")
     return [{"outcome": label, "measure": "break-rate ratio, centromere over AT-matched null", "n_strains": len(units),
              "n_centromeres": nc, "k": kc, "n_null": n0, "k_null": k0, "estimate": est, "ci_low": lo, "ci_high": hi,
-             "p_value": p, "test": "stratified permutation of log ratio, %d permutations" % N_PERM,
+             "p_value": p, "permutations_used": valid,
+             "test": "stratified permutation of log ratio, %d permutations" % N_PERM,
              "interval": "percentile bootstrap over strains"},
             {"outcome": label, "measure": "break proportion, centromere minus null", "n_strains": len(units),
              "n_centromeres": nc, "k": kc, "n_null": n0, "k_null": k0, "estimate": dest, "ci_low": dlo,
@@ -153,7 +169,7 @@ def c5_model(strain_sets, label="C5"):
     else:
         decision = "neither"
     return {"outcome": label, "measure": "maximum-likelihood gamma of breakpoint placement", "n_strains": len(sets),
-            "n_breakpoints": int(sum(len(h) for _, h in sets)), "estimate": g_hat, "ci_low": float(lo),
+            "n_breakpoints": int(sum(s.n for s in sets)), "estimate": g_hat, "ci_low": float(lo),
             "ci_high": float(hi), "loglik_uniform": ll0, "loglik_arm1_at_weighted": ll1, "loglik_ml": ll_hat,
             "p_value": p, "test": "likelihood ratio, gamma = 0 against free gamma, chi-squared 1 df",
             "interval": "percentile bootstrap over strains, %d resamples" % len(boots), "decision": decision}

@@ -17,6 +17,7 @@ Usage:
 """
 import argparse
 import os
+import re
 import shutil
 import sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -78,11 +79,21 @@ def long_side(code, acc):
     return calls, meta
 
 
+def read_elements(path):
+    """An element or status table. Its kind column holds the word "null",
+    which pandas reads as a missing value unless told otherwise. Kind is also
+    fixed by the element_id prefix ("cen|" or "null|"), which is what sets it
+    here, so a table written with the value already lost reads correctly."""
+    t = pd.read_csv(path, sep="\t", keep_default_na=False, na_values=[""])
+    t["kind"] = np.where(t["element_id"].astype(str).str.startswith("null|"), "null", "centromere")
+    return t
+
+
 def elements(code, flank, half):
     d = P.data_dir("pairs", code)
     tag = "f%d_b%g" % (flank, half)
-    return (pd.read_csv(os.path.join(d, "cens_%s.tsv" % tag), sep="\t"),
-            pd.read_csv(os.path.join(d, "nulls_%s.tsv" % tag), sep="\t"))
+    return (read_elements(os.path.join(d, "cens_%s.tsv" % tag)),
+            read_elements(os.path.join(d, "nulls_%s.tsv" % tag)))
 
 
 # ----------------------------------------------------------------------------
@@ -126,6 +137,23 @@ def compare(code, acc, query_fa, query_calls, workdir, control=False, keep_dir=N
     L.run_minimap2(long_fa, query_fa, bpaf, "asm5", threads())
     bps, unlocated = L.breakpoints(bpaf, {n: len(s) for n, s in long_seqs.items()})
     return out, bps, unlocated
+
+
+def contiguity(path):
+    """Contig N50, L50 and count, with sequences split at every run of N (the
+    rule of scripts/lib/assembly_stats.py, so that every arm sits on one
+    axis), and the sequence count, total length, N runs and N bases."""
+    seq_lengths, contig_lengths = [], []
+    gap_runs = gap_bases = 0
+    for _, seq in P.read_fasta(path):
+        s = seq.upper()
+        seq_lengths.append(len(s))
+        contig_lengths.extend(P.contig_lengths_split_at_gaps(s))
+        gap_bases += s.count("N")
+        gap_runs += len(re.findall("N+", s))
+    return {"n_sequences": len(seq_lengths), "total_length": sum(seq_lengths), "sequence_n50": P.nx(seq_lengths),
+            "contig_n50": P.nx(contig_lengths), "contig_l50": P.lx(contig_lengths), "n_contigs": len(contig_lengths),
+            "n_gap_runs": gap_runs, "gap_bases": gap_bases}
 
 
 def cdeii_differences(st, long_calls, query_calls):
@@ -239,12 +267,13 @@ def aggregate_arm2(pairs):
     sens = P.repo("results", "sensitivity")
     os.makedirs(out, exist_ok=True)
     runs, counts, cen_all, null_all, ctrl_all, short_all, extra = [], [], {}, {}, [], [], []
-    bsets = {}
+    bsets, sstats = {}, []
     for pr in pairs.to_dict("records"):
         code, acc = pr["code"], pr["long_read_accession"]
         d = P.data_dir("arm2", code)
         if not os.path.exists(os.path.join(d, "done")):
             continue
+        sstats.append(dict({"strain": code}, **contiguity(P.data_dir("assemblies", "peter2018", code + ".fna.gz"))))
         lc = pd.read_csv(P.data_dir("pairs", code, "long_calls.tsv"), sep="\t")
         sc = pd.read_csv(os.path.join(d, "short_calls.tsv"), sep="\t")
         for side, path in (("long", P.data_dir("pairs", code, "long_calls.tsv")), ("short", os.path.join(d, "short_calls.tsv"))):
@@ -256,7 +285,7 @@ def aggregate_arm2(pairs):
                        "long_calls": len(lc), "short_calls": len(sc), "zygosity": pr["peter_zygosity"],
                        "ploidy": pr["peter_ploidy"]})
         for v in VARIANTS:
-            st = pd.read_csv(os.path.join(d, "status_%s.tsv" % v["name"]), sep="\t")
+            st = read_elements(os.path.join(d, "status_%s.tsv" % v["name"]))
             st.insert(0, "strain", code)
             st["zygosity"] = pr["peter_zygosity"]
             cen_all.setdefault(v["name"], []).append(st[st["kind"] == "centromere"])
@@ -281,6 +310,7 @@ def aggregate_arm2(pairs):
                           "mean_at_at_breakpoints": hits["at"].mean() if len(hits) else np.nan,
                           "genome_at": float(np.average(windows["at"], weights=windows["length"]))})
     P.atomic_write_tsv(pd.DataFrame(runs), os.path.join(out, "pcan_runs.tsv"))
+    P.atomic_write_tsv(pd.DataFrame(sstats), os.path.join(out, "short_read_assembly_stats.tsv"))
     counts = pd.DataFrame(counts)
     P.atomic_write_tsv(counts, os.path.join(out, "call_counts.tsv"))
     cens = pd.concat(cen_all["primary"], ignore_index=True)
@@ -372,7 +402,7 @@ def aggregate_arm3(runs3):
                 calls = pd.read_csv(os.path.join(res_dir, "calls.tsv"), sep="\t")
                 r["calls"] = len(calls)
                 for v in VARIANTS:
-                    st = pd.read_csv(os.path.join(res_dir, "status_%s.tsv" % v["name"]), sep="\t")
+                    st = read_elements(os.path.join(res_dir, "status_%s.tsv" % v["name"]))
                     st.insert(0, "strain", code)
                     for k, vv in (("assembler", a["assembler"]), ("target_depth", a["target_depth"]),
                                   ("seed", a["seed"]), ("variant", v["name"])):
