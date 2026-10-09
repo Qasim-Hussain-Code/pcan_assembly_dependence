@@ -139,13 +139,13 @@ def compare(code, acc, query_fa, query_calls, workdir, control=False, keep_dir=N
     return out, bps, unlocated
 
 
-def contiguity(path):
+def contiguity(records):
     """Contig N50, L50 and count, with sequences split at every run of N (the
     rule of scripts/lib/assembly_stats.py, so that every arm sits on one
     axis), and the sequence count, total length, N runs and N bases."""
     seq_lengths, contig_lengths = [], []
     gap_runs = gap_bases = 0
-    for _, seq in P.read_fasta(path):
+    for _, seq in records:
         s = seq.upper()
         seq_lengths.append(len(s))
         contig_lengths.extend(P.contig_lengths_split_at_gaps(s))
@@ -228,6 +228,80 @@ def strain_arm2(pair):
     return code
 
 
+FLANK_REASONS = ["placed", "no full-length match", "two or more full-length matches",
+                 "one full-length match, not placed"]
+
+
+def flank_reasons(d, query_fa, flanks_gz):
+    """Exploratory, not in the analysis plan. Why each flank of the primary
+    analysis was placed or not: the kept flank sequences are aligned again
+    exactly as in the comparison, and every alignment that passes the identity
+    and query-coverage thresholds is counted, secondary ones included. A flank
+    whose sequence occurs twice in the other assembly, as both haplotypes of a
+    heterozygous strain can in a short-read assembly, gets a low mapping
+    quality and is left unplaced by the registered rule; this tells that case
+    apart from a flank that is missing or broken. Cached in the strain's
+    directory."""
+    out = os.path.join(d, "flank_reasons.tsv")
+    if os.path.exists(out):
+        return pd.read_csv(out, sep="\t", keep_default_na=False, na_values=[""])
+    work = d + "_flankcheck"
+    os.makedirs(work, exist_ok=True)
+    try:
+        fq = os.path.join(work, "flanks.fa")
+        with open(fq, "w") as fh:
+            for name, seq in P.read_fasta(flanks_gz):
+                fh.write(">%s\n%s\n" % (name, seq))
+        paf = os.path.join(work, "flanks.paf")
+        L.run_minimap2(query_fa, fq, paf, "asm10", threads())
+        with open(paf) as fh:
+            alns = S.parse_paf(fh)
+        names = [n for n, _ in P.read_fasta(fq)]
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+    by_q = {}
+    for a in alns:
+        by_q.setdefault(a.qname, []).append(a)
+    rows = []
+    for n in names:
+        al = by_q.get(n, [])
+        full = [a for a in al if a.identity >= L.IDENTITY and a.qcov >= L.QCOV]
+        prim = [a for a in full if a.primary]
+        if S.place_flank(al, L.IDENTITY, L.QCOV, L.MAPQ) is not None:
+            reason = "placed"
+        elif not full:
+            reason = "no full-length match"
+        elif len(full) >= 2:
+            reason = "two or more full-length matches"
+        else:
+            # one match that passes identity and coverage, but its mapping
+            # quality is below 20 or it is a secondary alignment
+            reason = "one full-length match, not placed"
+        element_id, side = n.rsplit("|", 1)
+        rows.append({"element_id": element_id, "flank": side, "full_length_matches": len(full),
+                     "primary_mapq": max((a.mapq for a in prim), default=""), "reason": reason})
+    t = pd.DataFrame(rows)
+    P.atomic_write_tsv(t, out)
+    return t
+
+
+def element_reason(left, right, status):
+    """One reason per element, from its two flanks: a flank with a second copy
+    first, then a flank with no match, then the placement of placed flanks."""
+    rs = {left, right}
+    if status in ("intact_called", "intact_uncalled", "n_run"):
+        return "both flanks placed, element between them"
+    if not all(isinstance(x, str) for x in rs):
+        return "flanks not checked"
+    if "two or more full-length matches" in rs:
+        return "a flank matches two or more places"
+    if "no full-length match" in rs:
+        return "a flank matches nowhere"
+    if rs == {"placed"}:
+        return "both flanks placed, inconsistent with one intact element"
+    return "a flank with one full-length match, not placed"
+
+
 def possibly_allelic(code, cens_status, long_calls, short_calls):
     """Supplementary Data 4 of the PCAn paper lists, per assembly and per
     chromosome, up to two centromere sequences (columns k_A and k_B). Where
@@ -267,13 +341,19 @@ def aggregate_arm2(pairs):
     sens = P.repo("results", "sensitivity")
     os.makedirs(out, exist_ok=True)
     runs, counts, cen_all, null_all, ctrl_all, short_all, extra = [], [], {}, {}, [], [], []
-    bsets, sstats = {}, []
+    bsets, sstats, explore = {}, [], []
     for pr in pairs.to_dict("records"):
         code, acc = pr["code"], pr["long_read_accession"]
         d = P.data_dir("arm2", code)
         if not os.path.exists(os.path.join(d, "done")):
             continue
-        sstats.append(dict({"strain": code}, **contiguity(P.data_dir("assemblies", "peter2018", code + ".fna.gz"))))
+        short_fa = P.data_dir("assemblies", "peter2018", code + ".fna.gz")
+        recs = P.read_fasta(short_fa)
+        sstats.append(dict({"strain": code}, **contiguity(recs)))
+        short_len = {n: len(s) for n, s in recs}
+        del recs
+        explore.append((code, pr["peter_zygosity"], flank_reasons(d, short_fa, os.path.join(d, "flanks_primary.fa.gz")),
+                        short_len))
         lc = pd.read_csv(P.data_dir("pairs", code, "long_calls.tsv"), sep="\t")
         sc = pd.read_csv(os.path.join(d, "short_calls.tsv"), sep="\t")
         for side, path in (("long", P.data_dir("pairs", code, "long_calls.tsv")), ("short", os.path.join(d, "short_calls.tsv"))):
@@ -339,7 +419,43 @@ def aggregate_arm2(pairs):
             + PS.c4_breaks(c, n):
         srows.append(dict(r, variant="heterozygous_excluded"))
     P.atomic_write_tsv(pd.DataFrame(srows), os.path.join(sens, "arm2_variants.tsv"))
+    explore_arm2(explore, cens, nulls, out)
     P.log("arm 2 aggregated: %d strains" % len(counts))
+
+
+def explore_arm2(explore, cens, nulls, out):
+    """Exploratory tables, outside the analysis plan: why each broken element
+    is broken, from flank_reasons, and whether each intact_called centromere
+    can still be checked for synteny in the short-read assembly (its contig
+    extends 10 kb beyond both ends of the call, the arm 1 definition)."""
+    el = pd.concat([cens[cens["status"] != "not_liftable"][["strain", "element_id", "kind", "status", "target",
+                                                            "call_start", "call_end"]],
+                    nulls[["strain", "element_id", "status"]].assign(kind="null")], ignore_index=True)
+    reasons, lengths, zyg = [], {}, {}
+    for code, z, fr, short_len in explore:
+        w = fr.pivot(index="element_id", columns="flank", values="reason").reset_index()
+        w["strain"] = code
+        reasons.append(w.rename(columns={"L": "left_flank", "R": "right_flank"}))
+        lengths[code], zyg[code] = short_len, z
+    el = el.merge(pd.concat(reasons, ignore_index=True), on=["strain", "element_id"], how="left")
+    el["zygosity"] = el["strain"].map(zyg)
+    el["element_reason"] = [element_reason(a, b, s) for a, b, s in zip(el["left_flank"], el["right_flank"], el["status"])]
+    syn = []
+    for r in el.itertuples():
+        if r.kind == "centromere" and r.status == "intact_called":
+            n = lengths[r.strain].get(r.target, 0)
+            syn.append("yes" if int(r.call_start) - 1 >= 10000 and n - int(r.call_end) >= 10000 else "no")
+        else:
+            syn.append("")
+    el["short_read_synteny_checkable"] = syn
+    c = el[el["kind"] == "centromere"]
+    P.atomic_write_tsv(c[["strain", "zygosity", "element_id", "status", "left_flank", "right_flank", "element_reason",
+                          "short_read_synteny_checkable"]], os.path.join(out, "exploratory_centromere_flanks.tsv"))
+    summ = el.groupby(["zygosity", "kind", "status", "element_reason"]).size().rename("elements").reset_index()
+    tot = el.groupby(["zygosity", "kind"]).size().rename("of_elements").reset_index()
+    summ = summ.merge(tot, on=["zygosity", "kind"])
+    summ["fraction"] = summ["elements"] / summ["of_elements"]
+    P.atomic_write_tsv(summ, os.path.join(out, "exploratory_flank_summary.tsv"))
 
 
 # ----------------------------------------------------------------------------
