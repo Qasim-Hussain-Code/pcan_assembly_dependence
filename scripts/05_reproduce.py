@@ -653,6 +653,15 @@ def main():
     P.atomic_write_tsv(expected, os.path.join(OUT, "authors_expected_vs_observed.tsv"))
     diag = diagnostics(sd2)
     P.atomic_write_tsv(diag, os.path.join(OUT, "diagnostic_replaced_versions.tsv"))
+    # Software version: would the AT formula of the published table have
+    # changed which calls PCAn makes? Run in PCAn's environment, see the script.
+    import subprocess
+    prim_per = per[per["accession"].isin(spc.loc[spc["arm0_role"] == "primary", "accession"])]
+    tmp = os.path.join(P.data_dir("work"), "per_primary.tsv")
+    prim_per.to_csv(tmp, sep="\t", index=False)
+    subprocess.run([P.data_dir("env", "pcan", "bin", "python"), P.repo("scripts", "lib", "at_formula_check.py"), tmp,
+                    run_dir("calls"), os.path.join(OUT, "diagnostic_at_formula.tsv")], check=True)
+    os.remove(tmp)
     P.log("authors' expected false negatives match the missing count in %d of %d species"
           % (expected["missing_equals_authors_false_neg"].sum(), len(expected)))
 
