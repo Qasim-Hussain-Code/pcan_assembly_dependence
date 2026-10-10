@@ -22,7 +22,10 @@ strain is done, and by the cleanup trap if the run is interrupted.
 Strains are assembled one at a time. While one strain assembles, the reads of
 the next one download, so that the link and the processors are both in use.
 A strain whose reads could not be downloaded intact is logged as such and
-left without a done marker, so that a later run tries it again.
+left without a done marker, so that a later run tries it again. Under WSL the
+read files are downloaded by Windows' own curl.exe into a directory under the
+Windows temporary directory and copied into the data directory, where their
+MD5 is checked.
 
 Before a strain's download starts, the arm's wall time is projected to the end
 of that strain from the longest download and the longest assembly seen so far
@@ -75,6 +78,21 @@ pad_activate tools
 # (config/analysis_plan.md, 9 October 2026). MEGAHIT keeps every thread.
 SPADES_THREADS=$(( THREADS < ${SPADES_MEM_GB%.*} ? THREADS : ${SPADES_MEM_GB%.*} ))
 (( SPADES_THREADS >= 1 )) || SPADES_THREADS=1
+# Under WSL, files downloaded by curl inside Linux repeatedly came back at full
+# size with a wrong MD5, a different one on every try, while the same file
+# downloaded by Windows' curl.exe matched ENA's MD5 and stayed intact when
+# copied into Linux. From the tenth strain on, read files are downloaded on
+# the Windows side and copied in (config/analysis_plan.md, 10 October 2026).
+WIN_CURL="" WIN_STAGE=""
+if grep -qi microsoft /proc/version && command -v wslpath >/dev/null && command -v cmd.exe >/dev/null; then
+    win_root=$(cmd.exe /c 'echo %SystemRoot%' 2>/dev/null | tr -d '\r')
+    win_temp=$(cmd.exe /c 'echo %TEMP%' 2>/dev/null | tr -d '\r')
+    if [[ -n "$win_root" && -n "$win_temp" && -f "$(wslpath -u "$win_root")/System32/curl.exe" ]]; then
+        WIN_CURL="$(wslpath -u "$win_root")/System32/curl.exe"
+        WIN_STAGE="$(wslpath -u "$win_temp")/pcan_arm3_reads"
+        mkdir -p "$WIN_STAGE"
+    fi
+fi
 RUNS="${runs_arg:-$PAD_ROOT/config/arm3_runs.tsv}"
 [[ -f "$RUNS" ]] || pad_die "$(pad_rel "$RUNS") not found; run scripts/09_build_pairs.py first"
 STRAIN_LOG="${log_arg:-$PAD_ROOT/logs/arm3_strains.tsv}"
@@ -95,6 +113,7 @@ mkdir -p "$ARM3_DIR"
 col() { awk -F'\t' -v k="$1" 'NR==1 {for (i=1;i<=NF;i++) if ($i==k) c=i; next} {print $c}' "$RUNS"; }
 mapfile -t codes < <(paste <(col code) <(col arm3_eligible) <(col order_key) | awk -F'\t' '$2=="yes"' | sort -t$'\t' -k3,3 | cut -f1)
 pad_log "arm 3: ${#codes[@]} eligible strains in the registered order; SPAdes with $SPADES_THREADS threads and a ${SPADES_MEM_GB} GB cap, MEGAHIT with $THREADS threads"
+[[ -z "$WIN_CURL" ]] || pad_log "arm 3: read files are downloaded by Windows' curl.exe and copied in before the MD5 check"
 
 field() {   # field <code> <column>
     awk -F'\t' -v c="$1" -v k="$2" 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} $h["code"]==c {print $h[k]}' "$RUNS"
@@ -153,26 +172,34 @@ specs_of() {   # specs_of <G> <B>: one "target:seed:fraction" line per subsample
 # directory, checked against ENA's MD5. On the link these results came from,
 # transfers of a few GB broke after 7 to 40 minutes, once with a TLS record
 # that failed its integrity check ("bad record mac"), so a stream that had to
-# start again from its first byte never finished. A file can be resumed from
-# its last good byte, which TLS has verified; curl -C - does that, as often as
-# needed while each try still adds bytes. The MD5 then checks the whole file,
-# and a mismatch starts the file again, at most twice. Called by fetch, whose
-# code and sdir it uses; writes reads/result_<m>: "ok <bytes>" or "failed 0".
+# start again from its first byte never finished. curl -C - resumes a file
+# from its last byte, as often as needed while each try still adds bytes. The
+# MD5 then checks the whole file where it will be read, in the data directory,
+# and a mismatch starts the file again, at most twice. Under WSL the transfer
+# is made by Windows' curl.exe into WIN_STAGE and the file is then copied in.
+# Called by fetch, whose code and sdir it uses; writes reads/result_<m>:
+# "ok <bytes>" or "failed 0".
 download_mate() {
-    local m="$1" url="$2" want="$3" size="$4" f="$sdir/reads/R$1.fastq.gz" whole tries have before got
+    local m="$1" url="$2" want="$3" size="$4" f="$sdir/reads/R$1.fastq.gz" dl whole tries have before got
+    dl="$f"
+    [[ -z "$WIN_STAGE" ]] || dl="$WIN_STAGE/${code}_R$m.fastq.gz"
     if ! [[ "$size" =~ ^[0-9]+$ ]]; then
         # no size in the runs table: ask the server for it
         size=$(curl -fsSIL "$url" | tr -d '\r' | awk 'tolower($1) == "content-length:" {n = $2} END {print n + 0}')
     fi
     for whole in 1 2 3; do
-        rm -f "$f"
+        rm -f "$f" "$dl"
         tries=0
         have=0
         while (( have < size && tries < 200 )); do
             tries=$((tries + 1))
             before=$have
-            curl -fsSL -C - -o "$f" "$url" 2>> "$sdir/reads/curl_$m.log" || true
-            have=$(stat -c %s "$f" 2>/dev/null || echo 0)
+            if [[ -n "$WIN_CURL" ]]; then
+                "$WIN_CURL" -fsSL -C - -o "$(wslpath -w "$dl")" "$url" 2>> "$sdir/reads/curl_$m.log" || true
+            else
+                curl -fsSL -C - -o "$dl" "$url" 2>> "$sdir/reads/curl_$m.log" || true
+            fi
+            have=$(stat -c %s "$dl" 2>/dev/null || echo 0)
             if (( have < size )); then
                 pad_log "$code: mate $m stopped at $have of $size bytes; resuming"
                 # a try that added nothing is counted ten times over, so that
@@ -181,6 +208,11 @@ download_mate() {
                 sleep 10
             fi
         done
+        if [[ "$dl" != "$f" ]]; then
+            cp "$dl" "$f" 2>/dev/null || true
+            rm -f "$dl"
+            have=$(stat -c %s "$f" 2>/dev/null || echo 0)
+        fi
         got=$(md5sum "$f" 2>/dev/null | awk '{print $1}')
         if [[ "$have" == "$size" && "$got" == "$want" ]]; then
             echo "ok $have" > "$sdir/reads/result_$m"
@@ -260,6 +292,7 @@ fetch() {
         done
     fi
     rm -f "$sdir"/reads/result_* "$sdir"/reads/R?.fastq.gz
+    [[ -z "$WIN_STAGE" ]] || rm -f "$WIN_STAGE/${code}"_R?.fastq.gz
     printf '%s %s %s\n' "$md5_ok" "$dl_bytes" "$(( $(date +%s) - t0 ))" > "$sdir/reads/fetched"
 }
 
@@ -291,6 +324,7 @@ cleanup() {
     local status=$? d
     [[ -n "$sampler_pid" ]] && kill "$sampler_pid" 2>/dev/null || true
     [[ -n "$fetch_pid" ]] && kill_tree "$fetch_pid"
+    [[ -n "$WIN_STAGE" && -n "$fetch_code" ]] && rm -f "$WIN_STAGE/${fetch_code}"_R?.fastq.gz
     for d in "$assembling_dir" "${fetch_code:+$ARM3_DIR/$fetch_code}"; do
         [[ -n "$d" ]] || continue
         # the same strain can be both the one assembling and the one being

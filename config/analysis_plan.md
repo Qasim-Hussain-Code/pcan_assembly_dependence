@@ -399,3 +399,28 @@ run is recorded in each strain's manifest from the fourth strain on.
 Three passages above were shortened to remove background remarks: one
 sentence after the arm 2 question, a parenthesis in the pair rule, and three
 words in the ploidy section. No rule, test, threshold or result changed.
+
+## Change recorded on 10 October 2026, after the ninth complete arm 3 strain
+
+Inside WSL, read files downloaded by curl kept arriving at full size with a
+wrong MD5, and with a different wrong MD5 on every try: both files of CCN
+once, one file of ADS once, one file of BCN on all three tries and one file of
+ANE on its first two. A file that is wrong at the source would fail with the
+same MD5 each time. The machine's disk gave the same MD5 on five reads of a
+1.5 GB file, with the page cache dropped before each, and on a copy of it. The
+second file of ANE, downloaded by Windows' own curl.exe on the same machine,
+matched ENA's MD5 at the first try (1,062 s), and two copies of it into WSL
+matched as well.
+
+From BCN on, under WSL, `scripts/11_assemble_reads.sh` downloads each read
+file with Windows' curl.exe into a directory under the Windows temporary
+directory, copies it into the data directory and checks the copy against
+ENA's MD5. Everything after that is unchanged. The stage was stopped at 16:28
+UTC during ANE's third try and restarted with this change; BCN and ANE have no
+done marker, so the restarted run takes them first, in the registered order.
+Depths, seeds, assemblers and the 48 h budget are unchanged. Two periods of
+download that no strain row recorded, AGK from 18:42 to 19:50 UTC on 9 October
+(until the Linux VM shut down) and ANE from 14:18 to 16:28 UTC on 10 October,
+were added to `logs/arm3_strains.tsv` with the status `stopped`, so that the
+budget counts them.
+
