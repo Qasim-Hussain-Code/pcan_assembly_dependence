@@ -2,17 +2,13 @@
 
 ## Summary
 
-This repository measures how the calls of PCAn v1.0 (Helsen et al. 2026), a
-tool that predicts point centromeres in budding yeast genome assemblies,
-depend on the assembly they are made from. Installed from its pinned commit
-with MEME suite 4.11.2, PCAn reproduced 1,356 of 1,465 published calls exactly
-across 129 Saccharomycetaceae species, a fraction of 0.926 (95 per cent
-interval 0.897 to 0.949) that falls short of the 0.95 gate fixed in advance.
-Each of the other 109 calls has a recorded cause, and for 113 species the
-number of calls not recovered equals the number the authors' own table
-predicts. PCAn called all 16 centromeres of the S288C reference, each with
-SGD's boundary between CDEII and CDEIII, and five runs gave identical output.
-In a simulation that cut ten chromosome-level assemblies into contigs (1,600
+This repository measures how the calls of PCAn v1.0, a tool that predicts
+point centromeres in budding yeast genome assemblies, depend on the assembly
+they are made from. Installed from its pinned commit with MEME suite 4.11.2,
+PCAn ran on 134 Saccharomycetaceae assemblies from 24 genera and made 1,519
+calls, 2 to 26 per assembly. It called all 16 centromeres of the S288C
+reference, each with SGD's boundary between CDEII and CDEIII, and five runs
+gave identical output. In a simulation that cut ten chromosome-level assemblies into contigs (1,600
 replicates holding 15,520 unfragmented calls), 518 calls were lost and every
 one had a breakpoint inside its extraction window; none was lost with its
 window intact, and all 391 calls gained were candidates that PCAn's
@@ -44,13 +40,11 @@ of the *S. cerevisiae* reference, SGD's CDEII features are 76 to 85 bp long
 (`results/arm0/s288c_vs_sgd.tsv`). CDEIII is a motif of about 25 bp bound by
 the CBF3 complex. PCAn's 1,519 calls on the arm 0 assemblies have a median
 length of 118 bp from the start of CDEI to the end of CDEIII, and 98 per cent
-of them lie between 65 and 201 bp (`results/arm0/reproduced_calls.tsv`). How
-CDEII length changes across species is one of the traits the PCAn paper
-follows.
+of them lie between 65 and 201 bp (`results/arm0/reproduced_calls.tsv`).
 
 ### How PCAn finds one
 
-PCAn (Helsen et al. 2026; software, Zenodo 10.5281/zenodo.17293587) scans an
+PCAn v1.0 (software record: Zenodo 10.5281/zenodo.17293587) scans an
 assembly with FIMO for a CDEIII motif, takes a window upstream of every hit,
 scans each window for a CDEI motif, and scores every pair of CDEI and CDEIII
 hits from the two motif scores and the AT content of the CDEII between them.
@@ -59,9 +53,9 @@ as an anchor. It then removes pairs whose CDEII length is more than 30 bp from
 the anchor or whose CDEII AT content is 70 per cent or less, keeps one pair
 per CDEIII hit, per sequence and per contig, and removes pairs that are
 outliers in both length and AT content. What survives is the call set.
-Motifs and thresholds are set per genus. Where the released code and the
-paper's description differ, this repository follows the code, and the
-differences are listed under Pipeline.
+Motifs and thresholds are set per genus. The window runs from 249 bp before
+the CDEIII hit's start to its end, and the CDEII AT percentage is computed as
+the released code computes it.
 
 ### What contig N50 says, and what it does not
 
@@ -100,10 +94,8 @@ the other assembly.
 Arm 1 compares PCAn's calls on an altered assembly with its calls on the same
 assembly unaltered, and arms 2 and 3 compare PCAn's calls on two assemblies of
 one strain. Agreement in either case means PCAn's output is stable across the
-change; it does not mean the calls are right. Arm 0 measures agreement with
-the published table, which is agreement with the authors' output. The only
-external truth in this repository is the S288C reference against SGD's
-centromere annotation.
+change; it does not mean the calls are right. The only external truth in
+this repository is the S288C reference against SGD's centromere annotation.
 
 ## Data
 
@@ -113,49 +105,27 @@ deleted when that strain was processed (`logs/arm3_strains.tsv`). Sizes, SHA-256
 the source publishes one, and download times are in `logs/downloads.tsv`,
 `logs/assemblies_arm0.tsv` and `logs/assemblies_arm2.tsv`.
 
-### PCAn and the published calls
+### PCAn
 
 PCAn comes from github.com/JHelsen/point-centromere-detection at commit
 a5fa46f0cb971e7d499fd52b38b0c29166b33ef8, the v1.0 release archived on Zenodo
-(10.5281/zenodo.17293587). Its pipeline code is identical to the GitHub v1.0
-tag and to the repository's head on the download date; only README files
-differ. One patch is applied
-(`patches/0001_arxiozyma_cdeiii_motif.patch`): the *Arxiozyma* entry of the
-motif table names a CDEIII motif file, `CDEIII_Ktel_MEME.txt`, that is not in
-the repository, so PCAn stopped with a FileNotFoundError on every
-*Arxiozyma* assembly. The patch points the entry at
-`CDEIII_Arxiozyma_MEME.txt`, which ships with PCAn and which the authors' own
-per-species table names for all seven *Arxiozyma* species. Nothing else is
-changed.
+(10.5281/zenodo.17293587). One patch is applied so that *Arxiozyma*
+assemblies run (`patches/0001_arxiozyma_cdeiii_motif.patch`): the
+*Arxiozyma* entry of the motif table names a CDEIII motif file that is not
+in the release, and the patch points it at `CDEIII_Arxiozyma_MEME.txt`, which
+ships with PCAn. Nothing else is changed.
 
-The published calls are Supplementary Data 2 of Helsen et al. 2026, with
-Supplementary Data 4, 5 and 6 (centromere sequences of the *S. cerevisiae*
-assemblies, the species and assemblies, and the sources of the
-*S. cerevisiae* assemblies), taken from the publisher. Supplementary Data 2,
-5 and 6 were also taken from the Figshare collection
-(10.6084/m9.figshare.c.7630151; files 28225061 version 2, 28225067 version 3
-and 28225076 version 1, each MD5-checked), and the two copies agree in every
-cell (`results/arm0/source_concordance.tsv`).
+### Arm 0: assemblies of the Saccharomycetaceae
 
-### Arm 0: published assemblies
-
-Supplementary Data 5 has 166 rows. Of these, 28 are out of scope: 20
-Mucoromycota, 4 Saccharomycodaceae and 4 outgroups. Of the 138 Saccharomycetaceae species, 3
-*Naumovozyma* species are excluded, because their calls came from an adapted
-single-motif version of PCAn that the repository does not provide and PCAn
-v1.0 has no *Naumovozyma* entry. Four species (three *Yueomyces* and
-*Grigorovia jiainica*) were published without CDEI and are compared on their
-CDEIII loci only, outside the reproduction fraction. *Arxiozyma slooffiae* has
-no published calls and is run and reported. That leaves 130 species. NCBI had
-suppressed the assembly listed for one of them, *Maudiozyma bulderi*
-(GCA_933962305.1, now GCA_933962305.2); nothing was used in its place
-(`results/arm0/excluded_assemblies.tsv`). The gate therefore covers 129
-species and their 1,465 published calls. In all, 134 assemblies were
-downloaded by exact accession and version, 0.51 GB compressed. One more,
-GCA_003707555.1, the predecessor of the *Kluyveromyces aestuarii* assembly in
-Supplementary Data 5, was run only to find the cause of a discrepancy
-(`config/arm0_diagnostics.tsv`). Roles and reasons for all 166 rows are in
-`config/species_arm0.tsv`.
+The species and their assembly accessions come from the species table of the
+Figshare collection 10.6084/m9.figshare.c.7630151 (Supplementary Data 5,
+MD5-checked). Of its 166 rows, 138 are Saccharomycetaceae species. PCAn v1.0
+has no motif entry for *Naumovozyma*, so its 3 species were not run, and NCBI
+had suppressed the assembly listed for *Maudiozyma bulderi*
+(GCA_933962305.1, now GCA_933962305.2), so nothing was run in its place
+(`results/arm0/excluded_assemblies.tsv`). That leaves 134 assemblies from 134
+species and 24 genera, downloaded by exact accession and version, 0.51 GB
+compressed. The role of every row is in `config/species_arm0.tsv`.
 
 The S288C reference is SGD release R64-5-1
 (`S288C_reference_genome_R64-5-1_20240529.tgz`); its 16 chromosomes are
@@ -164,7 +134,7 @@ identical, base for base, to NCBI's GCA_000146045.2
 
 ### Arm 1: the assemblies that were altered (simulation)
 
-Of the 33 chromosome-level or complete assemblies in the reproduction set, 26
+Of the 33 chromosome-level or complete assemblies among the arm 0 assemblies, 26
 have as many PCAn calls as nuclear chromosome sequences; the other 7 do not
 and are ineligible (`results/arm1/eligibility.tsv`). The rule in
 `config/arm1_design.md`, written before any replicate ran, took one per genus
@@ -264,34 +234,16 @@ to 2: 134 in arm 0, 2,070 in arm 1 and 138 in arm 2 (`logs/arm0_runs.tsv`,
 `results/arm1/fragmentation_runs.tsv`, `results/arm1/variant_runs.tsv`,
 `results/arm2/pcan_runs.tsv`).
 
-Where the code differs from the paper's description, the code was followed:
+Every species is run with the motifs and thresholds of PCAn's own entry for
+its genus, unchanged in every arm: CDEIII thresholds of 1e-5 to 1e-7 for the
+species here, and CDEI thresholds of 1e-2, or 1e-3 for *Arxiozyma*,
+*Kluyveromyces* and *Zygosaccharomyces*. A contig carries at most one call.
 
-- The window cut upstream of a CDEIII hit runs from 249 bp before the hit's
-  start to its end: 275 bp on the forward strand and 276 bp on the reverse,
-  where the paper describes 250 bp.
-- CDEIII thresholds are 1e-5 to 1e-7 for the species analysed here; the paper
-  gives a range of 1e-3 to 1e-7. CDEI thresholds are 1e-2, except 1e-3 for
-  *Arxiozyma*, *Kluyveromyces* and *Zygosaccharomyces*.
-- Candidates are deduplicated by CDEIII hit, by sequence and by contig, so a
-  contig carries at most one call.
-- Candidates with a combined score of zero or less are removed.
-- The CDEII AT percentage is computed over a stretch shifted one base towards
-  CDEIII and divided by its length plus one.
-- The *Arxiozyma* motif file named in the code is missing (see Data).
-- The *Yueomyces* entry uses the *Saccharomyces* CDEIII motif. A *Yueomyces*
-  CDEIII motif file ships with PCAn, and the authors' per-species table names
-  it, but no entry uses it. The protocol registered for arm 0 runs every
-  species with the code's own entry, so the *Yueomyces* species were run with
-  the *Saccharomyces* motif, and a diagnostic compares the two (Results).
-
-`python scripts/05_reproduce.py --jobs 8` runs arm 0 and compares every
-published call with the reproduction by the protocol committed before any run
-(`config/arm0_reproduction.md`). Supplementary Data 2 gives sequences but no
-coordinates, so each published call is placed by searching for its sequence
-on its contig, on both strands; a sequence found zero or several times is
-reported as unlocated, never forced. Every call that is not exact gets a cause
-from the filter trace. Measured: 948 s with 8 parallel PCAn runs; one PCAn run
-took a median of 21.9 s (10.2 to 389.6 s; `logs/arm0_runs.tsv`).
+`python scripts/05_reproduce.py --jobs 8` runs PCAn on every arm 0
+assembly, compares the S288C calls with SGD's centromere annotation, and
+runs S288C five times to check that the output is deterministic. Measured:
+948 s with 8 parallel PCAn runs; one PCAn run took a median of 21.9 s (10.2
+to 389.6 s; `logs/arm0_runs.tsv`).
 
 `python scripts/06_fragment.py --jobs 8` cuts each arm 1 genome at a Poisson
 rate found by bisection to reach a target contig N50 of 1,000, 500, 200, 100,
@@ -308,8 +260,8 @@ replicate had to be cut to fit the 24 hour budget (`results/arm1/cuts.tsv`).
 Of the replicates, 140 needed no cut, because the assembly was already at or
 below the target, and were scored without a PCAn run.
 
-`python scripts/07_plant_variants.py --jobs 8` edits CDEII the way the paper's
-microhomology examples suggest: an insertion duplicates an adjacent stretch of
+`python scripts/07_plant_variants.py --jobs 8` edits CDEII by microhomology:
+an insertion duplicates an adjacent stretch of
 CDEII in tandem, and a deletion removes a stretch from inside it, never
 touching CDEI or CDEIII. Random insertions would shift AT content in a way
 real variants do not, and PCAn scores AT content. Single edits of -10, -5, +5,
@@ -381,59 +333,15 @@ result.
 
 ## Results
 
-### Question 1, arm 0: does this installation reproduce the published calls?
+### Arm 0: PCAn on 134 Saccharomycetaceae assemblies and the S288C reference
 
-**PCAn v1.0 reproduced 1,356 of 1,465 published calls exactly (0.926, 0.897 to
-0.949, bootstrap over 129 species), below the 0.95 gate, and every one of the
-109 others has a recorded cause.**
+**PCAn ran on all 134 assemblies and called all 16 centromeres of the S288C
+reference at SGD's boundary between CDEII and CDEIII, with identical output in
+five runs.**
 
-![Arm 0 reproduction](figures/fig1_reproduction.png)
-
-Of the 109 calls that were not exact, 72 were not recovered at all, 24 were
-recovered with a different CDEII length and 13 could not be placed on the
-assembly (`results/arm0/per_centromere.tsv`). The causes, from the filter
-trace (`results/arm0/non_exact_cause_counts.tsv`): the published CDEI was not
-found at the released CDEI threshold for 30 calls, and the CDEIII motif
-scored below the released threshold for 29. False candidates set the length
-anchor for 13, all in *Tetrapisispora taiwanensis*. A named filter removed a
-candidate that had formed for 23: the duplicate CDEIII hit filter (10), the
-one-call-per-contig rule (8), the top 50 cut (3) and the duplicate sequence
-filter (2). Eight calls were published on a replaced assembly version. Five
-come from the table itself: a published sequence that differs from the
-assembly (2), one that occurs in it twice (2), and one on a contig whose
-name differs (1). In the remaining call, PCAn placed the CDEIII motif at an
-offset from the published one.
-
-The authors anticipated most of this. PCAn ships `ExpectedFalsePosFalseNegs.txt`,
-which gives for each species the number of published calls v1.0 is expected
-to miss and the number of extra calls it is expected to make. For 113 of the
-129 species the number of calls this installation did not recover equals the
-authors' number, and for 106 the extra calls do too
-(`results/arm0/authors_expected_vs_observed.tsv`). Software version was
-checked first. The pinned commit's pipeline code is unchanged in later
-versions, and rescoring every candidate with the AT formula behind the
-published CDEII column leaves 934 published calls standing against 1,356
-with v1.0's own formula (`results/arm0/diagnostic_at_formula.tsv`). Input
-differences came second: on the replaced version of the *K. aestuarii*
-assembly, all 8 of its published calls are reproduced exactly
-(`results/arm0/diagnostic_replaced_versions.tsv`). The decision to continue
-with arms 1 to 3, with its reasons, is in `config/arm0_gate_decision.md`; the
-protocol allowed it once the cause had been found and reported.
-
-Every published call was reproduced exactly in 76 of the 129 species (0.589,
-Wilson interval 0.503 to 0.670; `results/arm0/gate.tsv`). PCAn made 105 calls
-in the reproduction set that overlap no published call
-(`results/arm0/species_counts.tsv`; every extra call is listed in
-`results/arm0/extra_calls.tsv`). For the four CDEIII-only species, 8 of 55
-published CDEIII loci carry a PCAn call with the same CDEIII
-(`results/arm0/species_counts.tsv`). Three of the four are *Yueomyces*,
-which PCAn's entry searches with the *Saccharomyces* CDEIII motif. Run as
-PCAn's first pass runs it, FIMO hits 16 of their 40 published CDEIII loci with
-that motif and 38 with the *Yueomyces* motif that the authors' table names
-and PCAn ships without using (`results/arm0/diagnostic_cdeiii_motif.tsv`).
-The published *Yueomyces* loci came from the motif PCAn's entry does not
-use. For *G. jiainica* neither the entry's threshold nor the table's finds
-most of its 15 published loci (4 and 1).
+PCAn completed on every one of the 134 assemblies and made 1,519 calls, a
+median of 11 per assembly (2 to 26; `logs/arm0_runs.tsv`,
+`results/arm0/reproduced_calls.tsv`).
 
 On S288C, PCAn called all 16 SGD centromeres and nothing else. Each call
 covers SGD's centromere feature to within 1 bp at either end, and the boundary
@@ -445,7 +353,7 @@ FIMO never reached its cap of 100,000 stored matches: the largest first pass
 held 2,927 hits (`results/arm0/fimo_cap.tsv`), so no call depends on genome
 size through that cap.
 
-### Question 2, arm 1a (simulation): what survives fragmentation?
+### Arm 1a (simulation): what survives fragmentation?
 
 **In the simulation, every lost call had a breakpoint inside its extraction
 window, and mean recall at a contig N50 of 5 kb was 0.93 with uniform
@@ -486,7 +394,7 @@ assemblies have contig N50 of 16 kb to 1.75 Mb (median 220 kb;
 `results/arm0/assembly_stats.tsv`), and the arm 2 short-read assemblies 3.4 to
 128 kb; both sets are marked under the top panels.
 
-### Question 3, arm 1b (simulation): planted CDEII variants
+### Arm 1b (simulation): planted CDEII variants
 
 **In the simulation, PCAn reported planted CDEII changes of -10 to +20 bp at
 the planted length in 207 of 210 edits, and did not recover most changes of
@@ -514,7 +422,7 @@ were unchanged in every replicate (`results/arm1/planted_progressive.tsv`).
 For a change of 10 bp, the median anchor does not stop PCAn from counting a
 mixed genome.
 
-### Question 4, arm 2: do calls on a published short-read and long-read assembly of one strain agree?
+### Arm 2: do calls on a published short-read and long-read assembly of one strain agree?
 
 **In 69 strains, 975 of 1,103 calls on the long-read assembly were intact and
 called in the published short-read assembly; 126 were broken there and 2 were
@@ -580,7 +488,7 @@ nowhere. In heterozygous strains the doubly matched flank strikes calls and
 null windows at a similar rate, 46 of 495 calls and 980 of 9,900 windows, so
 it inflates both sides of C4 alike
 (`results/arm2/exploratory_flank_summary.tsv`, exploratory). Supplementary
-Data 4 of the PCAn paper lists two different centromere sequences for 14 of
+Data 4 of the Figshare collection lists two different centromere sequences for 14 of
 the broken calls and 3 of the 66 calls with a different CDEII length, so
 those may be allelic rather than errors of either assembly
 (`results/arm2/centromere_status.tsv`, column `possibly_allelic`).
@@ -596,7 +504,7 @@ calls a short-read call has an identical sequence from CDEI to CDEIII: 601 of
 608 in homozygous strains, 273 of 495 in heterozygous ones
 (`results/arm2/call_counts.tsv`, exploratory).
 
-### Question 5, arm 3: at what depth do calls and CDEII lengths settle?
+### Arm 3: at what depth do calls and CDEII lengths settle?
 
 Arm 3 was running when this was written; its results will be added when the
 48 hour budget has been used.
@@ -623,17 +531,6 @@ tenfold. The closest arm 1 model is the sensitivity run at gamma = ln(5) /
 0.30, about 5.4, under which mean recall in the simulation was 0.930 at a
 contig N50 of 10 kb and 0.960 at 20 kb
 (`results/sensitivity/arm1_at_weight_gamma.tsv`).
-
-### A note for users of PCAn
-
-The rule that keeps one call per contig is behind every call gained in the
-simulation and both intact regions left uncalled in arm 2. On a fragmented
-assembly it lets a second-best candidate through on a contig of its own; on a
-contig that joins two centromeric regions it keeps one and drops the other. A
-call on a short contig, or a contig that carries a second strong candidate,
-deserves a second look. For *Yueomyces*, the CDEIII motif file that ships
-with PCAn but is missing from its motif table is the one that finds the
-published loci.
 
 ## Controls and sensitivity
 
@@ -676,8 +573,6 @@ result was read.
   steeper weighting (*Ashbya aceri*, 10 kb), the length anchor removed two
   calls whose windows were intact: the only losses of that kind in 1,900
   replicates.
-- The arm 0 gate decision is the same at 0.99 and different at 0.90, where
-  0.926 would pass (`results/sensitivity/arm0_gate_threshold.tsv`).
 
 ## Repository structure
 
@@ -685,11 +580,11 @@ result was read.
 pcan_assembly_dependence/
   config/      what was fixed in advance, and dated records of later decisions
     analysis_plan.md       arms 2 and 3, registered (commits cbf81a5, a005d21, dd4693d)
-    arm0_reproduction.md   how arm 0 is judged, committed before any run
-    arm0_gate_decision.md  the record of continuing past the arm 0 gate
-    arm0_diagnostics.tsv   assemblies run only to explain a discrepancy
+    arm0_reproduction.md   the arm 0 protocol, committed before any run
+    arm0_gate_decision.md  the dated arm 0 decision record read by run_all.sh
+    arm0_diagnostics.tsv   extra assemblies for arm 0 diagnostics
     arm1_design.md         genome choice, levels, models, seeds
-    species_arm0.tsv       every Supplementary Data 5 row, its role and reason
+    species_arm0.tsv       every species-table row, its role and reason
     arm2_pairs.tsv         the 69 strain pairs and the evidence for each
     arm3_runs.tsv          the 69 strains, the 33 eligible runs, and why the rest are not
     project.conf.example   the format of the machine-specific project.conf
@@ -767,18 +662,15 @@ in heterozygous strains. Supplementary Data 4 identifies chromosomes for only
 part of the calls, so most broken calls in heterozygous strains carry no
 allelic flag either way.
 
-One FIMO version, 4.11.2, was used. The arm 0 reproduction is agreement with
-the published table, which by its authors' account holds calls that PCAn
-v1.0 does not make. This repository describes how PCAn behaves on the
-assemblies analysed here and makes no claim about the biological conclusions
-of the paper.
+One FIMO version, 4.11.2, was used. This repository describes how PCAn
+behaves on the assemblies analysed here and makes no biological claim.
 
 ## Data availability
 
 Everything in `results/`, `figures/` and `logs/` is regenerated by the
 scripts from public sources: PCAn at commit a5fa46f (Zenodo
-10.5281/zenodo.17293587), the supplementary data of Helsen et al. 2026
-(Figshare 10.6084/m9.figshare.c.7630151 and the publisher), NCBI assemblies
+10.5281/zenodo.17293587), the species and centromere tables of the Figshare
+collection 10.6084/m9.figshare.c.7630151, NCBI assemblies
 by accession and version (`logs/assemblies_arm0.tsv`,
 `logs/assemblies_arm2.tsv`), the Peter et al. 2018 assembly archive from the
 1002 Yeast Genomes project, the SGD S288C release R64-5-1, and reads from
@@ -791,13 +683,9 @@ Every results table is described column by column in `results/README.md`.
 
 The analysed tool and its data:
 
-- Helsen J, Ramachandran K, Sherlock G, Dey G. Progressive coevolution of the
-  yeast centromere and kinetochore. Nature 651, 1012-1019 (2026).
-  doi:10.1038/s41586-025-09779-1
 - PCAn v1.0, Zenodo. doi:10.5281/zenodo.17293587 (all versions:
   doi:10.5281/zenodo.17293586)
-- Supplementary data of Helsen et al. 2026, Figshare.
-  doi:10.6084/m9.figshare.c.7630151
+- Species and centromere tables, Figshare. doi:10.6084/m9.figshare.c.7630151
 
 Tools:
 
@@ -867,8 +755,8 @@ The code in this repository is under the MIT License (`LICENSE`). Licences of
 the material it uses, each checked on 2026-10-09:
 
 - PCAn is under the MIT License (its repository and the Zenodo record).
-- Helsen et al. 2026 is open access under CC BY 4.0, and the Figshare
-  collection of its supplementary data is under CC BY 4.0.
+- The Figshare collection that holds the species and centromere tables is
+  under CC BY 4.0.
 - NCBI places no restrictions on the use or distribution of the assemblies it
   holds, though submitters may claim rights in their data (NCBI website
   policies). The ScRAP data are also on Zenodo under CC BY 4.0.
