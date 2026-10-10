@@ -389,7 +389,7 @@ contig of its own once the cuts separated it from the unfragmented call
 (`results/arm1/gained_calls_by_origin.tsv`). A call that survives may still
 lose the evidence used to confirm it: the median fraction of calls whose
 contig extends 10 kb beyond both ends was 0.50 (uniform) and 0.44
-(AT-weighted) at 50 kb, and zero at 10 kb and below. The published arm 0
+(AT-weighted) at 50 kb, and zero at 10 kb and below. The arm 0
 assemblies have contig N50 of 16 kb to 1.75 Mb (median 220 kb;
 `results/arm0/assembly_stats.tsv`), and the arm 2 short-read assemblies 3.4 to
 128 kb; both sets are marked under the top panels.
