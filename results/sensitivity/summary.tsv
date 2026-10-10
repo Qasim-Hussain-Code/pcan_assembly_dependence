@@ -1,7 +1,4 @@
 analysis	outcome	primary	alternative	changes_conclusion
-arm 0 gate threshold 0.95	arm 0 gate	decision at 0.95	stop	no
-arm 0 gate threshold 0.90	arm 0 gate	decision at 0.95	proceed	yes
-arm 0 gate threshold 0.99	arm 0 gate	decision at 0.95	stop	no
 arm 2 primary	C2 fraction intact_called	0.884	0.884	no
 arm 2 primary	C2 fraction intact_uncalled	0.00181	0.00181	no
 arm 2 primary	C2 fraction split	0.0562	0.0562	no

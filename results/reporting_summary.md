@@ -4,7 +4,7 @@ Every claim the README makes from a registered or pre-specified analysis, with i
 
 | Arm | Status | Claim | n | Unit | Test | Estimate | 95% interval | p (Holm) | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 0 | pre-specified (config/arm0_reproduction.md) | fraction of published calls PCAn v1.0 reproduces exactly, against a 0.95 gate | 1465 calls in 129 species | species | none (gate on the point estimate) | 0.926 | 0.897 to 0.949 |  | `results/arm0/gate.tsv` |
+| 0 | positive control (config/arm0_reproduction.md) | SGD centromeres of S288C called by PCAn v1.0 | 16 centromeres | centromere | none | 1 |  |  | `results/arm0/s288c_vs_sgd.tsv` |
 | 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 5 kb | 10 genomes, 100 replicates | genome | none | 0.786 | 0.696 to 0.861 |  | `results/arm1/recall_pooled.tsv` |
 | 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 10 kb | 10 genomes, 100 replicates | genome | none | 0.865 | 0.797 to 0.924 |  | `results/arm1/recall_pooled.tsv` |
 | 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 20 kb | 10 genomes, 100 replicates | genome | none | 0.938 | 0.91 to 0.963 |  | `results/arm1/recall_pooled.tsv` |

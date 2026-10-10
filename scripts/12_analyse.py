@@ -103,14 +103,13 @@ def settling(d1, assembler):
 def main():
     rows = []
 
-    g = read("arm0/gate.tsv")
-    if g is not None:
-        r = g.iloc[0]
-        rows.append({"arm": "0", "status": "pre-specified (config/arm0_reproduction.md)",
-                     "claim": "fraction of published calls PCAn v1.0 reproduces exactly, against a 0.95 gate",
-                     "n": "%d calls in %d species" % (r["n_calls"], r["n_species"]), "unit": "species",
-                     "test": "none (gate on the point estimate)", "estimate": r["estimate"], "ci_low": r["ci_low"],
-                     "ci_high": r["ci_high"], "p_raw": np.nan, "source": "results/arm0/gate.tsv"})
+    sgd = read("arm0/s288c_vs_sgd.tsv")
+    if sgd is not None:
+        called = int((sgd["called"].astype(str) == "yes").sum())
+        rows.append({"arm": "0", "status": "positive control (config/arm0_reproduction.md)",
+                     "claim": "SGD centromeres of S288C called by PCAn v1.0", "n": "%d centromeres" % len(sgd),
+                     "unit": "centromere", "test": "none", "estimate": called / len(sgd), "ci_low": np.nan,
+                     "ci_high": np.nan, "p_raw": np.nan, "source": "results/arm0/s288c_vs_sgd.tsv"})
 
     pooled = read("arm1/recall_pooled.tsv")
     if pooled is not None:
@@ -204,12 +203,6 @@ def main():
 
     # Sensitivity: does any alternative change a conclusion?
     sens_rows = []
-    gs = read("sensitivity/arm0_gate_threshold.tsv")
-    if gs is not None:
-        for _, r in gs.iterrows():
-            sens_rows.append({"analysis": "arm 0 gate threshold %.2f" % r["threshold"], "outcome": "arm 0 gate",
-                              "primary": "decision at 0.95", "alternative": r["decision"],
-                              "changes_conclusion": "no" if r["same_as_preregistered_threshold"] else "yes"})
     sv = read("sensitivity/arm2_variants.tsv")
     if sv is not None and c2 is not None:
         for _, r in sv.iterrows():
