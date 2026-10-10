@@ -108,8 +108,8 @@ centromere annotation.
 ## Data
 
 Every file except the arm 3 reads was downloaded on 2026-10-09 (UTC); the
-reads of each arm 3 strain were streamed when that strain was processed
-(`logs/arm3_strains.tsv`). Sizes, SHA-256 checksums, source checksums where
+reads of each arm 3 strain were downloaded, checked against ENA's MD5 and
+deleted when that strain was processed (`logs/arm3_strains.tsv`). Sizes, SHA-256 checksums, source checksums where
 the source publishes one, and download times are in `logs/downloads.tsv`,
 `logs/assemblies_arm0.tsv` and `logs/assemblies_arm2.tsv`.
 
