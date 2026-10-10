@@ -36,3 +36,4 @@ assemble_reads	2026-10-09T12:07:28Z	2026-10-09T17:27:06Z	19178	1599	8.61	16.04	3
 compare_arm3	2026-10-09T19:26:19Z	2026-10-09T19:31:47Z	328	363	11.57	11.98	30.3	16	2	0	
 compare_arm2	2026-10-09T19:33:04Z	2026-10-09T19:34:42Z	97	326	12.04	12.13	30.3	16	4	0	
 compare_arm3	2026-10-09T19:34:42Z	2026-10-09T19:35:14Z	31	220	12.13	12.17	30.3	16	2	0	
+assemble_reads	2026-10-09T17:30:14Z	2026-10-09T19:50:09Z	8395					16	1	stopped	the Linux VM shut down with the session that started the stage; end is the last log line; restarted 2026-10-10T05:45:24Z
