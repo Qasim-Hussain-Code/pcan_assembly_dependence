@@ -40,7 +40,7 @@ of the *S. cerevisiae* reference, SGD's CDEII features are 76 to 85 bp long
 (`results/arm0/s288c_vs_sgd.tsv`). CDEIII is a motif of about 25 bp bound by
 the CBF3 complex. PCAn's 1,519 calls on the arm 0 assemblies have a median
 length of 118 bp from the start of CDEI to the end of CDEIII, and 98 per cent
-of them lie between 65 and 201 bp (`results/arm0/reproduced_calls.tsv`).
+of them lie between 65 and 201 bp (`results/arm0/calls.tsv`).
 
 ### How PCAn finds one
 
@@ -107,9 +107,9 @@ the source publishes one, and download times are in `logs/downloads.tsv`,
 
 ### PCAn
 
-PCAn comes from github.com/JHelsen/point-centromere-detection at commit
+PCAn is installed from its GitHub repository at commit
 a5fa46f0cb971e7d499fd52b38b0c29166b33ef8, the v1.0 release archived on Zenodo
-(10.5281/zenodo.17293587). One patch is applied so that *Arxiozyma*
+(10.5281/zenodo.17293587); `scripts/01_install.sh` holds the address. One patch is applied so that *Arxiozyma*
 assemblies run (`patches/0001_arxiozyma_cdeiii_motif.patch`): the
 *Arxiozyma* entry of the motif table names a CDEIII motif file that is not
 in the release, and the patch points it at `CDEIII_Arxiozyma_MEME.txt`, which
@@ -339,9 +339,14 @@ result.
 reference at SGD's boundary between CDEII and CDEIII, with identical output in
 five runs.**
 
+![Arm 0 calls](figures/fig1_arm0_calls.png)
+
 PCAn completed on every one of the 134 assemblies and made 1,519 calls, a
 median of 11 per assembly (2 to 26; `logs/arm0_runs.tsv`,
-`results/arm0/reproduced_calls.tsv`).
+`results/arm0/calls.tsv`). Call lengths cluster by genus: the median call is
+83 or 84 bp in eight genera, among them *Kazachstania*, 119 bp in
+*Saccharomyces*, 168 bp in *Zygosaccharomyces* and 198 bp in *Kluyveromyces*
+(`results/arm0/calls.tsv`, genus from `config/species_arm0.tsv`).
 
 On S288C, PCAn called all 16 SGD centromeres and nothing else. Each call
 covers SGD's centromere feature to within 1 bp at either end, and the boundary
@@ -580,9 +585,6 @@ result was read.
 pcan_assembly_dependence/
   config/      what was fixed in advance, and dated records of later decisions
     analysis_plan.md       arms 2 and 3, registered (commits cbf81a5, a005d21, dd4693d)
-    arm0_reproduction.md   the arm 0 protocol, committed before any run
-    arm0_gate_decision.md  the dated arm 0 decision record read by run_all.sh
-    arm0_diagnostics.tsv   extra assemblies for arm 0 diagnostics
     arm1_design.md         genome choice, levels, models, seeds
     species_arm0.tsv       every species-table row, its role and reason
     arm2_pairs.tsv         the 69 strain pairs and the evidence for each

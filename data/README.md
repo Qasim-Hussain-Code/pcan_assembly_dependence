@@ -12,14 +12,13 @@ times slower in a test of 500 small files (6.05 s against 0.02 s).
 | `env/pcan/` | `01_install.sh` | PCAn's conda environment, pinned by its `pcan_specs.yml` (Python 3.8.17, MEME 4.11.2, BLAST 2.16.0) |
 | `env/tools/` | `01_install.sh` | minimap2, seqkit, seqtk, fastp, SPAdes, MEGAHIT, NCBI datasets, shellcheck, pigz, and the Python packages for the analysis |
 | `pcan/point-centromere-detection/` | `01_install.sh` | PCAn at commit a5fa46f with `patches/` applied |
-| `tables/` | `02_fetch_tables.sh` | Supplementary Data 2, 4, 5 and 6 (publisher and Figshare copies), the Figshare listing, the SGD R64-5-1 release archive and the two members taken from it, and TSV conversions |
+| `tables/` | `02_fetch_tables.sh` | Supplementary Data 4, 5 and 6 (publisher and Figshare copies), the Figshare listing, the SGD R64-5-1 release archive and the two members taken from it, and TSV conversions |
 | `assemblies/` | `03_fetch_assemblies.sh` | each assembly as `<accession>.fna.gz`, with its NCBI dataset report and sequence report |
 | `arm0/calls/` | `05_reproduce.py` via `04_run_pcan.sh` | PCAn's call table, run metadata and filter-trace candidate table per assembly |
 | `arm0/fimo/` | `04_run_pcan.sh` | both FIMO passes of every arm 0 run, gzip, with their command lines |
 | `arm0/determinism/` | `05_reproduce.py` | the five repeated S288C runs |
 | `arm1/calls/`, `arm1/cuts/`, `arm1/records/` | `06_fragment.py` | per fragmented replicate: call table, candidate table, cut positions, contiguity record. The fragmented FASTA is deleted after PCAn has run; the seed regenerates it exactly |
 | `arm1/variant_calls/` | `07_plant_variants.py` | per edited genome: call table and candidate table; the edited FASTA is deleted |
-| `diagnostics/` | `05_reproduce.py` | assembly versions run only to find the cause of an arm 0 discrepancy (`config/arm0_diagnostics.tsv`) |
 | `tables/peter2018/` | `09_build_pairs.py` | the Peter et al. 2018 assembly archive (one tar.gz, md5-checked) and its member listing |
 | `assemblies/peter2018/` | `09_build_pairs.py` | the short-read assembly of each arm 2 strain, extracted from that archive, gzip |
 | `pairs/<code>/` | `10_compare_pairs.py` | per strain, shared by arms 2 and 3: PCAn on the long-read assembly, the centromere and null-window sets for every flank length and AT bin, the 500 bp window table |

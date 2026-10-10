@@ -1,10 +1,10 @@
 # Reporting summary
 
-Every claim the README makes from a registered or pre-specified analysis, with its source. Confirmatory claims are those registered in `config/analysis_plan.md`; arm 0 and arm 1 measures were pre-specified in `config/arm0_reproduction.md` and `config/arm1_design.md`. P-values are Holm-adjusted across the 14 registered tests. Only 2 of them have been run so far; until the rest are, they enter the adjustment as p = 1, which can only make the adjusted values shown larger. Intervals are 95 per cent; their method is given in the source file.
+Every claim the README makes from a registered or pre-specified analysis, with its source. Confirmatory claims are those registered in `config/analysis_plan.md`; arm 1 measures were pre-specified in `config/arm1_design.md`, and the arm 0 row is the S288C positive control. P-values are Holm-adjusted across the 14 registered tests. Only 2 of them have been run so far; until the rest are, they enter the adjustment as p = 1, which can only make the adjusted values shown larger. Intervals are 95 per cent; their method is given in the source file.
 
 | Arm | Status | Claim | n | Unit | Test | Estimate | 95% interval | p (Holm) | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 0 | positive control (config/arm0_reproduction.md) | SGD centromeres of S288C called by PCAn v1.0 | 16 centromeres | centromere | none | 1 |  |  | `results/arm0/s288c_vs_sgd.tsv` |
+| 0 | positive control | SGD centromeres of S288C called by PCAn v1.0 | 16 centromeres | centromere | none | 1 |  |  | `results/arm0/s288c_vs_sgd.tsv` |
 | 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 5 kb | 10 genomes, 100 replicates | genome | none | 0.786 | 0.696 to 0.861 |  | `results/arm1/recall_pooled.tsv` |
 | 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 10 kb | 10 genomes, 100 replicates | genome | none | 0.865 | 0.797 to 0.924 |  | `results/arm1/recall_pooled.tsv` |
 | 1 (simulation) | pre-specified (config/arm1_design.md) | mean recall relative to the unfragmented call, AT-weighted model, target contig N50 20 kb | 10 genomes, 100 replicates | genome | none | 0.938 | 0.91 to 0.963 |  | `results/arm1/recall_pooled.tsv` |

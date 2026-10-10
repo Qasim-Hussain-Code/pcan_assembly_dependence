@@ -56,9 +56,9 @@ def select_genomes():
     species = pd.read_csv(P.repo("config", "species_arm0.tsv"), sep="\t", dtype=str)
     stats = pd.read_csv(P.repo("results", "arm0", "assembly_stats.tsv"), sep="\t")
     runs = pd.read_csv(P.repo("logs", "arm0_runs.tsv"), sep="\t", dtype=str)
-    prim = species[species["arm0_role"] == "primary"].merge(stats, on="accession", how="inner")
+    ran = species[species["arm0_role"] == "run"].merge(stats, on="accession", how="inner")
     rows = []
-    for _, s in prim.iterrows():
+    for _, s in ran.iterrows():
         if s["assembly_level"] not in ("Chromosome", "Complete Genome"):
             continue
         acc = s["accession"]
@@ -93,7 +93,7 @@ def select_genomes():
     elig["chosen"] = elig["accession"].isin(chosen["accession"]).map({True: "yes", False: "no"})
     P.atomic_write_tsv(elig, os.path.join(OUT, "eligibility.tsv"))
     P.atomic_write_tsv(chosen, os.path.join(OUT, "genomes.tsv"))
-    P.log("arm 1a: %d chromosome-level primary assemblies, %d eligible, %d genera chosen"
+    P.log("arm 1a: %d chromosome-level assemblies, %d eligible, %d genera chosen"
           % (len(elig), (elig["eligible"] == "yes").sum(), len(chosen)))
     return chosen
 

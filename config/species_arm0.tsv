@@ -1,167 +1,167 @@
-sd5_row	species	accession	group	arm0_role	reason	pcan_genus	pcan_kazachstania_species	pcan_cdeiii_motif	pcan_cdeiii_thresh	pcan_cdei_motif	pcan_cdei_thresh	in_authors_table	authors_cdeiii_motif	authors_cdeiii_thresh	authors_cdei_motif	authors_cdei_thresh	settings_match_authors_table	authors_works	authors_false_neg	authors_false_pos	sd2_name	sd2_accession	sd2_calls	sd2_calls_with_cdei
-1	Wickerhamomyces anomalus	GCA_019321675.1	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0																			
-2	Candida albicans	GCA_000182965.3	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0																			
-3	Pichia kudriavzevii	GCA_003054445.1	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0																			
-4	Yarrowia lipolytica	GCA_000002525.1	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0																			
-5	Kluyveromyces nonfermentans	GCA_003670155.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces nonfermentans	GCA_003670155.1	8.0	8.0
-6	Kluyveromyces siamensis	GCA_030579315.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces siamensis	GCA_030579315.1	8.0	8.0
-7	Kluyveromyces aestuarii	GCA_003707555.2	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces aestuarii	GCA_003707555.2	8.0	8.0
-8	Kluyveromyces wickerhamii	GCA_030564205.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces wickerhamii	GCA_030564205.1	7.0	7.0
-9	Kluyveromyces starmeri	GCA_008973615.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces starmeri	GCA_008973615.1	8.0	8.0
-10	Kluyveromyces sp. yHMH660	GCA_030462825.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces sp. yHMH660	GCA_030462825.1	8.0	8.0
-11	Kluyveromyces marxianus	GCA_001417885.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces marxianus	GCA_001417885.1	8.0	8.0
-12	Kluyveromyces sp. PCH397	GCA_017427045.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces sp. PCH397	GCA_017427045.1	8.0	8.0
-13	Kluyveromyces dobzhanskii	GCA_003705805.3	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces dobzhanskii	GCA_003705805.3	7.0	7.0
-14	Kluyveromyces lactis	GCA_000002515.1	Saccharomycetaceae	primary		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3	yes	Kluyveromyces	1e-6	ZT	1e-3	yes	Yes	0	0	Kluyveromyces lactis	GCA_000002515.1	6.0	6.0
-15	Eremothecium coryli	GCA_000710315.1	Saccharomycetaceae	primary		Eremothecium		EreLach	1e-6	ZT	1e-2	yes	EreLach	1e-6	ZT	1e-2	yes	Yes	0	0	Eremothecium coryli	GCA_000710315.1	6.0	6.0
-16	Eremothecium sinecaudum	GCA_001548555.1	Saccharomycetaceae	primary		Eremothecium		EreLach	1e-6	ZT	1e-2	yes	EreLach	1e-6	ZT	1e-2	yes	Yes	0	0	Eremothecium sinecaudum	GCA_001548555.1	7.0	7.0
-17	Eremothecium cymbalariae	GCA_000235365.1	Saccharomycetaceae	primary		Eremothecium		EreLach	1e-6	ZT	1e-2	yes	EreLach	1e-6	ZT	1e-2	yes	Yes	0	0	Eremothecium cymbalariae	GCA_000235365.1	8.0	8.0
-18	Ashbya aceri	GCA_000412225.2	Saccharomycetaceae	primary		Ashbya		EreLach	1e-6	ZT	1e-2	yes	EreLach	1e-6	ZT	1e-2	yes	Yes	0	0	Ashbya aceri	GCA_000412225.2	7.0	7.0
-19	Eremothecium gossypii	GCA_000091025.4	Saccharomycetaceae	primary		Eremothecium		EreLach	1e-6	ZT	1e-2	yes	EreLach	1e-6	ZT	1e-2	yes	Yes	0	0	Eremothecium gossypii	GCA_000091025.4	7.0	7.0
-20	Lachancea kluyveri	GCA_000149225.2	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea kluyveri	GCA_000149225.2	8.0	8.0
-21	Lachancea cidri	GCA_030569995.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea cidri	GCA_030569995.1	8.0	8.0
-22	Lachancea fermentati	GCA_900074765.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea fermentati	GCA_900074765.1	8.0	8.0
-23	Lachancea mirantina	GCA_900074745.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea mirantina	GCA_900074745.1	8.0	8.0
-24	Lachancea waltii	GCA_000167115.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	1	1	Lachancea waltii	GCA_000167115.1	8.0	8.0
-25	Lachancea quebecensis	GCA_002900925.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea quebecensis	GCA_002900925.1	8.0	8.0
-26	Lachancea thermotolerans	GCA_000142805.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea thermotolerans	GCA_000142805.1	8.0	8.0
-27	Lachancea nothofagi	GCA_900074755.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea nothofagi	GCA_900074755.1	8.0	8.0
-28	Lachancea dasiensis	GCA_900074725.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea dasiensis	GCA_900074725.1	8.0	8.0
-29	Lachancea sp. yHQL494	GCA_030562185.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea sp. yHQL494	GCA_030562185.1	8.0	8.0
-30	Lachancea meyersii	GCA_900074715.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea meyersii	GCA_900074715.1	8.0	8.0
-31	Lachancea fantastica	GCA_900074735.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea fantastica	GCA_900074735.1	7.0	7.0
-32	Lachancea lanzarotensis	GCA_000938715.1	Saccharomycetaceae	primary		Lachancea		Lachancea	1e-5	Lachancea	1e-2	yes	Lachancea	1e-5	Lachancea	1e-2	yes	Yes	0	0	Lachancea lanzarotensis	GCA_000938715.1	7.0	7.0
-33	Hagleromyces aurorensis	GCA_030705145.1	Saccharomycetaceae	primary		Hagleromyces		KLE	1e-6	ZT	1e-2	yes	KLE	1e-6	ZT	1e-2	yes	Yes	0	0	Hagleromyces aurorensis	GCA_030705145.1	6.0	6.0
-34	Zygosaccharomyces gambellarensis	GCA_030571545.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces gambellarensis	GCA_030571545.1	7.0	7.0
-35	Zygosaccharomyces rouxii	GCA_000026365.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces rouxii	GCA_000026365.1	7.0	7.0
-36	Zygosaccharomyces sapae	GCA_900465325.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces sapae	GCA_900465325.1	19.0	19.0
-37	Zygosaccharomyces pseudorouxii	GCA_030572675.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces pseudorouxii	GCA_030572675.1	7.0	7.0
-38	Zygosaccharomyces mellis	GCA_005406105.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces mellis	GCA_005406105.1	7.0	7.0
-39	Zygosaccharomyces siamensis	GCA_013423405.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces siamensis	GCA_013423405.1	7.0	7.0
-40	Zygosaccharomyces kombuchaensis	GCA_003705955.2	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces kombuchaensis	GCA_003705955.2	8.0	8.0
-41	Zygosaccharomyces lentus	GCA_030568175.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces lentus	GCA_030568175.1	8.0	8.0
-42	Zygosaccharomyces bisporus	GCA_003707595.2	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces bisporus	GCA_003707595.2	8.0	8.0
-43	Zygosaccharomyces parabailii	GCA_001984395.2	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	2	0	Zygosaccharomyces parabailii	GCA_001984395.2	16.0	16.0
-44	Zygosaccharomyces pseudobailii	GCA_949129085.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	1	0	Zygosaccharomyces pseudobailii	GCA_949129085.1	16.0	16.0
-45	Zygosaccharomyces bailii	GCA_900162805.1	Saccharomycetaceae	primary		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3	yes	ZygoSacch	1e-6	ZygoSacch	1e-3	yes	Yes	0	0	Zygosaccharomyces bailii	GCA_900162805.1	8.0	8.0
-46	Zygotorulaspora chibaensis	GCA_030565665.1	Saccharomycetaceae	primary		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2	yes	ZygoToru	1e-5	ZT	1e-2	yes	Yes	0	0	Zygotorulaspora chibaensis	GCA_030565665.1	8.0	8.0
-47	Zygotorulaspora florentina	GCA_003671575.3	Saccharomycetaceae	primary		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2	yes	ZygoToru	1e-5	ZT	1e-2	yes	Yes	0	0	Zygotorulaspora florentina	GCA_003671575.3	8.0	8.0
-48	Zygotorulaspora sp. yHDO592	GCA_030571275.1	Saccharomycetaceae	primary		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2	yes	ZygoToru	1e-5	ZT	1e-2	yes	Yes	0	0	Zygotorulaspora sp. yHDO592	GCA_030571275.1	8.0	8.0
-49	Zygotorulaspora danielsina	GCA_030572985.1	Saccharomycetaceae	primary		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2	yes	ZygoToru	1e-5	ZT	1e-2	yes	Yes	0	0	Zygotorulaspora danielsina	GCA_030572985.1	8.0	8.0
-50	Zygotorulaspora mrakii	GCA_013402915.1	Saccharomycetaceae	primary		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2	yes	ZygoToru	1e-5	ZT	1e-2	yes	Yes	0	1	Zygotorulaspora mrakii	GCA_013402915.1	8.0	8.0
-51	Torulaspora microellipsoides	GCA_900186055.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	0	0	Torulaspora microellipsoides	GCA_900186055.1	8.0	8.0
-52	Torulaspora quercuum	GCA_946403475.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	0	0	Torulaspora quercuum	GCA_946403475.1	8.0	8.0
-53	Torulaspora globosa	GCA_014133895.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	2	0	Torulaspora globosa	GCA_014133895.1	8.0	8.0
-54	Torulaspora maleeae	GCA_003708055.3	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	1	0	Torulaspora maleeae	GCA_003708055.3	8.0	8.0
-55	Torulaspora sp. yHMJ407	GCA_030580195.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	2	0	Torulaspora sp. yHMJ407	GCA_030580195.1	8.0	8.0
-56	Torulaspora delbrueckii	GCA_000243375.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	0	0	Torulaspora delbrueckii	GCA_000243375.1	8.0	8.0
-57	Torulaspora sp. 2017 38-3	GCA_040114465.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	0	0	Torulaspora sp. 2017 38-3	GCA_040114465.1	8.0	8.0
-58	Torulaspora franciscae	GCA_003705175.3	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	1	0	Torulaspora franciscae	GCA_003705175.3	8.0	8.0
-59	Torulaspora pretoriensis	GCA_012851205.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	1	0	Torulaspora pretoriensis	GCA_012851205.1	8.0	8.0
-60	Torulaspora sp. 2017 36-1	GCA_040114505.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	0	0	Torulaspora sp. 2017 36-1	GCA_040114505.1	8.0	8.0
-61	Torulaspora indica	GCA_931305995.1	Saccharomycetaceae	primary		Torulaspora		Toru	1e-5	Toru	1e-2	yes	Toru	1e-5	Toru	1e-2	yes	Yes	0	0	Torulaspora indica	GCA_931305995.1	8.0	8.0
-62	Henningerozyma blattae	GCA_000315915.1	Saccharomycetaceae	primary		Henningerozyma		Henningerozyma	1e-6	ZT	1e-2	yes	Henningerozyma	1e-6	ZT	1e-2	yes	Yes	1	0	Henningerozyma blattae	GCA_000315915.1	9.0	9.0
-63	Yueomyces sinensis	GCA_030581855.1	Saccharomycetaceae	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Yueomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Yueomyces	1e-6	NA	NA	no	No	NA	NA	Yueomyces sinensis	GCA_030581855.1	14.0	0.0
-64	Yueomyces sp. yHKB289	GCA_030580315.1	Saccharomycetaceae	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Yueomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Yueomyces	1e-6	NA	NA	no	No	NA	NA	Yueomyces sp. yHKB289	GCA_030580315.1	13.0	0.0
-65	Yueomyces silvicola	GCA_030179955.1	Saccharomycetaceae	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Yueomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Yueomyces	1e-6	NA	NA	no	No	NA	NA	Yueomyces silvicola	GCA_030179955.1	13.0	0.0
-66	Vanderwaltozyma polyspora	GCA_000150035.1	Saccharomycetaceae	primary		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Yes	0	0	Vanderwaltozyma polyspora	GCA_000150035.1	14.0	14.0
-67	Vanderwaltozyma tropicalis	GCA_030555675.1	Saccharomycetaceae	primary		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Yes	0	2	Vanderwaltozyma tropicalis	GCA_030555675.1	16.0	16.0
-68	Vanderwaltozyma yanomamii	GCA_041380205.1	Saccharomycetaceae	primary		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Yes	0	0	Vanderwaltozyma sp. UFMG-CM-Y7006	GCA_041380205.1	16.0	16.0
-69	Vanderwaltozyma verrucispora	GCA_030565105.1	Saccharomycetaceae	primary		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Yes	2	1	Vanderwaltozyma verrucispora	GCA_030565105.1	16.0	16.0
-70	Vanderwaltozyma yarrowii	GCA_030568135.1	Saccharomycetaceae	primary		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2	yes	Yes	1	3	Vanderwaltozyma yarrowii	GCA_030568135.1	16.0	16.0
-71	Tetrapisispora iriomotensis	GCA_003705975.2	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	1	1	Tetrapisispora iriomotensis	GCA_003705975.2	16.0	16.0
-72	Tetrapisispora phaffii	GCA_000236905.1	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	1	0	Tetrapisispora phaffii	GCA_000236905.1	16.0	16.0
-73	Tetrapisispora fleetii	GCA_003707605.2	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	2	0	Tetrapisispora fleetii	GCA_003707605.2	16.0	16.0
-74	Tetrapisispora namnaoensis	GCA_003705985.2	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	1	0	Tetrapisispora namnaoensis	GCA_003705985.2	16.0	16.0
-75	Tetrapisispora nanseiensis	GCA_030568035.1	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	1	1	Tetrapisispora nanseiensis	GCA_030568035.1	16.0	16.0
-76	Tetrapisispora arboricola	GCA_030557565.1	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	0	2	Tetrapisispora arboricola	GCA_030557565.1	16.0	16.0
-77	Tetrapisispora pingtungensis	GCA_030573885.1	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	1	2	Tetrapisispora pingtungensis	GCA_030573885.1	16.0	16.0
-78	Tetrapisispora taiwanensis	GCA_030573835.1	Saccharomycetaceae	primary		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Tetrapisispora	1e-5	Tetrapisispora	1e-2	yes	Yes	2	5	Tetrapisispora taiwanensis	GCA_030573835.1	16.0	16.0
-79	Naumovozyma dairenensis	GCA_000227115.2	Saccharomycetaceae	excluded	published calls came from an adapted single-motif version of PCAn (Extended Data Fig. 2) that the repository does not provide; PCAn v1.0 has no Naumovozyma entry in its motif table	Naumovozyma						yes	NA	NA	NA	NA	no	NA	NA	NA	Naumovozyma dairenensis	GCA_000227115.2	12.0	0.0
-80	Naumovozyma baii	GCA_030568095.1	Saccharomycetaceae	excluded	published calls came from an adapted single-motif version of PCAn (Extended Data Fig. 2) that the repository does not provide; PCAn v1.0 has no Naumovozyma entry in its motif table	Naumovozyma						yes	NA	NA	NA	NA	no	NA	NA	NA	Naumovozyma baii	GCA_030568095.1	7.0	0.0
-81	Naumovozyma castellii	GCA_000237345.1	Saccharomycetaceae	excluded	published calls came from an adapted single-motif version of PCAn (Extended Data Fig. 2) that the repository does not provide; PCAn v1.0 has no Naumovozyma entry in its motif table	Naumovozyma						yes	NA	NA	NA	NA	no	NA	NA	NA	Naumovozyma castellii	GCA_000237345.1	11.0	0.0
-82	Kazachstania africana	GCA_000304475.1	Saccharomycetaceae	primary		Kazachstania	africana	Kafricana	1e-6	Kafricana	1e-2	yes	Kafricana	1e-6	Kafricana	1e-2	yes	Yes	0	0	Kazachstania africana	GCA_000304475.1	12.0	12.0
-83	Kazachstania viticola	GCA_030571575.1	Saccharomycetaceae	primary		Kazachstania	viticola	Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Kazachstania viticola	GCA_030571575.1	16.0	16.0
-84	Jamesozyma lodderae	GCA_030571655.1	Saccharomycetaceae	primary		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2	yes	Ka_Full	1e-6	Jamesozyma	1e-2	yes	Yes	0	0	Jamesozyma lodderae	GCA_030571655.1	13.0	13.0
-85	Jamesozyma jinghongensis	GCA_030572895.1	Saccharomycetaceae	primary		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2	yes	Ka_Full	1e-6	Jamesozyma	1e-2	yes	Yes	0	0	Jamesozyma jinghongensis	GCA_030572895.1	16.0	16.0
-86	Jamesozyma spencerorum	GCA_003708825.3	Saccharomycetaceae	primary		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2	yes	Ka_Full	1e-6	Jamesozyma	1e-2	yes	Yes	0	0	Jamesozyma spencerorum	GCA_003708825.2	16.0	16.0
-87	Jamesozyma piceae	GCA_030674245.1	Saccharomycetaceae	primary		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2	yes	Ka_Full	1e-6	Jamesozyma	1e-2	yes	Yes	1	0	Jamesozyma piceae	GCA_030674245.1	16.0	16.0
-88	Jamesozyma rosinii	GCA_003708425.3	Saccharomycetaceae	primary		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2	yes	Ka_Full	1e-6	Jamesozyma	1e-2	yes	Yes	1	0	Jamesozyma rosinii	GCA_003708425.3	15.0	15.0
-89	Jamesozyma gamospora	GCA_030462905.1	Saccharomycetaceae	primary		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2	yes	Ka_Full	1e-6	Jamesozyma	1e-2	yes	Yes	0	0	Jamesozyma gamospora	GCA_030462905.1	16.0	16.0
-90	Jamesozyma hellenica	GCA_030571615.1	Saccharomycetaceae	primary		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2	yes	Ka_Full	1e-6	Jamesozyma	1e-2	yes	Yes	0	0	Jamesozyma hellenica	GCA_030571615.1	16.0	16.0
-91	Kazachstania psychrophila	GCA_030579255.1	Saccharomycetaceae	primary		Kazachstania	psychrophila	Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Kazachstania psychrophila	GCA_030579255.1	15.0	15.0
-92	Kazachstania kunashirensis	GCA_003708465.2	Saccharomycetaceae	primary		Kazachstania	kunashirensis	Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Kazachstania kunashirensis	GCA_003708465.2	11.0	11.0
-93	Maudiozyma humilis	GCA_020313495.2	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Maudiozyma humilis	GCA_020313495.2	12.0	12.0
-94	Maudiozyma pseudohumilis	GCA_030579215.1	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	2	0	Maudiozyma pseudohumilis	GCA_030579215.1	11.0	11.0
-95	Maudiozyma bulderi	GCA_933962305.1	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Maudiozyma bulderi	GCA_933962305.1	12.0	12.0
-96	Maudiozyma exigua	GCA_016584175.1	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Maudiozyma exigua	GCA_016584175.1	11.0	11.0
-97	Maudiozyma turicensis	GCA_030583465.1	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Maudiozyma turicensis	GCA_030583465.1	11.0	11.0
-98	Maudiozyma barnettii	GCA_903064755.1	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Maudiozyma barnettii	GCA_903064755.1	11.0	11.0
-99	Maudiozyma saulgeensis	GCA_900180425.1	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	1	0	Maudiozyma saulgeensis	GCA_900180425.1	11.0	11.0
-100	Maudiozyma serrabonitensis	GCA_030571355.1	Saccharomycetaceae	primary		Maudiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Maudiozyma serrabonitensis	GCA_030571355.1	11.0	11.0
-101	Kazachstania martiniae	GCA_003708925.3	Saccharomycetaceae	primary		Kazachstania	martiniae	Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	1	0	Kazachstania martiniae	GCA_003708925.3	12.0	12.0
-102	Sungouiozyma ichnusensis	GCA_030580495.1	Saccharomycetaceae	primary		Sungouiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Sungouiozyma ichnusensis	GCA_030580495.1	8.0	8.0
-103	Sungouiozyma intestinalis	GCA_003708845.3	Saccharomycetaceae	primary		Sungouiozyma		Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Sungouiozyma intestinalis	GCA_003708845.3	8.0	8.0
-104	Kazachstania bromeliacearum	GCA_003708535.3	Saccharomycetaceae	primary		Kazachstania	bromeliacearum	Ka_Full	1e-6	ZT	1e-2	yes	Ka_Full	1e-6	ZT	1e-2	yes	Yes	0	0	Kazachstania bromeliacearum	GCA_003708535.3	10.0	10.0
-105	Huiozyma naganishii	GCA_000348985.1	Saccharomycetaceae	primary		Huiozyma		Knagsin	1e-5	Knagsin	1e-2	yes	Knagsin	1e-5	Knagsin	1e-2	yes	Yes	0	0	Huiozyma naganishii	GCA_000348985.1	13.0	13.0
-106	Huiozyma sinensis	GCA_030705205.1	Saccharomycetaceae	primary		Huiozyma		Knagsin	1e-5	Knagsin	1e-2	yes	Knagsin	1e-5	Knagsin	1e-2	yes	Yes	0	0	Huiozyma sinensis	GCA_030705205.1	13.0	13.0
-107	Kazachstania taianensis	GCA_003708865.2	Saccharomycetaceae	primary		Kazachstania	taianensis	Ktai	1e-7	ZT	1e-2	yes	Ktai	1e-7	ZT	1e-2	yes	Yes	0	0	Kazachstania taianensis	GCA_003708865.2	16.0	16.0
-108	Grigorovia jiainica	GCA_030571715.1	Saccharomycetaceae	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Grigorovia		Grig	1e-5	Grig	1e-2	yes	Grig	1e-6	Grig	1e-2	no	Yes			Grigorovia jiainica	GCA_030571715.1	15.0	0.0
-109	Grigorovia yakushimaensis	GCA_003709265.2	Saccharomycetaceae	primary		Grigorovia		Grig	1e-5	Grig	1e-2	yes	Grig	1e-5	Grig	1e-2	yes	Yes	1	0	Grigorovia yakushimaensis	GCA_003709265.2	16.0	16.0
-110	Grigorovia transvaalensis	GCA_003708445.3	Saccharomycetaceae	primary		Grigorovia		Grig	1e-5	Grig	1e-2	yes	Grig	1e-5	Grig	1e-2	yes	Yes	0	0	Grigorovia transvaalensis	GCA_003708445.3	16.0	16.0
-111	Grigorovia humatica	GCA_030462875.1	Saccharomycetaceae	primary		Grigorovia		Grig	1e-5	Grig	1e-2	yes	Grig	1e-5	Grig	1e-2	yes	Yes	4	1	Grigorovia humatica	GCA_030462875.1	15.0	15.0
-112	Arxiozyma slooffiae	GCA_017347545.2	Saccharomycetaceae	no_published_calls	no rows in Supplementary Data 2 and no motif in the authors' table; run and reported, outside the reproduction fraction	Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3	yes	NA	NA	NA	NA	no	NA	NA	NA			0.0	0.0
-113	Arxiozyma bovina	GCA_030580575.1	Saccharomycetaceae	primary		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Yes	2	5	Arxiozyma bovina	GCA_030580575.1	13.0	13.0
-114	Arxiozyma telluris	GCA_030571675.1	Saccharomycetaceae	primary		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Yes	3	7	Arxiozyma telluris	GCA_030571675.1	15.0	15.0
-115	Arxiozyma heterogenica	GCA_030674295.1	Saccharomycetaceae	primary		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Yes	1	1	Arxiozyma heterogenica	GCA_030674295.1	15.0	15.0
-116	Arxiozyma pintolopesii	GCA_950065675.1	Saccharomycetaceae	primary		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Yes	0	0	Arxiozyma pintolopesii	GCA_950065675.1	15.0	15.0
-117	Arxiozyma sp. Y4206	GCA_023629195.1	Saccharomycetaceae	primary		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Yes	0	1	Arxiozyma sp. Y4206	GCA_023629195.1	15.0	15.0
-118	Arxiozyma sp. VP_05	GCA_041430495.1	Saccharomycetaceae	primary		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Arxiozyma	1e-6	Arxiozyma	1e-3	yes	Yes	0	0	Arxiozyma sp. VP_05	GCA_041430495.1	15.0	15.0
-119	Monosporozyma aquatica	GCA_030571515.1	Saccharomycetaceae	primary		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2	yes	Kaq-Ksol	1e-6	ZT	1e-2	yes	Yes	1	12	Monosporozyma aquatica	GCA_030571515.1	15.0	15.0
-120	Monosporozyma siamensis	GCA_003708905.3	Saccharomycetaceae	primary		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2	yes	Kaq-Ksol	1e-6	ZT	1e-2	yes	Yes	2	6	Monosporozyma siamensis	GCA_003708905.3	12.0	12.0
-121	Monosporozyma unispora	GCA_003708525.3	Saccharomycetaceae	primary		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2	yes	Kaq-Ksol	1e-6	ZT	1e-2	yes	Yes	2	2	Monosporozyma unispora	GCA_003708525.3	14.0	14.0
-122	Monosporozyma yasuniensis	GCA_030558655.1	Saccharomycetaceae	primary		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2	yes	Kaq-Ksol	1e-6	ZT	1e-2	yes	Yes	1	7	Monosporozyma yasuniensis	GCA_030558655.1	14.0	14.0
-123	Monosporozyma servazzii	GCA_028408395.1	Saccharomycetaceae	primary		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2	yes	Kaq-Ksol	1e-6	ZT	1e-2	yes	Yes	1	0	Monosporozyma servazzii	GCA_028408395.1	12.0	12.0
-124	Monosporozyma aerobia	GCA_028408415.1	Saccharomycetaceae	primary		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2	yes	Kaq-Ksol	1e-6	ZT	1e-2	yes	Yes	1	1	Monosporozyma aerobia	GCA_028408415.1	13.0	13.0
-125	Monosporozyma solicola	GCA_030571535.1	Saccharomycetaceae	primary		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2	yes	Kaq-Ksol	1e-6	ZT	1e-2	yes	Yes	0	4	Monosporozyma solicola	GCA_030571535.1	11.0	11.0
-126	Cylindricascospora bacillispora	GCA_030573655.1	Saccharomycetaceae	primary		Cylindricascospora		ScSuCgVp	1e-6	ZT	1e-2	yes	ScSuCgVp	1e-6	ZT	1e-2	yes	Yes	0	0	Cylindricascospora bacillispora	GCA_030573655.1	15.0	15.0
-127	Oligophagozyma castellii	GCA_030556345.1	Saccharomycetaceae	primary		Oligophagozyma		ScSuCgVp	1e-5	ZT	1e-2	yes	ScSuCgVp	1e-5	ZT	1e-2	yes	Yes	0	1	Oligophagozyma castellii	GCA_030556345.1	8.0	8.0
-128	Nakaseomyces glabratus	GCA_000002545.2	Saccharomycetaceae	primary		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2	yes	Nakaseomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Nakaseomyces glabratus	GCA_000002545.2	13.0	13.0
-129	Nakaseomyces uthaithaninus	GCA_030564085.1	Saccharomycetaceae	primary		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2	yes	Nakaseomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Nakaseomyces uthaithaninus	GCA_030564085.1	13.0	13.0
-130	Nakaseomyces bracarensis	GCA_030569875.1	Saccharomycetaceae	primary		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2	yes	Nakaseomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Nakaseomyces bracarensis	GCA_030569875.1	13.0	13.0
-131	Nakaseomyces delphensis	GCA_001039675.1	Saccharomycetaceae	primary		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2	yes	Nakaseomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Nakaseomyces delphensis	GCA_001039675.1	10.0	10.0
-132	Nakaseomyces sp. yHDO568	GCA_030571395.1	Saccharomycetaceae	primary		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2	yes	Nakaseomyces	1e-6	ZT	1e-2	yes	Yes	0	2	Nakaseomyces sp. yHDO568	GCA_030571395.1	13.0	13.0
-133	Nakaseomyces kungkrabaensis	GCA_030556385.1	Saccharomycetaceae	primary		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2	yes	Nakaseomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Nakaseomyces kungkrabaensis	GCA_030556385.1	13.0	13.0
-134	Nakaseomyces nivariensis	GCA_017309295.1	Saccharomycetaceae	primary		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2	yes	Nakaseomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Nakaseomyces nivariensis	GCA_017309295.1	13.0	13.0
-135	Saccharomyces eubayanus	GCA_001298625.1	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces eubayanus	GCA_001298625.1	16.0	16.0
-136	Saccharomyces uvarum	GCA_947243795.1	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces uvarum	GCA_947243795.1	16.0	16.0
-137	Saccharomyces arboricola	GCA_000292725.1	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces arboricola	GCA_000292725.1	16.0	16.0
-138	Saccharomyces kudriavzevii	GCA_947243775.1	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces kudriavzevii	GCA_947243775.1	16.0	16.0
-139	Saccharomyces mikatae	GCA_947241705.1	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces mikatae	GCA_947241705.1	16.0	16.0
-140	Saccharomyces jurei	GCA_900290405.1	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces jurei	GCA_900290405.1	16.0	16.0
-141	Saccharomyces paradoxus	GCA_002079055.1	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces paradoxus	GCA_002079055.1	16.0	16.0
-142	Saccharomyces cerevisiae	GCA_000146045.2	Saccharomycetaceae	primary		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2	yes	Saccharomyces	1e-6	ZT	1e-2	yes	Yes	0	0	Saccharomyces cerevisiae	GCA_000146045.2	16.0	16.0
-143	Mucor lusitanicus	GCA_010203745.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-144	Mucor velutinosus	GCA_035048745.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-145	Mucor racemosus	GCA_027405735.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-146	Mucor plumbeus	GCA_016758945.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-147	Parasitella parasitica	GCA_025201805.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-148	Ellisomyces anomalus	JGI - https://mycocosm.jgi.doe.gov/Ellano2/Ellano2.home.html	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-149	Chaetocladium brefeldii	JGI - https://mycocosm.jgi.doe.gov/Chabre1/Chabre1.home.html	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-150	Mucor circinelloides - 1006PhL	GCA_000401635.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-151	Mucor circinelloides - B8987	GCA_000696935.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-152	Mucor circinelloides - PF3102	GCA_023629755.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-153	Mucor circinelloides - P1204	GCA_023629815.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-154	Mucor circinelloides - S1115	GCA_023629835.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-155	Mucor circinelloides - PT2201	GCA_023630435.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-156	Mucor circinelloides - PL2203S	GCA_023630465.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-157	Mucor circinelloides - PB2204	GCA_023630475.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-158	Mucor circinelloides - PX3102	GCA_023630555.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-159	Mucor circinelloides - F1241	GCA_025504485.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-160	Mucor circinelloides - P1003	GCA_025504515.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-161	Mucor circinelloides - FMV-FR1	GCA_037974945.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-162	Mucor circinelloides - F3	GCA_048772875.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0																			
-163	Hanseniaspora vineae	GCA 000585475.3	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0																			
-164	Hanseniaspora osmophila	GCA 001747045.1	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0																			
-165	Hanseniaspora occidentalis var. citrica	GCA 030573535.1	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0																			
-166	Hanseniaspora gamundiae	GCA 003020785.1	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0																			
+sd5_row	species	accession	group	arm0_role	reason	pcan_genus	pcan_kazachstania_species	pcan_cdeiii_motif	pcan_cdeiii_thresh	pcan_cdei_motif	pcan_cdei_thresh
+1	Wickerhamomyces anomalus	GCA_019321675.1	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0						
+2	Candida albicans	GCA_000182965.3	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0						
+3	Pichia kudriavzevii	GCA_003054445.1	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0						
+4	Yarrowia lipolytica	GCA_000002525.1	outgroup	excluded	outgroup, not Saccharomycetaceae; out of scope for arm 0						
+5	Kluyveromyces nonfermentans	GCA_003670155.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+6	Kluyveromyces siamensis	GCA_030579315.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+7	Kluyveromyces aestuarii	GCA_003707555.2	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+8	Kluyveromyces wickerhamii	GCA_030564205.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+9	Kluyveromyces starmeri	GCA_008973615.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+10	Kluyveromyces sp. yHMH660	GCA_030462825.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+11	Kluyveromyces marxianus	GCA_001417885.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+12	Kluyveromyces sp. PCH397	GCA_017427045.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+13	Kluyveromyces dobzhanskii	GCA_003705805.3	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+14	Kluyveromyces lactis	GCA_000002515.1	Saccharomycetaceae	run		Kluyveromyces		Kluyveromyces	1e-6	ZT	1e-3
+15	Eremothecium coryli	GCA_000710315.1	Saccharomycetaceae	run		Eremothecium		EreLach	1e-6	ZT	1e-2
+16	Eremothecium sinecaudum	GCA_001548555.1	Saccharomycetaceae	run		Eremothecium		EreLach	1e-6	ZT	1e-2
+17	Eremothecium cymbalariae	GCA_000235365.1	Saccharomycetaceae	run		Eremothecium		EreLach	1e-6	ZT	1e-2
+18	Ashbya aceri	GCA_000412225.2	Saccharomycetaceae	run		Ashbya		EreLach	1e-6	ZT	1e-2
+19	Eremothecium gossypii	GCA_000091025.4	Saccharomycetaceae	run		Eremothecium		EreLach	1e-6	ZT	1e-2
+20	Lachancea kluyveri	GCA_000149225.2	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+21	Lachancea cidri	GCA_030569995.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+22	Lachancea fermentati	GCA_900074765.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+23	Lachancea mirantina	GCA_900074745.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+24	Lachancea waltii	GCA_000167115.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+25	Lachancea quebecensis	GCA_002900925.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+26	Lachancea thermotolerans	GCA_000142805.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+27	Lachancea nothofagi	GCA_900074755.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+28	Lachancea dasiensis	GCA_900074725.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+29	Lachancea sp. yHQL494	GCA_030562185.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+30	Lachancea meyersii	GCA_900074715.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+31	Lachancea fantastica	GCA_900074735.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+32	Lachancea lanzarotensis	GCA_000938715.1	Saccharomycetaceae	run		Lachancea		Lachancea	1e-5	Lachancea	1e-2
+33	Hagleromyces aurorensis	GCA_030705145.1	Saccharomycetaceae	run		Hagleromyces		KLE	1e-6	ZT	1e-2
+34	Zygosaccharomyces gambellarensis	GCA_030571545.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+35	Zygosaccharomyces rouxii	GCA_000026365.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+36	Zygosaccharomyces sapae	GCA_900465325.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+37	Zygosaccharomyces pseudorouxii	GCA_030572675.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+38	Zygosaccharomyces mellis	GCA_005406105.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+39	Zygosaccharomyces siamensis	GCA_013423405.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+40	Zygosaccharomyces kombuchaensis	GCA_003705955.2	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+41	Zygosaccharomyces lentus	GCA_030568175.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+42	Zygosaccharomyces bisporus	GCA_003707595.2	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+43	Zygosaccharomyces parabailii	GCA_001984395.2	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+44	Zygosaccharomyces pseudobailii	GCA_949129085.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+45	Zygosaccharomyces bailii	GCA_900162805.1	Saccharomycetaceae	run		Zygosaccharomyces		ZygoSacch	1e-6	ZygoSacch	1e-3
+46	Zygotorulaspora chibaensis	GCA_030565665.1	Saccharomycetaceae	run		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2
+47	Zygotorulaspora florentina	GCA_003671575.3	Saccharomycetaceae	run		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2
+48	Zygotorulaspora sp. yHDO592	GCA_030571275.1	Saccharomycetaceae	run		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2
+49	Zygotorulaspora danielsina	GCA_030572985.1	Saccharomycetaceae	run		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2
+50	Zygotorulaspora mrakii	GCA_013402915.1	Saccharomycetaceae	run		Zygotorulaspora		ZygoToru	1e-5	ZT	1e-2
+51	Torulaspora microellipsoides	GCA_900186055.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+52	Torulaspora quercuum	GCA_946403475.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+53	Torulaspora globosa	GCA_014133895.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+54	Torulaspora maleeae	GCA_003708055.3	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+55	Torulaspora sp. yHMJ407	GCA_030580195.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+56	Torulaspora delbrueckii	GCA_000243375.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+57	Torulaspora sp. 2017 38-3	GCA_040114465.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+58	Torulaspora franciscae	GCA_003705175.3	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+59	Torulaspora pretoriensis	GCA_012851205.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+60	Torulaspora sp. 2017 36-1	GCA_040114505.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+61	Torulaspora indica	GCA_931305995.1	Saccharomycetaceae	run		Torulaspora		Toru	1e-5	Toru	1e-2
+62	Henningerozyma blattae	GCA_000315915.1	Saccharomycetaceae	run		Henningerozyma		Henningerozyma	1e-6	ZT	1e-2
+63	Yueomyces sinensis	GCA_030581855.1	Saccharomycetaceae	run		Yueomyces		Saccharomyces	1e-6	ZT	1e-2
+64	Yueomyces sp. yHKB289	GCA_030580315.1	Saccharomycetaceae	run		Yueomyces		Saccharomyces	1e-6	ZT	1e-2
+65	Yueomyces silvicola	GCA_030179955.1	Saccharomycetaceae	run		Yueomyces		Saccharomyces	1e-6	ZT	1e-2
+66	Vanderwaltozyma polyspora	GCA_000150035.1	Saccharomycetaceae	run		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2
+67	Vanderwaltozyma tropicalis	GCA_030555675.1	Saccharomycetaceae	run		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2
+68	Vanderwaltozyma yanomamii	GCA_041380205.1	Saccharomycetaceae	run		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2
+69	Vanderwaltozyma verrucispora	GCA_030565105.1	Saccharomycetaceae	run		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2
+70	Vanderwaltozyma yarrowii	GCA_030568135.1	Saccharomycetaceae	run		Vanderwaltozyma		Vanderwaltozyma	1e-5	Vanderwaltozyma	1e-2
+71	Tetrapisispora iriomotensis	GCA_003705975.2	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+72	Tetrapisispora phaffii	GCA_000236905.1	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+73	Tetrapisispora fleetii	GCA_003707605.2	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+74	Tetrapisispora namnaoensis	GCA_003705985.2	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+75	Tetrapisispora nanseiensis	GCA_030568035.1	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+76	Tetrapisispora arboricola	GCA_030557565.1	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+77	Tetrapisispora pingtungensis	GCA_030573885.1	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+78	Tetrapisispora taiwanensis	GCA_030573835.1	Saccharomycetaceae	run		Tetrapisispora		Tetrapisispora	1e-5	Tetrapisispora	1e-2
+79	Naumovozyma dairenensis	GCA_000227115.2	Saccharomycetaceae	excluded	no entry in PCAn v1.0's motif table	Naumovozyma					
+80	Naumovozyma baii	GCA_030568095.1	Saccharomycetaceae	excluded	no entry in PCAn v1.0's motif table	Naumovozyma					
+81	Naumovozyma castellii	GCA_000237345.1	Saccharomycetaceae	excluded	no entry in PCAn v1.0's motif table	Naumovozyma					
+82	Kazachstania africana	GCA_000304475.1	Saccharomycetaceae	run		Kazachstania	africana	Kafricana	1e-6	Kafricana	1e-2
+83	Kazachstania viticola	GCA_030571575.1	Saccharomycetaceae	run		Kazachstania	viticola	Ka_Full	1e-6	ZT	1e-2
+84	Jamesozyma lodderae	GCA_030571655.1	Saccharomycetaceae	run		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2
+85	Jamesozyma jinghongensis	GCA_030572895.1	Saccharomycetaceae	run		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2
+86	Jamesozyma spencerorum	GCA_003708825.3	Saccharomycetaceae	run		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2
+87	Jamesozyma piceae	GCA_030674245.1	Saccharomycetaceae	run		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2
+88	Jamesozyma rosinii	GCA_003708425.3	Saccharomycetaceae	run		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2
+89	Jamesozyma gamospora	GCA_030462905.1	Saccharomycetaceae	run		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2
+90	Jamesozyma hellenica	GCA_030571615.1	Saccharomycetaceae	run		Jamesozyma		Ka_Full	1e-6	Jamesozyma	1e-2
+91	Kazachstania psychrophila	GCA_030579255.1	Saccharomycetaceae	run		Kazachstania	psychrophila	Ka_Full	1e-6	ZT	1e-2
+92	Kazachstania kunashirensis	GCA_003708465.2	Saccharomycetaceae	run		Kazachstania	kunashirensis	Ka_Full	1e-6	ZT	1e-2
+93	Maudiozyma humilis	GCA_020313495.2	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+94	Maudiozyma pseudohumilis	GCA_030579215.1	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+95	Maudiozyma bulderi	GCA_933962305.1	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+96	Maudiozyma exigua	GCA_016584175.1	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+97	Maudiozyma turicensis	GCA_030583465.1	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+98	Maudiozyma barnettii	GCA_903064755.1	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+99	Maudiozyma saulgeensis	GCA_900180425.1	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+100	Maudiozyma serrabonitensis	GCA_030571355.1	Saccharomycetaceae	run		Maudiozyma		Ka_Full	1e-6	ZT	1e-2
+101	Kazachstania martiniae	GCA_003708925.3	Saccharomycetaceae	run		Kazachstania	martiniae	Ka_Full	1e-6	ZT	1e-2
+102	Sungouiozyma ichnusensis	GCA_030580495.1	Saccharomycetaceae	run		Sungouiozyma		Ka_Full	1e-6	ZT	1e-2
+103	Sungouiozyma intestinalis	GCA_003708845.3	Saccharomycetaceae	run		Sungouiozyma		Ka_Full	1e-6	ZT	1e-2
+104	Kazachstania bromeliacearum	GCA_003708535.3	Saccharomycetaceae	run		Kazachstania	bromeliacearum	Ka_Full	1e-6	ZT	1e-2
+105	Huiozyma naganishii	GCA_000348985.1	Saccharomycetaceae	run		Huiozyma		Knagsin	1e-5	Knagsin	1e-2
+106	Huiozyma sinensis	GCA_030705205.1	Saccharomycetaceae	run		Huiozyma		Knagsin	1e-5	Knagsin	1e-2
+107	Kazachstania taianensis	GCA_003708865.2	Saccharomycetaceae	run		Kazachstania	taianensis	Ktai	1e-7	ZT	1e-2
+108	Grigorovia jiainica	GCA_030571715.1	Saccharomycetaceae	run		Grigorovia		Grig	1e-5	Grig	1e-2
+109	Grigorovia yakushimaensis	GCA_003709265.2	Saccharomycetaceae	run		Grigorovia		Grig	1e-5	Grig	1e-2
+110	Grigorovia transvaalensis	GCA_003708445.3	Saccharomycetaceae	run		Grigorovia		Grig	1e-5	Grig	1e-2
+111	Grigorovia humatica	GCA_030462875.1	Saccharomycetaceae	run		Grigorovia		Grig	1e-5	Grig	1e-2
+112	Arxiozyma slooffiae	GCA_017347545.2	Saccharomycetaceae	run		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3
+113	Arxiozyma bovina	GCA_030580575.1	Saccharomycetaceae	run		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3
+114	Arxiozyma telluris	GCA_030571675.1	Saccharomycetaceae	run		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3
+115	Arxiozyma heterogenica	GCA_030674295.1	Saccharomycetaceae	run		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3
+116	Arxiozyma pintolopesii	GCA_950065675.1	Saccharomycetaceae	run		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3
+117	Arxiozyma sp. Y4206	GCA_023629195.1	Saccharomycetaceae	run		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3
+118	Arxiozyma sp. VP_05	GCA_041430495.1	Saccharomycetaceae	run		Arxiozyma		Arxiozyma	1e-6	Arxiozyma	1e-3
+119	Monosporozyma aquatica	GCA_030571515.1	Saccharomycetaceae	run		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2
+120	Monosporozyma siamensis	GCA_003708905.3	Saccharomycetaceae	run		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2
+121	Monosporozyma unispora	GCA_003708525.3	Saccharomycetaceae	run		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2
+122	Monosporozyma yasuniensis	GCA_030558655.1	Saccharomycetaceae	run		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2
+123	Monosporozyma servazzii	GCA_028408395.1	Saccharomycetaceae	run		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2
+124	Monosporozyma aerobia	GCA_028408415.1	Saccharomycetaceae	run		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2
+125	Monosporozyma solicola	GCA_030571535.1	Saccharomycetaceae	run		Monosporozyma		Kaq-Ksol	1e-6	ZT	1e-2
+126	Cylindricascospora bacillispora	GCA_030573655.1	Saccharomycetaceae	run		Cylindricascospora		ScSuCgVp	1e-6	ZT	1e-2
+127	Oligophagozyma castellii	GCA_030556345.1	Saccharomycetaceae	run		Oligophagozyma		ScSuCgVp	1e-5	ZT	1e-2
+128	Nakaseomyces glabratus	GCA_000002545.2	Saccharomycetaceae	run		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2
+129	Nakaseomyces uthaithaninus	GCA_030564085.1	Saccharomycetaceae	run		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2
+130	Nakaseomyces bracarensis	GCA_030569875.1	Saccharomycetaceae	run		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2
+131	Nakaseomyces delphensis	GCA_001039675.1	Saccharomycetaceae	run		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2
+132	Nakaseomyces sp. yHDO568	GCA_030571395.1	Saccharomycetaceae	run		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2
+133	Nakaseomyces kungkrabaensis	GCA_030556385.1	Saccharomycetaceae	run		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2
+134	Nakaseomyces nivariensis	GCA_017309295.1	Saccharomycetaceae	run		Nakaseomyces		Nakaseomyces	1e-6	ZT	1e-2
+135	Saccharomyces eubayanus	GCA_001298625.1	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+136	Saccharomyces uvarum	GCA_947243795.1	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+137	Saccharomyces arboricola	GCA_000292725.1	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+138	Saccharomyces kudriavzevii	GCA_947243775.1	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+139	Saccharomyces mikatae	GCA_947241705.1	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+140	Saccharomyces jurei	GCA_900290405.1	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+141	Saccharomyces paradoxus	GCA_002079055.1	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+142	Saccharomyces cerevisiae	GCA_000146045.2	Saccharomycetaceae	run		Saccharomyces		Saccharomyces	1e-6	ZT	1e-2
+143	Mucor lusitanicus	GCA_010203745.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+144	Mucor velutinosus	GCA_035048745.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+145	Mucor racemosus	GCA_027405735.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+146	Mucor plumbeus	GCA_016758945.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+147	Parasitella parasitica	GCA_025201805.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+148	Ellisomyces anomalus	JGI - https://mycocosm.jgi.doe.gov/Ellano2/Ellano2.home.html	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+149	Chaetocladium brefeldii	JGI - https://mycocosm.jgi.doe.gov/Chabre1/Chabre1.home.html	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+150	Mucor circinelloides - 1006PhL	GCA_000401635.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+151	Mucor circinelloides - B8987	GCA_000696935.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+152	Mucor circinelloides - PF3102	GCA_023629755.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+153	Mucor circinelloides - P1204	GCA_023629815.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+154	Mucor circinelloides - S1115	GCA_023629835.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+155	Mucor circinelloides - PT2201	GCA_023630435.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+156	Mucor circinelloides - PL2203S	GCA_023630465.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+157	Mucor circinelloides - PB2204	GCA_023630475.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+158	Mucor circinelloides - PX3102	GCA_023630555.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+159	Mucor circinelloides - F1241	GCA_025504485.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+160	Mucor circinelloides - P1003	GCA_025504515.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+161	Mucor circinelloides - FMV-FR1	GCA_037974945.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+162	Mucor circinelloides - F3	GCA_048772875.1	Mucoromycota	excluded	Mucoromycota; predicted with PCAn_mucor, out of scope for arm 0						
+163	Hanseniaspora vineae	GCA 000585475.3	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0						
+164	Hanseniaspora osmophila	GCA 001747045.1	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0						
+165	Hanseniaspora occidentalis var. citrica	GCA 030573535.1	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0						
+166	Hanseniaspora gamundiae	GCA 003020785.1	Saccharomycodaceae	excluded	Saccharomycodaceae, not Saccharomycetaceae; out of scope for arm 0						

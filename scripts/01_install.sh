@@ -38,9 +38,8 @@ pad_skip_if_done install "$force"
 pad_measure_self install "$@"
 
 PCAN_URL="https://github.com/JHelsen/point-centromere-detection.git"
-# The Zenodo record for PCAn v1.0 (10.5281/zenodo.17293587), which the paper
-# cites beside the record for all versions (10.5281/zenodo.17293586), archives
-# exactly this commit. The v1.0 tag on GitHub points one commit later
+# The Zenodo record for PCAn v1.0 (10.5281/zenodo.17293587; all versions:
+# 10.5281/zenodo.17293586) archives exactly this commit. The v1.0 tag on GitHub points one commit later
 # (86184e5), and HEAD on 9 October 2026 (1894bcc) later still; both differ
 # from a5fa46f only in README files.
 PCAN_COMMIT="a5fa46f0cb971e7d499fd52b38b0c29166b33ef8"
@@ -104,7 +103,7 @@ done
 #     uses by default, the specification does not solve: biopython 1.83 and
 #     tqdm 4.67.1 for Python 3.8 exist only on conda-forge, and the file lists
 #     bioconda first. Flexible priority is the setting under which the file
-#     solves, and I assume it is the one the authors used.
+#     solves.
 spec="$checkout/PCAn/pcan_specs.yml"
 mapfile -t pcan_conda < <(awk '/^dependencies:/{d=1;next} d && /^  - [A-Za-z]/ && !/pip:/ {sub(/^  - /,""); print}' "$spec")
 mapfile -t pcan_pip < <(awk '/^  - pip:/{p=1;next} p && /^      - / {sub(/^      - /,""); print}' "$spec")

@@ -1,5 +1,5 @@
 arm	status	claim	n	unit	test	estimate	ci_low	ci_high	p_raw	source	p_holm	holm_family_size	holm_tests_available
-0	positive control (config/arm0_reproduction.md)	SGD centromeres of S288C called by PCAn v1.0	16 centromeres	centromere	none	1.0				results/arm0/s288c_vs_sgd.tsv		14	2
+0	positive control	SGD centromeres of S288C called by PCAn v1.0	16 centromeres	centromere	none	1.0				results/arm0/s288c_vs_sgd.tsv		14	2
 1 (simulation)	pre-specified (config/arm1_design.md)	mean recall relative to the unfragmented call, AT-weighted model, target contig N50 5 kb	10 genomes, 100 replicates	genome	none	0.7861950549450549	0.6957142857142857	0.8605494505494505		results/arm1/recall_pooled.tsv		14	2
 1 (simulation)	pre-specified (config/arm1_design.md)	mean recall relative to the unfragmented call, AT-weighted model, target contig N50 10 kb	10 genomes, 100 replicates	genome	none	0.8653250915750916	0.7968131868131868	0.9241485805860806		results/arm1/recall_pooled.tsv		14	2
 1 (simulation)	pre-specified (config/arm1_design.md)	mean recall relative to the unfragmented call, AT-weighted model, target contig N50 20 kb	10 genomes, 100 replicates	genome	none	0.9383928571428573	0.9103565705128206	0.9628571428571427		results/arm1/recall_pooled.tsv		14	2

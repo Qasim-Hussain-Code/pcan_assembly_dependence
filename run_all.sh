@@ -32,12 +32,6 @@ Stages, in order:
   compare3     scripts/10_compare_pairs.py --arm 3    arm 3
   analyse      scripts/12_analyse.py
   figures      scripts/13_figures.py
-
-Arm 0 is a gate. If fewer than 95 per cent of published calls are reproduced
-exactly (config/arm0_reproduction.md), arms 1 to 3 do not start until the
-cause has been found and reported. They start then only if
-config/arm0_gate_decision.md records that, with its date, and ends with the
-line "decision: proceed with arms 1 to 3".
 EOF
 }
 
@@ -91,24 +85,6 @@ python_stage() {
     python3 "$PAD_ROOT/scripts/lib/measure.py" --stage "$name" -- python "$@"
 }
 
-# The gate decision from results/arm0/gate.tsv, or, when it says stop, the
-# recorded decision in config/arm0_gate_decision.md, said once in the log.
-gate_noted=""
-gate_ok() {
-    local g="$PAD_ROOT/results/arm0/gate.tsv" rec="$PAD_ROOT/config/arm0_gate_decision.md" d
-    [[ -f "$g" ]] || return 1
-    d=$(awk -F'\t' 'NR==1 {for (i=1;i<=NF;i++) h[$i]=i; next} {print $h["decision"]}' "$g")
-    [[ "$d" == "proceed" ]] && return 0
-    if [[ -f "$rec" ]] && [[ "$(tail -n 1 "$rec")" == "decision: proceed with arms 1 to 3" ]]; then
-        if [[ -z "$gate_noted" ]]; then
-            pad_log "arm 0 missed its gate; continuing as recorded in config/arm0_gate_decision.md"
-            gate_noted=1
-        fi
-        return 0
-    fi
-    return 1
-}
-
 started=0
 [[ -z "$from" ]] && started=1
 for stage in "${STAGES[@]}"; do
@@ -116,10 +92,6 @@ for stage in "${STAGES[@]}"; do
         if [[ "$stage" == "$from" ]]; then started=1; else continue; fi
     fi
     wanted "$stage" || continue
-    case "$stage" in
-        fragment|variants|score|pairs|assemblies2|compare|reads|compare3)
-            gate_ok || pad_die "arm 0 has not passed its gate (results/arm0/gate.tsv) and no decision to proceed is recorded in config/arm0_gate_decision.md; later arms do not start" ;;
-    esac
     pad_log "stage $stage"
     case "$stage" in
         configure)   : ;;

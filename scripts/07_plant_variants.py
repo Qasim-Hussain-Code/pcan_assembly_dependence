@@ -1,11 +1,11 @@
 """Arm 1b, a simulation: plant CDEII length variants in real centromeres of
-three reproduced genomes, run PCAn on each edited genome, record the calls,
-and delete the FASTA. Scoring is done by scripts/08_score_perturbations.py.
+three arm 1 genomes, run PCAn on each edited genome, record the calls, and
+delete the FASTA. Scoring is done by scripts/08_score_perturbations.py.
 
-Edits copy the paper's mechanism (scripts/lib/variants.py): an insertion is a
-tandem duplication of adjacent CDEII sequence and a deletion removes a stretch
-from inside CDEII. CDEI and the CDEIII motif are never touched. The design was
-committed in config/arm1_design.md before this script first ran.
+Edits follow scripts/lib/variants.py: an insertion is a tandem duplication of
+adjacent CDEII sequence and a deletion removes a stretch from inside CDEII.
+CDEI and the CDEIII motif are never touched. The design was committed in
+config/arm1_design.md before this script first ran.
 
 Usage:
     python scripts/07_plant_variants.py [--jobs N] [--force]

@@ -14,8 +14,7 @@ on each CDEII length? Where they disagree, is the region missing, broken, or
 present but uncalled? Do short-read assemblies break near centromeres more
 often than in random sequence of the same AT content?
 
-Only my own PCAn runs are compared with each other. The paper's published
-calls play no part in arm 2.
+Only my own PCAn runs are compared with each other.
 
 ## Pairs
 
@@ -36,9 +35,8 @@ merely similar is not a match.
 
 If a strain has several candidate assemblies of one kind, the long-read
 assembly with the highest contig N50 is used, and for the short-read side the
-Peter et al. 2018 assembly if the strain is in that study (it is the
-short-read source the PCAn paper itself used), otherwise the short-read
-assembly with the highest contig N50. Ties go to the lower accession.
+Peter et al. 2018 assembly if the strain is in that study, otherwise the
+short-read assembly with the highest contig N50. Ties go to the lower accession.
 
 Every candidate strain that is dropped is listed with its reason.
 
@@ -91,7 +89,7 @@ heterozygous strain a collapsed short-read assembly and a phased or
 haploid-resolved long-read assembly can disagree at a centromere without
 either being wrong. Every disagreement in a heterozygous strain is reported in
 its own column and is not called an assembly error. Where Supplementary Data
-4 of the PCAn paper lists two different centromere sequences for that strain
+4 lists two different centromere sequences for that strain
 and chromosome, the disagreement is labelled as possibly allelic. Excluding
 heterozygous strains is one of the sensitivity analyses.
 
@@ -395,3 +393,9 @@ setting are unchanged, and MEGAHIT keeps all 16 threads. As registered above,
 the failed runs of the first three strains are recorded with their errors and
 not repeated; those cells stay missing. The thread count of every assembler
 run is recorded in each strain's manifest from the fourth strain on.
+
+## Edit recorded on 10 October 2026
+
+Three passages above were shortened to remove background remarks: one
+sentence after the arm 2 question, a parenthesis in the pair rule, and three
+words in the ploidy section. No rule, test, threshold or result changed.

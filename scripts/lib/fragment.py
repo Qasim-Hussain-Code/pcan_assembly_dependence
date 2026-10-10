@@ -200,8 +200,7 @@ def extraction_window(call):
       forward strand: genome[start - 250 : end] in Python slicing, which is
                       1-based start - 249 to end, 275 bp for a 26 bp motif;
       reverse strand: genome[start - 1 : end + 250], which is 1-based start to
-                      end + 250, 276 bp, then reverse-complemented.
-    The paper describes a 250 bp window (the motif plus 224 bp upstream)."""
+                      end + 250, 276 bp, then reverse-complemented."""
     if call["strand"] == "+":
         return call["cdeiii_start"] - 249, call["cdeiii_end"]
     return call["cdeiii_start"], call["cdeiii_end"] + 250

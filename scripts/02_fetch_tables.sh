@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Fetch the published tables this analysis compares against or draws from, each
-# with a checksum and download date: Supplementary Data 2, 4, 5 and 6 of the
-# PCAn paper from the publisher, the matching Figshare files, and the dated SGD
-# S288C genome release. Then convert them to TSV and build config/species_arm0.tsv.
+# Fetch the tables this analysis draws from, each with a checksum and download
+# date: Supplementary Data 4, 5 and 6 from the publisher, the matching Figshare
+# files, and the dated SGD S288C genome release. Then convert them to TSV and
+# build config/species_arm0.tsv.
 set -euo pipefail
 
 usage() {
@@ -47,11 +47,9 @@ SGD="https://s3-us-west-2.amazonaws.com/sgd-archive.yeastgenome.org/sequence/S28
 
 # name|url|checksum published by the source (figshare md5, or none)
 SOURCES=(
-    "supp_data2_publisher.xlsx|$ESM/41586_2025_9779_MOESM3_ESM.xlsx|"
     "supp_data4_publisher.xlsx|$ESM/41586_2025_9779_MOESM5_ESM.xlsx|"
     "supp_data5_publisher.xlsx|$ESM/41586_2025_9779_MOESM6_ESM.xlsx|"
     "supp_data6_publisher.xlsx|$ESM/41586_2025_9779_MOESM7_ESM.xlsx|"
-    "supp_data2_figshare_28225061v2.xlsx|https://ndownloader.figshare.com/files/51725942|md5:3c2d50afc29fe45c317d4fc19452a107"
     "supp_data5_figshare_28225067v3.xlsx|https://ndownloader.figshare.com/files/56861582|md5:d4dc4fc776d69ed9ae53857fa6563dd6"
     "supp_data6_figshare_28225076v1.xlsx|https://ndownloader.figshare.com/files/51725960|md5:738bfa0a1eb329121a3753803dacb39f"
     "figshare_collection_7630151.json|https://api.figshare.com/v2/collections/7630151/articles?page_size=100|"

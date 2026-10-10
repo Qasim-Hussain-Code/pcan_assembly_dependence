@@ -8,7 +8,7 @@ FileNotFoundError, so no Arxiozyma assembly can be run as released.
 
 Why this file. CDEIII/CDEIII_Arxiozyma_MEME.txt ships with PCAn, is used by no
 entry, and contains a motif named CDEIII_Arxiozyma (26 bp, 88 sites). The
-authors' own per-species table, ExpectedFalsePosFalseNegs.txt, lists
+per-species table that ships with PCAn, ExpectedFalsePosFalseNegs.txt, lists
 "Arxiozyma" as the CDEIII motif for all seven Arxiozyma species, with the same
 thresholds as the code (1e-6 for CDEIII, 1e-3 for CDEI).
 

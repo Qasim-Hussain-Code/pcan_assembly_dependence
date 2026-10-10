@@ -106,7 +106,7 @@ def main():
     sgd = read("arm0/s288c_vs_sgd.tsv")
     if sgd is not None:
         called = int((sgd["called"].astype(str) == "yes").sum())
-        rows.append({"arm": "0", "status": "positive control (config/arm0_reproduction.md)",
+        rows.append({"arm": "0", "status": "positive control",
                      "claim": "SGD centromeres of S288C called by PCAn v1.0", "n": "%d centromeres" % len(sgd),
                      "unit": "centromere", "test": "none", "estimate": called / len(sgd), "ci_low": np.nan,
                      "ci_high": np.nan, "p_raw": np.nan, "source": "results/arm0/s288c_vs_sgd.tsv"})
@@ -259,8 +259,8 @@ def write_markdown(rep):
         "can only make the adjusted values shown larger." % avail)
     lines = ["# Reporting summary", "",
              "Every claim the README makes from a registered or pre-specified analysis, with its source. "
-             "Confirmatory claims are those registered in `config/analysis_plan.md`; arm 0 and arm 1 measures were "
-             "pre-specified in `config/arm0_reproduction.md` and `config/arm1_design.md`. P-values are "
+             "Confirmatory claims are those registered in `config/analysis_plan.md`; arm 1 measures were "
+             "pre-specified in `config/arm1_design.md`, and the arm 0 row is the S288C positive control. P-values are "
              "Holm-adjusted across the %d registered tests.%s Intervals are 95 per cent; their method is given in "
              "the source file." % (FAMILY_SIZE, pending) if len(rep) else "", "",
              "| Arm | Status | Claim | n | Unit | Test | Estimate | 95% interval | p (Holm) | Source |",

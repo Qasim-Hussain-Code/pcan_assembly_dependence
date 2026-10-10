@@ -3,10 +3,9 @@
 An insertion of s bp duplicates s bases of CDEII in tandem: the copy is the s
 bases immediately before the insertion point, so the result reads ...XY + XY...
 with both copies inside CDEII. A deletion removes s contiguous bases from
-inside CDEII. Neither ever touches CDEI or the CDEIII motif. This is the
-mechanism the paper's microhomology examples point to; random insertions would
-shift CDEII's AT content in a way real variants do not, and PCAn scores AT
-content.
+inside CDEII. Neither ever touches CDEI or the CDEIII motif. Duplicating
+adjacent sequence keeps CDEII's AT content close to the original, whereas
+random insertions would shift it, and PCAn scores AT content.
 
 Coordinates are 1-based and inclusive, in the forward orientation of the
 sequence that holds the call. CDEII is the stretch strictly between CDEI and

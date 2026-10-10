@@ -58,67 +58,52 @@ def end_label(ax, x, y, text, color=INK2, dy=0):
 
 
 # ----------------------------------------------------------------------------
-# Question 1, arm 0
+# Arm 0
 
 def fig_arm0():
-    causes = read("arm0/non_exact_cause_counts.tsv")
-    expected = read("arm0/authors_expected_vs_observed.tsv")
-    gate = read("arm0/gate.tsv")
-    if causes is None or expected is None or gate is None:
+    counts = read("arm0/species_counts.tsv")
+    calls = read("arm0/calls.tsv")
+    sgd = read("arm0/s288c_vs_sgd.tsv")
+    if counts is None or calls is None or sgd is None:
         return
-    fig = plt.figure(figsize=(7.2, 5.6), layout="constrained")
-    top, bottom = fig.subfigures(2, 1, height_ratios=[1.1, 1], hspace=0.06)
+    counts = counts[counts["pcan_status"] == "ok"]
+    fig, axes = plt.subplots(1, 3, figsize=(7.2, 3.0), gridspec_kw={"width_ratios": [1, 1.35, 0.95]})
 
-    ax = top.add_subplot(1, 1, 1)
-    c = causes.groupby("cause")["published_calls"].sum().sort_values()
-    ax.barh(range(len(c)), c.values, height=0.6, color=BLUE)
-    ax.set_yticks(range(len(c)))
-    ax.set_yticklabels([s[0].upper() + s[1:].replace("_", " ") for s in c.index], fontsize=7)
+    ax = axes[0]
+    n = counts["calls"].astype(int).value_counts().sort_index()
+    ax.bar(n.index, n.values, width=0.75, color=BLUE)
+    ax.set_xlabel("calls per assembly")
+    ax.set_ylabel("assemblies")
+    ax.set_title("a  Calls per assembly\nn = %d assemblies; unit: assembly" % len(counts), loc="left")
+
+    ax = axes[1]
+    length = calls["end"] - calls["start"] + 1
+    bins = np.arange(length.min() // 2 * 2, length.max() + 4, 2)
+    ax.hist(length, bins=bins, color=BLUE, edgecolor="white", linewidth=0.3)
+    ax.set_xlabel("call length, CDEI start to CDEIII end (bp)")
+    ax.set_ylabel("calls per 2 bp bin")
+    ax.set_title("b  Call length\nn = {:,} calls on {:d} assemblies; unit: call".format(
+        len(calls), calls["accession"].nunique()), loc="left")
+
+    ax = axes[2]
+    y = np.arange(len(sgd))
+    for k, (col, label, color) in enumerate((("start_offset", "start", BLUE),
+                                             ("cdeii_cdeiii_boundary_offset", "CDEII-CDEIII boundary", ORANGE),
+                                             ("end_offset", "end", AQUA))):
+        ax.scatter(sgd[col], y + (k - 1) * 0.27, s=12, color=color, edgecolor="white", linewidth=0.4, zorder=3,
+                   label=label)
+    ax.set_yticks(y)
+    ax.set_yticklabels(sgd["sgd_name"], fontsize=6.5)
+    ax.set_ylim(len(sgd) - 0.4, -3.8)
+    ax.set_xlim(-2.5, 2.5)
+    ax.set_xticks([-2, -1, 0, 1, 2])
     ax.grid(axis="y", visible=False)
     ax.grid(axis="x", visible=True)
-    for i, v in enumerate(c.values):
-        ax.text(v + 0.4, i, str(v), va="center", fontsize=7, color=INK2)
-    ax.set_xlabel("published calls")
-    n_sp = int((expected["published_calls"] > expected["exact"]).sum())
-    ax.set_title("a  Why %d of %d published calls are not reproduced exactly (n = %d species with at least one; "
-                 "unit: call)" % (c.sum(), int(gate.iloc[0]["n_calls"]), n_sp), loc="left")
-
-    ax_b, ax_c = bottom.subplots(1, 2, width_ratios=[1.3, 1])
-    ax = ax_b
-    e = expected.dropna(subset=["authors_false_neg"]).copy()
-    e["excess"] = (e["missing"] - e["authors_false_neg"]).astype(int)
-    counts = e["excess"].value_counts().sort_index()
-    ax.bar(counts.index, counts.values, width=0.6, color=BLUE)
-    for x, v in counts.items():
-        ax.text(x, v + 1.5, str(v), ha="center", fontsize=7, color=INK2)
-    for _, r in e[e["excess"] >= 5].iterrows():
-        ax.annotate(r["species"], (r["excess"], counts[r["excess"]]), xytext=(0, 14), textcoords="offset points",
-                    ha="right", fontsize=6.5, color=INK2, style="italic")
-    ticks = sorted(set([int(counts.index.min())] + list(range(0, int(counts.index.max()) + 1, 2))))
-    ax.set_xticks(ticks)
-    ax.set_ylim(0, counts.max() * 1.15)
-    ax.set_xlabel("missing calls minus the false negatives\nthe authors' table predicts")
-    ax.set_ylabel("species")
-    ax.set_title("b  Misses against the authors' prediction\nn = %d species; unit: species" % len(e), loc="left")
-
-    ax = ax_c
-    g = gate.iloc[0]
-    ax.errorbar([g["estimate"]], [0], xerr=[[g["estimate"] - g["ci_low"]], [g["ci_high"] - g["estimate"]]], fmt="o",
-                color=BLUE, ecolor=BLUE, elinewidth=1.5, capsize=0, markersize=5)
-    ax.axvline(0.95, color=ORANGE, linewidth=1)
-    ax.annotate("pre-registered gate, 0.95", (0.95, 0.55), xytext=(4, 0), textcoords="offset points", fontsize=7,
-                color=INK2)
-    ax.annotate("%.3f\n(%.3f to %.3f)" % (g["estimate"], g["ci_low"], g["ci_high"]), (0.852, -0.45),
-                ha="left", fontsize=7, color=INK2)
-    ax.set_ylim(-1, 1)
-    ax.set_yticks([])
-    ax.set_xlim(0.85, 1.0)
-    ax.grid(axis="y", visible=False)
-    ax.grid(axis="x", visible=True)
-    ax.set_xlabel("fraction of published calls\nreproduced exactly")
-    ax.set_title("c  The gate\nn = %d calls, %d species;\ninterval: bootstrap over species"
-                 % (g["n_calls"], g["n_species"]), loc="left")
-    save(fig, "fig1_reproduction")
+    ax.set_xlabel("PCAn minus SGD (bp)")
+    ax.set_title("c  S288C against SGD\nn = %d centromeres; unit: centromere" % len(sgd), loc="left")
+    ax.legend(frameon=False, loc="upper center", fontsize=6.5, handletextpad=0.2, borderaxespad=0.1)
+    fig.tight_layout()
+    save(fig, "fig1_arm0_calls")
 
 
 # ----------------------------------------------------------------------------
@@ -194,7 +179,7 @@ def fig_arm1a():
         ax.set_ylabel("calls per 100 unfragmented calls")
         ax.set_title("%s  Simulation, losses and gains, %s\nn = %d genomes; calls pooled over replicates"
                      % ("cd"[col], title, n_gen), loc="left")
-    ticks = ["the %d published arm 0 assemblies (light grey)" % (len(stats0) if stats0 is not None else 0)]
+    ticks = ["the %d arm 0 assemblies (light grey)" % (len(stats0) if stats0 is not None else 0)]
     if stats2 is not None:
         ticks.append("the %d published short-read assemblies of arm 2 (dark grey)" % len(stats2))
     if stats3 is not None and "contig_n50" in stats3:

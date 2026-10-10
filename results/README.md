@@ -6,61 +6,13 @@ version. "PCAn" always means PCAn v1.0 (commit a5fa46f) with the patch in
 `patches/`, run through `scripts/04_run_pcan.sh`. A "call" is a predicted
 centromere, not a validated one.
 
-## Arm 0, reproduction (`results/arm0/`, written by `05_reproduce.py` unless noted)
+## Arm 0 (`results/arm0/`, written by `05_reproduce.py` unless noted)
 
-### `gate.tsv`
-
-The pre-registered gate (`config/arm0_reproduction.md`), one row.
-
-- `measure`: what is estimated.
-- `unit_of_replication`: the unit the interval resamples (species).
-- `n_species`, `n_calls`, `n_exact`: species in the reproduction set, their published calls, and how many were reproduced exactly.
-- `estimate`, `ci_low`, `ci_high`: fraction exact and its 95 per cent percentile bootstrap interval.
-- `interval`: how the interval was computed (resamples, seed).
-- `threshold`, `decision`: the pre-registered threshold and whether the point estimate reaches it (`proceed` or `stop`).
-- `species_all_exact`, `species_all_exact_fraction`, `species_all_exact_wilson_low`, `species_all_exact_wilson_high`: species whose every published call is exact, with a Wilson interval over species.
-
-### `per_centromere.tsv`
-
-One row per published call of the reproduction set and of the CDEIII-only species.
-
-- `species`, `accession`: as in Supplementary Data 5.
-- `published_contig`: the contig name Supplementary Data 2 gives; `contig`: the same sequence's GenBank name in the downloaded assembly.
-- `chr_no`: the centromere number Supplementary Data 2 gives.
-- `published_cdeii_len`: CDEII length in Supplementary Data 2.
-- `start`, `end`, `strand`: where the published sequence lies in the assembly (empty if it could not be placed).
-- `status`: `exact`, `same_locus_other_boundaries`, `different_cdeii_length`, `missing` or `unlocated`; for CDEIII-only species `same_cdeiii`, `overlapping_other_cdeiii` or `missing`.
-- `reproduced_start`, `reproduced_end`, `reproduced_cdeii_len`: the overlapping reproduced call, if any.
-- `reason`: for any call that is not exact, what the filter trace shows.
-
-### `non_exact_causes.tsv`, `non_exact_cause_counts.tsv`
-
-Every published call of the reproduction set that is not exact, with one cause; and the count of calls per cause and status.
-
-- `cause`: the category (for example, the CDEIII motif scores below the released threshold, or a named PCAn filter removed the candidate).
-- `detail`: the evidence behind the category.
-- `median_top5_cdeii_len`, `published_median_cdeii_len`: the CDEII length anchor of PCAn's run (median of the five best candidates) and the median published CDEII length of the species; the cause "length anchor set by false candidates" is assigned when they differ by more than 30.
-
-### `authors_expected_vs_observed.tsv`
-
-Per species of the reproduction set: published calls, reproduced calls and each status count, beside the false negatives (`authors_false_neg`) and false positives (`authors_false_pos`) that the authors' own `ExpectedFalsePosFalseNegs.txt` gives for PCAn v1.0, and whether the missing and extra counts equal them.
-
-### `diagnostic_replaced_versions.tsv`
-
-PCAn on an assembly version that Supplementary Data 5 does not list, run only to find the cause of a discrepancy, outside the reproduction fraction (`config/arm0_diagnostics.tsv` says which and why). `exact` counts published calls reproduced exactly on that version.
-
-### `diagnostic_cdeiii_motif.tsv`
-
-For the four species published with CDEIII loci only, FIMO 4.11.2 run as PCAn's first pass runs it, once with the CDEIII motif and threshold of PCAn's own entry (`setting` = `PCAn entry`) and once with those the authors' per-species table names (`authors' table`). Per setting: the motif file, the threshold, the published loci and how many could be located, how many located loci a FIMO hit overlaps, and the number of FIMO hits in the assembly. A diagnostic outside the reproduction fraction.
-
-### `species_counts.tsv`
-
-One row per Saccharomycetaceae species in Supplementary Data 5: its arm 0 role and reason, the PCAn genus used, published and reproduced call counts, PCAn's run status, and the count of each per-centromere status and of extra calls.
-
-### `reproduced_calls.tsv`
+### `calls.tsv`
 
 Every call PCAn made on every arm 0 assembly.
 
+- `species`, `accession`: the species and the assembly PCAn ran on.
 - `contig`, `start`, `end`: the call, from the start of CDEI to the end of the CDEIII motif.
 - `contig_hit`: PCAn's identifier of the CDEIII hit (the contig name and the hit's row in FIMO's first pass).
 - `strand`: the strand of the CDEIII hit, from FIMO's first pass (PCAn does not report it).
@@ -70,9 +22,9 @@ Every call PCAn made on every arm 0 assembly.
 - `fimo_i_score`, `fimo_ii_score`, `overall_score`: PCAn's CDEIII and CDEI motif scores and its combined score.
 - `sequence`: the call's sequence, in the orientation PCAn reports, case as in the assembly.
 
-### `extra_calls.tsv`
+### `species_counts.tsv`
 
-Reproduced calls that overlap no published call, with the columns of `reproduced_calls.tsv`.
+One row per Saccharomycetaceae species in Supplementary Data 5: its arm 0 role (`run` or `excluded`) and reason, the PCAn genus used, the number of calls (`calls`) and PCAn's run status.
 
 ### `s288c_vs_sgd.tsv`
 
@@ -96,10 +48,6 @@ The negative control: five PCAn runs on S288C. SHA-256 of each run's call table,
 
 Per assembly, FIMO's first-pass (CDEIII) and second-pass (CDEI) hit counts, whether FIMO reported reaching its stored-score cap, and the cap (100,000).
 
-### `diagnostic_at_formula.tsv` (written by `scripts/lib/at_formula_check.py`, run from `05_reproduce.py`)
-
-Whether a different CDEII AT formula would recover published calls that PCAn v1.0 misses. Each assembly's candidate table is rescored three ways (`formula`, described in `formula_description`) and PCAn's filters are replayed inside PCAn's own environment. Per assembly and formula, and summed over assemblies (`accession` = `all`): the published calls, how many of them are still standing after the filters, and how many calls stand in all.
-
 ### `assembly_stats.tsv` (written by `03_fetch_assemblies.sh`)
 
 Per cached assembly: NCBI assembly level, sequence count, total length, sequence N50, contig N50 and L50 and contig count (sequences split at every run of N), N runs and N bases, nuclear chromosome and mitochondrial sequences (from the NCBI sequence report), NCBI's own contig and scaffold N50, and the genome's AT fraction.
@@ -110,7 +58,7 @@ Accession versions not used, with NCBI's status, the current version, and the re
 
 ### `source_concordance.tsv` (written by `02_fetch_tables.sh`)
 
-The publisher's and Figshare's copies of Supplementary Data 2, 5 and 6 compared cell by cell.
+The publisher's and Figshare's copies of Supplementary Data 5 and 6 compared cell by cell.
 
 ## Arm 1, controlled perturbation, a simulation (`results/arm1/`)
 
@@ -119,7 +67,7 @@ relative to that call: self-consistency, not accuracy.
 
 ### `eligibility.tsv`, `genomes.tsv` (written by `06_fragment.py`)
 
-Every chromosome-level or complete assembly of a reproduction-set species, with the eligibility rule of `config/arm1_design.md` applied (`eligible`, `reason`), and the one genome per genus chosen from them (`chosen`; `genomes.tsv` holds only those). Columns: accession, species, PCAn genus (and *Kazachstania* species), NCBI assembly level, contig N50, total length, genome AT fraction, nuclear chromosome sequences, and PCAn's call count.
+Every chromosome-level or complete arm 0 assembly that PCAn ran on, with the eligibility rule of `config/arm1_design.md` applied (`eligible`, `reason`), and the one genome per genus chosen from them (`chosen`; `genomes.tsv` holds only those). Columns: accession, species, PCAn genus (and *Kazachstania* species), NCBI assembly level, contig N50, total length, genome AT fraction, nuclear chromosome sequences, and PCAn's call count.
 
 ### `calibration.tsv` (written by `06_fragment.py`)
 
@@ -211,7 +159,7 @@ One row per long-read call (an element). Outcomes C2 and C3.
 - `call_start`, `call_end`, `query_cdeii_len`: the short-read call overlapping that region, for `intact_called`, and its CDEII length.
 - `cdeii_difference`: that CDEII length minus the long-read call's.
 - `zygosity`: as in `call_counts.tsv`.
-- `possibly_allelic`: `yes` when Supplementary Data 4 of the PCAn paper lists two different centromere sequences for this strain at the chromosome whose listed sequence matches either assembly's call; `no` when it lists one, or the same one twice; `chromosome not identified` when no listed sequence matches either call; `no Supplementary Data 4 row` when the strain is not in that table.
+- `possibly_allelic`: `yes` when Supplementary Data 4 lists two different centromere sequences for this strain at the chromosome whose listed sequence matches either assembly's call; `no` when it lists one, or the same one twice; `chromosome not identified` when no listed sequence matches either call; `no Supplementary Data 4 row` when the strain is not in that table.
 
 ### `null_status.tsv`
 
@@ -267,10 +215,6 @@ As in arm 2, one row per long-read centromere per assembly, for the primary anal
 The registered outcomes D1, D2, D4 and D5 per assembler, target depth and seed, with the columns of the arm 2 table; D1 and D2 rows add the median and interquartile range over strains. D3, the settling depth, is computed from D1 and D2 in `results/reporting_summary.tsv`.
 
 ## Sensitivity (`results/sensitivity/`)
-
-### `arm0_gate_threshold.tsv`
-
-The gate decision at the pre-registered threshold (0.95) and at 0.90 and 0.99, and whether each alternative gives the same decision.
 
 ### `arm1_at_weight_gamma.tsv` (written by `08_score_perturbations.py`)
 

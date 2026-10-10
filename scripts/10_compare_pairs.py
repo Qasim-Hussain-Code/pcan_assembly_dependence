@@ -316,10 +316,10 @@ def element_reason(left, right, status):
 
 
 def possibly_allelic(code, cens_status, long_calls, short_calls):
-    """Supplementary Data 4 of the PCAn paper lists, per assembly and per
-    chromosome, up to two centromere sequences (columns k_A and k_B). Where
-    it lists two different ones for this strain at the chromosome whose
-    sequence matches either assembly's call, a disagreement may be allelic."""
+    """Supplementary Data 4 lists, per assembly and per chromosome, up to
+    two centromere sequences (columns k_A and k_B). Where it lists two
+    different ones for this strain at the chromosome whose sequence matches
+    either assembly's call, a disagreement may be allelic."""
     sd4 = pd.read_csv(P.data_dir("tables", "supp_data4.tsv"), sep="\t", dtype=str)
     row = sd4[sd4["Assembly"].astype(str).str.strip() == code.replace("SACE_", "")]
     if row.empty:

@@ -10,7 +10,7 @@ call", and never as accuracy.
 
 An arm 0 assembly is eligible when all of these hold:
 
-1. its species has the role `primary` in `config/species_arm0.tsv`;
+1. its species has the role `run` in `config/species_arm0.tsv`;
 2. NCBI gives its assembly level as Chromosome or Complete Genome;
 3. its arm 0 PCAn run finished;
 4. PCAn's call count equals the number of nuclear chromosome sequences, counted
@@ -66,13 +66,13 @@ every replicate:
   trace names the step that removed the candidate, or records that no
   candidate was formed.
 
-The geometric prediction follows PCAn's code, not the paper's description. A
-forward-strand call is predicted lost when a cut falls inside its extraction
-window, the CDEIII motif plus 249 bp upstream (275 bp), because a window that
-starts before the start of a sequence comes back empty. A reverse-strand call
-is predicted lost when a cut falls between its CDEI and the end of its CDEIII
-motif; a cut further upstream only shortens its window. Whether any cut falls
-in the window, for either strand, is recorded as well.
+The geometric prediction follows PCAn's code. A forward-strand call is
+predicted lost when a cut falls inside its extraction window, the CDEIII motif
+plus 249 bp upstream (275 bp), because a window that starts before the start of
+a sequence comes back empty. A reverse-strand call is predicted lost when a cut
+falls between its CDEI and the end of its CDEIII motif; a cut further upstream
+only shortens its window. Whether any cut falls in the window, for either
+strand, is recorded as well.
 
 Calls in a replicate that overlap no truth call are `gained`.
 
@@ -132,3 +132,11 @@ genomes, which gives only a rough interval and is described as such.
 If the measured time per PCAn run projects arm 1 beyond the time budget in
 `project.conf`, replicates are cut before genomes, never below five per level.
 What was cut is written to `results/arm1/cuts.tsv` and stated in the README.
+
+## Change recorded on 10 October 2026, after arm 1 was complete
+
+The arm 0 role `primary` in rule 1 became `run`, which every assembly PCAn
+runs in arm 0 now carries. The five assemblies this adds are four
+scaffold-level and one contig-level assembly, which rule 2 excludes, so the
+eligible and chosen assemblies are unchanged (`results/arm1/eligibility.tsv`,
+`results/arm1/genomes.tsv`).

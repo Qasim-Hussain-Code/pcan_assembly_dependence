@@ -1,139 +1,139 @@
-species	accession	arm0_role	reason	pcan_genus	published_calls	reproduced_calls	pcan_status	exact	same_locus_other_boundaries	different_cdeii_length	missing	unlocated	same_cdeiii	overlapping_other_cdeiii	extra
-Kluyveromyces nonfermentans	GCA_003670155.1	primary		Kluyveromyces	8.0	9	ok	8	0	0	0	0	0	0	1
-Kluyveromyces siamensis	GCA_030579315.1	primary		Kluyveromyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Kluyveromyces aestuarii	GCA_003707555.2	primary		Kluyveromyces	8.0	8	ok	0	0	0	0	8	0	0	8
-Kluyveromyces wickerhamii	GCA_030564205.1	primary		Kluyveromyces	7.0	7	ok	7	0	0	0	0	0	0	0
-Kluyveromyces starmeri	GCA_008973615.1	primary		Kluyveromyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Kluyveromyces sp. yHMH660	GCA_030462825.1	primary		Kluyveromyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Kluyveromyces marxianus	GCA_001417885.1	primary		Kluyveromyces	8.0	8	ok	7	0	1	0	0	0	0	0
-Kluyveromyces sp. PCH397	GCA_017427045.1	primary		Kluyveromyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Kluyveromyces dobzhanskii	GCA_003705805.3	primary		Kluyveromyces	7.0	7	ok	7	0	0	0	0	0	0	0
-Kluyveromyces lactis	GCA_000002515.1	primary		Kluyveromyces	6.0	6	ok	6	0	0	0	0	0	0	0
-Eremothecium coryli	GCA_000710315.1	primary		Eremothecium	6.0	6	ok	6	0	0	0	0	0	0	0
-Eremothecium sinecaudum	GCA_001548555.1	primary		Eremothecium	7.0	7	ok	7	0	0	0	0	0	0	0
-Eremothecium cymbalariae	GCA_000235365.1	primary		Eremothecium	8.0	8	ok	8	0	0	0	0	0	0	0
-Ashbya aceri	GCA_000412225.2	primary		Ashbya	7.0	7	ok	7	0	0	0	0	0	0	0
-Eremothecium gossypii	GCA_000091025.4	primary		Eremothecium	7.0	7	ok	7	0	0	0	0	0	0	0
-Lachancea kluyveri	GCA_000149225.2	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea cidri	GCA_030569995.1	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea fermentati	GCA_900074765.1	primary		Lachancea	8.0	8	ok	7	0	1	0	0	0	0	0
-Lachancea mirantina	GCA_900074745.1	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea waltii	GCA_000167115.1	primary		Lachancea	8.0	8	ok	7	0	0	1	0	0	0	1
-Lachancea quebecensis	GCA_002900925.1	primary		Lachancea	8.0	8	ok	7	0	1	0	0	0	0	0
-Lachancea thermotolerans	GCA_000142805.1	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea nothofagi	GCA_900074755.1	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea dasiensis	GCA_900074725.1	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea sp. yHQL494	GCA_030562185.1	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea meyersii	GCA_900074715.1	primary		Lachancea	8.0	8	ok	8	0	0	0	0	0	0	0
-Lachancea fantastica	GCA_900074735.1	primary		Lachancea	7.0	7	ok	7	0	0	0	0	0	0	0
-Lachancea lanzarotensis	GCA_000938715.1	primary		Lachancea	7.0	7	ok	7	0	0	0	0	0	0	0
-Hagleromyces aurorensis	GCA_030705145.1	primary		Hagleromyces	6.0	6	ok	6	0	0	0	0	0	0	0
-Zygosaccharomyces gambellarensis	GCA_030571545.1	primary		Zygosaccharomyces	7.0	7	ok	7	0	0	0	0	0	0	0
-Zygosaccharomyces rouxii	GCA_000026365.1	primary		Zygosaccharomyces	7.0	7	ok	7	0	0	0	0	0	0	0
-Zygosaccharomyces sapae	GCA_900465325.1	primary		Zygosaccharomyces	19.0	19	ok	19	0	0	0	0	0	0	0
-Zygosaccharomyces pseudorouxii	GCA_030572675.1	primary		Zygosaccharomyces	7.0	7	ok	7	0	0	0	0	0	0	0
-Zygosaccharomyces mellis	GCA_005406105.1	primary		Zygosaccharomyces	7.0	7	ok	7	0	0	0	0	0	0	0
-Zygosaccharomyces siamensis	GCA_013423405.1	primary		Zygosaccharomyces	7.0	7	ok	7	0	0	0	0	0	0	0
-Zygosaccharomyces kombuchaensis	GCA_003705955.2	primary		Zygosaccharomyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygosaccharomyces lentus	GCA_030568175.1	primary		Zygosaccharomyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygosaccharomyces bisporus	GCA_003707595.2	primary		Zygosaccharomyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygosaccharomyces parabailii	GCA_001984395.2	primary		Zygosaccharomyces	16.0	14	ok	14	0	0	2	0	0	0	0
-Zygosaccharomyces pseudobailii	GCA_949129085.1	primary		Zygosaccharomyces	16.0	15	ok	15	0	0	0	1	0	0	0
-Zygosaccharomyces bailii	GCA_900162805.1	primary		Zygosaccharomyces	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygotorulaspora chibaensis	GCA_030565665.1	primary		Zygotorulaspora	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygotorulaspora florentina	GCA_003671575.3	primary		Zygotorulaspora	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygotorulaspora sp. yHDO592	GCA_030571275.1	primary		Zygotorulaspora	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygotorulaspora danielsina	GCA_030572985.1	primary		Zygotorulaspora	8.0	8	ok	8	0	0	0	0	0	0	0
-Zygotorulaspora mrakii	GCA_013402915.1	primary		Zygotorulaspora	8.0	9	ok	8	0	0	0	0	0	0	1
-Torulaspora microellipsoides	GCA_900186055.1	primary		Torulaspora	8.0	8	ok	8	0	0	0	0	0	0	0
-Torulaspora quercuum	GCA_946403475.1	primary		Torulaspora	8.0	8	ok	7	0	0	0	1	0	0	1
-Torulaspora globosa	GCA_014133895.1	primary		Torulaspora	8.0	6	ok	6	0	0	2	0	0	0	0
-Torulaspora maleeae	GCA_003708055.3	primary		Torulaspora	8.0	7	ok	6	0	1	1	0	0	0	0
-Torulaspora sp. yHMJ407	GCA_030580195.1	primary		Torulaspora	8.0	6	ok	5	0	1	2	0	0	0	0
-Torulaspora delbrueckii	GCA_000243375.1	primary		Torulaspora	8.0	8	ok	6	0	2	0	0	0	0	0
-Torulaspora sp. 2017 38-3	GCA_040114465.1	primary		Torulaspora	8.0	8	ok	7	0	1	0	0	0	0	0
-Torulaspora franciscae	GCA_003705175.3	primary		Torulaspora	8.0	7	ok	6	0	1	1	0	0	0	0
-Torulaspora pretoriensis	GCA_012851205.1	primary		Torulaspora	8.0	7	ok	7	0	0	1	0	0	0	0
-Torulaspora sp. 2017 36-1	GCA_040114505.1	primary		Torulaspora	8.0	8	ok	7	0	0	1	0	0	0	1
-Torulaspora indica	GCA_931305995.1	primary		Torulaspora	8.0	8	ok	8	0	0	0	0	0	0	0
-Henningerozyma blattae	GCA_000315915.1	primary		Henningerozyma	9.0	8	ok	8	0	0	1	0	0	0	0
-Yueomyces sinensis	GCA_030581855.1	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Yueomyces	14.0	2	ok	0	0	0	14	0	0	0	2
-Yueomyces sp. yHKB289	GCA_030580315.1	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Yueomyces	13.0	5	ok	0	0	0	9	0	4	0	1
-Yueomyces silvicola	GCA_030179955.1	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Yueomyces	13.0	5	ok	0	0	0	9	0	4	0	1
-Vanderwaltozyma polyspora	GCA_000150035.1	primary		Vanderwaltozyma	14.0	14	ok	14	0	0	0	0	0	0	0
-Vanderwaltozyma tropicalis	GCA_030555675.1	primary		Vanderwaltozyma	16.0	18	ok	16	0	0	0	0	0	0	2
-Vanderwaltozyma yanomamii	GCA_041380205.1	primary		Vanderwaltozyma	16.0	16	ok	16	0	0	0	0	0	0	0
-Vanderwaltozyma verrucispora	GCA_030565105.1	primary		Vanderwaltozyma	16.0	16	ok	14	0	0	2	0	0	0	2
-Vanderwaltozyma yarrowii	GCA_030568135.1	primary		Vanderwaltozyma	16.0	18	ok	15	0	0	1	0	0	0	3
-Tetrapisispora iriomotensis	GCA_003705975.2	primary		Tetrapisispora	16.0	16	ok	14	0	0	1	1	0	0	2
-Tetrapisispora phaffii	GCA_000236905.1	primary		Tetrapisispora	16.0	15	ok	15	0	0	1	0	0	0	0
-Tetrapisispora fleetii	GCA_003707605.2	primary		Tetrapisispora	16.0	14	ok	13	0	0	3	0	0	0	1
-Tetrapisispora namnaoensis	GCA_003705985.2	primary		Tetrapisispora	16.0	15	ok	15	0	0	1	0	0	0	0
-Tetrapisispora nanseiensis	GCA_030568035.1	primary		Tetrapisispora	16.0	15	ok	13	0	0	3	0	0	0	2
-Tetrapisispora arboricola	GCA_030557565.1	primary		Tetrapisispora	16.0	18	ok	15	0	0	1	0	0	0	3
-Tetrapisispora pingtungensis	GCA_030573885.1	primary		Tetrapisispora	16.0	17	ok	14	0	1	1	0	0	0	2
-Tetrapisispora taiwanensis	GCA_030573835.1	primary		Tetrapisispora	16.0	11	ok	0	0	0	16	0	0	0	11
-Naumovozyma dairenensis	GCA_000227115.2	excluded	published calls came from an adapted single-motif version of PCAn (Extended Data Fig. 2) that the repository does not provide; PCAn v1.0 has no Naumovozyma entry in its motif table	Naumovozyma	12.0			0	0	0	0	0	0	0	0
-Naumovozyma baii	GCA_030568095.1	excluded	published calls came from an adapted single-motif version of PCAn (Extended Data Fig. 2) that the repository does not provide; PCAn v1.0 has no Naumovozyma entry in its motif table	Naumovozyma	7.0			0	0	0	0	0	0	0	0
-Naumovozyma castellii	GCA_000237345.1	excluded	published calls came from an adapted single-motif version of PCAn (Extended Data Fig. 2) that the repository does not provide; PCAn v1.0 has no Naumovozyma entry in its motif table	Naumovozyma	11.0			0	0	0	0	0	0	0	0
-Kazachstania africana	GCA_000304475.1	primary		Kazachstania	12.0	12	ok	12	0	0	0	0	0	0	0
-Kazachstania viticola	GCA_030571575.1	primary		Kazachstania	16.0	16	ok	16	0	0	0	0	0	0	0
-Jamesozyma lodderae	GCA_030571655.1	primary		Jamesozyma	13.0	13	ok	13	0	0	0	0	0	0	0
-Jamesozyma jinghongensis	GCA_030572895.1	primary		Jamesozyma	16.0	16	ok	15	0	1	0	0	0	0	0
-Jamesozyma spencerorum	GCA_003708825.3	primary		Jamesozyma	16.0	16	ok	15	0	0	1	0	0	0	1
-Jamesozyma piceae	GCA_030674245.1	primary		Jamesozyma	16.0	15	ok	15	0	0	1	0	0	0	0
-Jamesozyma rosinii	GCA_003708425.3	primary		Jamesozyma	15.0	14	ok	14	0	0	1	0	0	0	0
-Jamesozyma gamospora	GCA_030462905.1	primary		Jamesozyma	16.0	16	ok	16	0	0	0	0	0	0	0
-Jamesozyma hellenica	GCA_030571615.1	primary		Jamesozyma	16.0	16	ok	16	0	0	0	0	0	0	0
-Kazachstania psychrophila	GCA_030579255.1	primary		Kazachstania	15.0	15	ok	14	0	1	0	0	0	0	0
-Kazachstania kunashirensis	GCA_003708465.2	primary		Kazachstania	11.0	11	ok	10	0	0	1	0	0	0	1
-Maudiozyma humilis	GCA_020313495.2	primary		Maudiozyma	12.0	12	ok	12	0	0	0	0	0	0	0
-Maudiozyma pseudohumilis	GCA_030579215.1	primary		Maudiozyma	11.0	9	ok	9	0	0	2	0	0	0	0
-Maudiozyma bulderi	GCA_933962305.1	excluded	assembly not used: suppressed by NCBI; nothing used in its place	Maudiozyma	12.0			0	0	0	0	0	0	0	0
-Maudiozyma exigua	GCA_016584175.1	primary		Maudiozyma	11.0	11	ok	11	0	0	0	0	0	0	0
-Maudiozyma turicensis	GCA_030583465.1	primary		Maudiozyma	11.0	11	ok	11	0	0	0	0	0	0	0
-Maudiozyma barnettii	GCA_903064755.1	primary		Maudiozyma	11.0	11	ok	11	0	0	0	0	0	0	0
-Maudiozyma saulgeensis	GCA_900180425.1	primary		Maudiozyma	11.0	10	ok	10	0	0	1	0	0	0	0
-Maudiozyma serrabonitensis	GCA_030571355.1	primary		Maudiozyma	11.0	11	ok	11	0	0	0	0	0	0	0
-Kazachstania martiniae	GCA_003708925.3	primary		Kazachstania	12.0	11	ok	11	0	0	1	0	0	0	0
-Sungouiozyma ichnusensis	GCA_030580495.1	primary		Sungouiozyma	8.0	8	ok	8	0	0	0	0	0	0	0
-Sungouiozyma intestinalis	GCA_003708845.3	primary		Sungouiozyma	8.0	8	ok	8	0	0	0	0	0	0	0
-Kazachstania bromeliacearum	GCA_003708535.3	primary		Kazachstania	10.0	10	ok	9	0	0	1	0	0	0	1
-Huiozyma naganishii	GCA_000348985.1	primary		Huiozyma	13.0	13	ok	13	0	0	0	0	0	0	0
-Huiozyma sinensis	GCA_030705205.1	primary		Huiozyma	13.0	13	ok	11	0	0	2	0	0	0	2
-Kazachstania taianensis	GCA_003708865.2	primary		Kazachstania	16.0	16	ok	16	0	0	0	0	0	0	0
-Grigorovia jiainica	GCA_030571715.1	cdeiii_only	published calls have no CDEI (written ?) and no CDEII length; the released two-motif pipeline always reports a CDEI, so only CDEIII loci are compared, outside the reproduction fraction	Grigorovia	15.0	7	ok	0	0	0	15	0	0	0	7
-Grigorovia yakushimaensis	GCA_003709265.2	primary		Grigorovia	16.0	15	ok	15	0	0	1	0	0	0	0
-Grigorovia transvaalensis	GCA_003708445.3	primary		Grigorovia	16.0	16	ok	16	0	0	0	0	0	0	0
-Grigorovia humatica	GCA_030462875.1	primary		Grigorovia	15.0	12	ok	11	0	1	3	0	0	0	0
-Arxiozyma slooffiae	GCA_017347545.2	no_published_calls	no rows in Supplementary Data 2 and no motif in the authors' table; run and reported, outside the reproduction fraction	Arxiozyma	0.0	15	ok	0	0	0	0	0	0	0	15
-Arxiozyma bovina	GCA_030580575.1	primary		Arxiozyma	13.0	20	ok	10	0	0	3	0	0	0	10
-Arxiozyma telluris	GCA_030571675.1	primary		Arxiozyma	15.0	19	ok	11	0	0	4	0	0	0	8
-Arxiozyma heterogenica	GCA_030674295.1	primary		Arxiozyma	15.0	16	ok	12	0	1	1	1	0	0	3
-Arxiozyma pintolopesii	GCA_950065675.1	primary		Arxiozyma	15.0	15	ok	15	0	0	0	0	0	0	0
-Arxiozyma sp. Y4206	GCA_023629195.1	primary		Arxiozyma	15.0	16	ok	14	0	1	0	0	0	0	1
-Arxiozyma sp. VP_05	GCA_041430495.1	primary		Arxiozyma	15.0	15	ok	15	0	0	0	0	0	0	0
-Monosporozyma aquatica	GCA_030571515.1	primary		Monosporozyma	15.0	26	ok	11	0	4	0	0	0	0	11
-Monosporozyma siamensis	GCA_003708905.3	primary		Monosporozyma	12.0	16	ok	10	0	1	1	0	0	0	5
-Monosporozyma unispora	GCA_003708525.3	primary		Monosporozyma	14.0	14	ok	12	0	0	2	0	0	0	2
-Monosporozyma yasuniensis	GCA_030558655.1	primary		Monosporozyma	14.0	22	ok	12	0	1	1	0	0	0	9
-Monosporozyma servazzii	GCA_028408395.1	primary		Monosporozyma	12.0	11	ok	10	0	1	1	0	0	0	0
-Monosporozyma aerobia	GCA_028408415.1	primary		Monosporozyma	13.0	13	ok	11	0	1	1	0	0	0	1
-Monosporozyma solicola	GCA_030571535.1	primary		Monosporozyma	11.0	15	ok	11	0	0	0	0	0	0	4
-Cylindricascospora bacillispora	GCA_030573655.1	primary		Cylindricascospora	15.0	15	ok	14	0	0	1	0	0	0	1
-Oligophagozyma castellii	GCA_030556345.1	primary		Oligophagozyma	8.0	9	ok	8	0	0	0	0	0	0	1
-Nakaseomyces glabratus	GCA_000002545.2	primary		Nakaseomyces	13.0	13	ok	13	0	0	0	0	0	0	0
-Nakaseomyces uthaithaninus	GCA_030564085.1	primary		Nakaseomyces	13.0	13	ok	13	0	0	0	0	0	0	0
-Nakaseomyces bracarensis	GCA_030569875.1	primary		Nakaseomyces	13.0	13	ok	13	0	0	0	0	0	0	0
-Nakaseomyces delphensis	GCA_001039675.1	primary		Nakaseomyces	10.0	10	ok	10	0	0	0	0	0	0	0
-Nakaseomyces sp. yHDO568	GCA_030571395.1	primary		Nakaseomyces	13.0	15	ok	12	0	1	0	0	0	0	2
-Nakaseomyces kungkrabaensis	GCA_030556385.1	primary		Nakaseomyces	13.0	13	ok	13	0	0	0	0	0	0	0
-Nakaseomyces nivariensis	GCA_017309295.1	primary		Nakaseomyces	13.0	13	ok	13	0	0	0	0	0	0	0
-Saccharomyces eubayanus	GCA_001298625.1	primary		Saccharomyces	16.0	16	ok	15	0	0	0	1	0	0	1
-Saccharomyces uvarum	GCA_947243795.1	primary		Saccharomyces	16.0	16	ok	16	0	0	0	0	0	0	0
-Saccharomyces arboricola	GCA_000292725.1	primary		Saccharomyces	16.0	16	ok	16	0	0	0	0	0	0	0
-Saccharomyces kudriavzevii	GCA_947243775.1	primary		Saccharomyces	16.0	16	ok	16	0	0	0	0	0	0	0
-Saccharomyces mikatae	GCA_947241705.1	primary		Saccharomyces	16.0	16	ok	16	0	0	0	0	0	0	0
-Saccharomyces jurei	GCA_900290405.1	primary		Saccharomyces	16.0	16	ok	16	0	0	0	0	0	0	0
-Saccharomyces paradoxus	GCA_002079055.1	primary		Saccharomyces	16.0	16	ok	16	0	0	0	0	0	0	0
-Saccharomyces cerevisiae	GCA_000146045.2	primary		Saccharomyces	16.0	16	ok	16	0	0	0	0	0	0	0
+species	accession	arm0_role	reason	pcan_genus	calls	pcan_status
+Kluyveromyces nonfermentans	GCA_003670155.1	run		Kluyveromyces	9	ok
+Kluyveromyces siamensis	GCA_030579315.1	run		Kluyveromyces	8	ok
+Kluyveromyces aestuarii	GCA_003707555.2	run		Kluyveromyces	8	ok
+Kluyveromyces wickerhamii	GCA_030564205.1	run		Kluyveromyces	7	ok
+Kluyveromyces starmeri	GCA_008973615.1	run		Kluyveromyces	8	ok
+Kluyveromyces sp. yHMH660	GCA_030462825.1	run		Kluyveromyces	8	ok
+Kluyveromyces marxianus	GCA_001417885.1	run		Kluyveromyces	8	ok
+Kluyveromyces sp. PCH397	GCA_017427045.1	run		Kluyveromyces	8	ok
+Kluyveromyces dobzhanskii	GCA_003705805.3	run		Kluyveromyces	7	ok
+Kluyveromyces lactis	GCA_000002515.1	run		Kluyveromyces	6	ok
+Eremothecium coryli	GCA_000710315.1	run		Eremothecium	6	ok
+Eremothecium sinecaudum	GCA_001548555.1	run		Eremothecium	7	ok
+Eremothecium cymbalariae	GCA_000235365.1	run		Eremothecium	8	ok
+Ashbya aceri	GCA_000412225.2	run		Ashbya	7	ok
+Eremothecium gossypii	GCA_000091025.4	run		Eremothecium	7	ok
+Lachancea kluyveri	GCA_000149225.2	run		Lachancea	8	ok
+Lachancea cidri	GCA_030569995.1	run		Lachancea	8	ok
+Lachancea fermentati	GCA_900074765.1	run		Lachancea	8	ok
+Lachancea mirantina	GCA_900074745.1	run		Lachancea	8	ok
+Lachancea waltii	GCA_000167115.1	run		Lachancea	8	ok
+Lachancea quebecensis	GCA_002900925.1	run		Lachancea	8	ok
+Lachancea thermotolerans	GCA_000142805.1	run		Lachancea	8	ok
+Lachancea nothofagi	GCA_900074755.1	run		Lachancea	8	ok
+Lachancea dasiensis	GCA_900074725.1	run		Lachancea	8	ok
+Lachancea sp. yHQL494	GCA_030562185.1	run		Lachancea	8	ok
+Lachancea meyersii	GCA_900074715.1	run		Lachancea	8	ok
+Lachancea fantastica	GCA_900074735.1	run		Lachancea	7	ok
+Lachancea lanzarotensis	GCA_000938715.1	run		Lachancea	7	ok
+Hagleromyces aurorensis	GCA_030705145.1	run		Hagleromyces	6	ok
+Zygosaccharomyces gambellarensis	GCA_030571545.1	run		Zygosaccharomyces	7	ok
+Zygosaccharomyces rouxii	GCA_000026365.1	run		Zygosaccharomyces	7	ok
+Zygosaccharomyces sapae	GCA_900465325.1	run		Zygosaccharomyces	19	ok
+Zygosaccharomyces pseudorouxii	GCA_030572675.1	run		Zygosaccharomyces	7	ok
+Zygosaccharomyces mellis	GCA_005406105.1	run		Zygosaccharomyces	7	ok
+Zygosaccharomyces siamensis	GCA_013423405.1	run		Zygosaccharomyces	7	ok
+Zygosaccharomyces kombuchaensis	GCA_003705955.2	run		Zygosaccharomyces	8	ok
+Zygosaccharomyces lentus	GCA_030568175.1	run		Zygosaccharomyces	8	ok
+Zygosaccharomyces bisporus	GCA_003707595.2	run		Zygosaccharomyces	8	ok
+Zygosaccharomyces parabailii	GCA_001984395.2	run		Zygosaccharomyces	14	ok
+Zygosaccharomyces pseudobailii	GCA_949129085.1	run		Zygosaccharomyces	15	ok
+Zygosaccharomyces bailii	GCA_900162805.1	run		Zygosaccharomyces	8	ok
+Zygotorulaspora chibaensis	GCA_030565665.1	run		Zygotorulaspora	8	ok
+Zygotorulaspora florentina	GCA_003671575.3	run		Zygotorulaspora	8	ok
+Zygotorulaspora sp. yHDO592	GCA_030571275.1	run		Zygotorulaspora	8	ok
+Zygotorulaspora danielsina	GCA_030572985.1	run		Zygotorulaspora	8	ok
+Zygotorulaspora mrakii	GCA_013402915.1	run		Zygotorulaspora	9	ok
+Torulaspora microellipsoides	GCA_900186055.1	run		Torulaspora	8	ok
+Torulaspora quercuum	GCA_946403475.1	run		Torulaspora	8	ok
+Torulaspora globosa	GCA_014133895.1	run		Torulaspora	6	ok
+Torulaspora maleeae	GCA_003708055.3	run		Torulaspora	7	ok
+Torulaspora sp. yHMJ407	GCA_030580195.1	run		Torulaspora	6	ok
+Torulaspora delbrueckii	GCA_000243375.1	run		Torulaspora	8	ok
+Torulaspora sp. 2017 38-3	GCA_040114465.1	run		Torulaspora	8	ok
+Torulaspora franciscae	GCA_003705175.3	run		Torulaspora	7	ok
+Torulaspora pretoriensis	GCA_012851205.1	run		Torulaspora	7	ok
+Torulaspora sp. 2017 36-1	GCA_040114505.1	run		Torulaspora	8	ok
+Torulaspora indica	GCA_931305995.1	run		Torulaspora	8	ok
+Henningerozyma blattae	GCA_000315915.1	run		Henningerozyma	8	ok
+Yueomyces sinensis	GCA_030581855.1	run		Yueomyces	2	ok
+Yueomyces sp. yHKB289	GCA_030580315.1	run		Yueomyces	5	ok
+Yueomyces silvicola	GCA_030179955.1	run		Yueomyces	5	ok
+Vanderwaltozyma polyspora	GCA_000150035.1	run		Vanderwaltozyma	14	ok
+Vanderwaltozyma tropicalis	GCA_030555675.1	run		Vanderwaltozyma	18	ok
+Vanderwaltozyma yanomamii	GCA_041380205.1	run		Vanderwaltozyma	16	ok
+Vanderwaltozyma verrucispora	GCA_030565105.1	run		Vanderwaltozyma	16	ok
+Vanderwaltozyma yarrowii	GCA_030568135.1	run		Vanderwaltozyma	18	ok
+Tetrapisispora iriomotensis	GCA_003705975.2	run		Tetrapisispora	16	ok
+Tetrapisispora phaffii	GCA_000236905.1	run		Tetrapisispora	15	ok
+Tetrapisispora fleetii	GCA_003707605.2	run		Tetrapisispora	14	ok
+Tetrapisispora namnaoensis	GCA_003705985.2	run		Tetrapisispora	15	ok
+Tetrapisispora nanseiensis	GCA_030568035.1	run		Tetrapisispora	15	ok
+Tetrapisispora arboricola	GCA_030557565.1	run		Tetrapisispora	18	ok
+Tetrapisispora pingtungensis	GCA_030573885.1	run		Tetrapisispora	17	ok
+Tetrapisispora taiwanensis	GCA_030573835.1	run		Tetrapisispora	11	ok
+Naumovozyma dairenensis	GCA_000227115.2	excluded	no entry in PCAn v1.0's motif table	Naumovozyma		
+Naumovozyma baii	GCA_030568095.1	excluded	no entry in PCAn v1.0's motif table	Naumovozyma		
+Naumovozyma castellii	GCA_000237345.1	excluded	no entry in PCAn v1.0's motif table	Naumovozyma		
+Kazachstania africana	GCA_000304475.1	run		Kazachstania	12	ok
+Kazachstania viticola	GCA_030571575.1	run		Kazachstania	16	ok
+Jamesozyma lodderae	GCA_030571655.1	run		Jamesozyma	13	ok
+Jamesozyma jinghongensis	GCA_030572895.1	run		Jamesozyma	16	ok
+Jamesozyma spencerorum	GCA_003708825.3	run		Jamesozyma	16	ok
+Jamesozyma piceae	GCA_030674245.1	run		Jamesozyma	15	ok
+Jamesozyma rosinii	GCA_003708425.3	run		Jamesozyma	14	ok
+Jamesozyma gamospora	GCA_030462905.1	run		Jamesozyma	16	ok
+Jamesozyma hellenica	GCA_030571615.1	run		Jamesozyma	16	ok
+Kazachstania psychrophila	GCA_030579255.1	run		Kazachstania	15	ok
+Kazachstania kunashirensis	GCA_003708465.2	run		Kazachstania	11	ok
+Maudiozyma humilis	GCA_020313495.2	run		Maudiozyma	12	ok
+Maudiozyma pseudohumilis	GCA_030579215.1	run		Maudiozyma	9	ok
+Maudiozyma bulderi	GCA_933962305.1	excluded	assembly not used: suppressed by NCBI; nothing used in its place	Maudiozyma		
+Maudiozyma exigua	GCA_016584175.1	run		Maudiozyma	11	ok
+Maudiozyma turicensis	GCA_030583465.1	run		Maudiozyma	11	ok
+Maudiozyma barnettii	GCA_903064755.1	run		Maudiozyma	11	ok
+Maudiozyma saulgeensis	GCA_900180425.1	run		Maudiozyma	10	ok
+Maudiozyma serrabonitensis	GCA_030571355.1	run		Maudiozyma	11	ok
+Kazachstania martiniae	GCA_003708925.3	run		Kazachstania	11	ok
+Sungouiozyma ichnusensis	GCA_030580495.1	run		Sungouiozyma	8	ok
+Sungouiozyma intestinalis	GCA_003708845.3	run		Sungouiozyma	8	ok
+Kazachstania bromeliacearum	GCA_003708535.3	run		Kazachstania	10	ok
+Huiozyma naganishii	GCA_000348985.1	run		Huiozyma	13	ok
+Huiozyma sinensis	GCA_030705205.1	run		Huiozyma	13	ok
+Kazachstania taianensis	GCA_003708865.2	run		Kazachstania	16	ok
+Grigorovia jiainica	GCA_030571715.1	run		Grigorovia	7	ok
+Grigorovia yakushimaensis	GCA_003709265.2	run		Grigorovia	15	ok
+Grigorovia transvaalensis	GCA_003708445.3	run		Grigorovia	16	ok
+Grigorovia humatica	GCA_030462875.1	run		Grigorovia	12	ok
+Arxiozyma slooffiae	GCA_017347545.2	run		Arxiozyma	15	ok
+Arxiozyma bovina	GCA_030580575.1	run		Arxiozyma	20	ok
+Arxiozyma telluris	GCA_030571675.1	run		Arxiozyma	19	ok
+Arxiozyma heterogenica	GCA_030674295.1	run		Arxiozyma	16	ok
+Arxiozyma pintolopesii	GCA_950065675.1	run		Arxiozyma	15	ok
+Arxiozyma sp. Y4206	GCA_023629195.1	run		Arxiozyma	16	ok
+Arxiozyma sp. VP_05	GCA_041430495.1	run		Arxiozyma	15	ok
+Monosporozyma aquatica	GCA_030571515.1	run		Monosporozyma	26	ok
+Monosporozyma siamensis	GCA_003708905.3	run		Monosporozyma	16	ok
+Monosporozyma unispora	GCA_003708525.3	run		Monosporozyma	14	ok
+Monosporozyma yasuniensis	GCA_030558655.1	run		Monosporozyma	22	ok
+Monosporozyma servazzii	GCA_028408395.1	run		Monosporozyma	11	ok
+Monosporozyma aerobia	GCA_028408415.1	run		Monosporozyma	13	ok
+Monosporozyma solicola	GCA_030571535.1	run		Monosporozyma	15	ok
+Cylindricascospora bacillispora	GCA_030573655.1	run		Cylindricascospora	15	ok
+Oligophagozyma castellii	GCA_030556345.1	run		Oligophagozyma	9	ok
+Nakaseomyces glabratus	GCA_000002545.2	run		Nakaseomyces	13	ok
+Nakaseomyces uthaithaninus	GCA_030564085.1	run		Nakaseomyces	13	ok
+Nakaseomyces bracarensis	GCA_030569875.1	run		Nakaseomyces	13	ok
+Nakaseomyces delphensis	GCA_001039675.1	run		Nakaseomyces	10	ok
+Nakaseomyces sp. yHDO568	GCA_030571395.1	run		Nakaseomyces	15	ok
+Nakaseomyces kungkrabaensis	GCA_030556385.1	run		Nakaseomyces	13	ok
+Nakaseomyces nivariensis	GCA_017309295.1	run		Nakaseomyces	13	ok
+Saccharomyces eubayanus	GCA_001298625.1	run		Saccharomyces	16	ok
+Saccharomyces uvarum	GCA_947243795.1	run		Saccharomyces	16	ok
+Saccharomyces arboricola	GCA_000292725.1	run		Saccharomyces	16	ok
+Saccharomyces kudriavzevii	GCA_947243775.1	run		Saccharomyces	16	ok
+Saccharomyces mikatae	GCA_947241705.1	run		Saccharomyces	16	ok
+Saccharomyces jurei	GCA_900290405.1	run		Saccharomyces	16	ok
+Saccharomyces paradoxus	GCA_002079055.1	run		Saccharomyces	16	ok
+Saccharomyces cerevisiae	GCA_000146045.2	run		Saccharomyces	16	ok
