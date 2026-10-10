@@ -424,3 +424,30 @@ download that no strain row recorded, AGK from 18:42 to 19:50 UTC on 9 October
 were added to `logs/arm3_strains.tsv` with the status `stopped`, so that the
 budget counts them.
 
+## Correction recorded on 10 October 2026, after BCN's second run
+
+The conclusion of the previous section was wrong. Downloaded by Windows'
+curl.exe, BCN's files came back with a wrong MD5 in five of six transfers,
+again a different one each time. Six downloads of the first 256 MiB of BCN's
+first file, three by Windows' curl.exe and three by curl inside WSL, gave five
+identical copies; the sixth differed from them in 201 consecutive bytes, which
+held an error message from ENA's server written in place of the data:
+`<Error><Code>ConnectionClosedException</Code><Message>Premature end of
+Content-Length delimited message body (expected: 1,438,572,164; received:
+27,444,504)</Message><ErrorMessage/><RequestId/></Error>`. Every other byte
+matched. The damage comes from the server, not from this machine, and
+downloading on Windows does not avoid it.
+
+From the restart at 20:11 UTC, read files are downloaded by curl inside WSL
+again, as before the previous change. After each complete download, every
+such message in the file is located, and the bytes from 4 MiB before it to 4
+MiB after it are fetched again as a byte range and written back in place; the
+whole file is then checked against ENA's MD5 as before, and a mismatch still
+starts the file again, at most twice. On the damaged 256 MiB copy this gave
+the MD5 of the five intact copies in 19 s, and it found no message in an
+intact copy. The stage was stopped at 20:10 UTC during ANE's first try; that
+period is in `logs/arm3_strains.tsv` as `stopped`. BCN's second run is logged
+as `download failed`. BCN and ANE have no done marker, so the restarted run
+takes them first, in the registered order. Depths, seeds, assemblers and the
+48 h budget are unchanged.
+
