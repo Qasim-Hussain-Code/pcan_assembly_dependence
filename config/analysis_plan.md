@@ -454,7 +454,7 @@ takes them first, in the registered order. Depths, seeds, assemblers and the
 ## Change recorded on 11 October 2026, after the fourteenth arm 3 strain
 
 The arm 3 time budget is raised from 48 h to 96 h so that all 33 eligible
-strains are assembled. When the change was made, at 02:05 UTC, 14 strains
+strains are assembled. When the change was made, at 02:19 UTC, 14 strains
 were complete, about 29 h of the budget had been used, and no strain had been
 cut. The running stage read its budget when it started and keeps 48 h: it
 will refuse the first strain that would end past that, and its log will say
