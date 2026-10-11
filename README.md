@@ -129,11 +129,13 @@ The species and their assembly accessions come from the species table of the
 Figshare collection 10.6084/m9.figshare.c.7630151 (Supplementary Data 5,
 MD5-checked). Of its 166 rows, 138 are Saccharomycetaceae species. PCAn v1.0
 has no motif entry for *Naumovozyma*, so its 3 species were not run, and NCBI
-had suppressed the assembly listed for *Maudiozyma bulderi*
-(GCA_933962305.1, now GCA_933962305.2), so nothing was run in its place
+had suppressed the assembly listed for *Maudiozyma bulderi* (GCA_933962305.1,
+now GCA_933962305.2), so nothing was run in its place
 (`results/arm0/excluded_assemblies.tsv`). That leaves 134 assemblies from 134
 species and 24 genera, downloaded by exact accession and version, 0.51 GB
-compressed. The role of every row is in `config/species_arm0.tsv`.
+compressed. The role of every row is in `config/species_arm0.tsv`, and what
+was run for each Saccharomycetaceae species in
+`results/arm0/species_counts.tsv`.
 
 The S288C reference is SGD release R64-5-1
 (`S288C_reference_genome_R64-5-1_20240529.tgz`); its 16 chromosomes are
@@ -198,14 +200,13 @@ has already done and says so, measures itself through
 directory's footprint, the drive's free space; `logs/resources.tsv`), and
 refuses to start, with the shortfall, when its projected time or disk exceeds
 the budget in `project.conf`. The results here came from WSL 2 on Windows,
-with 16 threads and 5.8 GB of RAM visible to Linux, less than the 16 GB the
-design assumed; SPAdes was capped at 4 GB accordingly.
+with 16 threads (`logs/resources.tsv`) and less RAM visible to Linux than the
+16 GB the design assumed; SPAdes was capped at 4 GB accordingly.
 
 `bash scripts/00_configure.sh --disk 35 --data-dir <path> --yes` writes
-`project.conf`. The drive had 50.8 GB free, so the working budget was set to
-35 GB, with the hard ceiling 10 per cent above it. The data directory sat on
-the Linux filesystem: creating 500 small files took 6.05 s on the Windows drive
-mounted in WSL and 0.02 s there.
+`project.conf`. The working budget was set to 35 GB, with the hard ceiling
+10 per cent above it. The data directory sat on the Linux filesystem, because
+creating small files on the Windows drive mounted in WSL was far slower.
 
 `bash scripts/01_install.sh` builds two conda environments. PCAn's is built
 from the exact pins of its `pcan_specs.yml` (Python 3.8.17, MEME suite
@@ -303,8 +304,8 @@ because a null that skipped the liftover would measure the liftover. Measured:
 1,982 s with 4 parallel jobs, peak 1,840 MB. That first run stopped in its
 final aggregation: pandas had read the null windows' kind, the word "null",
 as a missing value, and the line summarising C5 failed. Both were fixed
-before any confirmatory result was written; the aggregation alone takes
-about 160 s (`logs/resources.tsv`).
+before any confirmatory result was written; the aggregation alone took 97
+to 163 s in the runs after the fix (`logs/resources.tsv`).
 
 `bash scripts/11_assemble_reads.sh` processes the 33 arm 3 strains one at a
 time in the registered order. Each read file is downloaded from ENA,
@@ -320,7 +321,8 @@ in turn; assemblies never overlap. Reads and working directories are deleted
 when a strain is done, or by the cleanup trap if it is interrupted. SPAdes
 runs under the 4 GB cap from `project.conf`, which limits its address space
 rather than its resident memory. On 16 threads it ran out of address space
-at 40x and above for the first three strains while holding about 1.5 GB;
+for the first three strains, at 20x and above for CCN and at 40x and above
+for AEG and BAM, while holding about 1.5 GB;
 from the fourth strain on it runs on one thread per GB of the cap, 4 here,
 which on BAM's 40x reads gave contigs identical to a 16-thread run without a
 cap. The failed runs of the first three strains stay failed, as registered.
@@ -346,8 +348,9 @@ strains complete and none cut, it was raised to 96 h so that all 33 strains
 would be assembled. The running stage kept the 48 h it had read at its start
 and, at 17:11 UTC, refused the 32nd strain, whose projected end, from the
 slowest download and assembly seen so far, lay 0.1 h past it; a second run
-with the new budget assembled the last two. The strain intervals in
-`logs/arm3_strains.tsv` add up to 47.3 h.
+with the new budget assembled the last two. Counted once where they
+overlap, the strain intervals in `logs/arm3_strains.tsv` cover 47.3 h, as do
+the `assemble_reads` rows of `logs/resources.tsv`.
 
 `python scripts/10_compare_pairs.py --arm 3` then compares every assembly
 with the strain's long-read assembly by the arm 2 method.
@@ -497,7 +500,7 @@ AT-matched null windows: 126 of 1,103 calls against 4,926 of 22,060 windows,
 a break-rate ratio of 0.51 (0.35 to 0.66) and a difference of -0.109 (-0.135
 to -0.081). The stratified permutation test gave p = 0.0001 before
 correction, the smallest value 10,000 permutations allow; after Holm's
-correction it is 0.0013 (`results/reporting_summary.md`). Short-read
+correction it is 0.0011 (`results/reporting_summary.md`). Short-read
 assemblies of these strains do not break at centromeres more often than in
 other sequence of the same AT content; they break there less often.
 
@@ -728,7 +731,7 @@ pcan_assembly_dependence/
 
 ## Usage
 
-The data directory peaked at 8.97 GB before arm 3 (`logs/resources.tsv`):
+The data directory peaked at 8.83 GB before arm 3 (`logs/resources.tsv`):
 3.3 GB of conda environments, the 4.0 GB Peter et al. archive kept once with
 its checksum, 0.78 GB of NCBI assemblies, and the rest PCAn outputs. Arm 3
 adds, at any time, the downloaded read files of one strain (0.9 to 7.2 GB)
@@ -740,7 +743,7 @@ times measured here:
 ```bash
 bash scripts/00_configure.sh --disk 35 --yes        # writes project.conf; add --data-dir to move data/
 bash scripts/01_install.sh                          # 622 s, 3.3 GB after conda clean
-bash run_all.sh --test                              # 64 known-answer tests, 17 s
+bash run_all.sh --test                              # 64 known-answer tests
 bash scripts/02_fetch_tables.sh                     # under a minute
 bash scripts/03_fetch_assemblies.sh --set arm0      # 906 s, 0.51 GB
 python scripts/05_reproduce.py --jobs 8             # 948 s
@@ -750,7 +753,7 @@ python scripts/08_score_perturbations.py            # 45 s
 python scripts/09_build_pairs.py                    # 5,043 s, mostly the 4.0 GB archive
 bash scripts/03_fetch_assemblies.sh --set arm2      # 622 s, 0.27 GB
 python scripts/10_compare_pairs.py --arm 2 --jobs 4 # 1,982 s
-bash scripts/11_assemble_reads.sh                   # 47.3 h of strain time for 33 strains
+bash scripts/11_assemble_reads.sh                   # 47.3 h of wall time for 33 strains
 python scripts/10_compare_pairs.py --arm 3 --jobs 4 # 1,967 s
 python scripts/12_analyse.py
 python scripts/13_figures.py
