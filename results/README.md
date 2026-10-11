@@ -214,6 +214,10 @@ As in arm 2, one row per long-read centromere per assembly, for the primary anal
 
 The registered outcomes D1, D2, D4 and D5 per assembler, target depth and seed, with the columns of the arm 2 table; D1 and D2 rows add the median and interquartile range over strains. D3, the settling depth, is computed from D1 and D2 in `results/reporting_summary.tsv`.
 
+### `seed_range_10x.tsv` (written by `12_analyse.py`)
+
+The registered descriptive of the three 10x seeds: per assembler and strain, D1 and D2 under seeds 11, 22 and 33 (`d1_seed11` to `d2_seed33`) and their range (`d1_range`, `d2_range`), computed as in `confirmatory.tsv`.
+
 ## Sensitivity (`results/sensitivity/`)
 
 ### `arm1_at_weight_gamma.tsv` (written by `08_score_perturbations.py`)

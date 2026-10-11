@@ -250,6 +250,27 @@ def main():
 
     write_markdown(rep)
     P.log("reporting summary: %d rows, %d in the Holm family" % (len(rep), int(fam.sum())))
+    seed_range_10x()
+
+
+def seed_range_10x():
+    """Registered descriptive of arm 3: at 10x, each strain's D1 and D2 under
+    the three seeds and their range, per assembler, computed as in
+    10_compare_pairs.py (liftable centromeres; D2 among intact_called)."""
+    cen = read("arm3/centromere_status.tsv")
+    if cen is None or cen.empty:
+        return
+    c = cen[(cen["target_depth"].astype(str) == "10") & (cen["status"] != "not_liftable")].copy()
+    c["seed"] = c["seed"].astype(str)
+    keys = ["assembler", "strain", "seed"]
+    d1 = c.groupby(keys)["status"].apply(lambda s: (s == "intact_called").mean())
+    called = c[c["status"] == "intact_called"]
+    d2 = called.groupby(keys)["cdeii_difference"].apply(lambda s: (s == 0).mean())
+    out = pd.concat([d1.unstack("seed").add_prefix("d1_seed"), d2.unstack("seed").add_prefix("d2_seed")], axis=1)
+    for m in ("d1", "d2"):
+        cols = out.filter(like=m + "_seed")
+        out[m + "_range"] = cols.max(axis=1) - cols.min(axis=1)
+    P.atomic_write_tsv(out.reset_index(), os.path.join(R, "arm3", "seed_range_10x.tsv"))
 
 
 def write_markdown(rep):

@@ -8,24 +8,30 @@ they are made from. Installed from its pinned commit with MEME suite 4.11.2,
 PCAn ran on 134 Saccharomycetaceae assemblies from 24 genera and made 1,519
 calls, 2 to 26 per assembly. It called all 16 centromeres of the S288C
 reference, each with SGD's boundary between CDEII and CDEIII, and five runs
-gave identical output. In a simulation that cut ten chromosome-level assemblies into contigs (1,600
-replicates holding 15,520 unfragmented calls), 518 calls were lost and every
-one had a breakpoint inside its extraction window; none was lost with its
-window intact, and all 391 calls gained were candidates that PCAn's
-one-call-per-contig rule had suppressed before the cuts. At a contig N50 of 5
-kb, mean recall relative to the unfragmented call was 0.93 with uniform
-breakpoints and 0.79 when breakpoints favoured AT-rich sequence. Planted CDEII
-changes of -10 to +20 bp were reported at the planted length in 207 of 210
-edits; changes of +30 and +40 bp mostly fell outside PCAn's 30 bp length
-anchor. In 69 *Saccharomyces cerevisiae* strains with a published short-read
-and a long-read assembly, 975 of the 1,103 PCAn calls on the long-read
-assemblies were intact and called in the short-read assembly: 603 of 608 in
-homozygous strains and 372 of 495 in heterozygous ones. Two intact regions
-went uncalled. Calls were broken at about half the rate of AT-matched null
-windows (ratio 0.51, 0.35 to 0.66), and the breakpoints of the short-read
-assemblies fell in AT-rich windows more often than uniform placement predicts
-(maximum-likelihood gamma 5.0, 4.5 to 5.6). Arm 3, which assembles real reads
-at known depths, was still running when this was written.
+gave identical output. In a simulation that cut ten chromosome-level
+assemblies into contigs (1,600 replicates holding 15,520 unfragmented calls),
+518 calls were lost and every one had a breakpoint inside its extraction
+window; none was lost with its window intact, and all 391 calls gained were
+candidates that PCAn's one-call-per-contig rule had suppressed before the
+cuts. At a contig N50 of 5 kb, mean recall relative to the unfragmented call
+was 0.93 with uniform breakpoints and 0.79 when breakpoints favoured AT-rich
+sequence. Planted CDEII changes of -10 to +20 bp were reported at the planted
+length in 207 of 210 edits; changes of +30 and +40 bp mostly fell outside
+PCAn's 30 bp length anchor. In 69 *Saccharomyces cerevisiae* strains with a
+published short-read and a long-read assembly, 975 of the 1,103 PCAn calls on
+the long-read assemblies were intact and called in the short-read assembly:
+603 of 608 in homozygous strains and 372 of 495 in heterozygous ones. Two
+intact regions went uncalled. Calls were broken at about half the rate of
+AT-matched null windows (ratio 0.51, 0.35 to 0.66), and the breakpoints of the
+short-read assemblies fell in AT-rich windows more often than uniform
+placement predicts (maximum-likelihood gamma 5.0, 4.5 to 5.6). In 33
+homozygous strains whose Illumina reads were assembled at 5x to 80x with
+SPAdes and MEGAHIT (462 assemblies), the fraction of long-read calls found
+intact and called rose from 0.09 (SPAdes) and 0.01 (MEGAHIT) at 5x, where
+contigs were shorter than the flanks the comparison needs, to 0.98 and 0.89 at
+20x, where both settled, and 0.99 and 0.92 at 80x. Intact calls had the
+long-read CDEII length in at least 98.9 per cent of cases at every depth, and
+from 10x on breaks fell at centromeres less often than in AT-matched windows.
 
 ## Background
 
@@ -101,19 +107,21 @@ this repository is the S288C reference against SGD's centromere annotation.
 
 Every file except the arm 3 reads was downloaded on 2026-10-09 (UTC); the
 reads of each arm 3 strain were downloaded, checked against ENA's MD5 and
-deleted when that strain was processed (`logs/arm3_strains.tsv`). Sizes, SHA-256 checksums, source checksums where
-the source publishes one, and download times are in `logs/downloads.tsv`,
-`logs/assemblies_arm0.tsv` and `logs/assemblies_arm2.tsv`.
+deleted when that strain was processed (`logs/arm3_strains.tsv`). Sizes,
+SHA-256 checksums, source checksums where the source publishes one, and
+download times are in `logs/downloads.tsv`, `logs/assemblies_arm0.tsv` and
+`logs/assemblies_arm2.tsv`.
 
 ### PCAn
 
 PCAn is installed from its GitHub repository at commit
 a5fa46f0cb971e7d499fd52b38b0c29166b33ef8, the v1.0 release archived on Zenodo
-(10.5281/zenodo.17293587); `scripts/01_install.sh` holds the address. One patch is applied so that *Arxiozyma*
-assemblies run (`patches/0001_arxiozyma_cdeiii_motif.patch`): the
-*Arxiozyma* entry of the motif table names a CDEIII motif file that is not
-in the release, and the patch points it at `CDEIII_Arxiozyma_MEME.txt`, which
-ships with PCAn. Nothing else is changed.
+(10.5281/zenodo.17293587); `scripts/01_install.sh` holds the address. One
+patch is applied so that *Arxiozyma* assemblies run
+(`patches/0001_arxiozyma_cdeiii_motif.patch`): the *Arxiozyma* entry of the
+motif table names a CDEIII motif file that is not in the release, and the
+patch points it at `CDEIII_Arxiozyma_MEME.txt`, which ships with PCAn. Nothing
+else is changed.
 
 ### Arm 0: assemblies of the Saccharomycetaceae
 
@@ -316,6 +324,31 @@ at 40x and above for the first three strains while holding about 1.5 GB;
 from the fourth strain on it runs on one thread per GB of the cap, 4 here,
 which on BAM's 40x reads gave contigs identical to a 16-thread run without a
 cap. The failed runs of the first three strains stay failed, as registered.
+
+ENA's server also wrote error messages of its own into some transfers, in
+place of the data at that point: an XML fragment beginning
+`<Error><Code>ConnectionClosedException</Code>` that reports a premature end
+of the message body. That leaves a file of the right size and a wrong MD5,
+different on every try. Before this was found, downloads were moved to
+Windows' own curl on the assumption that the damage arose inside WSL; it did
+not help and was reverted. Since 20:11 UTC on 10 October the script finds each
+such message in a downloaded file, fetches the 4 MiB on either side of it
+again as a byte range, writes them back in place and then checks the MD5 as
+before. Three runs of a strain ended without intact reads and three were
+stopped part way; each is a row of `logs/arm3_strains.tsv`, and every one of
+the 33 strains was assembled in the end. The stage was interrupted five times,
+once when the Linux VM shut down with the session that had started it and four
+times by hand to change the download method or the SPAdes threads
+(`logs/resources.tsv`).
+
+The registered time budget was 48 h. At 02:19 UTC on 11 October, with 14
+strains complete and none cut, it was raised to 96 h so that all 33 strains
+would be assembled. The running stage kept the 48 h it had read at its start
+and, at 17:11 UTC, refused the 32nd strain, whose projected end, from the
+slowest download and assembly seen so far, lay 0.1 h past it; a second run
+with the new budget assembled the last two. The strain intervals in
+`logs/arm3_strains.tsv` add up to 47.3 h.
+
 `python scripts/10_compare_pairs.py --arm 3` then compares every assembly
 with the strain's long-read assembly by the arm 2 method.
 
@@ -327,7 +360,9 @@ figures.
 
 Changes made after the analysis plan was registered are recorded, dated, at
 the end of `config/analysis_plan.md`: the overlap of download and assembly in
-arm 3, the download of reads to a file in place of a stream, two exploratory
+arm 3, the download of reads to a file in place of a stream, the SPAdes
+thread count, the detour through Windows' curl and its correction, the repair
+of the server's error messages, the raised arm 3 budget, two exploratory
 additions to arm 2, and two points of implementation that change no arm 2
 result.
 
@@ -493,8 +528,8 @@ nowhere. In heterozygous strains the doubly matched flank strikes calls and
 null windows at a similar rate, 46 of 495 calls and 980 of 9,900 windows, so
 it inflates both sides of C4 alike
 (`results/arm2/exploratory_flank_summary.tsv`, exploratory). Supplementary
-Data 4 of the Figshare collection lists two different centromere sequences for 14 of
-the broken calls and 3 of the 66 calls with a different CDEII length, so
+Data 4 of the Figshare collection lists two different centromere sequences for
+14 of the broken calls and 3 of the 66 calls with a different CDEII length, so
 those may be allelic rather than errors of either assembly
 (`results/arm2/centromere_status.tsv`, column `possibly_allelic`).
 
@@ -511,14 +546,77 @@ calls a short-read call has an identical sequence from CDEI to CDEIII: 601 of
 
 ### Arm 3: at what depth do calls and CDEII lengths settle?
 
-Arm 3 was running when this was written; its results will be added when the
-48 hour budget has been used.
+**Recall relative to the long-read calls settled at 20x with both assemblers,
+at least 98.9 per cent of intact calls kept the long-read CDEII length at
+every depth, and from 10x on breaks fell at centromeres less often than in
+AT-matched windows.**
+
+![Arm 3 read depth](figures/fig5_read_depth.png)
+
+All 33 qualifying strains were assembled with SPAdes and MEGAHIT at 5x, 10x
+(seeds 11, 22 and 33), 20x, 40x and 80x, the full run capped at 80x: 462
+assemblies, of which 455 completed (`results/arm3/assemblies.tsv`). The seven
+failures are SPAdes runs of the first three strains, CCN at 20x, 40x and 80x
+and AEG and BAM at 40x and 80x, which ran out of address space under the 4 GB
+cap before SPAdes was limited to four threads; as registered, they stay
+missing. Every subsample came within 0.4 per cent of its target depth, and
+mate names agreed read for read in all of them. Median contig N50 rose from
+2.1 kb at 5x to 29 kb at 10x, 95 kb at 20x and 135 kb at 80x with SPAdes, and
+from 1.3 kb to 14 kb, 62 kb and 72 kb with MEGAHIT.
+
+Recall (D1), the mean over strains of the fraction of long-read calls that
+are intact and called, with its bootstrap interval over strains
+(`results/arm3/confirmatory.tsv`):
+
+| Target depth | SPAdes | MEGAHIT |
+|---|---|---|
+| 5x | 0.089 (0.064 to 0.114), 33 strains | 0.009 (0.002 to 0.017), 33 strains |
+| 10x, seed 11 | 0.845 (0.786 to 0.892), 33 strains | 0.661 (0.604 to 0.710), 33 strains |
+| 20x | 0.982 (0.969 to 0.994), 32 strains | 0.890 (0.862 to 0.915), 33 strains |
+| 40x | 0.992 (0.981 to 1.000), 30 strains | 0.909 (0.894 to 0.924), 33 strains |
+| 80x | 0.990 (0.981 to 0.998), 30 strains | 0.920 (0.907 to 0.934), 33 strains |
+
+By the registered rule, the lowest depth from which the mean stays within
+0.05 of its full-depth value, recall settles at 20x for both assemblers
+(D3; `results/reporting_summary.md`). At 5x the measure reports the
+comparison's limit as much as the assembly's: an element counts as intact
+only if it and 2 kb on each side lie on one contig, and contig N50 was 1 to 3
+kb. Counting instead the long-read calls whose exact sequence is among the
+calls on the read assembly, an exploratory measure, gives a mean of 0.80
+(SPAdes) and 0.67 (MEGAHIT) at 5x and 0.96 and 0.95 at 10x
+(`exploratory_long_calls_matched_by_sequence` in
+`results/arm3/assemblies.tsv`). MEGAHIT's recall stayed below SPAdes' at
+every depth, and its assemblies stayed less contiguous.
+
+Among intact calls, the fraction with the long-read CDEII length (D2) was at
+least 0.989 for both assemblers at every depth; by the registered rule it
+settles at 5x, where only 24 SPAdes and 5 MEGAHIT strains had any intact call
+(`results/arm3/confirmatory.tsv`). In the 7,280 comparisons of a long-read
+centromere with a read assembly, a region was intact but uncalled 7 times
+(`results/arm3/centromere_status.tsv`).
+
+At 10x the three seeds gave mean recall of 0.845, 0.854 and 0.839 with SPAdes
+and 0.661, 0.665 and 0.655 with MEGAHIT. Within a strain, recall moved between
+seeds by a median of 2 of the strain's 16 long-read calls with SPAdes and 3
+with MEGAHIT, and by at most 5 and 6; CDEII agreement moved by at most 0.07
+and 0.10 (`results/arm3/seed_range_10x.tsv`; per strain, Figure S3 in
+`figures/supplementary/figS3_read_depth_per_strain.png`).
+
+Breaks (D4). At 5x, breaks fell at centromeres about as often as in the
+AT-matched null windows, with a break-rate ratio of 0.96 (0.94 to 0.98) for
+SPAdes and 1.00 (1.00 to 1.01) for MEGAHIT. From 10x on they fell there less
+often: ratios of 0.45, 0.09, 0.04 and 0.07 at 10x, 20x, 40x and 80x with
+SPAdes, and 0.69, 0.49, 0.45 and 0.42 with MEGAHIT. Every one of these tests
+has a Holm-adjusted p of 0.0011 across the 14 registered tests, except
+MEGAHIT at 5x (0.56; `results/reporting_summary.md`).
 
 ### Across arms: which breakpoint model the real breaks resemble
 
-**The breakpoints of the published short-read assemblies fall in AT-rich
-windows more often than uniform placement predicts, with a maximum-likelihood
-gamma of 5.0 (4.5 to 5.6), below the 7.7 of arm 1's AT-weighted model.**
+**The breakpoints of the published short-read assemblies and of the
+full-depth arm 3 assemblies fall in AT-rich windows more often than uniform
+placement predicts, with maximum-likelihood gammas of 5.0 (arm 2), 5.3
+(SPAdes) and 6.2 (MEGAHIT), all below the 7.7 of arm 1's AT-weighted
+model.**
 
 ![Breakpoint model](figures/fig6_breakpoint_model.png)
 
@@ -537,22 +635,31 @@ tenfold. The closest arm 1 model is the sensitivity run at gamma = ln(5) /
 contig N50 of 10 kb and 0.960 at 20 kb
 (`results/sensitivity/arm1_at_weight_gamma.tsv`).
 
+Outcome D5 applies the same fit to the full-depth arm 3 assemblies: 9,600
+contig ends in 30 strains with SPAdes and 18,783 in 33 strains with MEGAHIT.
+The fitted gamma is 5.30 (4.03 to 6.56) for SPAdes and 6.22 (5.32 to 7.09)
+for MEGAHIT; both intervals exclude zero and the log-likelihood is higher at
+arm 1's gamma than at zero, so by the registered rule both resemble the
+AT-weighted model (`results/arm3/confirmatory.tsv`).
+
 ## Controls and sensitivity
 
-Positive controls. S288C against SGD: 16 of 16 called, as described above.
-The planted variants of arm 1b, where the right answer for every edit is
-known in advance: PCAn's response is reported above. The liftover compared
-each long-read assembly with itself:
-all 1,103 calls came out intact and called (`results/arm2/liftover_control.tsv`).
+Positive controls. S288C against SGD: 16 of 16 called, as described above. The
+planted variants of arm 1b, where the right answer for every edit is known in
+advance: PCAn's response is reported above. The liftover compared each
+long-read assembly with itself: all 1,103 calls came out intact and called
+(`results/arm2/liftover_control.tsv`). The arm 3 strains are 33 of these 69,
+compared against the same long-read assemblies.
 
 Negative controls. Five PCAn runs on S288C gave byte-identical call tables,
 FIMO passes and candidate tables, 4.7 to 5.8 s each
 (`results/arm0/determinism.tsv`). The AT-matched null windows are the
-comparison for C4.
+comparison for C4 and D4.
 
 Technical replicates. The ten fragmentation replicates per genome, model and
 level give the interquartile ranges in Figure 2; the per-genome curves are in
-`figures/supplementary/figS1_fragmentation_per_genome.png`.
+`figures/supplementary/figS1_fragmentation_per_genome.png`. In arm 3, the
+three 10x seeds are described above.
 
 Every threshold the design calls arbitrary was re-run at alternative values
 (`results/sensitivity/summary.tsv`). For each alternative, a registered test
@@ -578,6 +685,22 @@ result was read.
   steeper weighting (*Ashbya aceri*, 10 kb), the length anchor removed two
   calls whose windows were intact: the only losses of that kind in 1,900
   replicates.
+- In arm 3, three alternatives change a registered test, all at 5x. With
+  1 kb flanks the MEGAHIT break-rate ratio at 5x becomes 0.97 (0.94 to 1.00,
+  raw p 0.012), significant after Holm's correction where the primary 1.00
+  was not; with 5 kb flanks the SPAdes ratio at 5x becomes 1.00 (0.99 to
+  1.00, raw p 0.45), no longer significant, and the MEGAHIT ratio at 5x moves
+  from just above 1 to just below it, which the rule counts as a change of
+  direction although neither value is significant. No D4 test at 10x or
+  above changes, and neither D5 nor the settling depths are among the
+  alternatives (`results/sensitivity/arm3_variants.tsv`).
+- Arm 3 recall depends on the flank length, as the flank method implies.
+  Flanks of 5 kb lower it at every depth, to 0.906 (SPAdes) and 0.803
+  (MEGAHIT) at 80x and 0.854 and 0.769 at 20x; flanks of 1 kb raise it at 5x
+  and 10x, to 0.244 and 0.900 with SPAdes and 0.087 and 0.758 with MEGAHIT.
+  The break proportion difference of D4 moves outside its primary interval
+  under some flank lengths and AT bin widths, while keeping its sign at every
+  depth from 10x on.
 
 ## Repository structure
 
@@ -608,9 +731,10 @@ pcan_assembly_dependence/
 The data directory peaked at 8.97 GB before arm 3 (`logs/resources.tsv`):
 3.3 GB of conda environments, the 4.0 GB Peter et al. archive kept once with
 its checksum, 0.78 GB of NCBI assemblies, and the rest PCAn outputs. Arm 3
-adds, at any time, the downloaded read files of one strain (3 to 7 GB) and
-the subsamples and assembler working directories of another; its per-strain
-peaks are logged in `logs/arm3_strains.tsv`. Commands, in order, with the
+adds, at any time, the downloaded read files of one strain (0.9 to 7.2 GB)
+and the subsamples and assembler working directories of another, and took
+the directory to a peak of 17.98 GB; its per-strain peaks are logged in
+`logs/arm3_strains.tsv`. Commands, in order, with the
 times measured here:
 
 ```bash
@@ -626,8 +750,8 @@ python scripts/08_score_perturbations.py            # 45 s
 python scripts/09_build_pairs.py                    # 5,043 s, mostly the 4.0 GB archive
 bash scripts/03_fetch_assemblies.sh --set arm2      # 622 s, 0.27 GB
 python scripts/10_compare_pairs.py --arm 2 --jobs 4 # 1,982 s
-bash scripts/11_assemble_reads.sh                   # up to the 48 h budget
-python scripts/10_compare_pairs.py --arm 3 --jobs 4
+bash scripts/11_assemble_reads.sh                   # 47.3 h of strain time for 33 strains
+python scripts/10_compare_pairs.py --arm 3 --jobs 4 # 1,967 s
 python scripts/12_analyse.py
 python scripts/13_figures.py
 ```
@@ -655,8 +779,10 @@ Arms 2 and 3 cover one species, *S. cerevisiae*, so they say nothing directly
 about other genera, and PCAn's motifs and thresholds are clade-specific, so a
 result in one clade does not transfer to another. The arm 2 short-read
 assemblies all come from one study and one assembler, ABySS, and the
-long-read assemblies from one panel. Arm 3 uses two assemblers and as many
-strains as its time budget allowed.
+long-read assemblies from one panel. Arm 3 uses two assemblers, one Illumina
+run per strain and only homozygous, euploid strains, and its recall needs the
+element and 2 kb on each side on one contig, so at 5x it measures the
+comparison's limit as much as PCAn's.
 
 The flank method cannot tell a doubly matched flank from a missing one under
 the registered rule; the exploratory flank check shows how often that matters
