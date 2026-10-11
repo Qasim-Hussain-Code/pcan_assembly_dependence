@@ -25,7 +25,7 @@ class TestCuts(unittest.TestCase):
 
     def test_names_map_back(self):
         self.assertEqual(F.parse_fragment_name("NC_001133.9__150001-162345"), ("NC_001133.9", 150001, 162345))
-        # underscores inside the source name survive
+        # a "_" inside the source name survives
         self.assertEqual(F.parse_fragment_name("JAJLYE010000002.1__1-500"), ("JAJLYE010000002.1", 1, 500))
 
     def test_every_base_kept_after_random_cuts(self):

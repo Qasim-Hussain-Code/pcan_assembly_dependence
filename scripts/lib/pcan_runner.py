@@ -184,8 +184,8 @@ def main():
                           hit["start"], hit["stop"], hit["p"], r["CDEIIlen"], r["CDEIIAT"], r["FIMOIscore"],
                           r["FIMOIIscore"], r["OverallScore"], r["Sequence"]])
         # Replay PCAn's candidate table and filters from the two FIMO passes, to
-        # say later which filter removed a candidate. The replay must leave
-        # exactly PCAn's calls standing, or it is not used.
+        # say later which filter removed a candidate. The replay is used only
+        # when it leaves exactly PCAn's calls standing.
         import pcan_trace
         genome_seqs = dict(P.read_fasta(genome))
         labelled, anchors, matches = pcan_trace.trace(
