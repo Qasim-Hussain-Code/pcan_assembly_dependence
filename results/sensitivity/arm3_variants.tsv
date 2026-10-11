@@ -1,0 +1,181 @@
+variant	outcome	assembler	target_depth	measure	estimate	ci_low	ci_high	n_strains	n_centromeres	k	n_null	k_null	p_value	permutations_used	test	interval
+at_bin_10	D1	megahit	10	recall relative to the long-read calls	0.6609848484848485	0.6041666666666666	0.7102272727272727									
+at_bin_10	D4	megahit	10	break-rate ratio, centromere over AT-matched null	0.7184427051976721	0.6381720280436444	0.8004803485470204	33.0	528.0	179.0	10560.0	4983.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	megahit	10	break proportion, centromere minus null	-0.1328598484848485	-0.16799242424242422	-0.0968726325757576	33.0	528.0	179.0	10560.0	4983.0				percentile bootstrap over strains
+at_bin_10	D1	megahit	20	recall relative to the long-read calls	0.8901515151515151	0.8617424242424242	0.9147727272727273									
+at_bin_10	D4	megahit	20	break-rate ratio, centromere over AT-matched null	0.5195989061075661	0.4310670665059113	0.6037010304901348	33.0	528.0	57.0	10560.0	2194.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	megahit	20	break proportion, centromere minus null	-0.09981060606060606	-0.12073863636363637	-0.07859848484848485	33.0	528.0	57.0	10560.0	2194.0				percentile bootstrap over strains
+at_bin_10	D1	megahit	40	recall relative to the long-read calls	0.9090909090909091	0.8939393939393939	0.9242424242424242									
+at_bin_10	D4	megahit	40	break-rate ratio, centromere over AT-matched null	0.4708290685772774	0.39572007384016455	0.5523113656377973	33.0	528.0	46.0	10560.0	1954.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	megahit	40	break proportion, centromere minus null	-0.09791666666666665	-0.11695075757575758	-0.07897727272727272	33.0	528.0	46.0	10560.0	1954.0				percentile bootstrap over strains
+at_bin_10	D1	megahit	5	recall relative to the long-read calls	0.00946969696969697	0.001893939393939394	0.017045454545454544									
+at_bin_10	D4	megahit	5	break-rate ratio, centromere over AT-matched null	1.0024918535556833	0.9952925353059852	1.009113147732655	33.0	528.0	523.0	10560.0	10434.0	0.6896310368963103	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	megahit	5	break proportion, centromere minus null	0.0024621212121211933	-0.004640151515151514	0.008996212121212044	33.0	528.0	523.0	10560.0	10434.0				percentile bootstrap over strains
+at_bin_10	D1	megahit	full	recall relative to the long-read calls	0.9204545454545454	0.9071969696969697	0.9337121212121212									
+at_bin_10	D4	megahit	full	break-rate ratio, centromere over AT-matched null	0.4340748779164406	0.35750716742411903	0.5230940456316082	33.0	528.0	40.0	10560.0	1843.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	megahit	full	break proportion, centromere minus null	-0.0987689393939394	-0.11950757575757576	-0.07878551136363639	33.0	528.0	40.0	10560.0	1843.0				percentile bootstrap over strains
+at_bin_10	D1	spades	10	recall relative to the long-read calls	0.8446969696969697	0.7859848484848485	0.8920454545454546									
+at_bin_10	D4	spades	10	break-rate ratio, centromere over AT-matched null	0.48502994011976047	0.3574513840751787	0.6195708786231883	33.0	528.0	81.0	10560.0	3340.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	spades	10	break proportion, centromere minus null	-0.16287878787878787	-0.19914772727272728	-0.1251870265151515	33.0	528.0	81.0	10560.0	3340.0				percentile bootstrap over strains
+at_bin_10	D1	spades	20	recall relative to the long-read calls	0.982421875	0.96875	0.994140625									
+at_bin_10	D4	spades	20	break-rate ratio, centromere over AT-matched null	0.10123734533183351	0.035842293906810034	0.16724143117906345	32.0	512.0	9.0	10240.0	1778.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	spades	20	break proportion, centromere minus null	-0.1560546875	-0.17646484375	-0.1376953125	32.0	512.0	9.0	10240.0	1778.0				percentile bootstrap over strains
+at_bin_10	D1	spades	40	recall relative to the long-read calls	0.9916666666666667	0.98125	1.0									
+at_bin_10	D4	spades	40	break-rate ratio, centromere over AT-matched null	0.043699927166788055	0.0	0.09277667329357189	30.0	480.0	3.0	9600.0	1373.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	spades	40	break proportion, centromere minus null	-0.13677083333333334	-0.14979166666666666	-0.12427083333333334	30.0	480.0	3.0	9600.0	1373.0				percentile bootstrap over strains
+at_bin_10	D1	spades	5	recall relative to the long-read calls	0.08901515151515152	0.06439393939393939	0.11363636363636363									
+at_bin_10	D4	spades	5	break-rate ratio, centromere over AT-matched null	0.9562624254473161	0.932590472499252	0.9801192842942346	33.0	528.0	481.0	10560.0	10060.0	0.00019998000199980003	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	spades	5	break proportion, centromere minus null	-0.04166666666666663	-0.06410984848484846	-0.018939393939394034	33.0	528.0	481.0	10560.0	10060.0				percentile bootstrap over strains
+at_bin_10	D1	spades	full	recall relative to the long-read calls	0.9895833333333334	0.98125	0.9979166666666667									
+at_bin_10	D4	spades	full	break-rate ratio, centromere over AT-matched null	0.07745933384972888	0.01646090534979424	0.1429618131078708	30.0	480.0	5.0	9600.0	1291.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_10	D4	spades	full	break proportion, centromere minus null	-0.1240625	-0.13895833333333332	-0.10916666666666668	30.0	480.0	5.0	9600.0	1291.0				percentile bootstrap over strains
+at_bin_2.5	D1	megahit	10	recall relative to the long-read calls	0.6609848484848485	0.6041666666666666	0.7102272727272727									
+at_bin_2.5	D4	megahit	10	break-rate ratio, centromere over AT-matched null	0.6758542571266755	0.5927784952374551	0.7595412671554804	33.0	528.0	179.0	10560.0	5297.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	megahit	10	break proportion, centromere minus null	-0.16259469696969697	-0.20388257575757573	-0.12244318181818181	33.0	528.0	179.0	10560.0	5297.0				percentile bootstrap over strains
+at_bin_2.5	D1	megahit	20	recall relative to the long-read calls	0.8901515151515151	0.8617424242424242	0.9147727272727273									
+at_bin_2.5	D4	megahit	20	break-rate ratio, centromere over AT-matched null	0.48366567670767924	0.4077929549992126	0.5589539690260569	33.0	528.0	57.0	10560.0	2357.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	megahit	20	break proportion, centromere minus null	-0.11524621212121212	-0.14015151515151514	-0.09109848484848486	33.0	528.0	57.0	10560.0	2357.0				percentile bootstrap over strains
+at_bin_2.5	D1	megahit	40	recall relative to the long-read calls	0.9090909090909091	0.8939393939393939	0.9242424242424242									
+at_bin_2.5	D4	megahit	40	break-rate ratio, centromere over AT-matched null	0.44252044252044254	0.3725577054992828	0.5212076941475771	33.0	528.0	46.0	10560.0	2079.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	megahit	40	break proportion, centromere minus null	-0.10975378787878787	-0.13513257575757576	-0.0869318181818182	33.0	528.0	46.0	10560.0	2079.0				percentile bootstrap over strains
+at_bin_2.5	D1	megahit	5	recall relative to the long-read calls	0.00946969696969697	0.001893939393939394	0.017045454545454544									
+at_bin_2.5	D4	megahit	5	break-rate ratio, centromere over AT-matched null	1.0018197490661813	0.9938600272697526	1.0084692493265062	33.0	528.0	523.0	10560.0	10441.0	0.8332166783321668	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	megahit	5	break proportion, centromere minus null	0.0017992424242423422	-0.0060606060606061	0.008335700757575695	33.0	528.0	523.0	10560.0	10441.0				percentile bootstrap over strains
+at_bin_2.5	D1	megahit	full	recall relative to the long-read calls	0.9204545454545454	0.9071969696969697	0.9337121212121212									
+at_bin_2.5	D4	megahit	full	break-rate ratio, centromere over AT-matched null	0.41300980898296336	0.3363601853677775	0.49970999405115996	33.0	528.0	40.0	10560.0	1937.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	megahit	full	break proportion, centromere minus null	-0.10767045454545456	-0.13304924242424243	-0.08532196969696969	33.0	528.0	40.0	10560.0	1937.0				percentile bootstrap over strains
+at_bin_2.5	D1	spades	10	recall relative to the long-read calls	0.8446969696969697	0.7859848484848485	0.8920454545454546									
+at_bin_2.5	D4	spades	10	break-rate ratio, centromere over AT-matched null	0.44689655172413795	0.3269585275891358	0.5725681613583563	33.0	528.0	81.0	10560.0	3625.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	spades	10	break proportion, centromere minus null	-0.18986742424242423	-0.2278409090909091	-0.15208096590909095	33.0	528.0	81.0	10560.0	3625.0				percentile bootstrap over strains
+at_bin_2.5	D1	spades	20	recall relative to the long-read calls	0.982421875	0.96875	0.994140625									
+at_bin_2.5	D4	spades	20	break-rate ratio, centromere over AT-matched null	0.08372093023255814	0.029644268774703556	0.13681332063626123	32.0	512.0	9.0	10240.0	2150.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	spades	20	break proportion, centromere minus null	-0.1923828125	-0.22470703125	-0.16532958984375004	32.0	512.0	9.0	10240.0	2150.0				percentile bootstrap over strains
+at_bin_2.5	D1	spades	40	recall relative to the long-read calls	0.9916666666666667	0.98125	1.0									
+at_bin_2.5	D4	spades	40	break-rate ratio, centromere over AT-matched null	0.03614457831325302	0.0	0.07852155377240218	30.0	480.0	3.0	9600.0	1660.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	spades	40	break proportion, centromere minus null	-0.16666666666666666	-0.18354166666666666	-0.150625	30.0	480.0	3.0	9600.0	1660.0				percentile bootstrap over strains
+at_bin_2.5	D1	spades	5	recall relative to the long-read calls	0.08901515151515152	0.06439393939393939	0.11363636363636363									
+at_bin_2.5	D4	spades	5	break-rate ratio, centromere over AT-matched null	0.9561673789881722	0.9339382515915836	0.9785632234380937	33.0	528.0	481.0	10560.0	10061.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	spades	5	break proportion, centromere minus null	-0.041761363636363624	-0.06288115530303029	-0.020454545454545392	33.0	528.0	481.0	10560.0	10061.0				percentile bootstrap over strains
+at_bin_2.5	D1	spades	full	recall relative to the long-read calls	0.9895833333333334	0.98125	0.9979166666666667									
+at_bin_2.5	D4	spades	full	break-rate ratio, centromere over AT-matched null	0.062189054726368154	0.012844803187656729	0.11711507039179073	30.0	480.0	5.0	9600.0	1608.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+at_bin_2.5	D4	spades	full	break proportion, centromere minus null	-0.15708333333333335	-0.17458333333333334	-0.1396875	30.0	480.0	5.0	9600.0	1608.0				percentile bootstrap over strains
+flank_1kb	D1	megahit	10	recall relative to the long-read calls	0.7575757575757576	0.7007575757575758	0.803030303030303									
+flank_1kb	D4	megahit	10	break-rate ratio, centromere over AT-matched null	0.6616696820883949	0.56827002669881	0.7553710171105332	33.0	528.0	128.0	10560.0	3869.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	megahit	10	break proportion, centromere minus null	-0.12395833333333334	-0.15511600378787882	-0.09223484848484853	33.0	528.0	128.0	10560.0	3869.0				percentile bootstrap over strains
+flank_1kb	D1	megahit	20	recall relative to the long-read calls	0.8958333333333334	0.8712121212121212	0.9185606060606061									
+flank_1kb	D4	megahit	20	break-rate ratio, centromere over AT-matched null	0.5732484076433122	0.46933184357541896	0.6892156393697397	33.0	528.0	54.0	10560.0	1884.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	megahit	20	break proportion, centromere minus null	-0.07613636363636363	-0.10549479166666667	-0.04924005681818184	33.0	528.0	54.0	10560.0	1884.0				percentile bootstrap over strains
+flank_1kb	D1	megahit	40	recall relative to the long-read calls	0.9109848484848485	0.8958333333333334	0.9261363636363636									
+flank_1kb	D4	megahit	40	break-rate ratio, centromere over AT-matched null	0.5586592178770949	0.45480370817760934	0.6750099069607166	33.0	528.0	45.0	10560.0	1611.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	megahit	40	break proportion, centromere minus null	-0.06732954545454546	-0.09129024621212121	-0.04488636363636364	33.0	528.0	45.0	10560.0	1611.0				percentile bootstrap over strains
+flank_1kb	D1	megahit	5	recall relative to the long-read calls	0.08712121212121213	0.06060606060606061	0.11363636363636363									
+flank_1kb	D4	megahit	5	break-rate ratio, centromere over AT-matched null	0.9713825070536073	0.9410589410589412	0.999604135020089	33.0	528.0	482.0	10560.0	9924.0	0.012398760123987601	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	megahit	5	break proportion, centromere minus null	-0.02689393939393947	-0.055492424242424176	-0.0003764204545454769	33.0	528.0	482.0	10560.0	9924.0				percentile bootstrap over strains
+flank_1kb	D1	megahit	full	recall relative to the long-read calls	0.9223484848484849	0.9071969696969697	0.9356060606060606									
+flank_1kb	D4	megahit	full	break-rate ratio, centromere over AT-matched null	0.5155320555188367	0.41141240052973205	0.6371259799267065	33.0	528.0	39.0	10560.0	1513.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	megahit	full	break proportion, centromere minus null	-0.06941287878787879	-0.09204545454545454	-0.04810606060606061	33.0	528.0	39.0	10560.0	1513.0				percentile bootstrap over strains
+flank_1kb	D1	spades	10	recall relative to the long-read calls	0.8996212121212122	0.8465909090909091	0.9375									
+flank_1kb	D4	spades	10	break-rate ratio, centromere over AT-matched null	0.3877703206562267	0.2567185786479857	0.5263249079038551	33.0	528.0	52.0	10560.0	2682.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	spades	10	break proportion, centromere minus null	-0.15549242424242424	-0.18589251893939396	-0.1266098484848485	33.0	528.0	52.0	10560.0	2682.0				percentile bootstrap over strains
+flank_1kb	D1	spades	20	recall relative to the long-read calls	0.984375	0.970703125	0.99609375									
+flank_1kb	D4	spades	20	break-rate ratio, centromere over AT-matched null	0.09714632665452339	0.027359313593023727	0.16269742033575246	32.0	512.0	8.0	10240.0	1647.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	spades	20	break proportion, centromere minus null	-0.14521484375	-0.1736328125	-0.12236083984375004	32.0	512.0	8.0	10240.0	1647.0				percentile bootstrap over strains
+flank_1kb	D1	spades	40	recall relative to the long-read calls	0.99375	0.9854166666666667	1.0									
+flank_1kb	D4	spades	40	break-rate ratio, centromere over AT-matched null	0.031746031746031744	0.0	0.08170101646545777	30.0	480.0	2.0	9600.0	1260.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	spades	40	break proportion, centromere minus null	-0.12708333333333333	-0.14239583333333333	-0.11239583333333333	30.0	480.0	2.0	9600.0	1260.0				percentile bootstrap over strains
+flank_1kb	D1	spades	5	recall relative to the long-read calls	0.24431818181818182	0.19886363636363635	0.2897727272727273									
+flank_1kb	D4	spades	5	break-rate ratio, centromere over AT-matched null	0.8922182468694098	0.8430322804375954	0.941444583488936	33.0	528.0	399.0	10560.0	8944.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	spades	5	break proportion, centromere minus null	-0.0912878787878787	-0.13314393939393943	-0.0495217803030303	33.0	528.0	399.0	10560.0	8944.0				percentile bootstrap over strains
+flank_1kb	D1	spades	full	recall relative to the long-read calls	0.9916666666666667	0.9833333333333333	0.9979166666666667									
+flank_1kb	D4	spades	full	break-rate ratio, centromere over AT-matched null	0.06309148264984227	0.014748990811329	0.13061758472808577	30.0	480.0	4.0	9600.0	1268.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_1kb	D4	spades	full	break proportion, centromere minus null	-0.12375	-0.14104166666666665	-0.10697916666666667	30.0	480.0	4.0	9600.0	1268.0				percentile bootstrap over strains
+flank_5kb	D1	megahit	10	recall relative to the long-read calls	0.39204545454545453	0.3371212121212121	0.44696969696969696									
+flank_5kb	D4	megahit	10	break-rate ratio, centromere over AT-matched null	0.821917808219178	0.7631597521542299	0.87733261901537	33.0	528.0	321.0	10560.0	7811.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	megahit	10	break proportion, centromere minus null	-0.13172348484848484	-0.17244318181818186	-0.09185606060606066	33.0	528.0	321.0	10560.0	7811.0				percentile bootstrap over strains
+flank_5kb	D1	megahit	20	recall relative to the long-read calls	0.7689393939393939	0.7367424242424242	0.7992424242424242									
+flank_5kb	D4	megahit	20	break-rate ratio, centromere over AT-matched null	0.6422505307855626	0.5655779866102367	0.7192422434649677	33.0	528.0	121.0	10560.0	3768.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	megahit	20	break proportion, centromere minus null	-0.12765151515151515	-0.15956439393939392	-0.09725142045454546	33.0	528.0	121.0	10560.0	3768.0				percentile bootstrap over strains
+flank_5kb	D1	megahit	40	recall relative to the long-read calls	0.7916666666666666	0.7689393939393939	0.8143939393939394									
+flank_5kb	D4	megahit	40	break-rate ratio, centromere over AT-matched null	0.6409495548961425	0.5627183132797439	0.7228933511825077	33.0	528.0	108.0	10560.0	3370.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	megahit	40	break proportion, centromere minus null	-0.11458333333333334	-0.14517045454545457	-0.08532196969696967	33.0	528.0	108.0	10560.0	3370.0				percentile bootstrap over strains
+flank_5kb	D1	megahit	5	recall relative to the long-read calls	0.001893939393939394	0.0	0.005681818181818182									
+flank_5kb	D4	megahit	5	break-rate ratio, centromere over AT-matched null	0.9997154510101488	0.9960159362549801	1.0022779043280183	33.0	528.0	527.0	10560.0	10543.0	1.0	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	megahit	5	break proportion, centromere minus null	-0.0002840909090909838	-0.003977272727272774	0.002272727272727315	33.0	528.0	527.0	10560.0	10543.0				percentile bootstrap over strains
+flank_5kb	D1	megahit	full	recall relative to the long-read calls	0.803030303030303	0.7803030303030303	0.8257575757575758									
+flank_5kb	D4	megahit	full	break-rate ratio, centromere over AT-matched null	0.6382978723404255	0.5548994696993178	0.7276241119259771	33.0	528.0	102.0	10560.0	3196.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	megahit	full	break proportion, centromere minus null	-0.109469696969697	-0.140530303030303	-0.07982954545454546	33.0	528.0	102.0	10560.0	3196.0				percentile bootstrap over strains
+flank_5kb	D1	spades	10	recall relative to the long-read calls	0.6363636363636364	0.5833333333333334	0.6856060606060606									
+flank_5kb	D4	spades	10	break-rate ratio, centromere over AT-matched null	0.6736025392347029	0.5978161219805769	0.7460831660873778	33.0	528.0	191.0	10560.0	5671.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	spades	10	break proportion, centromere minus null	-0.17528409090909086	-0.21411221590909096	-0.13787878787878788	33.0	528.0	191.0	10560.0	5671.0				percentile bootstrap over strains
+flank_5kb	D1	spades	20	recall relative to the long-read calls	0.853515625	0.83203125	0.875									
+flank_5kb	D4	spades	20	break-rate ratio, centromere over AT-matched null	0.513347022587269	0.43505264007781	0.5944863056110691	32.0	512.0	75.0	10240.0	2922.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	spades	20	break proportion, centromere minus null	-0.1388671875	-0.17333984375	-0.10761718749999999	32.0	512.0	75.0	10240.0	2922.0				percentile bootstrap over strains
+flank_5kb	D1	spades	40	recall relative to the long-read calls	0.8854166666666666	0.8645833333333334	0.90625									
+flank_5kb	D4	spades	40	break-rate ratio, centromere over AT-matched null	0.46351931330472107	0.3816467964783819	0.5470858832990309	30.0	480.0	54.0	9600.0	2330.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	spades	40	break proportion, centromere minus null	-0.13020833333333331	-0.15531250000000002	-0.10624999999999998	30.0	480.0	54.0	9600.0	2330.0				percentile bootstrap over strains
+flank_5kb	D1	spades	5	recall relative to the long-read calls	0.005681818181818182	0.0	0.013257575757575758									
+flank_5kb	D4	spades	5	break-rate ratio, centromere over AT-matched null	0.998003992015968	0.9909824394874228	1.0037139320064756	33.0	528.0	525.0	10560.0	10521.0	0.45145485451454853	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	spades	5	break proportion, centromere minus null	-0.0019886363636364424	-0.008996212121212155	0.00369318181818179	33.0	528.0	525.0	10560.0	10521.0				percentile bootstrap over strains
+flank_5kb	D1	spades	full	recall relative to the long-read calls	0.90625	0.8895833333333333	0.9229166666666667									
+flank_5kb	D4	spades	full	break-rate ratio, centromere over AT-matched null	0.4205607476635514	0.3372362302068241	0.5106800172403452	30.0	480.0	45.0	9600.0	2140.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+flank_5kb	D4	spades	full	break proportion, centromere minus null	-0.12916666666666668	-0.15614843750000001	-0.10416406250000003	30.0	480.0	45.0	9600.0	2140.0				percentile bootstrap over strains
+identity_0.90	D1	megahit	10	recall relative to the long-read calls	0.6609848484848485	0.6041666666666666	0.7102272727272727									
+identity_0.90	D4	megahit	10	break-rate ratio, centromere over AT-matched null	0.6916537867078825	0.6099550864550188	0.7729706736062455	33.0	528.0	179.0	10560.0	5176.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	megahit	10	break proportion, centromere minus null	-0.15113636363636368	-0.1901538825757576	-0.11287878787878786	33.0	528.0	179.0	10560.0	5176.0				percentile bootstrap over strains
+identity_0.90	D1	megahit	20	recall relative to the long-read calls	0.8901515151515151	0.8617424242424242	0.9147727272727273									
+identity_0.90	D4	megahit	20	break-rate ratio, centromere over AT-matched null	0.4909560723514212	0.4095822752777124	0.5728549395438803	33.0	528.0	57.0	10560.0	2322.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	megahit	20	break proportion, centromere minus null	-0.11193181818181817	-0.13787878787878788	-0.0865530303030303	33.0	528.0	57.0	10560.0	2322.0				percentile bootstrap over strains
+identity_0.90	D1	megahit	40	recall relative to the long-read calls	0.9090909090909091	0.8939393939393939	0.9242424242424242									
+identity_0.90	D4	megahit	40	break-rate ratio, centromere over AT-matched null	0.45409674234945707	0.3811316622496627	0.5350568932110725	33.0	528.0	46.0	10560.0	2026.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	megahit	40	break proportion, centromere minus null	-0.10473484848484849	-0.12727272727272726	-0.08352272727272728	33.0	528.0	46.0	10560.0	2026.0				percentile bootstrap over strains
+identity_0.90	D1	megahit	5	recall relative to the long-read calls	0.00946969696969697	0.001893939393939394	0.017045454545454544									
+identity_0.90	D4	megahit	5	break-rate ratio, centromere over AT-matched null	1.0035498416962485	0.9953967869276443	1.0105465004793863	33.0	528.0	523.0	10560.0	10423.0	0.5594440555944405	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	megahit	5	break proportion, centromere minus null	0.0035037878787878007	-0.00454545454545463	0.01041666666666663	33.0	528.0	523.0	10560.0	10423.0				percentile bootstrap over strains
+identity_0.90	D1	megahit	full	recall relative to the long-read calls	0.9204545454545454	0.9071969696969697	0.9337121212121212									
+identity_0.90	D4	megahit	full	break-rate ratio, centromere over AT-matched null	0.421274354923644	0.34256668161899173	0.5108273181565797	33.0	528.0	40.0	10560.0	1899.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	megahit	full	break proportion, centromere minus null	-0.1040719696969697	-0.1275568181818182	-0.08210227272727273	33.0	528.0	40.0	10560.0	1899.0				percentile bootstrap over strains
+identity_0.90	D1	spades	10	recall relative to the long-read calls	0.8446969696969697	0.7859848484848485	0.8920454545454546									
+identity_0.90	D4	spades	10	break-rate ratio, centromere over AT-matched null	0.45505617977528096	0.33287509555064326	0.5815460283781821	33.0	528.0	81.0	10560.0	3560.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	spades	10	break proportion, centromere minus null	-0.1837121212121212	-0.22178030303030305	-0.1459280303030303	33.0	528.0	81.0	10560.0	3560.0				percentile bootstrap over strains
+identity_0.90	D1	spades	20	recall relative to the long-read calls	0.982421875	0.96875	0.994140625									
+identity_0.90	D4	spades	20	break-rate ratio, centromere over AT-matched null	0.08836524300441827	0.03136434918975431	0.1440154819803709	32.0	512.0	9.0	10240.0	2037.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	spades	20	break proportion, centromere minus null	-0.18134765625	-0.2109375	-0.15654296875	32.0	512.0	9.0	10240.0	2037.0				percentile bootstrap over strains
+identity_0.90	D1	spades	40	recall relative to the long-read calls	0.9916666666666667	0.98125	1.0									
+identity_0.90	D4	spades	40	break-rate ratio, centromere over AT-matched null	0.03836317135549873	0.0	0.08264605202453706	30.0	480.0	3.0	9600.0	1564.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	spades	40	break proportion, centromere minus null	-0.15666666666666665	-0.17229427083333335	-0.14208333333333334	30.0	480.0	3.0	9600.0	1564.0				percentile bootstrap over strains
+identity_0.90	D1	spades	5	recall relative to the long-read calls	0.09090909090909091	0.06628787878787878	0.11742424242424243									
+identity_0.90	D4	spades	5	break-rate ratio, centromere over AT-matched null	0.9560800717060054	0.9337646819809112	0.9787703829963204	33.0	528.0	480.0	10560.0	10041.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	spades	5	break proportion, centromere minus null	-0.041761363636363624	-0.06287878787878787	-0.02017045454545463	33.0	528.0	480.0	10560.0	10041.0				percentile bootstrap over strains
+identity_0.90	D1	spades	full	recall relative to the long-read calls	0.9895833333333334	0.98125	0.9979166666666667									
+identity_0.90	D4	spades	full	break-rate ratio, centromere over AT-matched null	0.06618133686300462	0.013859773901325149	0.12368775142820403	30.0	480.0	5.0	9600.0	1511.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.90	D4	spades	full	break proportion, centromere minus null	-0.1469791666666667	-0.16520833333333332	-0.12947916666666667	30.0	480.0	5.0	9600.0	1511.0				percentile bootstrap over strains
+identity_0.99	D1	megahit	10	recall relative to the long-read calls	0.6609848484848485	0.6041666666666666	0.7102272727272727									
+identity_0.99	D4	megahit	10	break-rate ratio, centromere over AT-matched null	0.6712919557472342	0.5904647160380738	0.7519332523034469	33.0	528.0	179.0	10560.0	5333.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	megahit	10	break proportion, centromere minus null	-0.1660037878787879	-0.20511363636363633	-0.12698626893939394	33.0	528.0	179.0	10560.0	5333.0				percentile bootstrap over strains
+identity_0.99	D1	megahit	20	recall relative to the long-read calls	0.8882575757575758	0.8598484848484849	0.9128787878787878									
+identity_0.99	D4	megahit	20	break-rate ratio, centromere over AT-matched null	0.46178343949044587	0.3872628489878812	0.5339173440795272	33.0	528.0	58.0	10560.0	2512.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	megahit	20	break proportion, centromere minus null	-0.12803030303030305	-0.15246212121212122	-0.10445075757575757	33.0	528.0	58.0	10560.0	2512.0				percentile bootstrap over strains
+identity_0.99	D1	megahit	40	recall relative to the long-read calls	0.9053030303030303	0.8882575757575758	0.9223484848484849									
+identity_0.99	D4	megahit	40	break-rate ratio, centromere over AT-matched null	0.4393592677345538	0.36363636363636365	0.5270209915140688	33.0	528.0	48.0	10560.0	2185.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	megahit	40	break proportion, centromere minus null	-0.11600378787878787	-0.1402462121212121	-0.09214015151515152	33.0	528.0	48.0	10560.0	2185.0				percentile bootstrap over strains
+identity_0.99	D1	megahit	5	recall relative to the long-read calls	0.00946969696969697	0.001893939393939394	0.017045454545454544									
+identity_0.99	D4	megahit	5	break-rate ratio, centromere over AT-matched null	1.0003825554705432	0.9918617446875434	1.0077746323644543	33.0	528.0	523.0	10560.0	10456.0	1.0	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	megahit	5	break proportion, centromere minus null	0.00037878787878786735	-0.008049242424242431	0.007670454545454564	33.0	528.0	523.0	10560.0	10456.0				percentile bootstrap over strains
+identity_0.99	D1	megahit	full	recall relative to the long-read calls	0.9166666666666666	0.8996212121212122	0.9318181818181818									
+identity_0.99	D4	megahit	full	break-rate ratio, centromere over AT-matched null	0.40756914119359533	0.3274087932647334	0.5053457788645411	33.0	528.0	42.0	10560.0	2061.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	megahit	full	break proportion, centromere minus null	-0.11562499999999999	-0.140625	-0.09090909090909091	33.0	528.0	42.0	10560.0	2061.0				percentile bootstrap over strains
+identity_0.99	D1	spades	10	recall relative to the long-read calls	0.8333333333333334	0.7746212121212122	0.8806818181818182									
+identity_0.99	D4	spades	10	break-rate ratio, centromere over AT-matched null	0.46862375437651493	0.35011962448001144	0.590575594142298	33.0	528.0	87.0	10560.0	3713.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	spades	10	break proportion, centromere minus null	-0.18683712121212123	-0.22680160984848485	-0.14678030303030304	33.0	528.0	87.0	10560.0	3713.0				percentile bootstrap over strains
+identity_0.99	D1	spades	20	recall relative to the long-read calls	0.97265625	0.955078125	0.98828125									
+identity_0.99	D4	spades	20	break-rate ratio, centromere over AT-matched null	0.12915129151291513	0.05914097870391873	0.20443009315845803	32.0	512.0	14.0	10240.0	2168.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	spades	20	break proportion, centromere minus null	-0.184375	-0.21611328125	-0.15595703125	32.0	512.0	14.0	10240.0	2168.0				percentile bootstrap over strains
+identity_0.99	D1	spades	40	recall relative to the long-read calls	0.9791666666666666	0.9625	0.99375									
+identity_0.99	D4	spades	40	break-rate ratio, centromere over AT-matched null	0.1060695344725987	0.03502575881736273	0.1976620453892207	30.0	480.0	9.0	9600.0	1697.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	spades	40	break proportion, centromere minus null	-0.15802083333333333	-0.17895833333333333	-0.135625	30.0	480.0	9.0	9600.0	1697.0				percentile bootstrap over strains
+identity_0.99	D1	spades	5	recall relative to the long-read calls	0.07575757575757576	0.054924242424242424	0.09659090909090909									
+identity_0.99	D4	spades	5	break-rate ratio, centromere over AT-matched null	0.9621451104100947	0.9429858053942752	0.9822134387351779	33.0	528.0	488.0	10560.0	10144.0	0.00019998000199980003	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	spades	5	break proportion, centromere minus null	-0.036363636363636376	-0.054829545454545436	-0.017045454545454586	33.0	528.0	488.0	10560.0	10144.0				percentile bootstrap over strains
+identity_0.99	D1	spades	full	recall relative to the long-read calls	0.9833333333333333	0.9666666666666667	0.9958333333333333									
+identity_0.99	D4	spades	full	break-rate ratio, centromere over AT-matched null	0.0970873786407767	0.02444950435602129	0.19493652831265149	30.0	480.0	8.0	9600.0	1648.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations	percentile bootstrap over strains
+identity_0.99	D4	spades	full	break proportion, centromere minus null	-0.155	-0.17791666666666667	-0.13083333333333333	30.0	480.0	8.0	9600.0	1648.0				percentile bootstrap over strains

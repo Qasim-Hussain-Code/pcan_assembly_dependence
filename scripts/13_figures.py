@@ -490,6 +490,8 @@ def fig_arm3():
     ax.legend(frameon=False, loc="lower right")
     ax.set_title("c  Contiguity, on the axis of arm 1\nn = %d assemblies; unit: assembly" % len(ok), loc="left")
     ax = axes[1, 1]
+    n4 = conf[(conf["outcome"] == "D4") & conf["measure"].str.startswith("break-rate")
+              & (conf["seed"].astype(str) == "11")]["n_strains"]
     for i, (a, (col, lab)) in enumerate(ASSEMBLERS.items()):
         d = by_depth(conf, "D4", a, "break-rate")
         if d.empty:
@@ -502,8 +504,8 @@ def fig_arm3():
     ax.annotate("no difference", (4, 1), xytext=(0, 3), textcoords="offset points", fontsize=7, color=INK2)
     depth_axis(ax)
     ax.set_ylabel("break-rate ratio, centromere over null")
-    ax.set_title("d  Breaks at centromeres against AT-matched\nwindows, seed 11; bootstrap interval over strains",
-                 loc="left")
+    ax.set_title("d  Breaks at centromeres against AT-matched\nwindows, seed 11; n = %d to %d strains per point;\n"
+                 "bootstrap interval over strains" % (n4.min(), n4.max()), loc="left")
     fig.tight_layout()
     save(fig, "fig5_read_depth")
     fig_arm3_per_strain(asm)
@@ -532,8 +534,10 @@ def fig_arm3_per_strain(asm):
         depth_axis(ax)
         ax.set_xlabel("realised depth (x)")
         ax.set_ylim(0, 1.05)
-        ax.set_title("%s  %s\nn = %d strains; grey: each strain; colour: mean"
-                     % ("ab"[list(ASSEMBLERS).index(a)], lab, d["strain"].nunique()), loc="left")
+        per = d.groupby("target_depth")["strain"].nunique()
+        n_text = "%d" % per.max() if per.min() == per.max() else "%d to %d" % (per.min(), per.max())
+        ax.set_title("%s  %s\nn = %s strains per depth; grey: each strain; colour: mean"
+                     % ("ab"[list(ASSEMBLERS).index(a)], lab, n_text), loc="left")
     axes[0].set_ylabel("fraction of long-read calls\nintact and called")
     fig.tight_layout()
     save(fig, "figS3_read_depth_per_strain", supp=True)
@@ -552,12 +556,13 @@ def fig_breakpoints():
     r = c2[c2["outcome"] == "C5"]
     if len(r):
         r = r.iloc[0]
-        rows.append(("published short-read\nassemblies (arm 2)", r))
+        rows.append(("published short-read\nassemblies (arm 2), n = %d" % r["n_strains"], r))
     if c3 is not None:
         for a in ("spades", "megahit"):
             r3 = c3[(c3["outcome"] == "D5") & (c3["assembler"] == a)]
             if len(r3):
-                rows.append(("%s, full depth\n(arm 3)" % ("SPAdes" if a == "spades" else "MEGAHIT"), r3.iloc[0]))
+                rows.append(("%s, full depth\n(arm 3), n = %d" % ("SPAdes" if a == "spades" else "MEGAHIT",
+                                                                r3.iloc[0]["n_strains"]), r3.iloc[0]))
     fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.9), gridspec_kw={"width_ratios": [1, 1.2]})
     ax = axes[0]
     d = (bs["mean_at_at_breakpoints"] - bs["genome_at"]).dropna() * 100
@@ -594,7 +599,7 @@ def fig_breakpoints():
     ax.grid(axis="y", visible=False)
     ax.grid(axis="x", visible=True)
     ax.set_xlabel("maximum-likelihood gamma")
-    ax.set_title("b  Which breakpoint model fits\ninterval: bootstrap over strains", loc="left")
+    ax.set_title("b  Which breakpoint model fits\nn: strains; interval: bootstrap over strains", loc="left")
     fig.tight_layout()
     save(fig, "fig6_breakpoint_model")
 

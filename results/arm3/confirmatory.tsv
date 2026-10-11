@@ -1,0 +1,51 @@
+outcome	assembler	target_depth	seed	measure	n_strains	estimate	ci_low	ci_high	median	q25	q75	interval	n_centromeres	k	n_null	k_null	p_value	permutations_used	test	n_breakpoints	loglik_uniform	loglik_arm1_at_weighted	loglik_ml	decision
+D1	megahit	10	11	recall relative to the long-read calls	33	0.6609848484848485	0.6041666666666666	0.7102272727272727	0.75	0.5625	0.75	percentile bootstrap over strains												
+D2	megahit	10	11	identical CDEII length among intact_called	33	0.9893939393939394	0.9787878787878787	0.9974747474747474	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	megahit	10	11	break-rate ratio, centromere over AT-matched null	33	0.6900539707016191	0.6086446755875039	0.7710949472769276				percentile bootstrap over strains	528.0	179.0	10560.0	5188.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	megahit	10	11	break proportion, centromere minus null	33	-0.15227272727272728	-0.1911931818181818	-0.11401515151515151				percentile bootstrap over strains	528.0	179.0	10560.0	5188.0								
+D1	megahit	10	22	recall relative to the long-read calls	33	0.6647727272727273	0.6041666666666666	0.7178030303030303	0.6875	0.5625	0.8125	percentile bootstrap over strains												
+D2	megahit	10	22	identical CDEII length among intact_called	32	0.9899189352314353	0.9797728313353314	0.9977678571428572	1.0	1.0	1.0	percentile bootstrap over strains												
+D1	megahit	10	33	recall relative to the long-read calls	33	0.6553030303030303	0.5984848484848485	0.7045454545454546	0.6875	0.625	0.75	percentile bootstrap over strains												
+D2	megahit	10	33	identical CDEII length among intact_called	33	0.9946386946386947	0.9862470862470863	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D1	megahit	20	11	recall relative to the long-read calls	33	0.8901515151515151	0.8617424242424242	0.9147727272727273	0.875	0.875	0.9375	percentile bootstrap over strains												
+D2	megahit	20	11	identical CDEII length among intact_called	33	0.9936285936285938	0.9858585858585858	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	megahit	20	11	break-rate ratio, centromere over AT-matched null	33	0.4888507718696398	0.4079850907096117	0.570037524156816				percentile bootstrap over strains	528.0	57.0	10560.0	2332.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	megahit	20	11	break proportion, centromere minus null	33	-0.11287878787878787	-0.13882812499999997	-0.08759469696969698				percentile bootstrap over strains	528.0	57.0	10560.0	2332.0								
+D1	megahit	40	11	recall relative to the long-read calls	33	0.9090909090909091	0.8939393939393939	0.9242424242424242	0.9375	0.875	0.9375	percentile bootstrap over strains												
+D2	megahit	40	11	identical CDEII length among intact_called	33	0.9936285936285938	0.9858585858585858	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	megahit	40	11	break-rate ratio, centromere over AT-matched null	33	0.4520884520884521	0.3794031349846573	0.5331991951710261				percentile bootstrap over strains	528.0	46.0	10560.0	2035.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	megahit	40	11	break proportion, centromere minus null	33	-0.10558712121212122	-0.128125	-0.08428030303030304				percentile bootstrap over strains	528.0	46.0	10560.0	2035.0								
+D1	megahit	5	11	recall relative to the long-read calls	33	0.00946969696969697	0.001893939393939394	0.017045454545454544	0.0	0.0	0.0	percentile bootstrap over strains												
+D2	megahit	5	11	identical CDEII length among intact_called	5	1.0	1.0	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	megahit	5	11	break-rate ratio, centromere over AT-matched null	33	1.0035498416962485	0.9953967869276443	1.0105465004793863				percentile bootstrap over strains	528.0	523.0	10560.0	10423.0	0.5594440555944405	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	megahit	5	11	break proportion, centromere minus null	33	0.0035037878787878007	-0.00454545454545463	0.01041666666666663				percentile bootstrap over strains	528.0	523.0	10560.0	10423.0								
+D1	megahit	full	11	recall relative to the long-read calls	33	0.9204545454545454	0.9071969696969697	0.9337121212121212	0.9375	0.875	0.9375	percentile bootstrap over strains												
+D2	megahit	full	11	identical CDEII length among intact_called	33	0.9936285936285938	0.9858585858585858	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	megahit	full	11	break-rate ratio, centromere over AT-matched null	33	0.42016806722689076	0.3419638495359062	0.509237337627511				percentile bootstrap over strains	528.0	40.0	10560.0	1904.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	megahit	full	11	break proportion, centromere minus null	33	-0.10454545454545454	-0.12793560606060606	-0.08257575757575758				percentile bootstrap over strains	528.0	40.0	10560.0	1904.0								
+D1	spades	10	11	recall relative to the long-read calls	33	0.8446969696969697	0.7859848484848485	0.8920454545454546	0.875	0.8125	0.9375	percentile bootstrap over strains												
+D2	spades	10	11	identical CDEII length among intact_called	33	0.9911255411255411	0.9822510822510824	0.9979797979797981	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	spades	10	11	break-rate ratio, centromere over AT-matched null	33	0.45390865788736345	0.33201850757839335	0.5802227030229747				percentile bootstrap over strains	528.0	81.0	10560.0	3569.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	spades	10	11	break proportion, centromere minus null	33	-0.18456439393939392	-0.22244554924242427	-0.1468726325757576				percentile bootstrap over strains	528.0	81.0	10560.0	3569.0								
+D1	spades	10	22	recall relative to the long-read calls	33	0.8541666666666666	0.7973484848484849	0.8977272727272727	0.875	0.8125	0.9375	percentile bootstrap over strains												
+D2	spades	10	22	identical CDEII length among intact_called	33	0.9898809523809523	0.981511093073593	0.9978391053391052	1.0	1.0	1.0	percentile bootstrap over strains												
+D1	spades	10	33	recall relative to the long-read calls	33	0.8390151515151515	0.7821969696969697	0.8825757575757576	0.875	0.8125	0.9375	percentile bootstrap over strains												
+D2	spades	10	33	identical CDEII length among intact_called	33	0.9916305916305915	0.9832611832611833	0.9979797979797981	1.0	1.0	1.0	percentile bootstrap over strains												
+D1	spades	20	11	recall relative to the long-read calls	32	0.982421875	0.96875	0.994140625	1.0	1.0	1.0	percentile bootstrap over strains												
+D2	spades	20	11	identical CDEII length among intact_called	32	0.9914763621794872	0.9828225160256411	0.998046875	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	spades	20	11	break-rate ratio, centromere over AT-matched null	32	0.08742107819329771	0.031039834454216243	0.1427789544007835				percentile bootstrap over strains	512.0	9.0	10240.0	2059.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	spades	20	11	break proportion, centromere minus null	32	-0.18349609375	-0.21298828125	-0.15888671875				percentile bootstrap over strains	512.0	9.0	10240.0	2059.0								
+D1	spades	40	11	recall relative to the long-read calls	30	0.9916666666666667	0.98125	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D2	spades	40	11	identical CDEII length among intact_called	30	0.99375	0.9854166666666667	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	spades	40	11	break-rate ratio, centromere over AT-matched null	30	0.037783375314861464	0.0	0.0814663951120163				percentile bootstrap over strains	480.0	3.0	9600.0	1588.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	spades	40	11	break proportion, centromere minus null	30	-0.15916666666666665	-0.1746875	-0.144375				percentile bootstrap over strains	480.0	3.0	9600.0	1588.0								
+D1	spades	5	11	recall relative to the long-read calls	33	0.08901515151515152	0.06439393939393939	0.11363636363636363	0.0625	0.0	0.125	percentile bootstrap over strains												
+D2	spades	5	11	identical CDEII length among intact_called	24	1.0	1.0	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	spades	5	11	break-rate ratio, centromere over AT-matched null	33	0.9574044585987261	0.9355651918157301	0.9797134312689731				percentile bootstrap over strains	528.0	481.0	10560.0	10048.0	0.00019998000199980003	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	spades	5	11	break proportion, centromere minus null	33	-0.04053030303030303	-0.0612689393939394	-0.01931818181818179				percentile bootstrap over strains	528.0	481.0	10560.0	10048.0								
+D1	spades	full	11	recall relative to the long-read calls	30	0.9895833333333334	0.98125	0.9979166666666667	1.0	1.0	1.0	percentile bootstrap over strains												
+D2	spades	full	11	identical CDEII length among intact_called	30	0.9936111111111111	0.9852777777777778	1.0	1.0	1.0	1.0	percentile bootstrap over strains												
+D4	spades	full	11	break-rate ratio, centromere over AT-matched null	30	0.06514657980456026	0.013688552641913803	0.12150668286755771				percentile bootstrap over strains	480.0	5.0	9600.0	1535.0	9.999000099990002e-05	10000.0	stratified permutation of log ratio, 10000 permutations					
+D4	spades	full	11	break proportion, centromere minus null	30	-0.14947916666666666	-0.1678125	-0.1315625				percentile bootstrap over strains	480.0	5.0	9600.0	1535.0								
+D5	megahit	full	11	maximum-likelihood gamma of breakpoint placement	33	6.223705460343734	5.3157923872815	7.094105874805631				percentile bootstrap over strains, 10000 resamples					1.9963924920793867e-255		likelihood ratio, gamma = 0 against free gamma, chi-squared 1 df	18783.0	-189448.7417443321	-188896.66755439612	-188866.03095408092	AT-weighted
+D5	spades	full	11	maximum-likelihood gamma of breakpoint placement	30	5.295981383823332	4.0261093245093615	6.561642387472587				percentile bootstrap over strains, 10000 resamples					1.013385019836388e-96		likelihood ratio, gamma = 0 against free gamma, chi-squared 1 df	9600.0	-96823.71747285887	-96648.37378530586	-96605.94896439539	AT-weighted

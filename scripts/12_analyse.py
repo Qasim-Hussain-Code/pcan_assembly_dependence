@@ -88,8 +88,8 @@ def in_family(r):
 def settling(d1, assembler):
     """Lowest target depth from which the mean over strains stays within 0.05
     of its full-depth value at every higher depth (registered as D3)."""
-    s = d1[(d1["assembler"] == assembler) & (d1["seed"].astype(str) == "11")].set_index(
-        d1["target_depth"].astype(str))["estimate"]
+    sub = d1[(d1["assembler"] == assembler) & (d1["seed"].astype(str) == "11")]
+    s = sub.set_index(sub["target_depth"].astype(str))["estimate"]
     if "full" not in s.index:
         return ""
     full = s["full"]
